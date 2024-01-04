@@ -29,19 +29,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<!--        &lt;!&ndash; 카카오 로그인, 인가코드를 받기 위한 액티비티 &ndash;&gt;-->
-<!--        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
+        <!-- 카카오 로그인, 인가코드를 받기 위한 액티비티 -->
+        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
 
-<!--                <data android:host="oauth"-->
-<!--                    android:scheme="kakao945e8ef4af6e12c87d1f13a8b4308cf7" />-->
-<!--            </intent-filter>-->
+                <data android:host="oauth"
+                    android:scheme="kakao945e8ef4af6e12c87d1f13a8b4308cf7" />
+            </intent-filter>
 
-<!--        </activity>-->
+        </activity>
 
     </application>
 

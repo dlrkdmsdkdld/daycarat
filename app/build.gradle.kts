@@ -124,7 +124,9 @@ dependencies {
     implementation("androidx.core:core-splashscreen:1.0.0-alpha01")
 
     implementation("com.kakao.sdk:v2-user:2.19.0") // 카카오 로그인0
-
+    val preference_version = "1.2.0"
+    // Kotlin
+    implementation("androidx.preference:preference-ktx:$preference_version")
 
 }
 kapt {
