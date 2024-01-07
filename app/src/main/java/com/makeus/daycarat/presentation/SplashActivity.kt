@@ -1,17 +1,18 @@
-package com.makeus.daycarat
+package com.makeus.daycarat.presentation
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.makeus.daycarat.R
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+        val splashScreen = installSplashScreen()
         setContentView(R.layout.activity_splash)
 
-        Intent(this,MainActivity::class.java).apply {
+        Intent(this, LoginActivity::class.java).apply {
             startActivity(this)
             finish()
         }

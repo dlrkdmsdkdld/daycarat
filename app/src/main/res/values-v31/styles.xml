@@ -1,0 +1,23 @@
+<resources>
+
+    <style name="Theme.Daycarat" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <!--        // Set the splash screen background, animated icon, and animation duration.-->
+        <item name="windowSplashScreenBackground">@color/white</item>
+
+        <!--        // Use windowSplashScreenAnimatedIcon to add either a drawable or an-->
+        <!--        // animated drawable. One of these is required.-->
+<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_title_daycarat</item>-->
+        <!--        <item name="windowSplashScreenAnimationDuration">200</item>  # Required for-->
+
+        <!--        // Set the theme of the Activity that directly follows your splash screen.-->
+        <item name="postSplashScreenTheme">@style/Theme.Daycarat</item>
+    </style>
+</resources>

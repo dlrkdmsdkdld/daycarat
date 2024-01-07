@@ -1,0 +1,15 @@
+<resources>
+
+    <style name="Theme.Daycarat" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="Theme.App.Starting" parent="Theme.Daycarat">
+        <item name="postSplashScreenTheme">@style/Theme.Daycarat</item>
+    </style>
+
+
+</resources>
