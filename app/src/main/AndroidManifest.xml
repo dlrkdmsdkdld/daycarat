@@ -35,9 +35,8 @@
 
         </activity>
 
-        <activity android:name=".presentation.LoginActivity">
-
-        </activity>
+        <activity android:name=".presentation.LoginActivity"/>
+        <activity android:name=".presentation.AgreementActivity"/>
 
     </application>
 
