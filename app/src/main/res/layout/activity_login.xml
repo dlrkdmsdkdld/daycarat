@@ -8,10 +8,13 @@
         android:layout_height="match_parent">
 
         <TextView
+            style="@style/h5"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:text="@string/title_login"
             android:layout_width="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="40dp"
             android:textColor="@color/white"
             android:layout_height="wrap_content"/>
 
@@ -37,8 +40,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent" />
             <TextView
+                style="@style/sh6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#000000"
                 android:text="카카오로 시작하기"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
