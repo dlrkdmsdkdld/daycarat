@@ -127,7 +127,8 @@ dependencies {
     val preference_version = "1.2.0"
     // Kotlin
     implementation("androidx.preference:preference-ktx:$preference_version")
-
+    //circleindicator
+    implementation ("me.relex:circleindicator:2.1.6")
 }
 kapt {
     correctErrorTypes = true

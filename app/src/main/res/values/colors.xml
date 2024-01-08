@@ -9,6 +9,10 @@
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
+    <color name="main">#7241FF</color>
+    <color name="none_enable">#DADCE0</color>
+    <color name="gray_scale_400">#BCC1C7</color>
+    <color name="gray_scale_300">#DADCE0</color>
+    <color name="gray_scale_200">#E8EAED</color>
 
 </resources>
