@@ -16,7 +16,9 @@ abstract class BaseActivity<B: ViewBinding>(
         super.onCreate(savedInstanceState)
         _binding = bindingFactory(layoutInflater)
         setContentView(binding.root)
+        initView()
     }
+    abstract fun initView()
 
     override fun onDestroy() {
         super.onDestroy()

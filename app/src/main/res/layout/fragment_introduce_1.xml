@@ -24,4 +24,14 @@
         app:layout_constraintTop_toTopOf="parent"
         android:src="@drawable/indicator_selected" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="@string/start_agreement"
+        android:layout_margin="20dp"
+        android:id="@+id/next_btn"
+        android:visibility="invisible"
+        android:background="@drawable/selector_main_theme"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

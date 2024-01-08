@@ -1,4 +1,4 @@
-package com.makeus.daycarat.presentation
+package com.makeus.daycarat.presentation.login
 
 import android.os.Bundle
 import android.util.Log
@@ -17,8 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.inflate(it)}) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun initView() {
         // 카카오 로그인
         // 카카오계정으로 로그인 공통 callback 구성
         // 카카오톡으로 로그인 할 수 없어 카카오계정으로 로그인할 경우 사용됨
@@ -49,7 +48,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                     } else if (token != null) {
 
                         checkLoginToken()
-                            //todo 동의 화면으로 보내기 + token 저장
+                        //todo 동의 화면으로 보내기 + token 저장
 //                        SharedPreferenceManager.getInstance().setString("USER_KAKAO_TOKEN",${token.scopes})
                         Log.i(Constant.TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
 
@@ -59,7 +58,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
-
     }
     fun checkLoginToken(){
         if (AuthApiClient.instance.hasToken()){

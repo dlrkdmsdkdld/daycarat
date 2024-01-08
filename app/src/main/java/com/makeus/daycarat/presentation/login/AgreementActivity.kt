@@ -1,20 +1,14 @@
-package com.makeus.daycarat.presentation
+package com.makeus.daycarat.presentation.login
 
 import android.content.Intent
-import android.os.Bundle
 import com.makeus.daycarat.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityAgreementBinding
-import com.makeus.daycarat.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AgreementActivity : BaseActivity<ActivityAgreementBinding>({ ActivityAgreementBinding.inflate(it)}) {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        initView()
 
-    }
-    fun initView(){
+    override fun initView(){
         binding.checkAll.setOnCheckedChangeListener { compoundButton, b ->
             if (b){
                 binding.check1.isChecked = true
@@ -38,7 +32,9 @@ class AgreementActivity : BaseActivity<ActivityAgreementBinding>({ ActivityAgree
             enableBtn(checkAll())
         }
         binding.nextBtn.setOnClickListener {
-            Intent(this,)
+            Intent(this, IntroduceActivity::class.java).apply {
+                startActivity(this)
+            }
         }
 
     }
