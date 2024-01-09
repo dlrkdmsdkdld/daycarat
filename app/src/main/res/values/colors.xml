@@ -14,5 +14,6 @@
     <color name="gray_scale_400">#BCC1C7</color>
     <color name="gray_scale_300">#DADCE0</color>
     <color name="gray_scale_200">#E8EAED</color>
+    <color name="gray_scale_700">#5E6369</color>
 
 </resources>
