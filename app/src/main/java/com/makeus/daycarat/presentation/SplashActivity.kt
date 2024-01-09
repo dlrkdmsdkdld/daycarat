@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.makeus.daycarat.R
 import com.makeus.daycarat.presentation.login.AgreementActivity
+import com.makeus.daycarat.presentation.login.IntroduceActivity
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -13,7 +14,7 @@ class SplashActivity : AppCompatActivity() {
         val splashScreen = installSplashScreen()
         setContentView(R.layout.activity_splash)
 
-        Intent(this, AgreementActivity::class.java).apply {
+        Intent(this, IntroduceActivity::class.java).apply {
             startActivity(this)
             finish()
         }

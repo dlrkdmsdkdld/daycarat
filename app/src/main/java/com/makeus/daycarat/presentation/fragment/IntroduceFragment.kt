@@ -1,10 +1,13 @@
 package com.makeus.daycarat.presentation.fragment
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
+import com.makeus.daycarat.presentation.login.IntroduceActivity
+import com.makeus.daycarat.presentation.login.JoinActivity
 
 
 class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(FragmentIntroduce1Binding::inflate) {
@@ -16,6 +19,7 @@ class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(
                 binding.textTitle.text = resources.getText(R.string.title_introduce1)
                 binding.nextBtn.visibility = View.INVISIBLE
 
+
             }
             IntroduceType.STATE_SECOND.ordinal ->{
                 binding.textTitle.text = resources.getText(R.string.title_introduce2)
@@ -25,6 +29,11 @@ class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(
             IntroduceType.STATE_THIRD.ordinal ->{
                 binding.textTitle.text = resources.getText(R.string.title_introduce3)
                 binding.nextBtn.visibility = View.VISIBLE
+            }
+        }
+        binding.nextBtn.setOnClickListener {
+            Intent(activity, JoinActivity::class.java).apply {
+                startActivity(this)
             }
         }
     }

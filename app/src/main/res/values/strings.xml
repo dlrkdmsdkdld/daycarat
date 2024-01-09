@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">daycarat</string>
+
+
+
     <string name="title_login">데이캐럿에서\n내 경험들을\n발굴하고 다듬어요</string>
     <string name="title_agreement">약관에 동의해주세요</string>
     <string name="des_agreement_total">전체 약관에 동의합니다.</string>
@@ -18,16 +21,24 @@
     <string name="des_join1">데이캐럿에서 사용할 닉네임을 설정해주세요.</string>
     <string name="des_join_hint">입력해주세요.</string>
 
-    
-    <string-array name="des_join_jobs">
+
+    <string-array name="des_datas">
         <item>기획/전략</item>
         <item>IT 개발/데이터</item>
         <item>디자인</item>
         <item>회계/세무/재무</item>
         <item>마케팅/홍보/조사</item>
     </string-array>
+
+
     <string name="next">다음으로</string>
     <string name="skip">건너뛰기</string>
+
+    <string name="job_title">희망하는 직군 분야를 알려주세요</string>
+    <string name="job_des">선택하신 직군에 따라\n에피소드 키워드를 추천드려요</string>
+    <string name="advantage_title">내가 생각하는 나의 강점은?</string>
+    <string name="advantage_des">선택한 해당 강점을\n더욱 특화할 수 있도록 도울게요</string>
+
 
     <string name="join_finish_title">데이캐럿을 사용할 준비가 되었어요!</string>
     <string name="join_finish_text">데이캐럿과 함께 하루하루 보석을 캐고 다듬어 나가요!</string>

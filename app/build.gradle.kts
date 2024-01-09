@@ -46,6 +46,8 @@ android {
         viewBinding = true
         dataBinding = true
     }
+
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -61,6 +63,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -129,6 +132,9 @@ dependencies {
     implementation("androidx.preference:preference-ktx:$preference_version")
     //circleindicator
     implementation ("me.relex:circleindicator:2.1.6")
+    implementation ("com.github.zhpanvip:viewpagerindicator:1.2.3")
+    implementation ("com.github.LinweiJ:ViewPagerIndicator:0.3.0")
+
 }
 kapt {
     correctErrorTypes = true

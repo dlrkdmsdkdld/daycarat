@@ -9,7 +9,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/job_title"
+            android:text="@string/advantage_title"
             android:id="@+id/title"
             android:layout_margin="20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -18,29 +18,11 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/job_des"
+            android:text="@string/advantage_des"
             android:id="@+id/explain"
             app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_margin="20dp"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <ScrollView
-            app:layout_constraintTop_toBottomOf="@id/explain"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:paddingTop="20dp">
-
-            <LinearLayout
-                android:id="@+id/field_btn"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-
-            </LinearLayout>
-        </ScrollView>
-
 
 
 
