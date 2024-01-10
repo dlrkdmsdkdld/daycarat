@@ -7,40 +7,39 @@
         android:layout_height="match_parent">
 
         <TextView
+            android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/advantage_title"
-            android:id="@+id/title"
             android:layout_margin="20dp"
+            android:text="@string/advantage_title"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/explain"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/advantage_des"
-            android:id="@+id/explain"
-            app:layout_constraintTop_toBottomOf="@id/title"
             android:layout_margin="20dp"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/advantage_des"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/title" />
 
         <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/explain"
-            android:layout_marginTop="24dp"
             android:layout_marginLeft="20dp"
-            android:id="@+id/chip_group"
+            android:layout_marginTop="24dp"
             android:layout_marginRight="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/explain"
+            app:singleSelection="true"
+
 
             >
 
         </com.google.android.material.chip.ChipGroup>
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

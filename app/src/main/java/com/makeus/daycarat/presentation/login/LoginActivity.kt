@@ -1,5 +1,6 @@
 package com.makeus.daycarat.presentation.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
@@ -33,6 +34,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                 Log.e(Constant.TAG, "카카오계정으로 로그인 실패", error)
             } else if (token != null) {
                 Log.i(Constant.TAG, "카카오계정으로 로그인 성공 ${token.accessToken}")
+                nextStep()
             }
         }
 
@@ -53,7 +55,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                         // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
                         UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
                     } else if (token != null) {
-
+                        nextStep()
 //                        checkLoginToken()
                         //todo 동의 화면으로 보내기 + token 저장
 //                        SharedPreferenceManager.getInstance().setString("USER_KAKAO_TOKEN",${token.scopes})
@@ -66,6 +68,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
             } else {
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
+        }
+    }
+    fun nextStep(){
+        Intent(this , IntroduceActivity::class.java).apply {
+            startActivity(this)
         }
     }
 //    fun checkLoginToken(){

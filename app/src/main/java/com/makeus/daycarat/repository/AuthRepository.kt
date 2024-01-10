@@ -30,10 +30,8 @@ class AuthRepository @Inject constructor(private val apimodule: RetrofitInterfac
 //        return result.
 //    }
     operator fun invoke(accestoken: String) = flow {
-        emit(Resource.loading())
-        //            val response = userInfoRepository.postUserInfo(userInfoInput)
-
         try {
+            emit(Resource.loading())
             val response = apimodule.requestKakaoLoginToken(accestoken)
             Log.d(Constant.TAG , " ${response.statusCode} ${response.result?.accessToken}")
             if (isSuccessful(response.statusCode)) {

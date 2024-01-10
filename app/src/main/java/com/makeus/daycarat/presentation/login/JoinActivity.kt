@@ -1,7 +1,9 @@
 package com.makeus.daycarat.presentation.login
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
@@ -13,6 +15,9 @@ import com.makeus.daycarat.presentation.fragment.AdvantageFragment
 import com.makeus.daycarat.presentation.fragment.IntroduceFragment
 import com.makeus.daycarat.presentation.fragment.JobFragment
 import com.makeus.daycarat.presentation.fragment.NicknameFragment
+import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
+import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
+import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.UiManager
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.internal.notify
@@ -20,6 +25,9 @@ import okhttp3.internal.notify
 @AndroidEntryPoint
 class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inflate(it)}) {
     private lateinit var mPager: ViewPager2
+    private val viewModel by lazy {
+        ViewModelProvider(this).get(UserDataViewmodel::class.java)
+    }
 
     private val NUM_PAGES = 3
     override fun initView() {
@@ -58,8 +66,19 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
 
 //        binding.indicator.setViewPager(mPager)
         binding.nextBtn.setOnClickListener {
-            mPager.currentItem = mPager.currentItem + 1
             binding.nextBtn.isEnabled = false
+            when(mPager.currentItem){
+                 0 ->{
+
+                 }1 ->{
+
+                }2 ->{
+                    Log.d(Constant.TAG , "nickname ${viewModel.userData.value.nickname} strength ${viewModel.userData.value.strength} jobTitle ${viewModel.userData.value.jobTitle}")
+                }
+            }
+            mPager.currentItem = mPager.currentItem + 1
+
+
         }
     }
 

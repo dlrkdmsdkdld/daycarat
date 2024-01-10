@@ -7,7 +7,6 @@ plugins {
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
 }
-
 android {
 
     namespace = "com.makeus.daycarat"
