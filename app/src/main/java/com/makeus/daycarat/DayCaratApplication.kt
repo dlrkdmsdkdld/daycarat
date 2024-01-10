@@ -13,7 +13,7 @@ class DayCaratApplication : Application(){
     override fun onCreate() {
         super.onCreate()
         mAppContext = applicationContext
-        KakaoSdk.init(this, "945e8ef4af6e12c87d1f13a8b4308cf7")
+        KakaoSdk.init(this, "de909f10bb5f9eea10806f013137db09")
     }
 
 

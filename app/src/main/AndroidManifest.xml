@@ -17,7 +17,7 @@
         tools:targetApi="31">
         <meta-data
             android:name="com.kakao.sdk.AppKey"
-            android:value="945e8ef4af6e12c87d1f13a8b4308cf7"/>
+            android:value="de909f10bb5f9eea10806f013137db09"/>
 
         <activity android:name=".presentation.SplashActivity"
             android:theme="@style/Theme.App.Starting"

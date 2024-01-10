@@ -135,6 +135,15 @@ dependencies {
     implementation ("com.github.zhpanvip:viewpagerindicator:1.2.3")
     implementation ("com.github.LinweiJ:ViewPagerIndicator:0.3.0")
 
+    //레트로핏
+    val retrofit_version = "2.8.1"
+    implementation ("com.squareup.retrofit2:retrofit:$retrofit_version")
+    implementation ("com.squareup.retrofit2:converter-gson:$retrofit_version")
+    //레트로핏 로깅 인터셉터
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
+
+
+
 }
 kapt {
     correctErrorTypes = true

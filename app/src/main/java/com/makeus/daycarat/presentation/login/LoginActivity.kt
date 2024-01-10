@@ -2,6 +2,8 @@ package com.makeus.daycarat.presentation.login
 
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
@@ -11,12 +13,17 @@ import com.kakao.sdk.user.UserApiClient
 import com.makeus.daycarat.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityLoginBinding
 import com.makeus.daycarat.databinding.ActivityMainBinding
+import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.SharedPreferenceManager
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.inflate(it)}) {
+    private val viewModel by lazy {
+        ViewModelProvider(this).get(AuthViewmodel::class.java)
+    }
+
     override fun initView() {
         // 카카오 로그인
         // 카카오계정으로 로그인 공통 callback 구성
@@ -47,9 +54,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                         UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
                     } else if (token != null) {
 
-                        checkLoginToken()
+//                        checkLoginToken()
                         //todo 동의 화면으로 보내기 + token 저장
 //                        SharedPreferenceManager.getInstance().setString("USER_KAKAO_TOKEN",${token.scopes})
+                        viewModel.getTokenWithKakaoToken(token.accessToken)
+
                         Log.i(Constant.TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
 
                     }
@@ -59,29 +68,29 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
             }
         }
     }
-    fun checkLoginToken(){
-        if (AuthApiClient.instance.hasToken()){
-            UserApiClient.instance.accessTokenInfo { _, error ->
-                if (error != null) {
-                    if (error is KakaoSdkError && error.isInvalidTokenError()) {
-                        //로그인 필요
-                    }
-                    else {
-                        //기타 에러
-                    }
-                }
-                else {
-                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
-                    UserApiClient.instance.me { user, error ->
-                        if (error != null) {
-                            Log.e(Constant.TAG, "사용자 정보 요청 실패 $error")
-                        } else if (user != null) {
-                            Log.e(Constant.TAG, "사용자 정보 요청 성공 : ${user.kakaoAccount?.email}")
-
-                        }
-                    }
-                }
-            }
-        }
-    }
+//    fun checkLoginToken(){
+//        if (AuthApiClient.instance.hasToken()){
+//            UserApiClient.instance.accessTokenInfo { _, error ->
+//                if (error != null) {
+//                    if (error is KakaoSdkError && error.isInvalidTokenError()) {
+//                        //로그인 필요
+//                    }
+//                    else {
+//                        //기타 에러
+//                    }
+//                }
+//                else {
+//                    //토큰 유효성 체크 성공(필요 시 토큰 갱신됨)
+//                    UserApiClient.instance.me { user, error ->
+//                        if (error != null) {
+//                            Log.e(Constant.TAG, "사용자 정보 요청 실패 $error")
+//                        } else if (user != null) {
+//                            Log.e(Constant.TAG, "사용자 정보 요청 성공 : ${user.kakaoAccount?.email}")
+//
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//    }
 }

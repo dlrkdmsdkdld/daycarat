@@ -30,6 +30,17 @@
         <item>마케팅/홍보/조사</item>
     </string-array>
 
+    <string-array name="advantage_datas">
+        <item>#아이디어 뱅크</item>
+        <item>#시간관리 능통</item>
+        <item>#소통왕</item>
+        <item>#실무경험 보유</item>
+        <item>#친화력 보장</item>
+        <item>#추진력갑</item>
+        <item>#리더십 보유</item>
+        <item>#논리력갑</item>
+    </string-array>
+
 
     <string name="next">다음으로</string>
     <string name="skip">건너뛰기</string>
@@ -49,4 +60,38 @@
     <string name="home_des_count">%d개</string>
     <string name="home_ep_des">바로 활용 가능한\n내 에피소드들</string>
     <string name="home_ai_des">AI로 더 쉽게\n작성하는 자소서</string>
+    <string name="home_banner_des">데이캐럿으로\n취업준비 시작하기</string>
+    <string name="home_news_title">데이캐럿 뉴스</string>
+    <string name="home_news_des">뉴스 설명</string>
+    <string name="navigation_home">홈</string>
+    <string name="navigation_episode">에피소드</string>
+    <string name="navigation_diamond">보석함</string>
+    <string name="navigation_profile">마이페이지</string>
+    <string name="hint">내용을 입력해주세요</string>
+    <string name="episode_title">에피소드 입력</string>
+    <string name="episode_save">저장</string>
+    <string name="episode_header_title">제목</string>
+    <string name="episode_header_date">날짜</string>
+    <string name="episode_header_tag">활동 태그</string>
+    <string name="episode_item_title">작성항목</string>
+
+
+    <string name="episode_item_add">작성항목 추가</string>
+    <string name="dialog_episode_tag_add">활동 태그 추가</string>
+    <string name="dialog_episode_tag_add_hint">활동명을 입력해주세요</string>
+    <string name="dialog_episode_tag_add_btn">추가하기</string>
+    <string name="noti_empty_des">아직 설정한 기록 알림이 없어요</string>
+    <string name="noti_title">알림</string>
+    <string name="noti_des">기록해야 하는 중요한 활이 있다면\n설정하고 알림을 받아보세요.</string>
+
+    <string-array name="episode_header_datas">
+        <item>자유롭게 작성</item>
+        <item>배운 점</item>
+        <item>아쉬운 점</item>
+    </string-array>
+
+
+
+
+<!--    <string name="home_ai_des"></string>-->
 </resources>

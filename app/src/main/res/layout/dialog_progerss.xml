@@ -16,6 +16,6 @@
         android:layout_gravity="center_vertical"
         android:text="Loading..."
         android:textStyle="bold"
-        android:textColor="@color/background_white"
+        android:textColor="@color/white"
         android:textSize="16dp" />
 </LinearLayout>
