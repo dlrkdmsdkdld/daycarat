@@ -9,6 +9,7 @@
             android:id="@+id/indicator"
             android:layout_width="match_parent"
             android:layout_height="32dp"
+            android:layout_marginTop="36.5dp"
             app:ci_drawable_unselected="@drawable/indicator_unselected"
             app:ci_drawable="@drawable/indicator_selected"
             app:ci_animator="@animator/scale_with_alpha"
@@ -19,6 +20,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             android:id="@+id/pager"
             app:layout_constraintTop_toBottomOf="@id/indicator"/>

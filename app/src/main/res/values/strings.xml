@@ -52,7 +52,7 @@
 
 
     <string name="join_finish_title">데이캐럿을 사용할 준비가 되었어요!</string>
-    <string name="join_finish_text">데이캐럿과 함께 하루하루 보석을 캐고 다듬어 나가요!</string>
+    <string name="join_finish_text">데이캐럿과 함께\n하루하루 보석을 캐고 다듬어 나가요!</string>
     <string name="join_finish_close">메인 홈으로 이동</string>
 
     <string name="home_user_title">%s,\n새로운 에피소드를 캐볼까요</string>

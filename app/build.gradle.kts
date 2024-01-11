@@ -6,6 +6,9 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-parcelize")
+
 }
 android {
 
@@ -141,7 +144,12 @@ dependencies {
     //레트로핏 로깅 인터셉터
     implementation ("com.squareup.okhttp3:logging-interceptor:4.10.0")
 
+    // 작성 시점 안정 버전
+    val nav_version = "2.5.3"
 
+    // Kotlin
+    implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
 
 }
 kapt {
