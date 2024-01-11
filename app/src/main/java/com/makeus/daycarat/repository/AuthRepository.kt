@@ -9,6 +9,7 @@ import com.makeus.daycarat.util.Constant.ERROR_UNKNOWN
 import com.makeus.daycarat.util.Constant.USER_ACCESS_TOKEN
 import com.makeus.daycarat.util.Constant.USER_REFRESH_TOKEN
 import com.makeus.daycarat.util.SharedPreferenceManager
+import com.makeus.daycarat.util.UiEvent
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.flow
 import okhttp3.Interceptor
@@ -30,11 +31,12 @@ class AuthRepository @Inject constructor(private val apimodule: RetrofitInterfac
 //        return result.
 //    }
     operator fun invoke(accestoken: String) = flow {
+        //            val response = userInfoRepository.postUserInfo(userInfoInput)
         try {
             emit(Resource.loading())
             val response = apimodule.requestKakaoLoginToken(accestoken)
             Log.d(Constant.TAG , " ${response.statusCode} ${response.result?.accessToken}")
-            if (isSuccessful(response.statusCode)) {
+            if (isSuccessful(response.statusCode) || response.statusCode == 201) {
                 Log.d(Constant.TAG , "response ${response.statusCode} ")
                 response.result?.accessToken?.let {
                     SharedPreferenceManager.getInstance().setString(USER_ACCESS_TOKEN , it)
@@ -42,8 +44,9 @@ class AuthRepository @Inject constructor(private val apimodule: RetrofitInterfac
                 response.result?.refreshToken?.let {
                     SharedPreferenceManager.getInstance().setString(USER_REFRESH_TOKEN , it)
                 }
-                emit(Resource.success(response.result))
-            } else {
+                emit(Resource.success(response.statusCode))
+            }
+            else {
                 emit(Resource.error(response.statusCode.toString()))
             }
 

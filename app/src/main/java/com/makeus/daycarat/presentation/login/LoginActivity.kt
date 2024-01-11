@@ -4,7 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.kakao.sdk.auth.AuthApiClient
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
@@ -14,13 +17,16 @@ import com.kakao.sdk.user.UserApiClient
 import com.makeus.daycarat.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityLoginBinding
 import com.makeus.daycarat.databinding.ActivityMainBinding
+import com.makeus.daycarat.presentation.MainActivity
+import com.makeus.daycarat.presentation.dialog.LoadingDialog
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.SharedPreferenceManager
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.inflate(it)}) {
+class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.inflate(it) }) {
     private val viewModel by lazy {
         ViewModelProvider(this).get(AuthViewmodel::class.java)
     }
@@ -34,12 +40,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                 Log.e(Constant.TAG, "카카오계정으로 로그인 실패", error)
             } else if (token != null) {
                 Log.i(Constant.TAG, "카카오계정으로 로그인 성공 ${token.accessToken}")
-                nextStep()
+                viewModel.getTokenWithKakaoToken(token.accessToken)
             }
         }
 
 
-        binding.btnKakao.setOnClickListener{
+        binding.btnKakao.setOnClickListener {
             // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
@@ -55,12 +61,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                         // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
                         UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
                     } else if (token != null) {
-                        nextStep()
-//                        checkLoginToken()
-                        //todo 동의 화면으로 보내기 + token 저장
-//                        SharedPreferenceManager.getInstance().setString("USER_KAKAO_TOKEN",${token.scopes})
                         viewModel.getTokenWithKakaoToken(token.accessToken)
-
                         Log.i(Constant.TAG, "카카오톡으로 로그인 성공 ${token.accessToken}")
 
                     }
@@ -69,12 +70,41 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                 UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
-    }
-    fun nextStep(){
-        Intent(this , IntroduceActivity::class.java).apply {
-            startActivity(this)
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.flowEvent.collect { event ->
+                    var dialog = LoadingDialog(this@LoginActivity)
+                    when(event){
+                        is AuthViewmodel.UiEvent.LoadingEvent ->{
+                            dialog.show()
+                        } is AuthViewmodel.UiEvent.AlreadyUserEvent ->{
+                            dialog.dismiss()
+                            Intent(this@LoginActivity,MainActivity::class.java).apply {
+                                finishAffinity()
+                                startActivity(this)
+                            }
+                        } is AuthViewmodel.UiEvent.NewUserEvent ->{
+                            dialog.dismiss()
+                            Intent(this@LoginActivity,JoinActivity::class.java).apply {
+                                finishAffinity()
+                                startActivity(this)
+                            }
+                        }
+                        else ->{
+
+                        }
+
+                    }
+
+                }
+
+            }
         }
+
+
     }
+
+
 //    fun checkLoginToken(){
 //        if (AuthApiClient.instance.hasToken()){
 //            UserApiClient.instance.accessTokenInfo { _, error ->

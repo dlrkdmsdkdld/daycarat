@@ -35,7 +35,7 @@ class JobFragment : BaseFragment<FragmentJoinJobBinding>(
                 checkAllBtn(title)
             }
             var lp = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT , UiManager.getPixel(48))
-            lp.setMargins(UiManager.getPixel(15),UiManager.getPixel(15),UiManager.getPixel(15),0)
+            lp.setMargins(UiManager.getPixel(16),UiManager.getPixel(16),UiManager.getPixel(16),0)
             layoutParams = lp
 
         }

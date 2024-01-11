@@ -24,6 +24,7 @@ class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
 
             override fun afterTextChanged(p0: Editable?) {
                 viewModel.userData.value.nickname = p0.toString()
+                binding.textCount.text = "${p0?.length?:0}/10"
                 (activity as JoinActivity).enableNextBtn(p0.toString().isNotEmpty())
             }
 

@@ -21,20 +21,25 @@ import javax.inject.Inject
 
 @HiltViewModel
 class AuthViewmodel @Inject constructor(private val repository: AuthRepository) : ViewModel(){
+    private val _flowEvent = MutableSharedFlow<UiEvent>()
+    val flowEvent = _flowEvent.asSharedFlow()
+
         fun getTokenWithKakaoToken(kakaoAccessToken : String){
             viewModelScope.launch(Dispatchers.IO){
                 repository(kakaoAccessToken).collect{data ->
                     when(data.status){
                         Status.LOADING ->{
-
+                            sendEvent(UiEvent.LoadingEvent())
                         }Status.SUCCESS ->{
-
+                            if (data.data == 201){
+                                sendEvent(UiEvent.NewUserEvent())
+                            }else{
+                                sendEvent(UiEvent.AlreadyUserEvent())
+                            }
                         }else ->{
-
+                          sendEvent(UiEvent.FailEvent())
                         }
                     }
-                    if (data.status == Status.LOADING)
-                    Log.d(Constant.TAG , "data ${data.status} accessToken ${data.data?.accessToken}")
                 }
 //                repository.invoke(kakaoAccessToken).collect{ data ->
 //                    Log.d(Constant.TAG , "data ${data.status} accessToken ${data.data?.accessToken}")
@@ -42,8 +47,18 @@ class AuthViewmodel @Inject constructor(private val repository: AuthRepository) 
 //                }
             }
         }
-
-
+    private fun sendEvent(event: UiEvent) {
+        viewModelScope.launch {
+            _flowEvent.emit(event)
+        }
+//        _flowEvent
+    }
+    sealed class UiEvent {
+        class LoadingEvent(): UiEvent()
+        class AlreadyUserEvent(): UiEvent()
+        class NewUserEvent(): UiEvent()
+        class FailEvent(): UiEvent()
+    }
 
 
 
