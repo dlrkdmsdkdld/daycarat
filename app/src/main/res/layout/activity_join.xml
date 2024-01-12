@@ -5,66 +5,86 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <com.google.android.material.tabs.TabLayout
-            android:id="@+id/indicator"
-            app:tabIndicatorColor="@color/main"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/field_join"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent">
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:layout_height="wrap_content">-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/field_indicator"
+                android:layout_marginTop="32.5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_height="wrap_content">
 
-<!--            <androidx.appcompat.widget.AppCompatTextView-->
-<!--                android:id="@+id/topColorIndicatorView"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="4dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:background="@color/gray600"-->
-<!--                app:layout_constraintLeft_toLeftOf="parent"-->
-<!--                app:layout_constraintRight_toLeftOf="@id/topIndicatorView"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
-
-<!--            <androidx.appcompat.widget.AppCompatImageView-->
-<!--                android:id="@+id/topIndicatorView"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="4dp"-->
-<!--                android:layout_marginTop="8dp"-->
-<!--                android:background="@color/gray200"-->
-<!--                app:layout_constraintLeft_toRightOf="@id/topColorIndicatorView"-->
-<!--                app:layout_constraintRight_toRightOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/indicator1"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/main"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/indicator2"
+                    app:layout_constraintTop_toTopOf="parent" />
 
 
-        <androidx.viewpager2.widget.ViewPager2
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/indicator2"
+                    android:layout_width="0dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@color/gray_scale_300"
+                    app:layout_constraintStart_toEndOf="@id/indicator1"
+                    app:layout_constraintEnd_toStartOf="@id/indicator3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/indicator3"
+                    android:layout_width="0dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@color/gray_scale_300"
+                    app:layout_constraintStart_toEndOf="@id/indicator2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@id/next_btn"
+                android:id="@+id/pager"
+                app:layout_constraintTop_toBottomOf="@id/field_indicator"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                style="@style/sh6"
+                android:enabled="false"
+                android:textColor="@color/selector_close_btn_text"
+                android:text="@string/next"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/next_btn"
+                android:background="@drawable/selector_main_theme"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/field_wellcome"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/next_btn"
-            android:id="@+id/pager"
-            app:layout_constraintTop_toBottomOf="@id/indicator"/>
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            style="@style/sh6"
-            android:enabled="false"
-            android:textColor="@color/selector_close_btn_text"
-            android:text="@string/next"
-            android:layout_marginEnd="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="20dp"
-            android:id="@+id/next_btn"
-            android:background="@drawable/selector_main_theme"
-            app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.fragment.app.FragmentContainerView>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

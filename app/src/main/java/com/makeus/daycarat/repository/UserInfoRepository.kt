@@ -4,6 +4,7 @@ import com.makeus.daycarat.core.dto.Resource
 import com.makeus.daycarat.data.UserData
 import com.makeus.daycarat.hilt.RetrofitInterface
 import com.makeus.daycarat.hilt.UserInfoApi
+import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
@@ -13,12 +14,19 @@ class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoA
 
     suspend fun updateUserData(userData: UserData) = flow{
         emit(Resource.loading())
-        val response = userInfoApi.updateUserInfo(userData)
-        if (isSuccessful(response.statusCode)) {
-            emit(Resource.success(response.result))
-        }else{
-            emit(Resource.error(response.statusCode.toString()))
+        try {
+            val response = userInfoApi.updateUserInfo(userData)
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+//                emit(Resource.error(response.statusCode.toString()))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
         }
+
 
 
     }

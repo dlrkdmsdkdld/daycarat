@@ -54,10 +54,12 @@ class AuthViewmodel @Inject constructor(private val repository: AuthRepository) 
 //        _flowEvent
     }
     sealed class UiEvent {
+
         class LoadingEvent(): UiEvent()
         class AlreadyUserEvent(): UiEvent()
         class NewUserEvent(): UiEvent()
-        class FailEvent(): UiEvent()
+        class FailEvent(val message:String? =""): UiEvent()
+        class SuccessEvent(): UiEvent()
     }
 
 

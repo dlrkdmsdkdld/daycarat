@@ -31,4 +31,5 @@ class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
         })
     }
 
+
 }

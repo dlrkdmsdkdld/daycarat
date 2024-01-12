@@ -56,7 +56,7 @@ object ApiModule {
             //기본 파라미터 인터셉터 설정
             val baseParameterInterceptor : Interceptor = (object  : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
-                    var token = SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")
+//                    var token = SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")
                     Log.d(Constant.TAG,"RetrofitClient - Interceptor called ")
                     var originalRequest = chain.request().newBuilder()
                         .build()
@@ -64,9 +64,10 @@ object ApiModule {
                     val finalRequest = originalRequest.newBuilder()
                         .method(originalRequest.method,originalRequest.body)
 
-                    if (token.isNotEmpty()){
-                        finalRequest.addHeader("X-Api-Key",token)
-                    }
+//                    if (token.isNotEmpty()){
+//
+//                        finalRequest.addHeader("Authorization","Bearer $token")
+//                    }
 
                     val response = chain.proceed(finalRequest.build())
 
@@ -76,20 +77,20 @@ object ApiModule {
 
             })
             client.addInterceptor(baseParameterInterceptor)
-        val logger = HttpLoggingInterceptor().apply {
-            level =
-                HttpLoggingInterceptor.Level.BODY
-        }
-        var token = SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")
-        val interceptor = Interceptor { chain -> //데이터가 서버로 부터 왔다갔다하는걸 관장하는 변수
-            with(chain) {
-                val newRequest = request().newBuilder()
-                if (token.isNotEmpty()){
-                    newRequest.addHeader("X-Api-Key",token)
-                }
-                proceed(newRequest.build())
-            }
-        }
+//        val logger = HttpLoggingInterceptor().apply {
+//            level =
+//                HttpLoggingInterceptor.Level.BODY
+//        }
+//        var token = SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")
+//        val interceptor = Interceptor { chain -> //데이터가 서버로 부터 왔다갔다하는걸 관장하는 변수
+//            with(chain) {
+//                val newRequest = request().newBuilder()
+//                if (token.isNotEmpty()){
+//                    newRequest.addHeader("Authorization","Bearer $token")
+//                }
+//                proceed(newRequest.build())
+//            }
+//        }
 //        val client = OkHttpClient.Builder()
 //            .addInterceptor(logger)
 //            .addInterceptor(interceptor) //만든 인터셉터를 okhttp 변수에 넣어줌
@@ -97,6 +98,16 @@ object ApiModule {
 
         return client.build()
     }
+    @Provides
+    @Singleton
+    fun provideTokenInterceptor(): Interceptor = Interceptor { chain -> //데이터가 서버로 부터 왔다갔다하는걸 관장하는 변수
+        with(chain) {
+            val newRequest = request().newBuilder()
+            newRequest.addHeader("Authorization","Bearer ${SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")}")
+            proceed(newRequest.build())
+        }
+    }
+
     @Provides
     @Singleton
     fun provideService(okHttpClient: OkHttpClient): RetrofitInterface =
@@ -108,10 +119,10 @@ object ApiModule {
             .create(RetrofitInterface::class.java)
     @Provides
     @Singleton
-    fun provideUserInfoApi(okHttpClient: OkHttpClient): UserInfoApi =
+    fun provideUserInfoApi(okHttpClient: OkHttpClient , tokenIntercptor:Interceptor): UserInfoApi =
         Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
-            .client(okHttpClient)
+            .client(okHttpClient.newBuilder().addInterceptor(tokenIntercptor).build())
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(UserInfoApi::class.java)

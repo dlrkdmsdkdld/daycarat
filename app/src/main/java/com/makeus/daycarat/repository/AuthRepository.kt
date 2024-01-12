@@ -51,7 +51,7 @@ class AuthRepository @Inject constructor(private val apimodule: RetrofitInterfac
             }
 
         } catch (e: Exception) {
-            if (e is CancellationException) throw e
+//            if (e is CancellationException) throw e
             e.printStackTrace()
             emit(Resource.error(e.localizedMessage ?: ERROR_UNKNOWN))
         }
