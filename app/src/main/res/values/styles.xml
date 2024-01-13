@@ -11,5 +11,9 @@
         <item name="postSplashScreenTheme">@style/Theme.Daycarat</item>
     </style>
 
+    <style name="Widget.BottomNavigationView"
+        parent="Widget.Design.BottomNavigationView">
+        <item name="fontFamily">@font/pretendard_semibold</item>
+    </style>
 
 </resources>

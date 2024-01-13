@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:background="@drawable/bg_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:paddingBottom="28dp"
+                android:id="@+id/field_home_top"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_height="wrap_content">
+<!--                <ImageView-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="0dp"-->
+<!--                    android:scaleType="fitXY"-->
+<!--                    app:layout_constraintEnd_toEndOf="parent"-->
+<!--                    app:layout_constraintStart_toStartOf="parent"-->
+<!--                    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                    app:layout_constraintTop_toTopOf="parent"-->
+<!--                    android:src="@drawable/bg_login"/>-->
+
+                <ImageView
+                    android:id="@+id/img_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="19dp"
+                    android:layout_marginStart="20dp"
+                    android:src="@drawable/logo_daycarat_text"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <TextView
+                    android:layout_marginStart="20dp"
+                    android:id="@+id/text_top_title"
+                    android:layout_marginTop="19dp"
+                    style="@style/sh1"
+                    android:textColor="@color/gray_scale_1000"
+                    android:text="@string/home_user_title"
+                    android:layout_width="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/img_logo"/>
+
+                <ImageView
+                    android:layout_marginTop="102dp"
+                    android:src="@drawable/bg_main_field_episode"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/img_episode_field"
+                    app:layout_constraintTop_toBottomOf="@id/text_top_title"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    style="@style/b3"
+                    android:layout_marginStart="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:textColor="@color/main_20"
+                    app:layout_constraintBottom_toBottomOf="@id/img_episode_field"
+                    app:layout_constraintTop_toTopOf="@id/img_episode_field"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_title"/>
+
+                <TextView
+                    android:textColor="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/img_episode_field"
+                    app:layout_constraintTop_toTopOf="@id/img_episode_field"
+                    android:text="@string/home_des_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/h2"
+                    android:layout_marginEnd="24dp"
+                    app:layout_constraintEnd_toEndOf="@id/img_episode_field"/>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                app:layout_constraintTop_toBottomOf="@id/field_home_top"
+                android:layout_width="match_parent"
+                android:background="@drawable/bg_home_white_field"
+                android:layout_height="300dp">
+
+                <HorizontalScrollView
+                    android:id="@+id/field_horizontal_scroll"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="match_parent"
+                    android:scrollbars="none"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:paddingTop="23dp"
+                        android:paddingBottom="8dp"
+                        android:orientation="horizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_marginStart="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_main_episode"/>
+                        <ImageView
+                            android:layout_marginStart="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_ai_self_introduce"/>
+                        <ImageView
+                            android:layout_marginStart="16dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/bg_main_episode"/>
+                    </LinearLayout>
+
+
+                </HorizontalScrollView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="@string/home_recently_episode_title"
+                    app:layout_constraintTop_toBottomOf="@id/field_horizontal_scroll"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+</layout>

@@ -79,17 +79,17 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                             dialog.show()
                         } is AuthViewmodel.UiEvent.AlreadyUserEvent ->{
                             dialog.dismiss()
-//                            Intent(this@LoginActivity,MainActivity::class.java).apply {
-//                                finishAffinity()
-//                                startActivity(this)
-//                            }
-                            Intent(this@LoginActivity,JoinActivity::class.java).apply {
+                            Intent(this@LoginActivity,MainActivity::class.java).apply {
                                 finishAffinity()
                                 startActivity(this)
                             }
+//                            Intent(this@LoginActivity,IntroduceActivity::class.java).apply {
+//                                startActivity(this)
+//                                finishAffinity()
+//                            }
                         } is AuthViewmodel.UiEvent.NewUserEvent ->{
                             dialog.dismiss()
-                            Intent(this@LoginActivity,JoinActivity::class.java).apply {
+                            Intent(this@LoginActivity,IntroduceActivity::class.java).apply {
                                 finishAffinity()
                                 startActivity(this)
                             }

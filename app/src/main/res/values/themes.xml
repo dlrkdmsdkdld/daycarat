@@ -3,92 +3,103 @@
     <style name="h1">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">64sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
     <style name="h2">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">48sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="h3">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">40sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
+
     <style name="h4">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">36sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="h5">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">32sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="h6">
         <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">3dp</item>
         <item name="android:textSize">28sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 
 
     <style name="sh1">
-        <item name="android:textStyle">bold</item>
         <item name="android:textSize">24sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="android:lineSpacingExtra">-2dp</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="sh2">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="sh3">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">20sp</item>
-        <item name="font">@font/pretendard_semibold</item>
+        <item name="android:lineSpacingExtra">-2dp</item>
+        <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="sh4">
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">18sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="sh5">
         <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">2dp</item>
         <item name="android:textSize">24sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontFamily">@font/pretendard_bold</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="sh6">
         <item name="android:textStyle">bold</item>
+        <item name="android:lineSpacingExtra">2dp</item>
         <item name="android:textSize">16sp</item>
-        <item name="font">@font/pretendard_bold</item>
+        <item name="fontWeight">800</item>
+        <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="b1">
 <!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">16sp</item>
         <item name="font">@font/pretendard_medium</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="b2">
 <!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">15sp</item>
         <item name="font">@font/pretendard_medium</item>
         <item name="android:lineSpacingMultiplier">1.4</item>
@@ -97,13 +108,16 @@
 
     <style name="b3">
 <!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">14sp</item>
-        <item name="font">@font/pretendard_medium</item>
-        <item name="android:lineSpacingMultiplier">1.3</item>
+        <item name="font">@font/pretendard_regular</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+
         <item name="android:letterSpacing">-0.02</item>
     </style>
     <style name="b4">
 <!--        <item name="android:textStyle">normal</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">12sp</item>
         <item name="font">@font/pretendard_medium</item>
         <item name="android:lineSpacingMultiplier">1.3</item>
@@ -111,6 +125,7 @@
     </style>
     <style name="b5">
 <!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">12sp</item>
         <item name="font">@font/pretendard_regular</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
@@ -119,6 +134,7 @@
 
     <style name="c1">
 <!--        <item name="android:textStyle">normal</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">12sp</item>
         <item name="font">@font/pretendard_medium</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
@@ -126,6 +142,7 @@
     </style>
     <style name="c2">
 <!--        <item name="android:textStyle">bold</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">10sp</item>
         <item name="font">@font/pretendard_semibold</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
@@ -133,8 +150,17 @@
     </style>
     <style name="c3">
 <!--        <item name="android:textStyle">normal</item>-->
+        <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">10sp</item>
         <item name="font">@font/pretendard_medium</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="bottom_nav_text">
+        <item name="android:lineSpacingExtra">2dp</item>
+        <item name="android:textSize">11sp</item>
+        <item name="fontFamily">@font/pretendard_semibold</item>
         <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>

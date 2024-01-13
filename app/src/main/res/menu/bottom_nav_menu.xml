@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/homeFragment"
+        android:enabled="true"
+        android:title="@string/navigation_home"
+        android:icon="@drawable/icon_home"
+        />
+    <item
+        android:id="@+id/episodeFragment"
+        android:enabled="true"
+        android:title="@string/navigation_episode"
+        android:icon="@drawable/icon_folder"
+        />
+    <item
+        android:id="@+id/editEpisodeFragment"
+        android:enabled="false"
+        android:title="" />
+    <item
+        android:id="@+id/gemFragment"
+        android:enabled="true"
+        android:title="@string/navigation_diamond"
+        android:icon="@drawable/icon_gem"
+        />
+    <item
+        android:id="@+id/userInfoFragment"
+        android:title="@string/navigation_profile"
+        android:enabled="true"
+        android:icon="@drawable/icon_user"/>
+</menu>

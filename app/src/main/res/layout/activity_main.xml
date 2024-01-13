@@ -1,24 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:background="#ffffff"
         android:layout_height="match_parent">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="200dp"
-            android:background="#212121"
-            android:text="kakao"
-            android:textColor="#ffffff"
-            android:textSize="20dp"
-            android:gravity="center"
-            android:id="@+id/btn_kakao"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/myNavHost"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_height="200dp"/>
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/main_graph"
+            />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_nav"
+            android:layout_width="match_parent"
+            app:backgroundTint="@color/white"
+            android:layout_height="wrap_content"
+            app:labelVisibilityMode="labeled"
+            app:itemIconTint="@color/selector_navigation_icon"
+            app:itemTextColor="@color/selector_navigation_icon"
+            app:menu="@menu/bottom_nav_menu"
+            android:textSize="11dp"
+
+            app:itemTextAppearanceActive="@style/bottom_nav_text"
+            app:itemTextAppearanceInactive="@style/bottom_nav_text"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_plus"
+            android:contentDescription="@string/app_name"
+            app:fabSize="normal"
+            app:elevation="12dp"
+            android:backgroundTint="@color/main"
+            app:layout_constraintTop_toTopOf="@id/bottom_nav"
+            app:layout_constraintBottom_toBottomOf="@id/bottom_nav"
+            app:layout_constraintStart_toStartOf="@id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="@id/bottom_nav" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

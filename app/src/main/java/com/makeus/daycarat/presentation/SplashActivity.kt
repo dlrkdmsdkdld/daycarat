@@ -9,6 +9,8 @@ import com.makeus.daycarat.presentation.login.AgreementActivity
 import com.makeus.daycarat.presentation.login.IntroduceActivity
 import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.login.LoginActivity
+import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.SharedPreferenceManager
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,9 +18,18 @@ class SplashActivity : AppCompatActivity() {
         val splashScreen = installSplashScreen()
         setContentView(R.layout.activity_splash)
 
-        Intent(this, LoginActivity::class.java).apply {
-            startActivity(this)
-            finish()
+        if (SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"").isEmpty()){
+            Intent(this, LoginActivity::class.java).apply {
+                startActivity(this)
+                finish()
+            }
+        }else{
+            Intent(this, MainActivity::class.java).apply {
+                startActivity(this)
+                finish()
+            }
         }
+
+
     }
 }
