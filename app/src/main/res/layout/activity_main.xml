@@ -33,20 +33,27 @@
 
             app:itemTextAppearanceActive="@style/bottom_nav_text"
             app:itemTextAppearanceInactive="@style/bottom_nav_text"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/icon_plus"
-            android:contentDescription="@string/app_name"
-            app:fabSize="normal"
-            app:elevation="12dp"
-            android:backgroundTint="@color/main"
-            app:layout_constraintTop_toTopOf="@id/bottom_nav"
-            app:layout_constraintBottom_toBottomOf="@id/bottom_nav"
-            app:layout_constraintStart_toStartOf="@id/bottom_nav"
-            app:layout_constraintEnd_toEndOf="@id/bottom_nav" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_add_episode"
+                    android:id="@+id/btn_center"
+                    android:background="@color/transparent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
