@@ -102,7 +102,7 @@
         <item name="android:lineSpacingExtra">-2dp</item>
         <item name="android:textSize">15sp</item>
         <item name="font">@font/pretendard_medium</item>
-        <item name="android:lineSpacingMultiplier">1.4</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
         <item name="android:letterSpacing">-0.02</item>
     </style>
 

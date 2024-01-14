@@ -9,11 +9,13 @@
 
 
     <color name="black">#FF000000</color>
+    <color name="black_body">#222222</color>
     <color name="white">#FFFFFFFF</color>
     <color name="main">#7241FF</color>
     <color name="main_20">#F5F1FF</color>
     <color name="none_enable">#DADCE0</color>
     <color name="gray_scale_50">#F9FBFD</color>
+    <color name="gray_scale_100">#F1F3F4</color>
     <color name="gray_scale_200">#E8EAED</color>
     <color name="gray_scale_300">#DADCE0</color>
     <color name="gray_scale_400">#BCC1C7</color>
