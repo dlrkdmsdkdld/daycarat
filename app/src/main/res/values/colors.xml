@@ -23,7 +23,7 @@
     <color name="gray_scale_600">#7F868C</color>
     <color name="gray_scale_700">#5E6369</color>
     <color name="gray_scale_800">#3B4043</color>
-<!--    <color name="gray_scale_800">#3B4043</color>-->
+    <color name="gray_scale_900">#202124</color>
     <color name="gray_scale_1000">#202124</color>
 
 </resources>

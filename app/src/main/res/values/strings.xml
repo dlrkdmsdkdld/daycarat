@@ -58,7 +58,7 @@
     <string name="home_user_title">%s,\n새로운 에피소드를 캐볼까요</string>
     <string name="home_title">이번달\n나의 에피소드</string>
     <string name="home_recently_episode_title">최근 에피소드</string>
-    <string name="home_des_count">%d개</string>
+    <string name="home_des_count">개</string>
     <string name="home_ep_des">바로 활용 가능한\n내 에피소드들</string>
     <string name="home_ai_des">AI로 더 쉽게\n작성하는 자소서</string>
     <string name="home_banner_des">데이캐럿으로\n취업준비 시작하기</string>
@@ -78,6 +78,7 @@
 
 
     <string name="episode_item_add">작성항목 추가</string>
+    <string name="episode_item_hint">작성항목 선택</string>
     <string name="dialog_episode_tag_add">활동 태그 추가</string>
     <string name="dialog_episode_tag_add_hint">활동명을 입력해주세요</string>
     <string name="dialog_episode_tag_add_btn">추가하기</string>

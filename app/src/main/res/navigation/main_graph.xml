@@ -10,6 +10,26 @@
         tools:layout="@layout/fragment_home"
         android:name="com.makeus.daycarat.presentation.HomeFragment"
         android:label="HomeFragment" />
+    <fragment
+        android:id="@+id/editEpisodeFragment"
+        tools:layout="@layout/fragment_edit_episode"
+        android:name="com.makeus.daycarat.presentation.EditEpisodeFragment"
+        android:label="EditEpisodeFragment" />
+    <fragment
+        android:id="@+id/gemFragment"
+        tools:layout="@layout/fragment_gem"
+        android:name="com.makeus.daycarat.presentation.fragment.GemFragment"
+        android:label="GemFragment" />
+    <fragment
+        android:id="@+id/episodeFragment"
+        tools:layout="@layout/fragment_episode"
+        android:name="com.makeus.daycarat.presentation.fragment.EpisodeFragment"
+        android:label="EpisodeFragment" />
+    <fragment
+        android:id="@+id/userInfoFragmen"
+        tools:layout="@layout/fragment_user_info"
+        android:name="com.makeus.daycarat.presentation.fragment.UserInfoFragment"
+        android:label="UserInfoFragment" />
 </navigation>
 
 

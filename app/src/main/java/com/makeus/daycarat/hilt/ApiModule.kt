@@ -56,7 +56,7 @@ object ApiModule {
             //기본 파라미터 인터셉터 설정
             val baseParameterInterceptor : Interceptor = (object  : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
-//                    var token = SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")
+                    var token = SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")
                     Log.d(Constant.TAG,"RetrofitClient - Interceptor called ")
                     var originalRequest = chain.request().newBuilder()
                         .build()
@@ -64,10 +64,10 @@ object ApiModule {
                     val finalRequest = originalRequest.newBuilder()
                         .method(originalRequest.method,originalRequest.body)
 
-//                    if (token.isNotEmpty()){
-//
-//                        finalRequest.addHeader("Authorization","Bearer $token")
-//                    }
+                    if (token.isNotEmpty()){
+
+                        finalRequest.addHeader("Authorization","Bearer $token")
+                    }
 
                     val response = chain.proceed(finalRequest.build())
 
@@ -126,6 +126,16 @@ object ApiModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(UserInfoApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideEpisodeService(okHttpClient: OkHttpClient , tokenIntercptor:Interceptor): EpisodeApi =
+        Retrofit.Builder()
+            .baseUrl(Constant.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(EpisodeApi::class.java)
 
 
 

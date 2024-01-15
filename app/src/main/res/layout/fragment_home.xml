@@ -74,12 +74,25 @@
                     style="@style/h2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:text="@string/home_des_count"
+                    android:id="@+id/text_count_episode"
+                    android:text="21"
                     android:textColor="@color/white"
+                    android:layout_marginEnd="3dp"
+                    app:layout_constraintBottom_toBottomOf="@id/img_episode_field"
+                    app:layout_constraintEnd_toStartOf="@id/text_count_episode_sub"
+                    app:layout_constraintTop_toTopOf="@id/img_episode_field" />
+                <TextView
+                    style="@style/sh6"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="24dp"
+                    android:id="@+id/text_count_episode_sub"
+                    android:layout_marginBottom="18dp"
                     app:layout_constraintBottom_toBottomOf="@id/img_episode_field"
                     app:layout_constraintEnd_toEndOf="@id/img_episode_field"
-                    app:layout_constraintTop_toTopOf="@id/img_episode_field" />
+                    android:layout_width="wrap_content"
+                    android:text="@string/home_des_count"
+                    android:layout_height="wrap_content"/>
+
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

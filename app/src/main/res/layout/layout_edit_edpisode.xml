@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <LinearLayout
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+        <LinearLayout
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:paddingEnd="16dp"
+            android:paddingStart="23dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                style="@style/b1"
+                android:textColor="@color/black"
+                android:gravity="end"
+                android:layout_height="wrap_content"
+                android:text="@string/episode_item_title"/>
+            <Spinner
+                android:id="@+id/spinner_category"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@null"
+                android:dropDownVerticalOffset="-42dp"
+                android:duplicateParentState="true"
+                android:gravity="center"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:spinnerMode="dropdown"
+                android:text="@string/episode_item_hint"
+                tools:background="@drawable/bg_spinner" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edit_episode"
+            style="@style/b1"
+            android:layout_marginEnd="17dp"
+            android:layout_marginStart="17dp"
+            android:gravity="start"
+            android:padding="16dp"
+            android:hint="@string/dialog_episode_tag_add_hint"
+            android:textColorHint="@color/gray_scale_400"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="192dp"/>
+
+
+    </LinearLayout>
+
+</layout>

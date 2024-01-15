@@ -14,6 +14,6 @@ interface UserInfoApi {
     @PATCH("user/userInfo")
     suspend fun updateUserInfo(@Body data:UserData): ResponseBody<Boolean>
 
-    @PATCH("user/userInfo")
-    suspend fun getUserInfo(@Body data:UserData): ResponseBody<AllUserData>
+    @GET("user/userInfo")
+    suspend fun getUserInfo(): ResponseBody<AllUserData>
 }
