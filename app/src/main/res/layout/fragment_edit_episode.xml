@@ -158,6 +158,15 @@
                 android:id="@+id/layout_edit_episode"
                 layout="@layout/layout_edit_edpisode"/>
 
+            <LinearLayout
+                android:id="@+id/field_new_edit"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </LinearLayout>
+
 
            <LinearLayout
                android:id="@+id/btn_add_edit"

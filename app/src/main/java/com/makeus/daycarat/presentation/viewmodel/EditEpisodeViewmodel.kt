@@ -27,18 +27,27 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
     val episode: StateFlow<EpisodeRegister> = _episode
 
 
-    private val _episodeContent = MutableStateFlow<List<EpisodeContent>>(listOf(EpisodeContent()))
-    val episodeContent: StateFlow<List<EpisodeContent>> = _episodeContent
+    private val _episodeContent = MutableStateFlow<MutableList<EpisodeContent>>(mutableListOf(EpisodeContent()))
+    val episodeContent: StateFlow<MutableList<EpisodeContent>> = _episodeContent
+
+    private val _editCount = MutableStateFlow<Int>(0)
+    val editCount: StateFlow<Int> = _editCount
 
 
     fun changeEpidoseContentText(pos:Int,text:String){
         _episodeContent.value.getOrNull(pos)?.content = text
-        Log.d(Constant.TAG , "content ${_episodeContent.value.getOrNull(pos)?.content} ")
+        Log.d(Constant.TAG , "pos $pos content ${_episodeContent.value.getOrNull(pos)?.content} ")
     }
 
     fun changeEpidoseContentType(pos:Int,text:String?){
         _episodeContent.value.getOrNull(pos)?.episodeContentType = text?:""
-        Log.d(Constant.TAG , "episodeContentType ${_episodeContent.value.getOrNull(pos)?.episodeContentType} ")
+        Log.d(Constant.TAG , "pos $pos  episodeContentType ${_episodeContent.value.getOrNull(pos)?.episodeContentType} ")
+    }
+
+    fun plusEditCount(): Int {
+        _editCount.value = _editCount.value.plus(1)
+        _episodeContent.value.add(EpisodeContent())
+        return _editCount.value
     }
 
 }
