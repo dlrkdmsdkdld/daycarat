@@ -11,7 +11,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.navOptions
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
 import com.kakao.sdk.auth.model.OAuthToken
@@ -26,20 +29,28 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.inflate(it)}) {
+    lateinit var navController : NavController
     override fun initView() {
 
         //네비게이션들을 담는 호스트
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.myNavHost) as NavHostFragment
 
         //네비게이션 컨트롤러 가져옴
-        val navController = navHostFragment.navController
+        navController = navHostFragment.navController
         //바텀네비게이션뷰와 네비게이션을 묶어준다
         NavigationUI.setupWithNavController(binding.bottomNav , navController)
 
 
         binding.btnCenter.setOnClickListener {
-            navController.popBackStack()
-            navController.navigate(R.id.editEpisodeFragment)
+//            navController.popBackStack()
+            var option = navOptions {
+                launchSingleTop = true
+                restoreState = true
+                popUpTo(navController.graph.findStartDestination().id) {
+                    saveState = true
+                }
+            }
+            navController.navigate(R.id.editEpisodeFragment , args = null ,option , null )
         }
 
     }
