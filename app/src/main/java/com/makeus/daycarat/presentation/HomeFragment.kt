@@ -28,6 +28,8 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
             }
         }
 
+        binding.fieldNews1.setOnClickListener{}
+
 
     }
 

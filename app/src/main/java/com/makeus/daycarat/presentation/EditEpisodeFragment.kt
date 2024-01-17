@@ -20,7 +20,9 @@ import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
+import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeWithWeekDay
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,7 +45,8 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
 
         binding.btnSave.setOnClickListener{
-            Toast.makeText(requireContext(),"sdf",Toast.LENGTH_SHORT).show()
+            viewModel.registerEpisode(binding.editTitle.text.toString(), binding.editTag.text.toString())
+
         }
 
         binding.btnAddEdit.setOnClickListener {
@@ -52,6 +55,15 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         initSpinner()
 
         initEditText()
+
+        repeatOnStarted {
+            viewModel.episodeDay.collect{ day ->
+                Log.d("GHLEE","day $day")
+                binding.textDay.text = "$day (${parseTimeToEpisodeWithWeekDay(day)})"
+
+            }
+        }
+
     }
     fun initEditText(){
         binding.layoutEditEpisode.editEpisode.addTextChangedListener(object :TextWatcher{

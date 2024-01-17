@@ -25,11 +25,18 @@ object TimeUtil {
 
     fun parseTimeToEpisode():String{
         val tmp = System.currentTimeMillis()
-        val dateFormat= SimpleDateFormat("YYYY-MM-dd", Locale("En", "KR"))
-        var dayweek = checkDayWeek(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
+        val dateFormat= SimpleDateFormat("yyyy-MM-dd", Locale("En", "KR"))
+//        var dayweek = checkDayWeek(Calendar.getInstance().get(Calendar.DAY_OF_WEEK))
         val parseYear=dateFormat.format(tmp)
-        Log.d(TAG,"현재 날짜 ${parseYear}")
-        return "$parseYear ($dayweek)"
+        return "$parseYear"
+    }
+
+    fun parseTimeToEpisodeWithWeekDay(date:String): String {
+        val dateFormat= SimpleDateFormat("yyyy-MM-dd", Locale("En", "KR"))
+        var calendar = Calendar.getInstance().apply {
+            this.timeInMillis = dateFormat.parse(date)!!.time
+        }
+        return checkDayWeek(calendar.get(Calendar.DAY_OF_WEEK))
     }
 
     fun checkDayWeek(dayWeek:Int): String {

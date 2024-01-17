@@ -7,6 +7,7 @@ import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -31,7 +32,12 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
     val episodeContent: StateFlow<MutableList<EpisodeContent>> = _episodeContent
 
     private val _editCount = MutableStateFlow<Int>(0)
-    val editCount: StateFlow<Int> = _editCount
+
+    private val _episodeDay = MutableStateFlow<String>(parseTimeToEpisode())
+    val episodeDay: StateFlow<String> = _episodeDay
+
+
+
 
 
     fun changeEpidoseContentText(pos:Int,text:String){
@@ -48,6 +54,11 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
         _editCount.value = _editCount.value.plus(1)
         _episodeContent.value.add(EpisodeContent())
         return _editCount.value
+    }
+
+    fun registerEpisode(title:String , activityTag:String){
+        viewModelScope.launch(Dispatchers.IO){
+        }
     }
 
 }
