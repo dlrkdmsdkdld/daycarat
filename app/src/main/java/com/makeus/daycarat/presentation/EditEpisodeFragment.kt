@@ -50,7 +50,8 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         }
 
         binding.btnAddEdit.setOnClickListener {
-            binding.fieldNewEdit.addView(inflateEditField())
+            if (spinnerArray.size != arrayData.size) binding.fieldNewEdit.addView(inflateEditField())
+            else Toast.makeText(requireContext(),"최대 개수를 초과했어요!",Toast.LENGTH_SHORT).show()
         }
         initSpinner()
 
@@ -84,7 +85,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         editArray.add(binding.layoutEditEpisode.editEpisode)
     }
     fun initSpinner(){
-        var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000)
+        var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000 , viewModel)
         binding.layoutEditEpisode.spinnerCategory.adapter = mAdapter
         binding.layoutEditEpisode.spinnerCategory.setSelection(1000)
         //onItemSelected Init 때 호출 안되게 하기 위해 옮김
@@ -93,7 +94,10 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
             binding.layoutEditEpisode.spinnerCategory.onItemSelectedListener = object : OnItemSelectedListener{
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, sortData: Int, p3: Long) {
                     mAdapter.changeSelection(sortData)
+                    viewModel.userUnSelectSpinner(0)
                     viewModel.changeEpidoseContentType(0 ,arrayData.getOrNull(sortData))
+                    viewModel.userSelectSaveLastSpinner(0 , sortData)
+                    viewModel.userSelectSpinner(sortData)
                     chcekSaveBtn()
                 }
                 override fun onNothingSelected(p0: AdapterView<*>?) {
@@ -124,7 +128,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         var editBining = LayoutEditEdpisodeBinding.inflate(layoutInflater)
         var pos = viewModel.plusEditCount()
 
-        var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000)
+        var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000 , viewModel)
         editBining.spinnerCategory.adapter = mAdapter
         editBining.spinnerCategory.setSelection(1000)
 
@@ -132,7 +136,10 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
             editBining.spinnerCategory.onItemSelectedListener = object : OnItemSelectedListener{
                 override fun onItemSelected(p0: AdapterView<*>?, p1: View?, sortData: Int, p3: Long) {
                     mAdapter.changeSelection(sortData)
+                    viewModel.userUnSelectSpinner(pos)
+                    viewModel.userSelectSaveLastSpinner(pos , sortData)
                     viewModel.changeEpidoseContentType(pos ,arrayData.getOrNull(sortData))
+                    viewModel.userSelectSpinner(sortData)
                     chcekSaveBtn()
                 }
                 override fun onNothingSelected(p0: AdapterView<*>?) {

@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:duplicateParentState="true"
         android:background="@color/white"
         android:layout_height="48dp">
-
-
 
         <TextView
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="match_parent"
             tools:text="자유롭게작성"
+            android:duplicateParentState="true"
             style="@style/b1"
             android:id="@+id/text_submit"
             android:layout_marginEnd="13dp"
