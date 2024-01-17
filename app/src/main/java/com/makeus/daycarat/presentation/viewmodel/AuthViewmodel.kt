@@ -51,7 +51,6 @@ class AuthViewmodel @Inject constructor(private val repository: AuthRepository) 
         viewModelScope.launch {
             _flowEvent.emit(event)
         }
-//        _flowEvent
     }
     sealed class UiEvent {
 

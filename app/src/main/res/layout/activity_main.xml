@@ -30,6 +30,8 @@
             app:itemTextColor="@color/selector_navigation_icon"
             app:menu="@menu/bottom_nav_menu"
             android:textSize="11dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
 
             app:itemTextAppearanceActive="@style/bottom_nav_text"
             app:itemTextAppearanceInactive="@style/bottom_nav_text"

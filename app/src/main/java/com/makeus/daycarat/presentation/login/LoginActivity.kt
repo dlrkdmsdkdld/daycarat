@@ -73,12 +73,11 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.flowEvent.collect { event ->
-                    var dialog = LoadingDialog(this@LoginActivity)
                     when(event){
                         is AuthViewmodel.UiEvent.LoadingEvent ->{
-                            dialog.show()
+                            loadingDialog.show()
                         } is AuthViewmodel.UiEvent.AlreadyUserEvent ->{
-                            dialog.dismiss()
+                            loadingDialog.dismiss()
                             Intent(this@LoginActivity,MainActivity::class.java).apply {
                                 finishAffinity()
                                 startActivity(this)
@@ -88,14 +87,14 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
 //                                finishAffinity()
 //                            }
                         } is AuthViewmodel.UiEvent.NewUserEvent ->{
-                            dialog.dismiss()
+                            loadingDialog.dismiss()
                             Intent(this@LoginActivity,IntroduceActivity::class.java).apply {
                                 finishAffinity()
                                 startActivity(this)
                             }
                         }
                         else ->{
-
+                            loadingDialog.dismiss()
                         }
 
                     }

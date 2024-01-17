@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
+import com.makeus.daycarat.presentation.dialog.LoadingDialog
 
 abstract class BaseActivity<B: ViewBinding>(
     val bindingFactory: (LayoutInflater) -> B
@@ -11,11 +12,13 @@ abstract class BaseActivity<B: ViewBinding>(
 
     private var _binding: B? = null
     val binding get() = _binding!!
+    lateinit var loadingDialog :LoadingDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         _binding = bindingFactory(layoutInflater)
         setContentView(binding.root)
+        this.loadingDialog = LoadingDialog(binding.root.context)
         initView()
     }
     abstract fun initView()

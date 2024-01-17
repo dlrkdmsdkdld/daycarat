@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.makeus.daycarat.databinding.ActivityMainBinding
+import com.makeus.daycarat.presentation.dialog.LoadingDialog
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import kotlinx.coroutines.CoroutineScope
 
@@ -22,9 +23,11 @@ abstract class BaseFragment<VB: ViewBinding>(
 
     private var _binding: VB? = null
     val binding get() = _binding!!
+    lateinit var loadingDialog :LoadingDialog
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = inflate.invoke(inflater, container, false)
+        loadingDialog = LoadingDialog(binding.root.context)
         return binding.root
     }
 

@@ -17,6 +17,7 @@ import com.makeus.daycarat.databinding.FragmentEditEpisodeBinding
 import com.makeus.daycarat.databinding.FragmentHomeBinding
 import com.makeus.daycarat.databinding.LayoutEditEdpisodeBinding
 import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
+import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.util.Constant
@@ -46,11 +47,13 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
         binding.btnSave.setOnClickListener{
             viewModel.registerEpisode(binding.editTitle.text.toString(), binding.editTag.text.toString())
-
         }
 
         binding.btnAddEdit.setOnClickListener {
-            if (spinnerArray.size != arrayData.size) binding.fieldNewEdit.addView(inflateEditField())
+            if (spinnerArray.size != arrayData.size){
+                binding.fieldNewEdit.addView(inflateEditField())
+                binding.btnSave.isEnabled = false
+            }
             else Toast.makeText(requireContext(),"최대 개수를 초과했어요!",Toast.LENGTH_SHORT).show()
         }
         initSpinner()
@@ -61,7 +64,17 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
             viewModel.episodeDay.collect{ day ->
                 Log.d("GHLEE","day $day")
                 binding.textDay.text = "$day (${parseTimeToEpisodeWithWeekDay(day)})"
-
+            }
+        }
+        repeatOnStarted {
+            viewModel.flowEvent.collect{event ->
+                when(event){
+                    is AuthViewmodel.UiEvent.LoadingEvent ->{
+                        loadingDialog.show()
+                    } else ->{
+                    loadingDialog.dismiss()
+                }
+                }
             }
         }
 
@@ -120,8 +133,16 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
     }
     fun chcekSaveBtn(){
-        var firstContent = viewModel.episodeContent.value.get(0)
-        binding.btnSave.isEnabled = binding.editTitle.text.isNotEmpty() &&   binding.editTag.text.isNotEmpty() && firstContent.content.isNotEmpty() && firstContent.episodeContentType.isNotEmpty()
+        var isEnable = true
+        viewModel.episodeContent.value.forEachIndexed { index, episodeContent ->
+            if (episodeContent.content.isEmpty() || episodeContent.episodeContentType.isEmpty()){
+                isEnable = false
+//                Toast.makeText(requireContext(),"${index + 1}힝목을 작성하지 않았어요" , Toast.LENGTH_SHORT).show()
+                return@forEachIndexed
+            }
+        }
+        //필수 작성 사항 -날짜  작성항목 + 항목내용 추가된 갯수만큼 써야함  - 어짜피 날짜는 디폴트로 오늘날짜임
+        binding.btnSave.isEnabled = isEnable
     }
 
     fun inflateEditField(): View {
