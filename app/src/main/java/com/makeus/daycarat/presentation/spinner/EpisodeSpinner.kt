@@ -1,6 +1,7 @@
 package com.makeus.daycarat.presentation.spinner
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,6 +46,10 @@ class EpisodeSpinner(context: Context, var list: List<String>, var select:Int ,v
         return binding.root
     }
 
+    override fun isEnabled(position: Int): Boolean {
+        return viewmodel.epiosdeContentTypeListPos.indexOf(position) == -1
+//        return super.isEnabled(position)
+    }
     override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View? { // 드롭다운되었을
         val binding = ItemSpinnerEpisodeDropdownBinding.inflate(LayoutInflater.from(parent?.context),parent,false)
         var data = list.getOrNull(position)

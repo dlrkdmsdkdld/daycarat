@@ -10,7 +10,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_home">
+            android:background="@drawable/bg_home_new">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/field_home_top"

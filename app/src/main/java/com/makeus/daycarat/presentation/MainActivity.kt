@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -24,12 +25,18 @@ import com.kakao.sdk.user.UserApiClient
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityMainBinding
+import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
+import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.util.Constant.TAG
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.inflate(it)}) {
     lateinit var navController : NavController
+    private val mainViewModel by lazy {
+        ViewModelProvider(this).get(MainViewmodel::class.java)
+    }
+
     override fun initView() {
 
         //네비게이션들을 담는 호스트

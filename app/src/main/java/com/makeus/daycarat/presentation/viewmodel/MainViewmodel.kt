@@ -3,6 +3,7 @@ package com.makeus.daycarat.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
+import com.makeus.daycarat.data.AllUserData
 import com.makeus.daycarat.data.UserData
 import com.makeus.daycarat.repository.AuthRepository
 import com.makeus.daycarat.repository.UserInfoRepository
@@ -17,26 +18,26 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewmodel @Inject constructor(private val repository: UserInfoRepository) : ViewModel(){
-    private val _userData = MutableStateFlow<UserData>(UserData())
-    val userData: StateFlow<UserData> = _userData
+    private val _userData = MutableStateFlow<AllUserData>(AllUserData())
+    val userData: StateFlow<AllUserData> = _userData
 
     private val _flowEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
     val flowEvent = _flowEvent.asSharedFlow()
 
-    fun updateUserInfo(){
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.updateUserData(_userData.value).collect{result ->
-                when(result.status) {
-                    Status.LOADING -> {
-                        sendEvent(AuthViewmodel.UiEvent.LoadingEvent())
-                    }
+    init {
+        getUserInfo()
+    }
 
+    fun getUserInfo(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getUserData().collect{result ->
+                when(result.status) {
                     Status.SUCCESS -> {
-                        sendEvent(AuthViewmodel.UiEvent.SuccessEvent())
+                        result.data?.let { data ->
+                            _userData.emit(data)
+                        }
                     }
                     else -> {
-
-                        sendEvent(AuthViewmodel.UiEvent.FailEvent(result.message))
 
                     }
                 }

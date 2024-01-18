@@ -26,8 +26,22 @@ class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoA
             emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
             e.printStackTrace()
         }
-
-
-
     }
+
+    suspend fun getUserData() = flow{
+        emit(Resource.loading())
+        try {
+            val response = userInfoApi.getUserInfo()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+//                emit(Resource.error(response.statusCode.toString()))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
 }

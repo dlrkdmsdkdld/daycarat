@@ -121,7 +121,8 @@ object ApiModule {
     fun provideUserInfoApi(okHttpClient: OkHttpClient , tokenIntercptor:Interceptor): UserInfoApi =
         Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
-            .client(okHttpClient.newBuilder().addInterceptor(tokenIntercptor).build())
+//            .client(okHttpClient.newBuilder().addInterceptor(tokenIntercptor).build())
+            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(UserInfoApi::class.java)
