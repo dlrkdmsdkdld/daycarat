@@ -15,4 +15,7 @@ object Constant {
     const val HTTP_STATUS_CLIENT_ERROR = 400
     const val HTTP_STATUS_SERVER_ERROR = 500
 
+    const val USER_EPISODE_TAGS = "USER_EPISODE_TAGS"
+
+
 }

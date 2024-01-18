@@ -23,11 +23,8 @@ abstract class BaseFragment<VB: ViewBinding>(
 
     private var _binding: VB? = null
     val binding get() = _binding!!
-    lateinit var loadingDialog :LoadingDialog
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = inflate.invoke(inflater, container, false)
-        loadingDialog = LoadingDialog(binding.root.context)
         return binding.root
     }
 

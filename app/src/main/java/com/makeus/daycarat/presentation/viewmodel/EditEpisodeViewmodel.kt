@@ -11,6 +11,7 @@ import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -85,6 +86,7 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
     fun registerEpisode(title: String, activityTag: String) {
         viewModelScope.launch(Dispatchers.IO) {
             var parseTitle = if (title.isEmpty()) "제목없음" else title
+            if (activityTag.isNotEmpty()) SharedPreferenceManager.getInstance().saveEpisodeActivityTag(activityTag)
             repository.addEpisode(
                 EpisodeRegister(title = parseTitle, date = _episodeDay.value, activityTag = activityTag, episodeContents = _episodeContent.value))
                 .collect { data ->

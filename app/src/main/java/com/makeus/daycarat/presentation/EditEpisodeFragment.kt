@@ -70,9 +70,10 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
             viewModel.flowEvent.collect{event ->
                 when(event){
                     is AuthViewmodel.UiEvent.LoadingEvent ->{
-                        loadingDialog.show()
+                        (activity as MainActivity).loadingDialog.show()
                     } else ->{
-                    loadingDialog.dismiss()
+                    (activity as MainActivity).loadingDialog.dismiss()
+                    (activity as MainActivity).navController.popBackStack()
                 }
                 }
             }

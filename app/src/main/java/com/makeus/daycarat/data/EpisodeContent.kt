@@ -1,3 +1,7 @@
 package com.makeus.daycarat.data
 
-data class EpisodeContent (var episodeContentType : String ="" ,var content:String ="")
+import com.google.gson.annotations.SerializedName
+
+data class EpisodeContent (
+    var episodeContentType : String ="" ,
+    var content:String ="")
