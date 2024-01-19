@@ -36,10 +36,10 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
 
 
     private val _episodeContent =
-        MutableStateFlow<MutableList<EpisodeContent>>(mutableListOf(EpisodeContent()))
+        MutableStateFlow<MutableList<EpisodeContent>>(mutableListOf())
     val episodeContent: StateFlow<MutableList<EpisodeContent>> = _episodeContent
 
-    private val _editCount = MutableStateFlow<Int>(0)
+    private val _editCount = MutableStateFlow<Int>(-1)
 
     private val _episodeDay = MutableStateFlow<String>(parseTimeToEpisode())
     val episodeDay: StateFlow<String> = _episodeDay

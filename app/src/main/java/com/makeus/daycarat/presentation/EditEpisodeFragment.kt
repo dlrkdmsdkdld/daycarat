@@ -62,9 +62,11 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
             }
             else Toast.makeText(requireContext(),"최대 개수를 초과했어요!",Toast.LENGTH_SHORT).show()
         }
-        initSpinner()
+//        initSpinner()
 
-        initEditText()
+//        initEditText()
+        binding.fieldNewEdit.addView(inflateEditField())
+
 
         repeatOnStarted {
             viewModel.episodeDay.collect{ day ->
@@ -90,65 +92,65 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.recyclerSearch.adapter = searchAdapter
 
     }
-    fun initEditText(){
-        binding.layoutEditEpisode.editEpisode.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                viewModel.changeEpidoseContentText(0 , p0.toString())
-                chcekSaveBtn()
-            }
-
-        })
-        binding.editTitle.addTextChangedListener(this)
-        binding.editTag.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                binding.recyclerSearch.visibility = View.VISIBLE
-                searchAdapter?.filter?.filter(p0)
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-            }
-
-        })
-        editArray.add(binding.layoutEditEpisode.editEpisode)
-
-        binding.editTag.setOnFocusChangeListener { view, b ->
-            if (b) binding.recyclerSearch.visibility = View.VISIBLE
-            else binding.recyclerSearch.visibility = View.GONE
-
-        }
-
-    }
-    fun initSpinner(){
-        var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000 , viewModel)
-        binding.layoutEditEpisode.spinnerCategory.adapter = mAdapter
-        binding.layoutEditEpisode.spinnerCategory.setSelection(1000)
-        //onItemSelected Init 때 호출 안되게 하기 위해 옮김
-
-        binding.layoutEditEpisode.spinnerCategory.doOnNextLayout {
-            binding.layoutEditEpisode.spinnerCategory.onItemSelectedListener = object : OnItemSelectedListener{
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, sortData: Int, p3: Long) {
-                    mAdapter.changeSelection(sortData)
-                    viewModel.userUnSelectSpinner(0)
-                    viewModel.changeEpidoseContentType(0 ,arrayData.getOrNull(sortData))
-                    viewModel.userSelectSaveLastSpinner(0 , sortData)
-                    viewModel.userSelectSpinner(sortData)
-                    chcekSaveBtn()
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                }
-            }
-        }
-        spinnerArray.add(binding.layoutEditEpisode.spinnerCategory)
-    }
+//    fun initEditText(){
+//        binding.layoutEditEpisode.editEpisode.addTextChangedListener(object :TextWatcher{
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//                viewModel.changeEpidoseContentText(0 , p0.toString())
+//                chcekSaveBtn()
+//            }
+//
+//        })
+//        binding.editTitle.addTextChangedListener(this)
+//        binding.editTag.addTextChangedListener(object :TextWatcher{
+//            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//            }
+//
+//            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+//                binding.recyclerSearch.visibility = View.VISIBLE
+//                searchAdapter?.filter?.filter(p0)
+//            }
+//
+//            override fun afterTextChanged(p0: Editable?) {
+//            }
+//
+//        })
+//        editArray.add(binding.layoutEditEpisode.editEpisode)
+//
+//        binding.editTag.setOnFocusChangeListener { view, b ->
+//            if (b) binding.recyclerSearch.visibility = View.VISIBLE
+//            else binding.recyclerSearch.visibility = View.GONE
+//
+//        }
+//
+//    }
+//    fun initSpinner(){
+//        var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000 , viewModel)
+//        binding.layoutEditEpisode.spinnerCategory.adapter = mAdapter
+//        binding.layoutEditEpisode.spinnerCategory.setSelection(1000)
+//        //onItemSelected Init 때 호출 안되게 하기 위해 옮김
+//
+//        binding.layoutEditEpisode.spinnerCategory.doOnNextLayout {
+//            binding.layoutEditEpisode.spinnerCategory.onItemSelectedListener = object : OnItemSelectedListener{
+//                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, sortData: Int, p3: Long) {
+//                    mAdapter.changeSelection(sortData)
+//                    viewModel.userUnSelectSpinner(0)
+//                    viewModel.changeEpidoseContentType(0 ,arrayData.getOrNull(sortData))
+//                    viewModel.userSelectSaveLastSpinner(0 , sortData)
+//                    viewModel.userSelectSpinner(sortData)
+//                    chcekSaveBtn()
+//                }
+//                override fun onNothingSelected(p0: AdapterView<*>?) {
+//                }
+//            }
+//        }
+//        spinnerArray.add(binding.layoutEditEpisode.spinnerCategory)
+//    }
 
     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
 
@@ -167,7 +169,8 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         viewModel.episodeContent.value.forEachIndexed { index, episodeContent ->
             if (episodeContent.content.isEmpty() || episodeContent.episodeContentType.isEmpty()){
                 isEnable = false
-//                Toast.makeText(requireContext(),"${index + 1}힝목을 작성하지 않았어요" , Toast.LENGTH_SHORT).show()
+                Log.d("GHALEE",".content.isEmpty() ${episodeContent.content.isEmpty()}  ${episodeContent.episodeContentType.isEmpty()}")
+                Toast.makeText(requireContext(),"${index + 1}힝목을 작성하지 않았어요  ${episodeContent.content.isEmpty()}  ${episodeContent.episodeContentType.isEmpty()}" , Toast.LENGTH_SHORT).show()
                 return@forEachIndexed
             }
         }

@@ -170,9 +170,9 @@
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-                    <include
-                        android:id="@+id/layout_edit_episode"
-                        layout="@layout/layout_edit_edpisode"/>
+<!--                    <include-->
+<!--                        android:id="@+id/layout_edit_episode"-->
+<!--                        layout="@layout/layout_edit_edpisode"/>-->
 
                 </LinearLayout>
 
