@@ -16,12 +16,14 @@ import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentEditEpisodeBinding
 import com.makeus.daycarat.databinding.FragmentHomeBinding
 import com.makeus.daycarat.databinding.LayoutEditEdpisodeBinding
+import com.makeus.daycarat.presentation.recyclerview.SearchTagAdapter
 import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeWithWeekDay
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,6 +34,10 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
     private val viewModel by lazy {
         ViewModelProvider(this).get(EditEpisodeViewmodel::class.java)
     }
+    private val searchAdapter by lazy {
+        SearchTagAdapter(SharedPreferenceManager.getInstance().getEpisodeActivityTags())
+    }
+
     var spinnerArray = ArrayList<Spinner>()
     var editArray = ArrayList<EditText>()
     var arrayData = arrayOf<String>()
@@ -78,6 +84,10 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
                 }
             }
         }
+        searchAdapter.onclick = { selectText ->
+
+        }
+        binding.recyclerSearch.adapter = searchAdapter
 
     }
     fun initEditText(){
@@ -95,8 +105,27 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
         })
         binding.editTitle.addTextChangedListener(this)
-        binding.editTag.addTextChangedListener(this)
+        binding.editTag.addTextChangedListener(object :TextWatcher{
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                binding.recyclerSearch.visibility = View.VISIBLE
+                searchAdapter?.filter?.filter(p0)
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+            }
+
+        })
         editArray.add(binding.layoutEditEpisode.editEpisode)
+
+        binding.editTag.setOnFocusChangeListener { view, b ->
+            if (b) binding.recyclerSearch.visibility = View.VISIBLE
+            else binding.recyclerSearch.visibility = View.GONE
+
+        }
+
     }
     fun initSpinner(){
         var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000 , viewModel)
