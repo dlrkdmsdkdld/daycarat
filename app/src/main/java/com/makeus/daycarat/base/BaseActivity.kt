@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.makeus.daycarat.presentation.dialog.LoadingDialog
+import com.makeus.daycarat.util.Extensions.setStatusBarOrigin
+import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
 
 abstract class BaseActivity<B: ViewBinding>(
     val bindingFactory: (LayoutInflater) -> B

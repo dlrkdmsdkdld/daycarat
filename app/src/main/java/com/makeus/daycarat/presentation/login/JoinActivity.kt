@@ -25,7 +25,9 @@ import com.makeus.daycarat.presentation.fragment.WellcomeFragment
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.Extensions.navigationHeight
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.UiManager
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.internal.notify
@@ -39,22 +41,17 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
 
     private val NUM_PAGES =4
     override fun initView() {
+        binding.fieldMain.setPadding(
+            0,
+            this.statusBarHeight(),
+            0,
+            this.navigationHeight()
+        )
         mPager = binding.pager
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         mPager.adapter = pagerAdapter
         mPager.isUserInputEnabled = false
 
-//        binding.indicator.setViewPager(mPager , 3)
-
-//        TabLayoutMediator(binding.indicator, mPager) { tab, position ->
-////            tab.text = "OBJECT ${(position + 1)}"
-//        }.attach()
-
-//        binding.indicator.apply {
-//            setSliderHeight(UiManager.getPixel(2).toFloat())
-//            setPageSize(NUM_PAGES)
-//            notifyDataChanged()
-//        }
         mPager.registerOnPageChangeCallback(object : OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
@@ -192,4 +189,5 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
     fun enableNextBtn(b: Boolean) {
         binding.nextBtn.isEnabled = b
     }
+
 }

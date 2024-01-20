@@ -28,6 +28,9 @@ import com.makeus.daycarat.databinding.ActivityMainBinding
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.util.Constant.TAG
+import com.makeus.daycarat.util.Extensions.navigationHeight
+import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
+import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -38,6 +41,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.infl
     }
 
     override fun initView() {
+        this.setStatusBarTransparent()
 
         //네비게이션들을 담는 호스트
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.myNavHost) as NavHostFragment
@@ -59,6 +63,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.infl
             }
             navController.navigate(R.id.editEpisodeFragment , args = null ,option , null )
         }
+
+        binding.fieldMain.setPadding(
+            0,
+                0,
+            0,
+            this.navigationHeight()
+        )
 
     }
 }

@@ -39,6 +39,10 @@ class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(
         }
     }
 
+    override fun initStatusBar() {
+        TODO("Not yet implemented")
+    }
+
 }
 enum class IntroduceType{
     STATE_FIRST, STATE_SECOND, STATE_THIRD

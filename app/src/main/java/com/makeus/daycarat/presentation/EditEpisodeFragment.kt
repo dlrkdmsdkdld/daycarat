@@ -25,6 +25,7 @@ import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeWithWeekDay
@@ -105,6 +106,14 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         initEditTag()
     }
 
+    override fun initStatusBar() {
+        binding.fieldMain.setPadding(
+            0,
+            requireActivity().statusBarHeight(),
+            0,
+            0
+        )
+    }
     private fun hideKeyboard() {
         val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)

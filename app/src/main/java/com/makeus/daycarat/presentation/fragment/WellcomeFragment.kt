@@ -25,4 +25,8 @@ class WellcomeFragment() : BaseFragment<FragmentWellcomeBinding>(
 
     }
 
+    override fun initStatusBar() {
+        TODO("Not yet implemented")
+    }
+
 }

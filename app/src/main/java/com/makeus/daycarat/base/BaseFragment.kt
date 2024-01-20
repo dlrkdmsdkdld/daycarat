@@ -13,6 +13,7 @@ import androidx.viewbinding.ViewBinding
 import com.makeus.daycarat.databinding.ActivityMainBinding
 import com.makeus.daycarat.presentation.dialog.LoadingDialog
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
 import kotlinx.coroutines.CoroutineScope
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
@@ -25,6 +26,7 @@ abstract class BaseFragment<VB: ViewBinding>(
     val binding get() = _binding!!
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         _binding = inflate.invoke(inflater, container, false)
+        requireActivity().setStatusBarTransparent()
         return binding.root
     }
 
@@ -40,8 +42,11 @@ abstract class BaseFragment<VB: ViewBinding>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initView()
+        initStatusBar()
     }
     abstract fun initView()
+
+    abstract fun initStatusBar() // 투명 스테이터스바
 }
 
 //example

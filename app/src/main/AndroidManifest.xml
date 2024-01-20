@@ -37,7 +37,8 @@
 
         <activity android:name=".presentation.login.LoginActivity"/>
         <activity android:name=".presentation.login.AgreementActivity"/>
-        <activity android:name=".presentation.login.IntroduceActivity"/>
+        <activity android:name=".presentation.login.IntroduceActivity"
+            android:theme="@style/Theme.NoTragsnparend"/>
         <activity android:name=".presentation.login.JoinActivity"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge" />
 

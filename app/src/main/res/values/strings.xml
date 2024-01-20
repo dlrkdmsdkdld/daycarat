@@ -75,10 +75,10 @@
     <string name="hint">내용을 입력해주세요</string>
     <string name="episode_title">에피소드 입력</string>
     <string name="episode_save">저장</string>
-    <string name="episode_header_title">제목</string>
+    <string name="episode_header_title">제목&#160;</string>
     <string name="episode_header_date">날짜</string>
     <string name="episode_header_tag">활동 태그</string>
-    <string name="episode_item_title">작성항목</string>
+    <string name="episode_item_title">작성항목&#160;</string>
 
 
     <string name="episode_item_add">작성항목 추가</string>

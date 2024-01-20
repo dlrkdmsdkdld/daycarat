@@ -5,6 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:background="@drawable/bg_login"
         android:layout_width="match_parent"
+        android:id="@+id/field_main"
         android:layout_height="match_parent">
 
         <TextView

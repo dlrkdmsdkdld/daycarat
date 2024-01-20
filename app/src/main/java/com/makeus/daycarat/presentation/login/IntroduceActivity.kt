@@ -12,6 +12,8 @@ import com.makeus.daycarat.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityIntroduceBinding
 import com.makeus.daycarat.databinding.ActivityMainBinding
 import com.makeus.daycarat.presentation.fragment.IntroduceFragment
+import com.makeus.daycarat.util.Extensions.navigationHeight
+import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +22,12 @@ class IntroduceActivity : BaseActivity<ActivityIntroduceBinding>({ ActivityIntro
 
     private val NUM_PAGES = 3
     override fun initView() {
+        binding.fieldMain.setPadding(
+            0,
+            this.statusBarHeight(),
+            0,
+            this.navigationHeight()
+        )
         mPager = binding.pager
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         mPager.adapter = pagerAdapter

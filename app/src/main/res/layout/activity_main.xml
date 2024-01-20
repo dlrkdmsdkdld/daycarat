@@ -5,6 +5,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:orientation="vertical"
+        android:id="@+id/field_main"
         android:layout_width="match_parent"
         android:background="#ffffff"
         android:layout_height="match_parent">

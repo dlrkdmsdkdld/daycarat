@@ -43,6 +43,10 @@ class AdvantageFragment() : BaseFragment<FragmentJoinAdvantageBinding>(
         }
     }
 
+    override fun initStatusBar() {
+
+    }
+
     override fun onResume() {
         super.onResume()
         if (binding.chipGroup.checkedChipId != -1) (activity as JoinActivity).enableNextBtn(true)

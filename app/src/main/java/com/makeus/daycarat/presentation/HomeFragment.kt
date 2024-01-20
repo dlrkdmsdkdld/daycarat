@@ -12,7 +12,10 @@ import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.Extensions.navigationHeight
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.UiManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -41,6 +44,15 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
         observeRecentEpisode()
 
         binding.fieldNews1.setOnClickListener{}
+    }
+
+    override fun initStatusBar() {
+        binding.fieldMain.setPadding(
+            0,
+            requireActivity().statusBarHeight(),
+            0,
+            0
+        )
     }
 
     override fun onResume() {

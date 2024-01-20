@@ -21,6 +21,9 @@ import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.dialog.LoadingDialog
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.Extensions.navigationHeight
+import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
+import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -32,6 +35,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
     }
 
     override fun initView() {
+        this.setStatusBarTransparent()
+        binding.fieldMain.setPadding(
+            0,
+            this.statusBarHeight(),
+            0,
+            this.navigationHeight()
+        )
         // 카카오 로그인
         // 카카오계정으로 로그인 공통 callback 구성
         // 카카오톡으로 로그인 할 수 없어 카카오계정으로 로그인할 경우 사용됨
