@@ -80,4 +80,13 @@ object Extensions {
         else 0
     }
 
+    fun View.onThrottleClick(action: (v: View) -> Unit) { //중복클릭 방지
+        val listener = View.OnClickListener { action(it) }
+        setOnClickListener(OnThrottleClickListener(listener))
+    }
+    // with interval setting
+    fun View.onThrottleClick(action: (v: View) -> Unit, interval: Long) {
+        val listener = View.OnClickListener { action(it) }
+        setOnClickListener(OnThrottleClickListener(listener, interval))
+    }
 }

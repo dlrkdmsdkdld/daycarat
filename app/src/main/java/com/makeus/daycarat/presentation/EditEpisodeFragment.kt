@@ -26,6 +26,7 @@ import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
 import com.makeus.daycarat.util.Extensions.HideKeyBoard
+import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
@@ -60,7 +61,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
             (activity as MainActivity).navController.popBackStack()
         }
 
-        binding.btnSave.setOnClickListener {
+        binding.btnSave.onThrottleClick { // 중복클릭방지
             viewModel.registerEpisode(
                 binding.editTitle.text.toString(),
                 binding.editTag.text.toString()
