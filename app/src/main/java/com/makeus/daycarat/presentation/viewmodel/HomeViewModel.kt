@@ -33,8 +33,7 @@ class HomeViewModel @Inject constructor(private val repository: EpisodeRepositor
     val recentEpisode: StateFlow<List<EpisodeRecent>> = _recentEpisode
 
     init {
-        updateUserInfo()
-        getRecentEpisode()
+
     }
 
     fun updateUserInfo(){

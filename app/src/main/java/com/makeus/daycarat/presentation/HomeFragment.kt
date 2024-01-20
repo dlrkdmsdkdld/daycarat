@@ -42,6 +42,16 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
 
         binding.fieldNews1.setOnClickListener{}
     }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d("GHLEE" , "onResume")
+        viewModel.apply {
+            updateUserInfo()
+            getRecentEpisode()
+        }
+    }
+
     fun observeRecentEpisode(){
         repeatOnStarted {
             viewModel.recentEpisode.collectLatest{ value: List<EpisodeRecent> ->
