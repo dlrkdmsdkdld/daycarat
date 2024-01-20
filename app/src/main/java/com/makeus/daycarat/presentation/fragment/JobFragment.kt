@@ -1,5 +1,6 @@
 package com.makeus.daycarat.presentation.fragment
 
+import android.util.Log
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.activityViewModels
@@ -24,6 +25,22 @@ class JobFragment : BaseFragment<FragmentJoinJobBinding>(
             dynamicJobBtn(it)
         }
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if(viewModel.userData.value.jobTitle.isNotEmpty()){
+            buttonList.forEach {
+                if(it.text.equals(viewModel.userData.value.jobTitle)){
+                    (activity as JoinActivity).enableNextBtn(true)
+                    it.isSelected = true
+                }else{
+                    it.isSelected = false
+                }
+            }
+
+        }
     }
     fun dynamicJobBtn(title : String){
         var btn = ItemJoinJobBinding.inflate(layoutInflater)

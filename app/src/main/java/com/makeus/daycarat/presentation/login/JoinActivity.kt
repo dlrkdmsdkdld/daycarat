@@ -70,6 +70,9 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
 
             }
         })
+        binding.btnBack.setOnClickListener {
+            mPager.currentItem = mPager.currentItem - 1
+        }
 
 //        binding.indicator.setViewPager(mPager)
         binding.nextBtn.setOnClickListener {
@@ -131,6 +134,7 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
                     indicator1.setBackgroundColor(resources.getColor(R.color.main, null))
                     indicator2.setBackgroundColor(resources.getColor(R.color.gray_scale_300, null))
                     indicator3.setBackgroundColor(resources.getColor(R.color.gray_scale_300, null))
+                    binding.btnBack.visibility = View.GONE
                 }
             }
 
@@ -139,6 +143,7 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
                     indicator1.setBackgroundColor(resources.getColor(R.color.gray_scale_300, null))
                     indicator2.setBackgroundColor(resources.getColor(R.color.main, null))
                     indicator3.setBackgroundColor(resources.getColor(R.color.gray_scale_300, null))
+                    binding.btnBack.visibility = View.VISIBLE
                 }
             }
 
@@ -147,11 +152,13 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
                     indicator1.setBackgroundColor(resources.getColor(R.color.gray_scale_300, null))
                     indicator2.setBackgroundColor(resources.getColor(R.color.gray_scale_300, null))
                     indicator3.setBackgroundColor(resources.getColor(R.color.main, null))
+                    binding.btnBack.visibility = View.VISIBLE
                 }
             }
             3 -> {
                 binding.apply {
                     fieldIndicator.visibility = View.GONE
+                    binding.btnBack.visibility = View.GONE
                     nextBtn.visibility = View.GONE
                 }
             }

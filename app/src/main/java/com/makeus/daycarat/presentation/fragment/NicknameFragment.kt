@@ -31,5 +31,10 @@ class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
         })
     }
 
+    override fun onResume() {
+        super.onResume()
+        (activity as JoinActivity).enableNextBtn(binding.edit.text.isNotEmpty())
+    }
+
 
 }

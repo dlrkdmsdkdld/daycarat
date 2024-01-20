@@ -1,6 +1,7 @@
 package com.makeus.daycarat.presentation.fragment
 
 import android.content.Context
+import android.content.res.ColorStateList
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
@@ -12,6 +13,7 @@ import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.UiManager
 
 
 class AdvantageFragment() : BaseFragment<FragmentJoinAdvantageBinding>(
@@ -41,9 +43,18 @@ class AdvantageFragment() : BaseFragment<FragmentJoinAdvantageBinding>(
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        if (binding.chipGroup.checkedChipId != -1) (activity as JoinActivity).enableNextBtn(true)
+
+    }
+
     private fun createTagChip( statetext: String , pos:Int): Chip {
         return Chip(context).apply {
             setChipBackgroundColorResource(R.color.chip_background_color)
+            chipStrokeColor = resources.getColorStateList(R.color.chip_stroke_color , null)
+            chipStrokeWidth = UiManager.getPixel(1).toFloat()
+
             setTextColor(resources.getColorStateList(R.color.chip_text_color))
 //            setBackgroundResource(R.drawable.ic_chip)
             isCheckedIconVisible=false
