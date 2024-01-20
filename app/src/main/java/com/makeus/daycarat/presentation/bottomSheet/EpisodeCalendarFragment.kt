@@ -34,7 +34,6 @@ class EpisodeCalendarFragment : BottomSheetDialogFragment() {
             override fun onCalendarSelect(calendar: Calendar?, isClick: Boolean) {
                 calendar?.let {
                     onclick?.invoke(calendar)
-//                    viewModel.updateDay(it.year , it.month , it.day)
                 }
             }
 

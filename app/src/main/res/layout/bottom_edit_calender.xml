@@ -7,6 +7,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
+    <View
+        android:layout_width="60dp"
+        android:layout_height="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/rectangle_bottomsheet_bar" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
