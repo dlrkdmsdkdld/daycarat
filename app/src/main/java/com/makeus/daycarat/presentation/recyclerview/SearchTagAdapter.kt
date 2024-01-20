@@ -6,6 +6,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.makeus.daycarat.databinding.ItemSpinnerEpisodeDropdownBinding
+import com.makeus.daycarat.databinding.LayoutSearchItemBinding
 
 class SearchTagAdapter(val list: ArrayList<String>?): RecyclerView.Adapter<RecyclerView.ViewHolder>()  , Filterable {
     var onclick:((String)->Unit)? = null
@@ -13,7 +14,8 @@ class SearchTagAdapter(val list: ArrayList<String>?): RecyclerView.Adapter<Recyc
     private var parselist: ArrayList<String>? = list
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val binding = ItemSpinnerEpisodeDropdownBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
+        val binding = LayoutSearchItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding , onclick)
     }
 
@@ -26,7 +28,7 @@ class SearchTagAdapter(val list: ArrayList<String>?): RecyclerView.Adapter<Recyc
     }
 
 
-    inner class ViewHolder(val binding: ItemSpinnerEpisodeDropdownBinding,val onclick:((String)->Unit)?) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: LayoutSearchItemBinding,val onclick:((String)->Unit)?) : RecyclerView.ViewHolder(binding.root) {
         fun bind(text:String){
             binding.textSubmit.text = text
             binding.root.setOnClickListener {

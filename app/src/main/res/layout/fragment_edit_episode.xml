@@ -8,6 +8,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/field_all"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -203,17 +204,29 @@
 
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    app:layout_constraintTop_toBottomOf="@id/edit_tag"
                     android:layout_width="0dp"
                     app:layout_constraintStart_toStartOf="@id/edit_tag"
-                    app:layout_constraintEnd_toEndOf="@id/edit_tag"
-                    android:layout_height="wrap_content"
-                    android:maxHeight="150dp"
+                    android:layout_marginTop="8dp"
+                    android:id="@+id/field_search"
                     android:visibility="gone"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    android:id="@+id/recycler_search"
-                    tools:listitem="@layout/item_spinner_episode_dropdown"
-                    app:layout_constraintTop_toBottomOf="@id/edit_tag"/>
+                    tools:visibility="visible"
+                    app:layout_constraintEnd_toEndOf="@id/edit_tag"
+                    android:layout_height="150dp">
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
+                        app:layout_constrainedHeight="true"
+                        android:background="@drawable/bg_search_recyclerview"
+                        app:layout_constraintTop_toTopOf="parent"
+                        android:layout_height="wrap_content"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        android:id="@+id/recycler_search"
+                        tools:listitem="@layout/layout_search_item" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
