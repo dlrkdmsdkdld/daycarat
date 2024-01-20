@@ -2,6 +2,7 @@ package com.makeus.daycarat.hilt
 
 import com.makeus.daycarat.core.dto.ResponseBody
 import com.makeus.daycarat.data.AllUserData
+import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.MonthEpisodeCount
 import retrofit2.http.Body
@@ -14,6 +15,9 @@ interface EpisodeApi {
 
     @POST("episode/register")
     suspend fun addEpisode(@Body data: EpisodeRegister): ResponseBody<Boolean>
+
+    @GET("episode/recent")
+    suspend fun getRecentThreeEpisode(): ResponseBody<List<EpisodeRecent>>
 
     @GET("episode/date")
     suspend fun getUserMothEpisodeCount(@Query("year") year:Int ): ResponseBody<List<MonthEpisodeCount>>

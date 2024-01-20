@@ -20,9 +20,6 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         try {
             val response = apimodule.getUserMothEpisodeCount(parseTimeToYear())
             if (isSuccessful(response.statusCode)) {
-                response.result?.forEach {
-                    Log.d(Constant.TAG , "it ${it.month} quantity ${it.quantity}")
-                }
                 emit(Resource.success(response.result))
             }else{
                 emit(Resource.error(response.message))
@@ -47,10 +44,25 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
             emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
             e.printStackTrace()
         }
-
-
-
     }
+
+    suspend fun getRecentEpisode() = flow {
+        Log.d(Constant.TAG , "getUserMontlyEpisodeCount parseTimeToYear ${parseTimeToYear()}")
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getRecentThreeEpisode()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+//                emit(Resource.error(response.statusCode.toString()))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
 
 
 

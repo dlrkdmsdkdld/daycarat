@@ -59,6 +59,9 @@
     <string name="home_user_title">%s님,\n새로운 에피소드를 캐볼까요</string>
     <string name="home_title">이번달\n나의 에피소드</string>
     <string name="home_recently_episode_title">최근 에피소드</string>
+    <string name="home_recently_episode_empty_title">아직 저장한 에피소드가 없어요</string>
+    <string name="home_recently_episode_empty_des">에피소드를 저장하고 나만의 보석을 찾아보세요</string>
+    <string name="home_recently_episode_empty_btn">에피소드 추가하기</string>
     <string name="home_des_count">개</string>
     <string name="home_ep_des">바로 활용 가능한\n내 에피소드들</string>
     <string name="home_ai_des">AI로 더 쉽게\n작성하는 자소서</string>

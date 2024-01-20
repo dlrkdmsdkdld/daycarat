@@ -26,7 +26,6 @@ import com.makeus.daycarat.presentation.recyclerview.SearchTagAdapter
 import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
-import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.SharedPreferenceManager

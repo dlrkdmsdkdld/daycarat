@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
+import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.data.UserData
 import com.makeus.daycarat.repository.AuthRepository
 import com.makeus.daycarat.repository.EpisodeRepository
@@ -28,8 +29,12 @@ class HomeViewModel @Inject constructor(private val repository: EpisodeRepositor
     private val _episodeCount = MutableStateFlow<Int>(0)
     val episodeCount: StateFlow<Int> = _episodeCount
 
+    private val _recentEpisode = MutableStateFlow<List<EpisodeRecent>>(listOf())
+    val recentEpisode: StateFlow<List<EpisodeRecent>> = _recentEpisode
+
     init {
         updateUserInfo()
+        getRecentEpisode()
     }
 
     fun updateUserInfo(){
@@ -46,9 +51,21 @@ class HomeViewModel @Inject constructor(private val repository: EpisodeRepositor
                 }
 
             }
-
         }
     }
+
+    fun getRecentEpisode(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getRecentEpisode().collect{result ->
+                if (result.status == Status.SUCCESS){
+                    result.data?.let{_recentEpisode.emit(result.data)}
+                }
+
+            }
+        }
+    }
+
+
     private fun sendEvent(event: AuthViewmodel.UiEvent) {
         viewModelScope.launch {
             _flowEvent.emit(event)
