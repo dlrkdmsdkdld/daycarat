@@ -20,8 +20,8 @@ import com.makeus.daycarat.databinding.BottomEditCalenderBinding
 import com.makeus.daycarat.databinding.FragmentEditEpisodeBinding
 import com.makeus.daycarat.databinding.FragmentHomeBinding
 import com.makeus.daycarat.databinding.LayoutEditEdpisodeBinding
+import com.makeus.daycarat.presentation.bottomSheet.EpisodeCalendarFragment
 import com.makeus.daycarat.presentation.calendar.CustomMonthCalendar
-import com.makeus.daycarat.presentation.dialog.BottomSheetCalendar
 import com.makeus.daycarat.presentation.recyclerview.SearchTagAdapter
 import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
@@ -110,20 +110,12 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         }
 
         binding.btnCalendar.setOnClickListener {
+            var bottomDialog = EpisodeCalendarFragment()
+            bottomDialog.onclick = {
+                viewModel.updateDay(it.year , it.month , it.day)
+            }
+            activity?.supportFragmentManager?.let { it1 -> bottomDialog.show(it1, "BottomCalendarDialog") }
 
-            val bottomSheetView = BottomEditCalenderBinding.inflate(layoutInflater)
-            val bottomSheetDialog = BottomSheetDialog(requireContext())
-            bottomSheetDialog.setContentView(bottomSheetView.root)
-            bottomSheetView.calendarMonth.setOnCalendarSelectListener(object :OnCalendarSelectListener{
-                override fun onCalendarOutOfRange(calendar: Calendar?) {
-                }
-
-                override fun onCalendarSelect(calendar: Calendar?, isClick: Boolean) {
-                    Log.d("GHLEECA" ,"calendar ${calendar} ${calendar?.day}")
-                }
-
-            })
-            bottomSheetDialog.show()
 
         }
 

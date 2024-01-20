@@ -24,4 +24,13 @@ object Extensions {
     fun String?.isJsonArray():Boolean{
         return this?.startsWith("[" ) == true &&this.endsWith("]")
     }
+
+    fun Int?.parseIntToMonth():String{
+        val month:Int?=this
+        var parseminute = month.toString()
+        if (month!!<10){
+            parseminute="0$month"
+        }
+        return parseminute
+    }
 }

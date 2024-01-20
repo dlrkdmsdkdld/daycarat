@@ -1,19 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bg_bottom_sheet_dialog"
+    xmlns:tools="http://schemas.android.com/tools"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/field_top"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:src="@drawable/icon_arrow_left"
+            android:paddingStart="20dp"
+            android:paddingEnd="16dp"
+            android:id="@+id/btn_previous"
+            app:layout_constraintBottom_toBottomOf="@id/text_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_title" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="42dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_scale_900"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text = "2024년 1월"
+            android:id="@+id/text_title"
+            style="@style/sh4"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:src="@drawable/icon_arrow_right"
+            android:id="@+id/btn_next"
+            android:paddingStart="20dp"
+            android:paddingEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@id/text_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/text_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.haibin.calendarview.CalendarView
         android:id="@+id/calendar_month"
+        app:layout_constraintTop_toBottomOf="@id/field_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="15dp"
         android:layout_marginLeft="15dp"
-        app:month_view="com.makeus.daycarat.presentation.calendar.CustomMonthCalendar" />
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:paddingBottom="10dp"
+        app:month_view="com.makeus.daycarat.presentation.calendar.CustomMonthCalendar"
+        app:week_text_color="@color/gray_scale_600"
+        app:week_text_size="14sp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

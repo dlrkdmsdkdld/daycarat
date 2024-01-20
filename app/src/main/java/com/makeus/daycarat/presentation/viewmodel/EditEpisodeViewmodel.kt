@@ -11,6 +11,7 @@ import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.Extensions.parseIntToMonth
 import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -63,6 +64,13 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
 
     }
 
+    fun updateDay(year:Int, month:Int,day:Int) {
+        viewModelScope.launch(Dispatchers.IO){
+            var parseMonth = month.parseIntToMonth()
+            var parseDay = day.parseIntToMonth()
+            _episodeDay.emit("${year}-$parseMonth-$parseDay")
+        }
+    }
 
     fun changeEpidoseContentText(pos: Int, text: String) {
         _episodeContent.value.getOrNull(pos)?.content = text

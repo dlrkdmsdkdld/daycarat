@@ -141,11 +141,12 @@ class CustomMonthCalendar(context: Context) : MonthView(context) {
         calendar?.let {
             canvas?.let { cit ->
 
-                mCurDayTextPaint.color = Color.BLACK
                 mSelectTextPaint.color = Color.WHITE
-                mCurMonthTextPaint.color = Color.BLACK
-                mSchemeTextPaint.color = Color.BLACK
-                mOtherMonthTextPaint.color = Color.LTGRAY
+//                mSchemeTextPaint.color = Color.BLACK
+
+                mCurDayTextPaint.color = context.getColor(R.color.gray_scale_900)
+                mCurMonthTextPaint.color =  context.getColor(R.color.gray_scale_900)
+                mOtherMonthTextPaint.color = context.getColor(R.color.gray_scale_400)
 
                 val drawPaint = if (isSelected) mSelectTextPaint else {
                     if (it.isCurrentMonth) mCurMonthTextPaint else mOtherMonthTextPaint
