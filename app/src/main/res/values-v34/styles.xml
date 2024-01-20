@@ -9,9 +9,9 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
+<!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
         <item name="android:enforceNavigationBarContrast">false</item>
-        <!--        <item name="android:enforceStatusBarContrast">false</item>-->
+        <item name="android:enforceStatusBarContrast">false</item>
     </style>
 
     <style name="Theme.DaycaratMeterial" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
@@ -21,9 +21,9 @@
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
         <item name="android:windowLightNavigationBar">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowLightStatusBar">true</item>
+<!--        <item name="android:windowLightStatusBar">true</item>-->
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <!--        <item name="android:navigationBarColor">#8C8C8C</item>-->
+<!--        <item name="android:navigationBarColor">#8C8C8C</item>-->
         <!--                <item name="android:enforceStatusBarContrast">false</item>-->
     </style>
 

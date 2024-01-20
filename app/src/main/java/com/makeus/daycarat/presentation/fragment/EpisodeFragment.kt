@@ -17,7 +17,7 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
     }
 
     override fun initStatusBar() {
-        TODO("Not yet implemented")
+
     }
 
 }

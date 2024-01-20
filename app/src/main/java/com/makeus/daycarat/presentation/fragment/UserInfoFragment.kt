@@ -12,7 +12,7 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
     }
 
     override fun initStatusBar() {
-        TODO("Not yet implemented")
+
     }
 
 }

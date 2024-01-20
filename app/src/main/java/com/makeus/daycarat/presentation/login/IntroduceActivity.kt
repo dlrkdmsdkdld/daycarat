@@ -1,6 +1,7 @@
 package com.makeus.daycarat.presentation.login
 
 import android.os.Bundle
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -28,6 +29,7 @@ class IntroduceActivity : BaseActivity<ActivityIntroduceBinding>({ ActivityIntro
             0,
             this.navigationHeight()
         )
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true // 스테이터스 바 아이콘 검은색
         mPager = binding.pager
         val pagerAdapter = ScreenSlidePagerAdapter(this)
         mPager.adapter = pagerAdapter

@@ -2,8 +2,11 @@ package com.makeus.daycarat.util
 
 import android.app.Activity
 import android.content.Context
+import android.graphics.Color
 import android.os.Build
+import android.view.View
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
@@ -38,6 +41,10 @@ object Extensions {
         }
         return parseminute
     }
+    fun Activity.HideKeyBoard(){
+        val inputManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        inputManager.hideSoftInputFromWindow(currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
+    }
     fun Activity.setStatusBarTransparent() {
         window.apply {
             setFlags(
@@ -47,6 +54,15 @@ object Extensions {
         }
         if(Build.VERSION.SDK_INT >= 30) {	// API 30 에 적용
             WindowCompat.setDecorFitsSystemWindows(window, false)
+        }
+    }
+
+    fun Activity.setStatusBarOrigin() {
+        window.apply {
+            clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+        }
+        if(Build.VERSION.SDK_INT >= 30) {	// API 30 에 적용
+            WindowCompat.setDecorFitsSystemWindows(window, true)
         }
     }
 
@@ -63,12 +79,5 @@ object Extensions {
         return if (resourceId > 0) resources.getDimensionPixelSize(resourceId)
         else 0
     }
-    fun Activity.setStatusBarOrigin() {
-        window.apply {
-            clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
-        }
-        if(Build.VERSION.SDK_INT >= 30) {	// API 30 에 적용
-            WindowCompat.setDecorFitsSystemWindows(window, true)
-        }
-    }
+
 }

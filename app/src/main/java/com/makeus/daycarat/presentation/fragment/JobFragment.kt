@@ -29,7 +29,7 @@ class JobFragment : BaseFragment<FragmentJoinJobBinding>(
     }
 
     override fun initStatusBar() {
-        TODO("Not yet implemented")
+
     }
 
     override fun onResume() {

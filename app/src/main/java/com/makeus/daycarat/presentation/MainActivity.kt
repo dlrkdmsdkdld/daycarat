@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -41,8 +42,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.infl
     }
 
     override fun initView() {
-        this.setStatusBarTransparent()
-
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true // 스테이터스 바 아이콘 검은색
         //네비게이션들을 담는 호스트
         val navHostFragment=supportFragmentManager.findFragmentById(R.id.myNavHost) as NavHostFragment
 
@@ -64,12 +64,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.infl
             navController.navigate(R.id.editEpisodeFragment , args = null ,option , null )
         }
 
-        binding.fieldMain.setPadding(
-            0,
-                0,
-            0,
-            this.navigationHeight()
-        )
 
     }
 }

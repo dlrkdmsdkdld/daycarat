@@ -10,6 +10,7 @@ import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
 import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
 import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
+import com.makeus.daycarat.util.Extensions.HideKeyBoard
 
 class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
     FragmentJoinNicknameBinding::inflate) {
@@ -29,10 +30,13 @@ class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
             }
 
         })
+        binding.fieldAll.setOnClickListener {
+            activity?.HideKeyBoard()
+        }
+
     }
 
     override fun initStatusBar() {
-        TODO("Not yet implemented")
     }
 
     override fun onResume() {

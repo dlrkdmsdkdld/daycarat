@@ -13,6 +13,7 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
 import com.makeus.daycarat.R
@@ -24,6 +25,7 @@ import com.makeus.daycarat.presentation.recyclerview.SearchTagAdapter
 import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
+import com.makeus.daycarat.util.Extensions.HideKeyBoard
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
@@ -48,6 +50,8 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
     var arrayData = arrayOf<String>()
 
     override fun initView() {
+
+
         arrayData = resources.getStringArray(R.array.episode_header_datas)
         binding.textDay.text = parseTimeToEpisode()
         binding.fieldNewEdit.addView(inflateEditField())
@@ -115,9 +119,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         )
     }
     private fun hideKeyboard() {
-        val inputManager = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        inputManager.hideSoftInputFromWindow(activity?.currentFocus?.windowToken, InputMethodManager.HIDE_NOT_ALWAYS)
-
+        activity?.HideKeyBoard()
     }
     fun chcekSaveBtn() {
         var isEnable = true

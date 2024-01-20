@@ -40,7 +40,6 @@ class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(
     }
 
     override fun initStatusBar() {
-        TODO("Not yet implemented")
     }
 
 }

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -22,6 +23,7 @@ import com.makeus.daycarat.presentation.dialog.LoadingDialog
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.navigationHeight
+import com.makeus.daycarat.util.Extensions.setStatusBarOrigin
 import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
@@ -117,6 +119,10 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
 
     }
 
+    override fun onDestroy() {
+        this.setStatusBarOrigin()
+        super.onDestroy()
+    }
 
 //    fun checkLoginToken(){
 //        if (AuthApiClient.instance.hasToken()){

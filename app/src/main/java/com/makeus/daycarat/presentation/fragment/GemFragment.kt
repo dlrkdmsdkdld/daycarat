@@ -13,7 +13,7 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
     }
 
     override fun initStatusBar() {
-        TODO("Not yet implemented")
+
     }
 
 }
