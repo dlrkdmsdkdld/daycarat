@@ -11,11 +11,17 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.haibin.calendarview.Calendar
+import com.haibin.calendarview.CalendarView.OnCalendarSelectListener
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.databinding.BottomEditCalenderBinding
 import com.makeus.daycarat.databinding.FragmentEditEpisodeBinding
 import com.makeus.daycarat.databinding.FragmentHomeBinding
 import com.makeus.daycarat.databinding.LayoutEditEdpisodeBinding
+import com.makeus.daycarat.presentation.calendar.CustomMonthCalendar
+import com.makeus.daycarat.presentation.dialog.BottomSheetCalendar
 import com.makeus.daycarat.presentation.recyclerview.SearchTagAdapter
 import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
@@ -30,7 +36,8 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
-    FragmentEditEpisodeBinding::inflate), TextWatcher {
+    FragmentEditEpisodeBinding::inflate
+), TextWatcher {
     private val viewModel by lazy {
         ViewModelProvider(this).get(EditEpisodeViewmodel::class.java)
     }
@@ -51,16 +58,18 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         }
 
 
-        binding.btnSave.setOnClickListener{
-            viewModel.registerEpisode(binding.editTitle.text.toString(), binding.editTag.text.toString())
+        binding.btnSave.setOnClickListener {
+            viewModel.registerEpisode(
+                binding.editTitle.text.toString(),
+                binding.editTag.text.toString()
+            )
         }
 
         binding.btnAddEdit.setOnClickListener {
-            if (spinnerArray.size != arrayData.size){
+            if (spinnerArray.size != arrayData.size) {
                 binding.fieldNewEdit.addView(inflateEditField())
                 binding.btnSave.isEnabled = false
-            }
-            else Toast.makeText(requireContext(),"최대 개수를 초과했어요!",Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(requireContext(), "최대 개수를 초과했어요!", Toast.LENGTH_SHORT).show()
         }
 //        initSpinner()
 
@@ -69,20 +78,22 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
 
         repeatOnStarted {
-            viewModel.episodeDay.collect{ day ->
-                Log.d("GHLEE","day $day")
+            viewModel.episodeDay.collect { day ->
+                Log.d("GHLEE", "day $day")
                 binding.textDay.text = "$day (${parseTimeToEpisodeWithWeekDay(day)})"
             }
         }
         repeatOnStarted {
-            viewModel.flowEvent.collect{event ->
-                when(event){
-                    is AuthViewmodel.UiEvent.LoadingEvent ->{
+            viewModel.flowEvent.collect { event ->
+                when (event) {
+                    is AuthViewmodel.UiEvent.LoadingEvent -> {
                         (activity as MainActivity).loadingDialog.show()
-                    } else ->{
-                    (activity as MainActivity).loadingDialog.dismiss()
-                    (activity as MainActivity).navController.popBackStack()
-                }
+                    }
+
+                    else -> {
+                        (activity as MainActivity).loadingDialog.dismiss()
+                        (activity as MainActivity).navController.popBackStack()
+                    }
                 }
             }
         }
@@ -90,8 +101,114 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
         }
         binding.recyclerSearch.adapter = searchAdapter
+        binding.editTag.setOnFocusChangeListener { view, b ->
+            if (b) {
+                binding.recyclerSearch.visibility = View.VISIBLE
+            }
+            else binding.recyclerSearch.visibility = View.GONE
+
+        }
+
+        binding.btnCalendar.setOnClickListener {
+
+            val bottomSheetView = BottomEditCalenderBinding.inflate(layoutInflater)
+            val bottomSheetDialog = BottomSheetDialog(requireContext())
+            bottomSheetDialog.setContentView(bottomSheetView.root)
+            bottomSheetView.calendarMonth.setOnCalendarSelectListener(object :OnCalendarSelectListener{
+                override fun onCalendarOutOfRange(calendar: Calendar?) {
+                }
+
+                override fun onCalendarSelect(calendar: Calendar?, isClick: Boolean) {
+                    Log.d("GHLEECA" ,"calendar ${calendar} ${calendar?.day}")
+                }
+
+            })
+            bottomSheetDialog.show()
+
+        }
 
     }
+
+
+    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+    }
+
+    override fun afterTextChanged(p0: Editable?) {
+        chcekSaveBtn()
+
+    }
+
+    fun chcekSaveBtn() {
+        var isEnable = true
+        viewModel.episodeContent.value.forEachIndexed { index, episodeContent ->
+            if (episodeContent.content.isEmpty() || episodeContent.episodeContentType.isEmpty()) {
+                isEnable = false
+                Log.d(
+                    "GHALEE",
+                    ".content.isEmpty() ${episodeContent.content.isEmpty()}  ${episodeContent.episodeContentType.isEmpty()}"
+                )
+                return@forEachIndexed
+            }
+        }
+        //필수 작성 사항 -날짜  작성항목 + 항목내용 추가된 갯수만큼 써야함  - 어짜피 날짜는 디폴트로 오늘날짜임
+        binding.btnSave.isEnabled = isEnable
+    }
+
+    fun inflateEditField(): View {
+        var editBining = LayoutEditEdpisodeBinding.inflate(layoutInflater)
+        var pos = viewModel.plusEditCount()
+
+        var mAdapter = EpisodeSpinner(requireContext(), arrayData.toList(), 1000, viewModel)
+        editBining.spinnerCategory.adapter = mAdapter
+        editBining.spinnerCategory.setSelection(1000)
+
+        editBining.spinnerCategory.doOnNextLayout {
+            editBining.spinnerCategory.onItemSelectedListener = object : OnItemSelectedListener {
+                override fun onItemSelected(
+                    p0: AdapterView<*>?,
+                    p1: View?,
+                    sortData: Int,
+                    p3: Long
+                ) {
+                    mAdapter.changeSelection(sortData)
+                    viewModel.userUnSelectSpinner(pos)
+                    viewModel.userSelectSaveLastSpinner(pos, sortData)
+                    viewModel.changeEpidoseContentType(pos, arrayData.getOrNull(sortData))
+                    viewModel.userSelectSpinner(sortData)
+                    chcekSaveBtn()
+                }
+
+                override fun onNothingSelected(p0: AdapterView<*>?) {
+                }
+            }
+        }
+        editBining.editEpisode.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+            }
+
+            override fun afterTextChanged(p0: Editable?) {
+                viewModel.changeEpidoseContentText(pos, p0.toString())
+                chcekSaveBtn()
+            }
+
+        })
+        spinnerArray.add(editBining.spinnerCategory)
+        editArray.add(editBining.editEpisode)
+
+        return editBining.root
+
+    }
+
+}
+
 //    fun initEditText(){
 //        binding.layoutEditEpisode.editEpisode.addTextChangedListener(object :TextWatcher{
 //            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -122,11 +239,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 //        })
 //        editArray.add(binding.layoutEditEpisode.editEpisode)
 //
-//        binding.editTag.setOnFocusChangeListener { view, b ->
-//            if (b) binding.recyclerSearch.visibility = View.VISIBLE
-//            else binding.recyclerSearch.visibility = View.GONE
-//
-//        }
+
 //
 //    }
 //    fun initSpinner(){
@@ -151,73 +264,3 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 //        }
 //        spinnerArray.add(binding.layoutEditEpisode.spinnerCategory)
 //    }
-
-    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-    }
-
-    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-    }
-
-    override fun afterTextChanged(p0: Editable?) {
-        chcekSaveBtn()
-
-    }
-    fun chcekSaveBtn(){
-        var isEnable = true
-        viewModel.episodeContent.value.forEachIndexed { index, episodeContent ->
-            if (episodeContent.content.isEmpty() || episodeContent.episodeContentType.isEmpty()){
-                isEnable = false
-                Log.d("GHALEE",".content.isEmpty() ${episodeContent.content.isEmpty()}  ${episodeContent.episodeContentType.isEmpty()}")
-                Toast.makeText(requireContext(),"${index + 1}힝목을 작성하지 않았어요  ${episodeContent.content.isEmpty()}  ${episodeContent.episodeContentType.isEmpty()}" , Toast.LENGTH_SHORT).show()
-                return@forEachIndexed
-            }
-        }
-        //필수 작성 사항 -날짜  작성항목 + 항목내용 추가된 갯수만큼 써야함  - 어짜피 날짜는 디폴트로 오늘날짜임
-        binding.btnSave.isEnabled = isEnable
-    }
-
-    fun inflateEditField(): View {
-        var editBining = LayoutEditEdpisodeBinding.inflate(layoutInflater)
-        var pos = viewModel.plusEditCount()
-
-        var mAdapter = EpisodeSpinner(requireContext() ,  arrayData.toList() , 1000 , viewModel)
-        editBining.spinnerCategory.adapter = mAdapter
-        editBining.spinnerCategory.setSelection(1000)
-
-        editBining.spinnerCategory.doOnNextLayout {
-            editBining.spinnerCategory.onItemSelectedListener = object : OnItemSelectedListener{
-                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, sortData: Int, p3: Long) {
-                    mAdapter.changeSelection(sortData)
-                    viewModel.userUnSelectSpinner(pos)
-                    viewModel.userSelectSaveLastSpinner(pos , sortData)
-                    viewModel.changeEpidoseContentType(pos ,arrayData.getOrNull(sortData))
-                    viewModel.userSelectSpinner(sortData)
-                    chcekSaveBtn()
-                }
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                }
-            }
-        }
-        editBining.editEpisode.addTextChangedListener(object :TextWatcher{
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                viewModel.changeEpidoseContentText(pos , p0.toString())
-                chcekSaveBtn()
-            }
-
-        })
-        spinnerArray.add(editBining.spinnerCategory)
-        editArray.add(editBining.editEpisode)
-
-        return editBining.root
-
-    }
-
-}

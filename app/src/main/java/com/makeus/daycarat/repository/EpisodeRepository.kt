@@ -36,12 +36,18 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
 
     suspend fun addEpisode(data: EpisodeRegister) = flow {
         emit(Resource.loading())
-        val response = apimodule.addEpisode(data)
-        if (isSuccessful(response.statusCode)){
-            emit(Resource.success(response.result))
-        }else{
-            emit(Resource.error(response.message))
+        try {
+            val response = apimodule.addEpisode(data)
+            if (isSuccessful(response.statusCode)){
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
         }
+
 
 
     }

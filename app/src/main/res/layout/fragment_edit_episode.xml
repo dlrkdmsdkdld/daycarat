@@ -120,6 +120,7 @@
                     android:layout_height="wrap_content"
                     android:paddingEnd="20dp"
                     android:paddingStart="10dp"
+                    android:id="@+id/btn_calendar"
                     android:background="@color/transparent"
                     android:src="@drawable/icon_calendar"/>
 

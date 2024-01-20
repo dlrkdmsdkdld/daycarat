@@ -22,12 +22,13 @@
                 android:gravity="end"
                 android:layout_height="wrap_content"
                 android:text="@string/episode_item_title"/>
-            <Spinner
+            <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spinner_category"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:background="@null"
+                android:background="@drawable/bg_spinner_dropdown"
                 android:duplicateParentState="true"
+                android:popupBackground="@drawable/bg_spinner_dropdown"
                 android:gravity="center"
                 android:layout_marginStart="20dp"
                 android:dropDownVerticalOffset="56dp"
