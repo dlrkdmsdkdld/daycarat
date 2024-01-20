@@ -151,6 +151,9 @@ dependencies {
     implementation ("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation ("androidx.navigation:navigation-ui-ktx:$nav_version")
 
+    
+    implementation ("com.haibin:calendarview:3.7.1")
+
 }
 kapt {
     correctErrorTypes = true
