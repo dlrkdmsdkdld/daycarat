@@ -2,6 +2,7 @@ package com.makeus.daycarat.hilt
 
 import com.makeus.daycarat.core.dto.ResponseBody
 import com.makeus.daycarat.data.AllUserData
+import com.makeus.daycarat.data.EpisodeActivityCounter
 import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.MonthEpisodeCount
@@ -21,4 +22,7 @@ interface EpisodeApi {
 
     @GET("episode/date")
     suspend fun getUserMothEpisodeCount(@Query("year") year:Int ): ResponseBody<List<MonthEpisodeCount>>
+
+    @GET("episode/activity")
+    suspend fun getActivityTagCount(): ResponseBody<List<EpisodeActivityCounter>>
 }

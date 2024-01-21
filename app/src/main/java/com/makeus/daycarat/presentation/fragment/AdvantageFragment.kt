@@ -59,7 +59,7 @@ class AdvantageFragment() : BaseFragment<FragmentJoinAdvantageBinding>(
             chipStrokeColor = resources.getColorStateList(R.color.chip_stroke_color , null)
             chipStrokeWidth = UiManager.getPixel(1).toFloat()
 
-            setTextColor(resources.getColorStateList(R.color.chip_text_color))
+            setTextColor(resources.getColorStateList(R.color.chip_text_color , null))
 //            setBackgroundResource(R.drawable.ic_chip)
             isCheckedIconVisible=false
             text  = statetext

@@ -65,5 +65,21 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
 
 
 
+    suspend fun getActivityTagOderByCount() = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getActivityTagCount()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+//                emit(Resource.error(response.statusCode.toString()))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
 
 }

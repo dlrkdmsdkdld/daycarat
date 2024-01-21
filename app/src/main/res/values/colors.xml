@@ -13,6 +13,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="main">#7241FF</color>
     <color name="main_20">#F5F1FF</color>
+    <color name="main_50">#F5F1FF</color>
+    <color name="main_100">#EAE3FF</color>
     <color name="none_enable">#DADCE0</color>
     <color name="gray_scale_50">#F9FBFD</color>
     <color name="gray_scale_100">#F1F3F4</color>
