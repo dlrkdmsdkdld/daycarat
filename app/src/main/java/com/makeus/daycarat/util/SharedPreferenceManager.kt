@@ -62,11 +62,14 @@ class SharedPreferenceManager(context: Context) {
 
     fun getEpisodeActivityTags(): ArrayList<String> {
         var sharedDatas = prefs.getString(Constant.USER_EPISODE_TAGS, "")
-        var arrJosn = JSONArray(sharedDatas)
         var resultArr : ArrayList<String> = ArrayList()
-        for (i in 0 until arrJosn.length()){
-            resultArr.add(arrJosn.optString(i))
+        if (!sharedDatas.isNullOrEmpty()){
+            var arrJosn = JSONArray(sharedDatas)
+            for (i in 0 until arrJosn.length()){
+                resultArr.add(arrJosn.optString(i))
+            }
         }
+
         return resultArr
     }
 

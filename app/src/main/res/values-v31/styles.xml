@@ -5,12 +5,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+<!--        <item name="android:windowLightNavigationBar">true</item>-->
+<!--        <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+<!--        <item name="android:windowLightStatusBar">true</item>-->
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
         <!--        <item name="android:navigationBarColor">@android:color/transparent</item>-->
-        <item name="android:enforceNavigationBarContrast">false</item>
+<!--        <item name="android:enforceNavigationBarContrast">false</item>-->
         <!--        <item name="android:enforceStatusBarContrast">false</item>-->
     </style>
 
@@ -19,10 +19,10 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="bottomSheetDialogTheme">@style/AppBottomSheetDialogTheme</item>
-        <item name="android:windowLightNavigationBar">true</item>
-        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
+<!--        <item name="android:windowLightNavigationBar">true</item>-->
+<!--        <item name="android:windowDrawsSystemBarBackgrounds">true</item>-->
+<!--        <item name="android:windowLightStatusBar">true</item>-->
+<!--        <item name="android:statusBarColor">@android:color/transparent</item>-->
         <!--        <item name="android:navigationBarColor">#8C8C8C</item>-->
         <!--                <item name="android:enforceStatusBarContrast">false</item>-->
     </style>

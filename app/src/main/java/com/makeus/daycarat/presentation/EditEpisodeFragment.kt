@@ -111,6 +111,17 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         initEditTag()
     }
 
+
+    override fun onDestroyView() {
+//        isDestroyBinding = false
+        super.onDestroyView()
+//        _binding = null
+        // 주의해서 사용 :: 안드로이드에서 탭 변경해서 fragment 변경시 기존
+        // fragment들은 ondestory를 타지 않고 오직 onDestroyView만 타기때문에 메모리 누수 주위
+
+
+    }
+
     override fun initStatusBar() {
         binding.fieldMain.setPadding(
             0,
