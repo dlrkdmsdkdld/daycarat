@@ -1,6 +1,5 @@
 package com.makeus.daycarat.presentation.login
 
-import android.content.Intent
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -11,17 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
-import com.google.android.material.tabs.TabLayoutMediator
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseActivity
-import com.makeus.daycarat.databinding.ActivityIntroduceBinding
 import com.makeus.daycarat.databinding.ActivityJoinBinding
-import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.dialog.LoadingDialog
-import com.makeus.daycarat.presentation.fragment.AdvantageFragment
-import com.makeus.daycarat.presentation.fragment.IntroduceFragment
-import com.makeus.daycarat.presentation.fragment.JobFragment
-import com.makeus.daycarat.presentation.fragment.NicknameFragment
+import com.makeus.daycarat.presentation.fragment.login.AdvantageFragment
+import com.makeus.daycarat.presentation.fragment.login.JobFragment
+import com.makeus.daycarat.presentation.fragment.login.NicknameFragment
 import com.makeus.daycarat.presentation.fragment.WellcomeFragment
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
@@ -29,9 +24,7 @@ import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.navigationHeight
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.UiManager
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.internal.notify
 
 @AndroidEntryPoint
 class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inflate(it) }) {

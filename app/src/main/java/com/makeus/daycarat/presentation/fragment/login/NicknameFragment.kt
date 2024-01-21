@@ -1,12 +1,9 @@
-package com.makeus.daycarat.presentation.fragment
+package com.makeus.daycarat.presentation.fragment.login
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
 import androidx.fragment.app.activityViewModels
-import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
-import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
 import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
 import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel

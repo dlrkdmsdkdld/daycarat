@@ -24,12 +24,20 @@
         android:id="@+id/episodeFragment"
         tools:layout="@layout/fragment_episode"
         android:name="com.makeus.daycarat.presentation.fragment.EpisodeFragment"
-        android:label="EpisodeFragment" />
+        android:label="EpisodeFragment" >
+        <action
+            android:id="@+id/action_episodeFragment_to_episodeDetailTypeFragment"
+            app:destination="@id/episodeDetailTypeFragment" />
+    </fragment>
     <fragment
         android:id="@+id/userInfoFragmen"
         tools:layout="@layout/fragment_user_info"
         android:name="com.makeus.daycarat.presentation.fragment.UserInfoFragment"
         android:label="UserInfoFragment" />
+    <fragment
+        android:id="@+id/episodeDetailTypeFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeDetailTypeFragment"
+        android:label="EpisodeDetailTypeFragment" />
 </navigation>
 
 

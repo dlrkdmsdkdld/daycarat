@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_edit_text"
+    android:layout_marginTop="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="17dp"
+        tool:text="팀플 회의"
+        style="@style/sh4"
+        android:id="@+id/text_title"
+        android:textColor="@color/black"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        style="@style/b3"
+        tool:text="12/25"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/gray_scale_500"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        android:layout_marginStart="16dp"
+        android:id="@+id/text_date"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:textColor="@color/gray_scale_800"
+        style="@style/b3"
+        android:layout_marginTop="11dp"
+        android:ellipsize="end"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:id="@+id/text_des"
+        android:maxLines="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0"
+        android:layout_marginBottom="19dp"
+        tool:text = "배운 점 / 팀원 간의 소통에 있어 부족한 부분이 많이 보여 PM으로서 이를 해결하는 방법에 대한 소통에 있어 부족한 부분이 많이 보여 PM으로서 이를 해결하소통에 있어 부족한 부분이 많이 보여 PM으로서 이를 해결하."
+        app:layout_constraintTop_toBottomOf="@id/text_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="17dp"
+        app:layout_constraintEnd_toStartOf="@id/img_diamond"
+        android:layout_marginEnd="16dp"
+        style="@style/b4"
+        android:paddingEnd="7dp"
+        android:paddingStart="7dp"
+        tool:text = "커뮤니케이션"
+        android:paddingTop="5.5dp"
+        android:paddingBottom="5.5dp"
+        android:includeFontPadding="false"
+        android:textColor="@color/main"
+        android:background="@drawable/rectangle_episode_detail"
+        android:id="@+id/text_keyword"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/episode_diamond"
+        android:layout_marginTop="23dp"
+        android:layout_marginEnd="16dp"
+        android:id="@+id/img_diamond"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

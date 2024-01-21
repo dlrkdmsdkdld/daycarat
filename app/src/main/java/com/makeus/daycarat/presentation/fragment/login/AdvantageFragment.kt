@@ -1,16 +1,12 @@
-package com.makeus.daycarat.presentation.fragment
+package com.makeus.daycarat.presentation.fragment.login
 
-import android.content.Context
-import android.content.res.ColorStateList
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinAdvantageBinding
-import com.makeus.daycarat.databinding.FragmentJoinJobBinding
 import com.makeus.daycarat.presentation.login.JoinActivity
-import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.UiManager

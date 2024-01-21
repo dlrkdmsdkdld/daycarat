@@ -1,13 +1,11 @@
-package com.makeus.daycarat.presentation.fragment
+package com.makeus.daycarat.presentation.fragment.login
 
-import android.util.Log
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.activityViewModels
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinJobBinding
-import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
 import com.makeus.daycarat.databinding.ItemJoinJobBinding
 import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel

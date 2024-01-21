@@ -1,15 +1,11 @@
-package com.makeus.daycarat.presentation.fragment
+package com.makeus.daycarat.presentation.fragment.login
 
 import android.content.Intent
-import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.activityViewModels
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
-import com.makeus.daycarat.presentation.login.IntroduceActivity
 import com.makeus.daycarat.presentation.login.JoinActivity
-import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 
 
 class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(FragmentIntroduce1Binding::inflate) {

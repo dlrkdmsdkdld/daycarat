@@ -1,18 +1,13 @@
 package com.makeus.daycarat.presentation.login
 
-import android.os.Bundle
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
-import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.makeus.daycarat.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityIntroduceBinding
-import com.makeus.daycarat.databinding.ActivityMainBinding
-import com.makeus.daycarat.presentation.fragment.IntroduceFragment
+import com.makeus.daycarat.presentation.fragment.login.IntroduceFragment
 import com.makeus.daycarat.util.Extensions.navigationHeight
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
