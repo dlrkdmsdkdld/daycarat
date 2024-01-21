@@ -2,6 +2,7 @@ package com.makeus.daycarat.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
@@ -63,7 +65,16 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.infl
             }
             navController.navigate(R.id.editEpisodeFragment , args = null ,option , null )
         }
+        destinationListener()
+    }
+    fun destinationListener(){
+        navController.addOnDestinationChangedListener { _: NavController?, destination: NavDestination, _: Bundle? ->
+            if (destination.id == R.id.editEpisodeFragment){
+                binding.bottomNav.visibility = View.GONE
+            } else{
+                binding.bottomNav.visibility = View.VISIBLE
+            }
 
-
+        }
     }
 }
