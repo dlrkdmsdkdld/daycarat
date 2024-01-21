@@ -7,8 +7,6 @@
         android:background="@drawable/bg_spinner"
         android:layout_height="48dp">
 
-
-
         <TextView
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"

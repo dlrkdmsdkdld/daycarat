@@ -42,5 +42,21 @@ class EpisodeViewmodel @Inject constructor(private val repository: EpisodeReposi
             }
         }
     }
+    fun getActivityTagOderByDate(year:Int = 2024){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getActivityTagOderByDate(year).collect{ result ->
+                if (result.status == Status.SUCCESS){
+                    result.data?.let {
+                        _episodeCountList.emit(it)
+                        it.forEach {
+                            Log.d("GHLEE","it ${it.activityTagName} month ${it.month}quantity  ${it.quantity}")
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
 
 }

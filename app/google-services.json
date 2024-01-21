@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "827796195966",
+    "project_id": "daycarat-33a74",
+    "storage_bucket": "daycarat-33a74.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827796195966:android:0d3318456bfa2f7bb7262f",
+        "android_client_info": {
+          "package_name": "com.makeus.daycarat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwRZzDJR_EG3M75FaoTKuT7Gr2hCXZziw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

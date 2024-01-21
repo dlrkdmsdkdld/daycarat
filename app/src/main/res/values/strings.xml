@@ -114,6 +114,12 @@
     <string name="episode_type_activity">활동별</string>
     <string name="episode_type_day">날짜별</string>
 
-
+    <string-array name="des_years">
+        <item>2024</item>
+        <item>2023</item>
+        <item>2022</item>
+        <item>2021</item>
+        <item>2020</item>
+    </string-array>
     <!--    <string name="home_ai_des"></string>-->
 </resources>

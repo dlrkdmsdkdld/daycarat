@@ -24,5 +24,8 @@ interface EpisodeApi {
     suspend fun getUserMothEpisodeCount(@Query("year") year:Int ): ResponseBody<List<MonthEpisodeCount>>
 
     @GET("episode/activity")
-    suspend fun getActivityTagCount(): ResponseBody<List<EpisodeActivityCounter>>
+    suspend fun getActivityTagCountOderByCount(): ResponseBody<List<EpisodeActivityCounter>>
+
+    @GET("episode/date")
+    suspend fun getActivityTagCountOderByDate(@Query("year") year:Int): ResponseBody<List<EpisodeActivityCounter>>
 }
