@@ -6,8 +6,10 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.LinearLayout
+import androidx.core.os.bundleOf
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeActivityCounter
@@ -36,6 +38,9 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
 
     override fun initView() {
         binding.recyclerEpisode.adapter = episodeAdapter
+        episodeAdapter.onClick = {
+            findNavController().navigate(R.id.action_episodeFragment_to_episodeDetailTypeFragment , bundleOf("typeItem" to it) )
+        }
 
 
         repeatOnStarted {

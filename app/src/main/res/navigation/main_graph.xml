@@ -27,7 +27,11 @@
         android:label="EpisodeFragment" >
         <action
             android:id="@+id/action_episodeFragment_to_episodeDetailTypeFragment"
-            app:destination="@id/episodeDetailTypeFragment" />
+            app:destination="@id/episodeDetailTypeFragment" >
+
+        </action>
+
+
     </fragment>
     <fragment
         android:id="@+id/userInfoFragmen"
@@ -37,7 +41,11 @@
     <fragment
         android:id="@+id/episodeDetailTypeFragment"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeDetailTypeFragment"
-        android:label="EpisodeDetailTypeFragment" />
+        android:label="EpisodeDetailTypeFragment" >
+        <argument
+            android:name="typeItem"
+            app:argType="com.makeus.daycarat.data.EpisodeActivityCounter" />
+    </fragment>
 </navigation>
 
 

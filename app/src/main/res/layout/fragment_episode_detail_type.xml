@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
     android:layout_width="match_parent"
+    android:id="@+id/field_main"
     android:background="@color/gray_scale_50"
     android:layout_height="match_parent">
 
@@ -41,6 +42,7 @@
             android:layout_marginStart="8dp"
             tools:text ="12"
             style="@style/sh1"
+            android:id="@+id/text_count"
             android:textColor="@color/main"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="@id/text_title"
@@ -50,6 +52,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/recycler_content"
             android:layout_marginTop="17dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/item_episode_detail"

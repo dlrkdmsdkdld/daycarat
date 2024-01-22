@@ -6,6 +6,8 @@ import com.makeus.daycarat.data.EpisodeActivityCounter
 import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.MonthEpisodeCount
+import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import kotlinx.coroutines.delay
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -28,4 +30,10 @@ interface EpisodeApi {
 
     @GET("episode/date")
     suspend fun getActivityTagCountOderByDate(@Query("year") year:Int): ResponseBody<List<EpisodeActivityCounter>>
+
+
+    @GET("episode/date/{year}/{month}")
+    suspend fun getEpisodeOderByDate(@Path("year") year:Int , @Path("month") month:Int ,@Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6 ): ResponseBody<List<EpisodeDetailContent>>
+
 }
+

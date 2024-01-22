@@ -166,7 +166,8 @@ dependencies {
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
 
-
+    val paging_version = "3.1.1"
+    implementation("androidx.paging:paging-runtime:$paging_version")
 
 }
 kapt {

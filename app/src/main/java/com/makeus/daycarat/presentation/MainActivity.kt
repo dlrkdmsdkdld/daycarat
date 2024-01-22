@@ -37,21 +37,23 @@ import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.inflate(it)}) {
-    lateinit var navController : NavController
+class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inflate(it) }) {
+    lateinit var navController: NavController
     private val mainViewModel by lazy {
         ViewModelProvider(this).get(MainViewmodel::class.java)
     }
 
     override fun initView() {
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars = true // 스테이터스 바 아이콘 검은색
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
+            true // 스테이터스 바 아이콘 검은색
         //네비게이션들을 담는 호스트
-        val navHostFragment=supportFragmentManager.findFragmentById(R.id.myNavHost) as NavHostFragment
+        val navHostFragment =
+            supportFragmentManager.findFragmentById(R.id.myNavHost) as NavHostFragment
 
         //네비게이션 컨트롤러 가져옴
         navController = navHostFragment.navController
         //바텀네비게이션뷰와 네비게이션을 묶어준다
-        NavigationUI.setupWithNavController(binding.bottomNav , navController)
+        NavigationUI.setupWithNavController(binding.bottomNav, navController)
 
 
         binding.btnCenter.setOnClickListener {
@@ -63,16 +65,21 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ActivityMainBinding.infl
                     saveState = true
                 }
             }
-            navController.navigate(R.id.editEpisodeFragment , args = null ,option , null )
+            navController.navigate(R.id.editEpisodeFragment, args = null, option, null)
         }
         destinationListener()
     }
-    fun destinationListener(){
+
+    fun destinationListener() {
         navController.addOnDestinationChangedListener { _: NavController?, destination: NavDestination, _: Bundle? ->
-            if (destination.id == R.id.editEpisodeFragment){
-                binding.bottomNav.visibility = View.GONE
-            } else{
-                binding.bottomNav.visibility = View.VISIBLE
+            when (destination.id) {
+                R.id.editEpisodeFragment, R.id.episodeDetailTypeFragment -> {
+                    binding.bottomNav.visibility = View.GONE
+                }
+
+                else -> {
+                    binding.bottomNav.visibility = View.VISIBLE
+                }
             }
 
         }

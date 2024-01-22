@@ -14,9 +14,7 @@ import com.makeus.daycarat.databinding.LayoutSearchItemBinding
 class EpisodeTagAdapter(var list: List<EpisodeActivityCounter> ,
                         var viewType : EpisodeTagViewType ) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    var onclickActivity: ((String) -> Unit)? = null
-    var onclickDate: ((Int) -> Unit)? = null
-
+    var onClick: ((EpisodeActivityCounter) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val binding = ItemEpisodeCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
@@ -39,18 +37,14 @@ class EpisodeTagAdapter(var list: List<EpisodeActivityCounter> ,
     inner class ViewHolder(val binding: ItemEpisodeCardBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(data:EpisodeActivityCounter , type :EpisodeTagViewType ){
             if (type == EpisodeTagViewType.Activity){
-                binding.root.setOnClickListener {
-                    onclickActivity?.invoke(data.activityTagName)
-                }
                 binding.textTitle.text = data.activityTagName
             }else {
-                binding.root.setOnClickListener {
-                    onclickDate?.invoke(data.month)
-                }
                 binding.textTitle.text = "${data.month}월"
             }
             binding.textCount.text = data.quantity.toString()
-
+            binding.root.setOnClickListener {
+                onClick?.invoke(data)
+            }
 
         }
 
