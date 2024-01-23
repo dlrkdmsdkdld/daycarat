@@ -105,9 +105,8 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
     }
 
      fun getContentEpisodeByDatePaging(month :Int , year: Int): Flow<PagingData<EpisodeDetailContent>> {
-        return Pager(PagingConfig(pageSize = 10)){
-            EpisodeContentByDatePagingSource(apimodule, year = year , month = month)
-        }.flow
+         return Pager( config = PagingConfig(pageSize = 1) ,
+             pagingSourceFactory = {EpisodeContentByDatePagingSource(apimodule, year = year , month = month)} ).flow
     }
 
 

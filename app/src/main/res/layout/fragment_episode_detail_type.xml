@@ -50,6 +50,7 @@
             app:layout_constraintStart_toEndOf="@id/text_title"/>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:paddingBottom="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/recycler_content"

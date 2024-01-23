@@ -5,7 +5,7 @@ import android.os.Parcelable
 
 
 data class EpisodeActivityCounter (
-    var activityTagName : String ="" ,
+    var activityTagName : String?="" ,
     var month:Int = 0,
     var quantity:Int):Parcelable{
     constructor(parcel: Parcel) : this(

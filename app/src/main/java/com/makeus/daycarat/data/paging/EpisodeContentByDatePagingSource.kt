@@ -18,11 +18,12 @@ class EpisodeContentByDatePagingSource(private val retrofitInterface: EpisodeApi
     override suspend fun load(params: LoadParams<Int> ): LoadResult<Int, EpisodeDetailContent> {
         return try {
             val curKey = params.key ?: null
-            if (curKey != 1) delay(1_000L)
+//            if (curKey != 1) delay(1_000L)
             val response = retrofitInterface.getEpisodeOderByDate(year = year, month = month ,  cursorId =  curKey, )
 
             LoadResult.Page(data= response.result?: listOf() ,
-                prevKey = if(curKey == 1) null else { if (response.result?.isNullOrEmpty() == true) null else response.result?.firstOrNull()?.id }, //이전 페이지에 대한 정보
+//                prevKey = if(curKey == 1) null else { if (response.result?.isNullOrEmpty() == true) null else response.result?.firstOrNull()?.id }, //이전 페이지에 대한 정보
+                prevKey = null, //이전 페이지에 대한 정보
                 nextKey = if (response.result?.isNullOrEmpty() == true) null else response.result?.getOrNull(response.result.lastIndex)?.id
             )
 
