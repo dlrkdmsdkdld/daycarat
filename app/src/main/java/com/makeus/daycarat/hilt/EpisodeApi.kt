@@ -35,5 +35,9 @@ interface EpisodeApi {
     @GET("episode/date/{year}/{month}")
     suspend fun getEpisodeOderByDate(@Path("year") year:Int , @Path("month") month:Int ,@Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6 ): ResponseBody<List<EpisodeDetailContent>>
 
+    @GET("episode/activity/{activityTagName}")
+    suspend fun getEpisodeOderByCount(@Path("activityTagName") activityTagName:String, @Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6): ResponseBody<List<EpisodeDetailContent>>
+
+
 }
 

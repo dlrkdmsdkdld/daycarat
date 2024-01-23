@@ -45,6 +45,9 @@
         <argument
             android:name="typeItem"
             app:argType="com.makeus.daycarat.data.EpisodeActivityCounter" />
+        <argument
+            android:name="year"
+            app:argType="integer" />
     </fragment>
 </navigation>
 

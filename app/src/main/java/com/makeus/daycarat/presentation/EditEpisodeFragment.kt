@@ -135,6 +135,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
     }
     fun chcekSaveBtn() {
         var isEnable = true
+        if (binding.editTag.text.isNullOrEmpty()) isEnable = false
         viewModel.episodeContent.value.forEachIndexed { index, episodeContent ->
             if (episodeContent.content.isEmpty() || episodeContent.episodeContentType.isEmpty()) {
                 isEnable = false

@@ -22,9 +22,7 @@ class EpisodeViewmodel @Inject constructor(private val repository: EpisodeReposi
         MutableStateFlow<List<EpisodeActivityCounter>>(listOf<EpisodeActivityCounter>())
     val episodeCountList: StateFlow<List<EpisodeActivityCounter>> = _episodeCountList
 
-    init {
-        getActivityTagOderByCount()
-    }
+    var selectYear = 2024
 
     fun getActivityTagOderByCount(){
         viewModelScope.launch(Dispatchers.IO){
@@ -47,6 +45,7 @@ class EpisodeViewmodel @Inject constructor(private val repository: EpisodeReposi
             repository.getActivityTagOderByDate(year).collect{ result ->
                 if (result.status == Status.SUCCESS){
                     result.data?.let {
+                        selectYear = year
                         _episodeCountList.emit(it)
                         it.forEach {
                             Log.d("GHLEE","it ${it.activityTagName} month ${it.month}quantity  ${it.quantity}")

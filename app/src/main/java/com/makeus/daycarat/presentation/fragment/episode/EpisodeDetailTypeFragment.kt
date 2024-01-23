@@ -28,6 +28,10 @@ import kotlinx.coroutines.flow.collectLatest
 class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
     FragmentEpisodeDetailTypeBinding::inflate) {
 
+    private val pagingAdapter by lazy {
+        EpisodeDetailAdatper()
+    }
+
     private val viewModel by lazy {
         ViewModelProvider(this).get(EpisodeDetailTypeViewModel::class.java)
     }
@@ -37,50 +41,36 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
         val arg: EpisodeDetailTypeFragmentArgs by navArgs()
         val typeItem = arg.typeItem
 
-        if (typeItem.activityTagName.isNullOrEmpty()){
-            binding.textTitle.text = "${typeItem.month}월"
+
+        if (typeItem.activityTagName == null  ){
+            binding.textTitle.text = "${arg.year}년도 ${typeItem.month}월"
+            Log.d("GLHESSD" , " ${arg.year} ${typeItem.activityTagName}")
+            viewModel.getPagingEpisodeContentOrderByDate(arg.year , typeItem.month)
         }else{
             binding.textTitle.text = typeItem.activityTagName
+            viewModel.getPagingEpisodeContentOrderByCount(typeItem.activityTagName!!)
         }
+        collectEpisodeContent()
+
+
         binding.textCount.text = typeItem.quantity.toString()
         binding.btnBack.onThrottleClick {
             findNavController().popBackStack()
         }
 
 
-        val pagingAdapter = EpisodeDetailAdatper()
-//        pagingAdapter.withLoadStateHeaderAndFooter(
-//                header = PagingLoadingAdapter(pagingAdapter::retry),
-//                footer = PagingLoadingAdapter(pagingAdapter::retry) //TODO 페이징 로딩 어뎁터인데 정상 작동하는지는 체크필요
-//            )
-
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
-        binding.recyclerContent.apply {
-            layoutManager = LinearLayoutManager(context)
-        }
 
-
-        repeatOnStarted {
-            viewModel.episodeContents.collect{ pagingData ->
-                pagingAdapter.submitData(pagingData)
-
-            }
-        }
-
-        repeatOnStarted {
-            pagingAdapter.loadStateFlow.collectLatest {  value: CombinedLoadStates ->
-
-                Log.d("GHLEESIBAL","Loading ${value.refresh is LoadState.Loading} retry ${value.refresh !is LoadState.Loading} Error ${value.refresh is LoadState.Error}")
-                value.refresh
-
-            }
-        }
-
-
-//        Toast.makeText(context , "${typeItem.activityTagName} month ${typeItem.month} quantity ${typeItem.quantity}", Toast.LENGTH_SHORT).show()
 
     }
 
+    fun collectEpisodeContent(){
+        repeatOnStarted {
+            viewModel.episodeContentList.collect{ pagingData ->
+                pagingAdapter.submitData(pagingData)
+            }
+        }
+    }
     override fun initStatusBar() {
         binding.fieldMain.setPadding(
             0,

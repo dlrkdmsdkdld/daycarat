@@ -17,5 +17,6 @@ object Constant {
 
     const val USER_EPISODE_TAGS = "USER_EPISODE_TAGS"
 
+    const val NO_SOARA = "UNFINALIZED"
 
 }

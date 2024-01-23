@@ -39,7 +39,8 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
     override fun initView() {
         binding.recyclerEpisode.adapter = episodeAdapter
         episodeAdapter.onClick = {
-            findNavController().navigate(R.id.action_episodeFragment_to_episodeDetailTypeFragment , bundleOf("typeItem" to it) )
+            var tmpBundle = if(it.activityTagName == null ) bundleOf("typeItem" to it , "year" to viewModel.selectYear) else bundleOf("typeItem" to it , "year" to 0)
+            findNavController().navigate(R.id.action_episodeFragment_to_episodeDetailTypeFragment , tmpBundle )
         }
 
 
@@ -49,6 +50,12 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
                 else episodeAdapter.changeType(it , EpisodeTagViewType.Date)
             }
         }
+        initChipGroup()
+        initSpinner()
+
+
+    }
+    fun initChipGroup(){
         binding.chipGroup.setOnCheckedStateChangeListener { group, checkedIds ->
             if (binding.chipActivity.isChecked){
                 viewModel.getActivityTagOderByCount()
@@ -58,28 +65,33 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
                 viewModel.getActivityTagOderByDate()
             }
         }
+    }
 
+    fun initSpinner(){
         binding.spinnerYear.adapter = EpisodeCardSpinner(requireContext() , resources.getStringArray(R.array.des_years).toList())
         binding.spinnerYear.doOnNextLayout {
             binding.spinnerYear.onItemSelectedListener = object :
                 AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    p0: AdapterView<*>?,
-                    p1: View?,
-                    sortData: Int,
-                    p3: Long
-                ) {
+                override fun onItemSelected(p0: AdapterView<*>?, p1: View?, sortData: Int, p3: Long) {
                     resources.getStringArray(R.array.des_years).getOrNull(sortData)?.let {
                         viewModel.getActivityTagOderByDate(it.toInt())
                     }
-
                 }
 
-                override fun onNothingSelected(p0: AdapterView<*>?) {
-                }
+                override fun onNothingSelected(p0: AdapterView<*>?) {}
             }
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
+        if (binding.chipActivity.isChecked){
+            viewModel.getActivityTagOderByCount()
+            binding.spinnerYear.visibility = View.GONE
+        }else{
+            binding.spinnerYear.visibility = View.VISIBLE
+            viewModel.getActivityTagOderByDate()
+        }
     }
 
     override fun initStatusBar() {

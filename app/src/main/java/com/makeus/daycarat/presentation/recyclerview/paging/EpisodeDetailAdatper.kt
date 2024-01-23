@@ -1,6 +1,7 @@
 package com.makeus.daycarat.presentation.recyclerview.paging
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -18,6 +19,7 @@ import com.makeus.daycarat.databinding.ItemEpisodeDetailBinding
 import com.makeus.daycarat.databinding.ItemPagingLoadingBinding
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagAdapter
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagViewType
+import com.makeus.daycarat.util.Constant
 
 class EpisodeDetailAdatper () :
     PagingDataAdapter<EpisodeDetailContent, RecyclerView.ViewHolder>(object :DiffUtil.ItemCallback<EpisodeDetailContent>(){
@@ -46,6 +48,10 @@ class EpisodeDetailAdatper () :
             binding.textTitle.text = data.title
             binding.textDate.text = data.date
             binding.textDes.text = data.content
+            if (data.episodeState.equals(Constant.NO_SOARA)){
+                binding.textKeyword.visibility = View.GONE
+                binding.imgDiamond.visibility = View.GONE
+            }
 //            binding.textKeyword = data.episodeState
         }
 

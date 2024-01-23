@@ -17,6 +17,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="17dp"
         tool:text="팀플 회의"
+        android:includeFontPadding="false"
         style="@style/sh4"
         android:id="@+id/text_title"
         android:textColor="@color/black"
@@ -26,6 +27,7 @@
     <TextView
         style="@style/b3"
         tool:text="12/25"
+        android:includeFontPadding="false"
         android:layout_marginTop="4dp"
         android:textColor="@color/gray_scale_500"
         app:layout_constraintTop_toBottomOf="@id/text_title"
@@ -38,6 +40,7 @@
 
     <TextView
         android:textColor="@color/gray_scale_800"
+        android:includeFontPadding="false"
         style="@style/b3"
         android:layout_marginTop="11dp"
         android:ellipsize="end"
