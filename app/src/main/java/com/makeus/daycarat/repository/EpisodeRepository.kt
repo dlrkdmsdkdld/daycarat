@@ -22,7 +22,6 @@ import javax.inject.Inject
 class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
 
     suspend fun getUserMontlyEpisodeCount() = flow {
-        Log.d(Constant.TAG , "getUserMontlyEpisodeCount parseTimeToYear ${parseTimeToYear()}")
         emit(Resource.loading())
         try {
             val response = apimodule.getUserMothEpisodeCount(parseTimeToYear())
@@ -30,7 +29,6 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
                 emit(Resource.success(response.result))
             }else{
                 emit(Resource.error(response.message))
-//                emit(Resource.error(response.statusCode.toString()))
             }
         }catch (e:Exception){
             emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
@@ -54,7 +52,6 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
     }
 
     suspend fun getRecentEpisode() = flow {
-        Log.d(Constant.TAG , "getUserMontlyEpisodeCount parseTimeToYear ${parseTimeToYear()}")
         emit(Resource.loading())
         try {
             val response = apimodule.getRecentThreeEpisode()
@@ -62,7 +59,6 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
                 emit(Resource.success(response.result))
             }else{
                 emit(Resource.error(response.message))
-//                emit(Resource.error(response.statusCode.toString()))
             }
         }catch (e:Exception){
             emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
@@ -111,6 +107,21 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
     suspend fun getContentEpisodeByCountPaging(activityTag:String): Flow<PagingData<EpisodeDetailContent>> {
         return Pager( config = PagingConfig(pageSize = 1) ,
             pagingSourceFactory = {EpisodeContentByDatePagingSource(apimodule, year = 0 , month = 0 , activityTag = activityTag)} ).flow
+    }
+
+    suspend fun getEpisode(episodeId:Int ) = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getEpisode(episodeId)
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
     }
 
 

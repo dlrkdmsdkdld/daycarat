@@ -2,6 +2,7 @@ package com.makeus.daycarat.presentation.fragment.episode
 
 import android.util.Log
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -10,6 +11,7 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.datatransport.runtime.retries.Retries.retry
+import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeActivityCounter
 import com.makeus.daycarat.databinding.FragmentEpisodeDetailTypeBinding
@@ -57,9 +59,10 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
         binding.btnBack.onThrottleClick {
             findNavController().popBackStack()
         }
-
-
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
+        pagingAdapter.onclick = { id ->
+            findNavController().navigate(R.id.action_episodeDetailTypeFragment_to_episodeSeeContentFragment , bundleOf("episodeId" to id )  )
+        }
 
 
     }

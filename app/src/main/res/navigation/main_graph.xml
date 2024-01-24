@@ -40,6 +40,7 @@
         android:label="UserInfoFragment" />
     <fragment
         android:id="@+id/episodeDetailTypeFragment"
+        tools:layout="@layout/fragment_episode_detail_type"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeDetailTypeFragment"
         android:label="EpisodeDetailTypeFragment" >
         <argument
@@ -47,6 +48,18 @@
             app:argType="com.makeus.daycarat.data.EpisodeActivityCounter" />
         <argument
             android:name="year"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_episodeDetailTypeFragment_to_episodeSeeContentFragment"
+            app:destination="@id/episodeSeeContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/episodeSeeContentFragment"
+        tools:layout="@layout/fragment_episode_see_content"
+        android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeSeeContentFragment"
+        android:label="EpisodeSeeContentFragment" >
+        <argument
+            android:name="episodeId"
             app:argType="integer" />
     </fragment>
 </navigation>

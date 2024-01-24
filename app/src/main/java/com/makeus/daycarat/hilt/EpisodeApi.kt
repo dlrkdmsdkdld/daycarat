@@ -3,6 +3,7 @@ package com.makeus.daycarat.hilt
 import com.makeus.daycarat.core.dto.ResponseBody
 import com.makeus.daycarat.data.AllUserData
 import com.makeus.daycarat.data.EpisodeActivityCounter
+import com.makeus.daycarat.data.EpisodeFullContent
 import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.MonthEpisodeCount
@@ -38,6 +39,8 @@ interface EpisodeApi {
     @GET("episode/activity/{activityTagName}")
     suspend fun getEpisodeOderByCount(@Path("activityTagName") activityTagName:String, @Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6): ResponseBody<List<EpisodeDetailContent>>
 
+    @GET("episode/{episodeId}")
+    suspend fun getEpisode(@Path("episodeId") year:Int): ResponseBody<EpisodeFullContent>
 
 }
 

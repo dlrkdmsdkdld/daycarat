@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/gray_scale_50"
     android:layout_width="match_parent"
+    android:id="@+id/field_main"
     android:layout_height="match_parent">
 
     <ImageButton
@@ -74,7 +75,9 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="4dp"
-        android:id="@+id/field_add_point"/>
+        android:id="@+id/field_add_point">
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_add_edit"

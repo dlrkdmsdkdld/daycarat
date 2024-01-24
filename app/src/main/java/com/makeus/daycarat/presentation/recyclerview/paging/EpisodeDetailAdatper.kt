@@ -20,6 +20,7 @@ import com.makeus.daycarat.databinding.ItemPagingLoadingBinding
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagAdapter
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagViewType
 import com.makeus.daycarat.util.Constant
+import com.makeus.daycarat.util.Extensions.onThrottleClick
 
 class EpisodeDetailAdatper () :
     PagingDataAdapter<EpisodeDetailContent, RecyclerView.ViewHolder>(object :DiffUtil.ItemCallback<EpisodeDetailContent>(){
@@ -33,6 +34,8 @@ class EpisodeDetailAdatper () :
             return oldItem.title == newItem.title
         }
     }){
+
+    var onclick :((Int) -> Unit)? = null
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
         item?.let {(holder as ViewHolder).bind(it)  }
@@ -51,6 +54,9 @@ class EpisodeDetailAdatper () :
             if (data.episodeState.equals(Constant.NO_SOARA)){
                 binding.textKeyword.visibility = View.GONE
                 binding.imgDiamond.visibility = View.GONE
+            }
+            binding.root.onThrottleClick {
+                onclick?.invoke(data.id)
             }
 //            binding.textKeyword = data.episodeState
         }
