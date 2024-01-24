@@ -73,7 +73,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
     fun destinationListener() {
         navController.addOnDestinationChangedListener { _: NavController?, destination: NavDestination, _: Bundle? ->
             when (destination.id) {
-                R.id.editEpisodeFragment, R.id.episodeDetailTypeFragment -> {
+                R.id.editEpisodeFragment, R.id.episodeDetailTypeFragment , R.id.episodeSeeContentFragment -> {
                     binding.bottomNav.visibility = View.GONE
                 }
 

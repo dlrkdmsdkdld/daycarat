@@ -8,12 +8,12 @@
     <fragment
         android:id="@+id/homeFragment"
         tools:layout="@layout/fragment_home"
-        android:name="com.makeus.daycarat.presentation.HomeFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.HomeFragment"
         android:label="HomeFragment" />
     <fragment
         android:id="@+id/editEpisodeFragment"
         tools:layout="@layout/fragment_edit_episode"
-        android:name="com.makeus.daycarat.presentation.EditEpisodeFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.episode.EditEpisodeFragment"
         android:label="EditEpisodeFragment" />
     <fragment
         android:id="@+id/gemFragment"
@@ -23,7 +23,7 @@
     <fragment
         android:id="@+id/episodeFragment"
         tools:layout="@layout/fragment_episode"
-        android:name="com.makeus.daycarat.presentation.fragment.EpisodeFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeFragment"
         android:label="EpisodeFragment" >
         <action
             android:id="@+id/action_episodeFragment_to_episodeDetailTypeFragment"
@@ -34,7 +34,7 @@
 
     </fragment>
     <fragment
-        android:id="@+id/userInfoFragmen"
+        android:id="@+id/userInfoFragment"
         tools:layout="@layout/fragment_user_info"
         android:name="com.makeus.daycarat.presentation.fragment.UserInfoFragment"
         android:label="UserInfoFragment" />

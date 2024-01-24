@@ -1,11 +1,7 @@
-package com.makeus.daycarat.presentation.fragment
+package com.makeus.daycarat.presentation.fragment.episode
 
-import android.annotation.SuppressLint
-import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
-import android.widget.LinearLayout
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
@@ -14,13 +10,10 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeActivityCounter
 import com.makeus.daycarat.databinding.FragmentEpisodeBinding
-import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
-import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagAdapter
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagViewType
 import com.makeus.daycarat.presentation.spinner.EpisodeCardSpinner
-import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
-import com.makeus.daycarat.presentation.viewmodel.EpisodeViewmodel
+import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeViewmodel
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint

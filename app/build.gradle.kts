@@ -168,6 +168,7 @@ dependencies {
 
     val paging_version = "3.1.1"
     implementation("androidx.paging:paging-runtime:$paging_version")
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 
 }
 kapt {

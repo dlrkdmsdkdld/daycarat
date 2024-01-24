@@ -1,4 +1,4 @@
-package com.makeus.daycarat.presentation
+package com.makeus.daycarat.presentation.fragment
 
 import android.util.Log
 import android.view.View
@@ -8,14 +8,12 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.databinding.FragmentHomeBinding
+import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
-import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.Extensions.navigationHeight
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.UiManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

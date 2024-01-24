@@ -6,11 +6,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeContent
-import com.makeus.daycarat.databinding.FragmentEpisodeDetailTypeBinding
 import com.makeus.daycarat.databinding.FragmentEpisodeSeeContentBinding
 import com.makeus.daycarat.databinding.LayoutEpisodeDetailContentBinding
-import com.makeus.daycarat.presentation.viewmodel.EpisodeDetailTypeViewModel
-import com.makeus.daycarat.presentation.viewmodel.EpisodeSeeViewModel
+import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeSeeViewModel
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight

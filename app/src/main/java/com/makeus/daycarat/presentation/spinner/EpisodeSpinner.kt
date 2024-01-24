@@ -1,7 +1,6 @@
 package com.makeus.daycarat.presentation.spinner
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,10 +9,10 @@ import com.makeus.daycarat.DayCaratApplication
 import com.makeus.daycarat.R
 import com.makeus.daycarat.databinding.ItemSpinnerEpisodeBinding
 import com.makeus.daycarat.databinding.ItemSpinnerEpisodeDropdownBinding
-import com.makeus.daycarat.presentation.viewmodel.EditEpisodeViewmodel
+import com.makeus.daycarat.presentation.viewmodel.episode.EditEpisodeViewmodel
 
 
-class EpisodeSpinner(context: Context, var list: List<String>, var select:Int ,val viewmodel:EditEpisodeViewmodel)
+class EpisodeSpinner(context: Context, var list: List<String>, var select:Int ,val viewmodel: EditEpisodeViewmodel)
     : ArrayAdapter<String>(context, R.layout.item_spinner_episode, list) {
     override fun getCount(): Int {
         return list.size

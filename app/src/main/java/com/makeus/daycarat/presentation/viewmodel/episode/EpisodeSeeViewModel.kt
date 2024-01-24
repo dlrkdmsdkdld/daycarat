@@ -1,12 +1,9 @@
-package com.makeus.daycarat.presentation.viewmodel
+package com.makeus.daycarat.presentation.viewmodel.episode
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeFullContent
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
 import com.makeus.daycarat.repository.EpisodeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

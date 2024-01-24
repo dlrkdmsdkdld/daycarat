@@ -1,6 +1,5 @@
-package com.makeus.daycarat.presentation.viewmodel
+package com.makeus.daycarat.presentation.viewmodel.episode
 
-import android.content.Context
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -9,6 +8,7 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeRegister
+import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.parseIntToMonth
@@ -20,7 +20,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

@@ -1,13 +1,11 @@
-package com.makeus.daycarat.presentation.viewmodel
+package com.makeus.daycarat.presentation.viewmodel.episode
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeActivityCounter
-import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.repository.EpisodeRepository
-import com.makeus.daycarat.util.Constant
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

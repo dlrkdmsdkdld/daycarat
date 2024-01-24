@@ -6,16 +6,25 @@
     android:orientation="vertical"
     android:padding="6dp"
     android:background="@drawable/progress_bg" >
+<!--    <ProgressBar-->
+<!--        android:layout_width="72dp"-->
+<!--        android:layout_height="72dp"-->
+<!--        android:indeterminateDrawable="@drawable/progress_image" />-->
+
     <ProgressBar
-        android:layout_width="72dp"
-        android:layout_height="72dp"
-        android:indeterminateDrawable="@drawable/progress_image" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="Loading..."
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:textSize="16dp" />
+        style="@style/Widget.AppCompat.ProgressBar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/progress"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/bg_loading_paging"
+        android:indeterminateDuration="1000" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Loading..."
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:textSize="16dp" />
 </LinearLayout>

@@ -1,4 +1,4 @@
-package com.makeus.daycarat.presentation.viewmodel
+package com.makeus.daycarat.presentation.viewmodel.episode
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

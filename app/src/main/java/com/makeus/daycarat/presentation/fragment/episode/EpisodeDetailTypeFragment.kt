@@ -1,30 +1,20 @@
 package com.makeus.daycarat.presentation.fragment.episode
 
 import android.util.Log
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import androidx.paging.CombinedLoadStates
-import androidx.paging.LoadState
-import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.datatransport.runtime.retries.Retries.retry
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
-import com.makeus.daycarat.data.EpisodeActivityCounter
 import com.makeus.daycarat.databinding.FragmentEpisodeDetailTypeBinding
-import com.makeus.daycarat.databinding.FragmentUserInfoBinding
 import com.makeus.daycarat.presentation.recyclerview.paging.EpisodeDetailAdatper
 import com.makeus.daycarat.presentation.recyclerview.paging.PagingLoadingAdapter
-import com.makeus.daycarat.presentation.viewmodel.EpisodeDetailTypeViewModel
-import com.makeus.daycarat.presentation.viewmodel.EpisodeViewmodel
+import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeDetailTypeViewModel
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
