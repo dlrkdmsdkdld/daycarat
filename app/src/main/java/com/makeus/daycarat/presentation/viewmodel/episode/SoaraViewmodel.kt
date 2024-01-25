@@ -3,7 +3,6 @@ package com.makeus.daycarat.presentation.viewmodel.episode
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeFullContent
 import com.makeus.daycarat.repository.EpisodeRepository
@@ -17,29 +16,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class EpisodeSeeViewModel @Inject constructor(private val repository: EpisodeRepository) :
+class SoaraViewmodel @Inject constructor(private val repository: EpisodeRepository) :
     ViewModel() {
 
-
     private val _episodeConetent = MutableStateFlow<EpisodeFullContent>(EpisodeFullContent(0,"","","","", listOf<EpisodeContent>()))
-    val episodeConetent: SharedFlow<EpisodeFullContent> = _episodeConetent
+    val episodeConetent: StateFlow<EpisodeFullContent> = _episodeConetent
 
-
-    private val _episodeId = MutableStateFlow<Int>(0)
-    val episodeId: StateFlow<Int> = _episodeId
-
-    fun getEpisode(id: Int) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.getEpisode(id).collect { result ->
-                if (result.status == Status.SUCCESS) {
-                    result.data?.let { _episodeConetent.emit(it) }
-                }
-            }
+    fun setEpisode(data : EpisodeFullContent){
+        Log.d("GHLEESS","setEpisode")
+        viewModelScope.launch {
+            _episodeConetent.emit(data)
         }
     }
-    fun getEpisodeContent(): EpisodeFullContent {
-        return _episodeConetent.value
-    }
-
 
 }

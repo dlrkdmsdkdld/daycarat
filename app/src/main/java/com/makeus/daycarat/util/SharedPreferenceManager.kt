@@ -38,7 +38,11 @@ class SharedPreferenceManager(context: Context) {
         prefs.edit().putInt(key, num).commit()
     }
 
+    fun getBoolean(key: String, defValue: Boolean): Boolean = prefs.getBoolean(key, defValue)
 
+    fun setBoolean(key: String, value: Boolean) {
+        prefs.edit().putBoolean(key, value).commit()
+    }
     fun saveEpisodeActivityTag(newInput:String){
         var sharedDatas = prefs.getString(Constant.USER_EPISODE_TAGS, "")
         var arrJosn = if (sharedDatas!!.isNotEmpty()) JSONArray(sharedDatas) else JSONArray()

@@ -1,7 +1,13 @@
 package com.makeus.daycarat.data
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-data class EpisodeContent (
-    var episodeContentType : String ="" ,
-    var content:String ="")
+@Parcelize
+data class EpisodeContent(
+    var episodeContentType: String ="",
+    var content:String =""): Parcelable {
+
+}

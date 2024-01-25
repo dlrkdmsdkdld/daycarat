@@ -61,6 +61,18 @@
         <argument
             android:name="episodeId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_episodeSeeContentFragment_to_soaraFragment"
+            app:destination="@id/soaraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/soaraFragment"
+        tools:layout="@layout/fragment_soara"
+        android:name="com.makeus.daycarat.presentation.fragment.episode.SoaraFragment"
+        android:label="SoaraFragment" >
+        <argument
+            android:name="episodeContent"
+            app:argType="com.makeus.daycarat.data.EpisodeFullContent" />
     </fragment>
 </navigation>
 
