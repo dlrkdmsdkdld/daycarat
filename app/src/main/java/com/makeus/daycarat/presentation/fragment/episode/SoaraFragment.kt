@@ -55,6 +55,15 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
         repeatOnStarted {
             viewModel.episodeSoara.collectLatest {
                 checkAlreadyRegisterSoara(it)
+                binding.apply {
+
+                    Log.d("GHLEESS","iapply ${viewModel.episodeSoara.value.content1}")
+                    initNavigateSoara(fieldContent1 , 1 ,it.content1 )
+                    initNavigateSoara(fieldContent2 , 2 ,it.content2)
+                    initNavigateSoara(fieldContent3 , 3 ,it.content3 )
+                    initNavigateSoara(fieldContent4 , 4 ,it.content4 )
+                    initNavigateSoara(fieldContent5 , 5 ,it.content5)
+                }
             }
         }
 
@@ -69,13 +78,7 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
             findNavController().popBackStack()
         }
 
-        binding.apply {
-            initNavigateSoara(fieldContent1 , 1 ,viewModel.episodeSoara.value.content1 )
-            initNavigateSoara(fieldContent2 , 2 ,viewModel.episodeSoara.value.content2 )
-            initNavigateSoara(fieldContent3 , 3 ,viewModel.episodeSoara.value.content3 )
-            initNavigateSoara(fieldContent4 , 4 ,viewModel.episodeSoara.value.content4 )
-            initNavigateSoara(fieldContent5 , 5 ,viewModel.episodeSoara.value.content5 )
-        }
+
     }
 
     override fun initStatusBar() {

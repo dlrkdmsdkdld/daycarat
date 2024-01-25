@@ -2,6 +2,7 @@ package com.makeus.daycarat.presentation.fragment.episode
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
@@ -33,11 +34,12 @@ class EditSoaraFragment() : BaseFragment<FragmentEditSoaraBinding>(
     override fun initView() {
         val args: EditSoaraFragmentArgs by navArgs()
 
+        viewModel.initEpisodeData(args.episodeId, args.soaraContent, args.contentNum)
+        Log.d("GHLEESS","initView args.soaraContent ${args.soaraContent}")
         if (args.soaraContent.isNotEmpty()) {
             binding.editSoara.setText(args.soaraContent)
         }
 
-        viewModel.initEpisodeData(args.episodeId, args.soaraContent, args.contentNum)
         binding.editSoara.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
