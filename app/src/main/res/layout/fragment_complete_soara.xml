@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/field_main"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:layout_marginTop="220.5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_gravity="center"
+        android:src="@drawable/indicator_selected"
+        android:layout_width="136dp"
+        android:layout_height="136dp"/>
+
+    <TextView
+        android:text="보석이 가공중이에요!"
+        android:layout_marginTop="25dp"
+        android:layout_gravity="center"
+        android:textColor="@color/gray_scale_900"
+        style="@style/sh3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:textColor="@color/gray_scale_600"
+        style="@style/b2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="작업이 끝나면 알려드릴게요"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="216dp"
+        android:layout_height="48dp"
+        android:text="에피소드 목록으로 이동"
+        android:layout_marginEnd="16dp"
+        style="@style/sh6"
+        android:layout_gravity="center"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/selector_close_btn_text"
+        android:id="@+id/next_btn"
+        android:background="@drawable/selector_main_theme"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</LinearLayout>

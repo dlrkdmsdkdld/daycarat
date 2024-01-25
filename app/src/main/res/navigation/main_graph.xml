@@ -64,6 +64,9 @@
         <action
             android:id="@+id/action_episodeSeeContentFragment_to_soaraFragment"
             app:destination="@id/soaraFragment" />
+        <action
+            android:id="@+id/action_episodeSeeContentFragment_to_completeSoaraFragment"
+            app:destination="@id/completeSoaraFragment" />
     </fragment>
     <fragment
         android:id="@+id/soaraFragment"
@@ -73,30 +76,37 @@
         <argument
             android:name="episodeContent"
             app:argType="com.makeus.daycarat.data.EpisodeFullContent" />
+        <action
+            android:id="@+id/action_soaraFragment_to_editSoaraFragment"
+            app:destination="@id/editSoaraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editSoaraFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.episode.EditSoaraFragment"
+        android:label="EditSoaraFragment" >
+        <action
+            tools:layout="@layout/fragment_edit_soara"
+            android:id="@+id/action_editSoaraFragment_to_soaraFragment"
+            app:destination="@id/soaraFragment" />
+        <argument
+            android:name="episode_id"
+            app:argType="integer" />
+        <argument
+            android:name="content_num"
+            app:argType="integer" />
+        <argument
+            android:name="soara_content"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_complete_soara"
+        android:id="@+id/completeSoaraFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.episode.CompleteSoaraFragment"
+        android:label="CompleteSoaraFragment" >
+        <action
+            android:id="@+id/action_completeSoaraFragment_to_episodeFragment"
+            app:destination="@id/episodeFragment" />
     </fragment>
 </navigation>
 
 
-<!--    <?xml version="1.0" encoding="utf-8"?>-->
-<!--<navigation xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--xmlns:tools="http://schemas.android.com/tools"-->
-<!--android:id="@+id/nav_graph"-->
-<!--app:startDestination="@id/homeFragment">-->
-
-<!--<fragment-->
-<!--    android:id="@+id/homeFragment"-->
-<!--    android:name="kr.ac.kpu.ce2017154024.mytamin.fragment.HomeFragment"-->
-<!--    android:label="fragment_home"-->
-<!--    tools:layout="@layout/fragment_home" />-->
-<!--<fragment-->
-<!--    android:id="@+id/historyFragment"-->
-<!--    android:name="kr.ac.kpu.ce2017154024.mytamin.fragment.HistoryFragment"-->
-<!--    android:label="fragment_history"-->
-<!--    tools:layout="@layout/fragment_history" />-->
-<!--<fragment-->
-<!--    android:id="@+id/userInformationFragment"-->
-<!--    android:name="kr.ac.kpu.ce2017154024.mytamin.fragment.UserInformationFragment"-->
-<!--    android:label="fragment_user_information"-->
-<!--    tools:layout="@layout/fragment_information" />-->
-<!--</navigation>-->

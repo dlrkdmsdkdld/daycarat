@@ -138,6 +138,15 @@ object ApiModule {
             .build()
             .create(EpisodeApi::class.java)
 
-
+    @Provides
+    @Singleton
+    fun provideGemService(okHttpClient: OkHttpClient , tokenIntercptor:Interceptor): GemApi =
+        Retrofit.Builder()
+            .baseUrl(Constant.BASE_URL)
+//            .client(okHttpClient.newBuilder().addInterceptor(tokenIntercptor).build())
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(GemApi::class.java)
 
 }

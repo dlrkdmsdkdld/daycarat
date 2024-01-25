@@ -3,11 +3,15 @@ package com.makeus.daycarat.presentation.fragment.episode
 import android.util.Log
 import android.view.View
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeContent
+import com.makeus.daycarat.data.SoaraContent
 import com.makeus.daycarat.databinding.FragmentGemBinding
 import com.makeus.daycarat.databinding.FragmentSoaraBinding
 import com.makeus.daycarat.databinding.LayoutEpisodeDetailContentBinding
@@ -48,6 +52,12 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
             }
         }
 
+        repeatOnStarted {
+            viewModel.episodeSoara.collectLatest {
+                checkAlreadyRegisterSoara(it)
+            }
+        }
+
 
         binding.fieldAddPoint.isVisible = SharedPreferenceManager.getInstance().getBoolean(IS_USER_LAST_FOLD_EPISODE , true)
         binding.btnFoleEpiosde.onThrottleClick {
@@ -55,7 +65,17 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
             SharedPreferenceManager.getInstance().setBoolean(IS_USER_LAST_FOLD_EPISODE , !now)
             binding.fieldAddPoint.isVisible = !now
         }
+        binding.btnBack.onThrottleClick {
+            findNavController().popBackStack()
+        }
 
+        binding.apply {
+            initNavigateSoara(fieldContent1 , 1 ,viewModel.episodeSoara.value.content1 )
+            initNavigateSoara(fieldContent2 , 2 ,viewModel.episodeSoara.value.content2 )
+            initNavigateSoara(fieldContent3 , 3 ,viewModel.episodeSoara.value.content3 )
+            initNavigateSoara(fieldContent4 , 4 ,viewModel.episodeSoara.value.content4 )
+            initNavigateSoara(fieldContent5 , 5 ,viewModel.episodeSoara.value.content5 )
+        }
     }
 
     override fun initStatusBar() {
@@ -66,6 +86,23 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
             0
         )
     }
+    fun checkAlreadyRegisterSoara(soara: SoaraContent){
+        soara.gemId?.let {
+            binding.fieldContent1.isSelected = soara.content1.isNotEmpty()
+            binding.fieldContent2.isSelected = soara.content2.isNotEmpty()
+            binding.fieldContent3.isSelected = soara.content3.isNotEmpty()
+            binding.fieldContent4.isSelected = soara.content4.isNotEmpty()
+            binding.fieldContent5.isSelected = soara.content5.isNotEmpty()
 
+        }?:run{
+
+        }
+    }
+    fun initNavigateSoara(view:View , num : Int , content:String){
+        view.onThrottleClick {
+            findNavController().navigate(R.id.action_soaraFragment_to_editSoaraFragment ,
+                bundleOf("content_num" to num , "soara_content" to content , "episode_id" to viewModel.episodeConetent.value.episodeId )  )
+        }
+    }
 
 }

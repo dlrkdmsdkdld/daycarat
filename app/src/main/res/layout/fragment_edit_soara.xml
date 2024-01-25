@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/field_main"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32.5dp"
+        android:layout_marginStart="16dp"
+        android:id="@+id/btn_back"
+        android:background="@color/transparent"
+        android:src="@drawable/icon_arrow_left"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="완료"
+        style="@style/b1"
+        android:enabled="true"
+        android:textColor="@color/selector_edit_episode_save_text"
+        android:layout_marginTop="32.5dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/btn_complete"/>
+
+    <TextView
+        android:layout_marginTop="26dp"
+        android:text="어떤 상황 또는 어떤 문제였나요?"
+        style="@style/sh3"
+        android:id="@+id/text_title"
+        android:textColor="@color/gray_scale_900"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        style="@style/b3"
+        android:id="@+id/text_des"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/gray_scale_700"
+        android:layout_marginStart="16dp"
+        android:text="해당 에피소드의 상황을 구체적으로 적어주세요"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edit_soara"
+        style="@style/b1"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintTop_toBottomOf="@id/text_des"
+        android:gravity="start"
+        android:padding="16dp"
+        android:hint="내용을 입력해주세요"
+        android:textColorHint="@color/gray_scale_400"
+        android:textColor="@color/black"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/bg_edit_text"
+        android:layout_width="match_parent"
+        android:maxLength="200"
+        android:layout_height="wrap_content"
+        android:minHeight="192dp"/>
+
+    <TextView
+        android:id="@+id/text_count"
+        tools:text="0/200"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="@id/edit_soara"
+        app:layout_constraintBottom_toTopOf="@id/edit_soara"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
