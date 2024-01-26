@@ -24,6 +24,20 @@ class EpisodeDetailTypeViewModel @Inject constructor(private val repository: Epi
     private val _episodeContentList = MutableSharedFlow<PagingData<EpisodeDetailContent>>()
     val episodeContentList: SharedFlow<PagingData<EpisodeDetailContent>> = _episodeContentList
 
+    var year:Int = 0
+    var typeItem:EpisodeActivityCounter? = null
+
+    fun startPaging(tmpYear : Int ,tmptypeItem :EpisodeActivityCounter){
+        typeItem = tmptypeItem
+        year = tmpYear
+        if (typeItem?.activityTagName == null  ){
+            getPagingEpisodeContentOrderByDate(year , typeItem!!.month)
+        }else{
+            getPagingEpisodeContentOrderByCount(typeItem?.activityTagName!!)
+        }
+    }
+
+
     fun getPagingEpisodeContentOrderByDate(year:Int , month:Int){
         viewModelScope.launch(Dispatchers.IO){
             repository.getContentEpisodeByDatePaging(month = month, year = year ).cachedIn(viewModelScope).collect{

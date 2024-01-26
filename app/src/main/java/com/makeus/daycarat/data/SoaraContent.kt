@@ -11,15 +11,15 @@ data class SoaraContent(
     @SerializedName("gemId")
     var gemId: Int?, // gemId가 null이 아니면 쏘아라 내용받아오기 null이면 등록
     @SerializedName("content1")
-    var content1: String = "",
+    var content1: String?=null,
     @SerializedName("content2")
-    var content2: String = "",
+    var content2: String?=null,
     @SerializedName("content3")
-    var content3: String = "",
+    var content3: String?=null,
     @SerializedName("content4")
-    var content4: String = "",
+    var content4: String?=null,
     @SerializedName("content5")
-    var content5: String = ""
+    var content5: String?=null
 ) : Parcelable
 
 fun SoaraContent?.setContent(episodeId: Int, contentNum: Int, content: String): SoaraContent {

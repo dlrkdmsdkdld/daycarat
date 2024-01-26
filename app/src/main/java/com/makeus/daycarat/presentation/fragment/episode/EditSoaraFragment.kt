@@ -4,8 +4,11 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.navigation.navOptions
+import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentEditSoaraBinding
 import com.makeus.daycarat.databinding.FragmentGemBinding
@@ -74,6 +77,8 @@ class EditSoaraFragment() : BaseFragment<FragmentEditSoaraBinding>(
 
                     else -> {
                         (activity as MainActivity).loadingDialog.dismiss()
+                        findNavController().popBackStack()
+//                        findNavController().navigate(R.id.action_editSoaraFragment_to_soaraFragment)
                     }
                 }
             }

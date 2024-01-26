@@ -7,27 +7,27 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        tools:layout="@layout/fragment_home"
         android:name="com.makeus.daycarat.presentation.fragment.HomeFragment"
-        android:label="HomeFragment" />
+        android:label="HomeFragment"
+        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/editEpisodeFragment"
-        tools:layout="@layout/fragment_edit_episode"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EditEpisodeFragment"
-        android:label="EditEpisodeFragment" />
+        android:label="EditEpisodeFragment"
+        tools:layout="@layout/fragment_edit_episode" />
     <fragment
         android:id="@+id/gemFragment"
-        tools:layout="@layout/fragment_gem"
         android:name="com.makeus.daycarat.presentation.fragment.GemFragment"
-        android:label="GemFragment" />
+        android:label="GemFragment"
+        tools:layout="@layout/fragment_gem" />
     <fragment
         android:id="@+id/episodeFragment"
-        tools:layout="@layout/fragment_episode"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeFragment"
-        android:label="EpisodeFragment" >
+        android:label="EpisodeFragment"
+        tools:layout="@layout/fragment_episode">
         <action
             android:id="@+id/action_episodeFragment_to_episodeDetailTypeFragment"
-            app:destination="@id/episodeDetailTypeFragment" >
+            app:destination="@id/episodeDetailTypeFragment">
 
         </action>
 
@@ -35,19 +35,20 @@
     </fragment>
     <fragment
         android:id="@+id/userInfoFragment"
-        tools:layout="@layout/fragment_user_info"
         android:name="com.makeus.daycarat.presentation.fragment.UserInfoFragment"
-        android:label="UserInfoFragment" />
+        android:label="UserInfoFragment"
+        tools:layout="@layout/fragment_user_info" />
     <fragment
         android:id="@+id/episodeDetailTypeFragment"
-        tools:layout="@layout/fragment_episode_detail_type"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeDetailTypeFragment"
-        android:label="EpisodeDetailTypeFragment" >
+        android:label="EpisodeDetailTypeFragment"
+        tools:layout="@layout/fragment_episode_detail_type">
         <argument
             android:name="typeItem"
             app:argType="com.makeus.daycarat.data.EpisodeActivityCounter" />
         <argument
             android:name="year"
+
             app:argType="integer" />
         <action
             android:id="@+id/action_episodeDetailTypeFragment_to_episodeSeeContentFragment"
@@ -55,39 +56,39 @@
     </fragment>
     <fragment
         android:id="@+id/episodeSeeContentFragment"
-        tools:layout="@layout/fragment_episode_see_content"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeSeeContentFragment"
-        android:label="EpisodeSeeContentFragment" >
+        android:label="EpisodeSeeContentFragment"
+        tools:layout="@layout/fragment_episode_see_content">
         <argument
             android:name="episodeId"
             app:argType="integer" />
         <action
             android:id="@+id/action_episodeSeeContentFragment_to_soaraFragment"
             app:destination="@id/soaraFragment" />
-        <action
-            android:id="@+id/action_episodeSeeContentFragment_to_completeSoaraFragment"
-            app:destination="@id/completeSoaraFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/soaraFragment"
-        tools:layout="@layout/fragment_soara"
         android:name="com.makeus.daycarat.presentation.fragment.episode.SoaraFragment"
-        android:label="SoaraFragment" >
+        android:label="SoaraFragment"
+        tools:layout="@layout/fragment_soara">
         <argument
             android:name="episodeContent"
             app:argType="com.makeus.daycarat.data.EpisodeFullContent" />
         <action
             android:id="@+id/action_soaraFragment_to_editSoaraFragment"
             app:destination="@id/editSoaraFragment" />
+        <action
+            android:id="@+id/action_soaraFragment_to_completeSoaraFragment"
+            app:destination="@id/completeSoaraFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/completeSoaraFragment"
+            app:restoreState="true" />
     </fragment>
     <fragment
         android:id="@+id/editSoaraFragment"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EditSoaraFragment"
-        android:label="EditSoaraFragment" >
-        <action
-            tools:layout="@layout/fragment_edit_soara"
-            android:id="@+id/action_editSoaraFragment_to_soaraFragment"
-            app:destination="@id/soaraFragment" />
+        android:label="EditSoaraFragment">
         <argument
             android:name="episode_id"
             app:argType="integer" />
@@ -99,13 +100,18 @@
             app:argType="string" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_complete_soara"
         android:id="@+id/completeSoaraFragment"
         android:name="com.makeus.daycarat.presentation.fragment.episode.CompleteSoaraFragment"
-        android:label="CompleteSoaraFragment" >
+        android:label="CompleteSoaraFragment"
+        tools:layout="@layout/fragment_complete_soara">
+
         <action
-            android:id="@+id/action_completeSoaraFragment_to_episodeFragment"
-            app:destination="@id/episodeFragment" />
+            android:id="@+id/action_completeSoaraFragment_to_episodeDetailTypeFragment"
+            app:destination="@id/episodeDetailTypeFragment"
+            app:launchSingleTop="true"
+            app:restoreState="true"
+            app:popUpToInclusive="false"
+            app:popUpTo="@id/episodeDetailTypeFragment" />
     </fragment>
 </navigation>
 

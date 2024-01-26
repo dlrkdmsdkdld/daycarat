@@ -1,7 +1,9 @@
 package com.makeus.daycarat.presentation.fragment.episode
 
+import android.graphics.Color
 import android.util.Log
 import android.view.View
+import android.widget.ImageView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -56,13 +58,11 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
             viewModel.episodeSoara.collectLatest {
                 checkAlreadyRegisterSoara(it)
                 binding.apply {
-
-                    Log.d("GHLEESS","iapply ${viewModel.episodeSoara.value.content1}")
-                    initNavigateSoara(fieldContent1 , 1 ,it.content1 )
-                    initNavigateSoara(fieldContent2 , 2 ,it.content2)
-                    initNavigateSoara(fieldContent3 , 3 ,it.content3 )
-                    initNavigateSoara(fieldContent4 , 4 ,it.content4 )
-                    initNavigateSoara(fieldContent5 , 5 ,it.content5)
+                    initNavigateSoara(fieldContent1 , 1 ,it.content1?:"" )
+                    initNavigateSoara(fieldContent2 , 2 ,it.content2?:"")
+                    initNavigateSoara(fieldContent3 , 3 ,it.content3?:"" )
+                    initNavigateSoara(fieldContent4 , 4 ,it.content4?:"" )
+                    initNavigateSoara(fieldContent5 , 5 ,it.content5?:"")
                 }
             }
         }
@@ -76,6 +76,9 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
         }
         binding.btnBack.onThrottleClick {
             findNavController().popBackStack()
+        }
+        binding.nextBtn.onThrottleClick {
+            findNavController().navigate(R.id.action_soaraFragment_to_completeSoaraFragment)
         }
 
 
@@ -91,21 +94,28 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
     }
     fun checkAlreadyRegisterSoara(soara: SoaraContent){
         soara.gemId?.let {
-            binding.fieldContent1.isSelected = soara.content1.isNotEmpty()
-            binding.fieldContent2.isSelected = soara.content2.isNotEmpty()
-            binding.fieldContent3.isSelected = soara.content3.isNotEmpty()
-            binding.fieldContent4.isSelected = soara.content4.isNotEmpty()
-            binding.fieldContent5.isSelected = soara.content5.isNotEmpty()
-
-        }?:run{
-
+            changeCheckImage(binding.imgArrow1 ,!soara.content1.isNullOrEmpty() , binding.fieldContent1 )
+            changeCheckImage(binding.imgArrow2 ,!soara.content2.isNullOrEmpty() , binding.fieldContent2 )
+            changeCheckImage(binding.imgArrow3 ,!soara.content3.isNullOrEmpty() , binding.fieldContent3 )
+            changeCheckImage(binding.imgArrow4 ,!soara.content4.isNullOrEmpty() , binding.fieldContent4 )
+            changeCheckImage(binding.imgArrow5 ,!soara.content5.isNullOrEmpty() , binding.fieldContent5 )
+            cheackCompleteSoara()
         }
+
+    }
+    fun changeCheckImage(view:ImageView , alreadyDone:Boolean , fieldView:View){
+        if (alreadyDone) view.setColorFilter(Color.parseColor("#7241FF"))
+        else view.clearColorFilter()
+        fieldView.isSelected = alreadyDone
     }
     fun initNavigateSoara(view:View , num : Int , content:String){
         view.onThrottleClick {
             findNavController().navigate(R.id.action_soaraFragment_to_editSoaraFragment ,
                 bundleOf("content_num" to num , "soara_content" to content , "episode_id" to viewModel.episodeConetent.value.episodeId )  )
         }
+    }
+    fun cheackCompleteSoara(){
+        binding.nextBtn.isEnabled =  binding.fieldContent1.isSelected && binding.fieldContent2.isSelected && binding.fieldContent3.isSelected && binding.fieldContent4.isSelected && binding.fieldContent5.isSelected
     }
 
 }

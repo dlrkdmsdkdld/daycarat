@@ -9,8 +9,9 @@
     <ImageButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32.5dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="27.5dp"
+        android:layout_marginStart="11dp"
+        android:padding="5dp"
         android:id="@+id/btn_back"
         android:background="@color/transparent"
         android:src="@drawable/icon_arrow_left"
@@ -24,14 +25,15 @@
         style="@style/b1"
         android:enabled="true"
         android:textColor="@color/selector_edit_episode_save_text"
-        android:layout_marginTop="32.5dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="27.5dp"
+        android:layout_marginEnd="11dp"
+        android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/btn_complete"/>
 
     <TextView
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="21dp"
         android:text="어떤 상황 또는 어떤 문제였나요?"
         style="@style/sh3"
         android:id="@+id/text_title"
