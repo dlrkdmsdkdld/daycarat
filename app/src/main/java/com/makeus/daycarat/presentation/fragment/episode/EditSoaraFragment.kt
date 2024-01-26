@@ -38,7 +38,6 @@ class EditSoaraFragment() : BaseFragment<FragmentEditSoaraBinding>(
         val args: EditSoaraFragmentArgs by navArgs()
 
         viewModel.initEpisodeData(args.episodeId, args.soaraContent, args.contentNum)
-        Log.d("GHLEESS","initView args.soaraContent ${args.soaraContent}")
         if (args.soaraContent.isNotEmpty()) {
             binding.editSoara.setText(args.soaraContent)
         }
@@ -53,11 +52,12 @@ class EditSoaraFragment() : BaseFragment<FragmentEditSoaraBinding>(
             }
 
         })
-
         repeatOnStarted {
             viewModel.episodeTemp.collectLatest {
                 binding.btnComplete.isEnabled = it.episodeConetent.isNotEmpty()
                 binding.textCount.text = "${it.episodeConetent.length}/200"
+                binding.textTitle.text = resources.getString(resources.getIdentifier("soara_content${it.contentNum}", "string", context?.packageName))
+                binding.textDes.text = resources.getString(resources.getIdentifier("soara_des${it.contentNum}", "string", context?.packageName))
             }
         }
         binding.btnBack.onThrottleClick {

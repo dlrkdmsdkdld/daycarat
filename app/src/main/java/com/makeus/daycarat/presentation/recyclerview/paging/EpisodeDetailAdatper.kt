@@ -73,7 +73,7 @@ class EpisodeDetailAdatper() :
                 data.episodeKeyword?.let {
                     binding.textKeyword.text = it
                 } ?: kotlin.run {
-                    binding.textKeyword.visibility = View.GONE
+                    binding.textKeyword.visibility = View.INVISIBLE // Invisible로 하셈 키워드로 다이아 위치조정해서그럼
 //                    binding.textKeyword.text = ""
                 }
                 binding.textKeyword.visibility = View.VISIBLE

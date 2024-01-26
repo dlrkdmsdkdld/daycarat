@@ -62,7 +62,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="17dp"
         app:layout_constraintEnd_toStartOf="@id/img_diamond"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         style="@style/b4"
         android:paddingEnd="7dp"
         android:paddingStart="7dp"
@@ -77,10 +77,10 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@id/text_keyword"
+        app:layout_constraintBottom_toBottomOf="@id/text_keyword"
         app:layout_constraintEnd_toEndOf="parent"
         android:src="@drawable/episode_diamond"
-        android:layout_marginTop="23dp"
         android:layout_marginEnd="16dp"
         android:id="@+id/img_diamond"/>
 

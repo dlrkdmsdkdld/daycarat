@@ -121,5 +121,16 @@
         <item>2021</item>
         <item>2020</item>
     </string-array>
+
+    <string name="soara_content1">어떤 상황 또는 어떤 문제였나요?</string>
+    <string name="soara_des1">해당 에피소드의 상황을 구체적으로 적어주세요</string>
+    <string name="soara_content2">당시 무엇을 성취하는 것이 목표였나요?</string>
+    <string name="soara_des2"></string>
+    <string name="soara_content3">목표를 위해 구체적으로 어떤 행동을 하였나요?</string>
+    <string name="soara_des3"></string>
+    <string name="soara_content4">그로 인해 어떤 결과가 발생했나요?</string>
+    <string name="soara_des4"></string>
+    <string name="soara_content5">그 결과가 내게 미친 영향은 무엇인가요?</string>
+    <string name="soara_des5"></string>
     <!--    <string name="home_ai_des"></string>-->
 </resources>

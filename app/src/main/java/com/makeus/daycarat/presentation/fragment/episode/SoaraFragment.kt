@@ -19,6 +19,7 @@ import com.makeus.daycarat.databinding.FragmentSoaraBinding
 import com.makeus.daycarat.databinding.LayoutEpisodeDetailContentBinding
 import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeSeeViewModel
 import com.makeus.daycarat.presentation.viewmodel.episode.SoaraViewmodel
+import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
@@ -115,7 +116,8 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
         }
     }
     fun cheackCompleteSoara(){
-        binding.nextBtn.isEnabled =  binding.fieldContent1.isSelected && binding.fieldContent2.isSelected && binding.fieldContent3.isSelected && binding.fieldContent4.isSelected && binding.fieldContent5.isSelected
+
+        binding.nextBtn.isEnabled = viewModel.episodeConetent.value.episodeState.equals(Constant.NO_SOARA) && binding.fieldContent1.isSelected && binding.fieldContent2.isSelected && binding.fieldContent3.isSelected && binding.fieldContent4.isSelected && binding.fieldContent5.isSelected
     }
 
 }

@@ -38,7 +38,7 @@
         style="@style/sh3"
         android:id="@+id/text_title"
         android:textColor="@color/gray_scale_900"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="21dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_back"
         android:layout_width="wrap_content"
