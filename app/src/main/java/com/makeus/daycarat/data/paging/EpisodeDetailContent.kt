@@ -5,6 +5,7 @@ data class EpisodeDetailContent(
     val title:String,
     val date:String,
     val episodeState :String,
+    val episodeKeyword :String?,
     val content :String
 ) {
 }

@@ -2,6 +2,7 @@ package com.makeus.daycarat.repository
 
 import android.util.Log
 import com.makeus.daycarat.core.dto.Resource
+import com.makeus.daycarat.data.EpisodeId
 import com.makeus.daycarat.data.SoaraContent
 import com.makeus.daycarat.hilt.GemApi
 import com.makeus.daycarat.hilt.UserInfoApi
@@ -43,7 +44,20 @@ class GemRepository @Inject constructor(private val apimodule: GemApi) {
             e.printStackTrace()
         }
     }
-
+    suspend fun completeSoara(episodeId: Int) = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.completeSoara(EpisodeId(episodeId))
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
 
 
 

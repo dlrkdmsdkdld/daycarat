@@ -29,23 +29,21 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
     }
 
     override fun initView() {
-
         val arg: EpisodeDetailTypeFragmentArgs by navArgs()
-        val typeItem = arg.typeItem
+        viewModel.startPaging(arg.year , arg.typeItem)
 
 
-        if (typeItem.activityTagName == null  ){
-            binding.textTitle.text = "${arg.year}년도 ${typeItem.month}월"
-            Log.d("GLHESSD" , " ${arg.year} ${typeItem.activityTagName}")
-            viewModel.getPagingEpisodeContentOrderByDate(arg.year , typeItem.month)
+        if (viewModel.typeItem?.activityTagName == null  ){
+            binding.textTitle.text = "${viewModel.year}년도 ${viewModel.typeItem?.month}월"
+//            viewModel.getPagingEpisodeContentOrderByDate(arg.year , typeItem.month)
         }else{
-            binding.textTitle.text = typeItem.activityTagName
-            viewModel.getPagingEpisodeContentOrderByCount(typeItem.activityTagName!!)
+            binding.textTitle.text = viewModel.typeItem?.activityTagName
+//            viewModel.getPagingEpisodeContentOrderByCount(typeItem.activityTagName!!)
         }
         collectEpisodeContent()
 
 
-        binding.textCount.text = typeItem.quantity.toString()
+        binding.textCount.text = viewModel.typeItem?.quantity.toString()
         binding.btnBack.onThrottleClick {
             findNavController().popBackStack()
         }

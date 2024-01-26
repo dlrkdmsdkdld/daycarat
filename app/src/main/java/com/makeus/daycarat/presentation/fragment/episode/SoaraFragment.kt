@@ -78,7 +78,7 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
             findNavController().popBackStack()
         }
         binding.nextBtn.onThrottleClick {
-            findNavController().navigate(R.id.action_soaraFragment_to_completeSoaraFragment)
+            findNavController().navigate(R.id.action_soaraFragment_to_completeSoaraFragment , bundleOf("episode_id" to viewModel.episodeConetent.value.episodeId))
         }
 
 

@@ -48,7 +48,6 @@
             app:argType="com.makeus.daycarat.data.EpisodeActivityCounter" />
         <argument
             android:name="year"
-
             app:argType="integer" />
         <action
             android:id="@+id/action_episodeDetailTypeFragment_to_episodeSeeContentFragment"
@@ -87,6 +86,7 @@
     </fragment>
     <fragment
         android:id="@+id/editSoaraFragment"
+        tools:layout="@layout/fragment_edit_soara"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EditSoaraFragment"
         android:label="EditSoaraFragment">
         <argument
@@ -104,7 +104,9 @@
         android:name="com.makeus.daycarat.presentation.fragment.episode.CompleteSoaraFragment"
         android:label="CompleteSoaraFragment"
         tools:layout="@layout/fragment_complete_soara">
-
+        <argument
+            android:name="episode_id"
+            app:argType="integer" />
         <action
             android:id="@+id/action_completeSoaraFragment_to_episodeDetailTypeFragment"
             app:destination="@id/episodeDetailTypeFragment"
