@@ -1,12 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <ScrollView
+        android:id="@+id/field_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="보석함"
+                android:textColor="@color/gray_scale_900"
+                style="@style/h6"
+                android:layout_marginTop="42.5dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/text_top_title"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:id="@+id/field_profile"
+                android:layout_marginTop="28dp"
+                android:layout_marginStart="16dp"
+                app:layout_constraintEnd_toStartOf="@id/field_gem_count"
+                app:layout_constraintStart_toStartOf="parent"
+                android:background="@drawable/rectangle_gem_profile"
+                app:layout_constraintTop_toBottomOf="@id/text_top_title"
+                android:layout_height="97dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="49dp"
+                    android:layout_height="49dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="11dp"
+                    app:civ_border_width="2dp"
+                    android:src="@drawable/icon_arrow_right"
+                    app:civ_border_color="@color/white"
+                    android:id="@+id/img_profile" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginStart="9dp"
+                    tools:text = "시발"
+                    style="@style/sh6"
+                    android:textColor="@color/main"
+                    android:includeFontPadding="false"
+                    android:id="@+id/text_nickname"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/img_profile"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/b4"
+                    android:layout_marginTop="1dp"
+                    tools:text="미치광이"
+                    android:id="@+id/text_grade"
+                    android:textColor="@color/main_300"
+                    app:layout_constraintStart_toStartOf="@id/text_nickname"
+                    app:layout_constraintTop_toBottomOf="@id/text_nickname"/>
+
+                <TextView
+                    style="@style/c1"
+                    tools:text="소통왕"
+                    android:includeFontPadding="false"
+                    android:background="@drawable/bg_gem_advantage"
+                    android:layout_marginTop="5dp"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    app:layout_constraintStart_toStartOf="@id/text_nickname"
+                    app:layout_constraintTop_toBottomOf="@id/text_grade"
+                    android:textColor="@color/main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/text_advantage"/>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="0dp"
+                android:id="@+id/field_gem_count"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintStart_toEndOf="@id/field_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_top_title"
+                android:background="@drawable/rectangle_gem_count"
+                android:layout_height="97dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginStart="14dp"
+                    style="@style/sh5"
+                    android:textColor="@color/gray_scale_50"
+                    android:text="나의 보석"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="12dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/h2"
+                    android:text="24"
+                    android:id="@+id/text_gem_count"
+                    android:includeFontPadding="false"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="11dp"
+                    android:layout_marginEnd="7dp"
+                    app:layout_constraintEnd_toStartOf="@id/text_gem_count"
+                    app:layout_constraintBottom_toBottomOf="@id/text_gem_count"
+                    android:src="@drawable/diamond_gem_count"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                app:layout_constraintTop_toBottomOf="@id/field_gem_count"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/rectangle_gem_report"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="160dp">
+
+                <TextView
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    style="@style/sh5"
+                    android:textColor="@color/white"
+                    android:text="이번달 보석함 리포트"
+                    android:id="@+id/text_report_title"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <LinearLayout
+                    android:layout_marginTop="11dp"
+                    android:id="@+id/field_best_gem"
+                    android:orientation="vertical"
+                    android:background="@drawable/rectangle_gem_small"
+                    android:layout_marginStart="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/field_activity_gem"
+                    app:layout_constraintTop_toBottomOf="@id/text_report_title"
+                    android:layout_width="0dp"
+                    android:layout_height="96dp">
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="11dp"
+                    android:id="@+id/field_activity_gem"
+                    android:orientation="vertical"
+                    android:background="@drawable/rectangle_gem_small"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintEnd_toStartOf="@id/field_month_gem"
+                    app:layout_constraintStart_toEndOf="@id/field_best_gem"
+                    app:layout_constraintTop_toBottomOf="@id/text_report_title"
+                    android:layout_width="0dp"
+                    android:layout_height="96dp">
+
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/field_month_gem"
+                    android:layout_marginTop="11dp"
+                    android:orientation="vertical"
+                    app:layout_constraintStart_toEndOf="@id/field_activity_gem"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@drawable/rectangle_gem_small"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintTop_toBottomOf="@id/text_report_title"
+                    android:layout_width="0dp"
+                    android:layout_height="96dp">
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
