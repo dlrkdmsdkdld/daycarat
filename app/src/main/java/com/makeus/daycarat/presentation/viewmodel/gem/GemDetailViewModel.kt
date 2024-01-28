@@ -4,8 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.makeus.daycarat.data.EpisodeActivityCounter
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
 import com.makeus.daycarat.data.paging.GemDetailConetent
 import com.makeus.daycarat.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,9 +22,11 @@ class GemDetailViewModel @Inject constructor(private val repository: GemReposito
     val gemList: SharedFlow<PagingData<GemDetailConetent>> = _gemList.asSharedFlow()
 
     var keyword :String =""
+    var itemCount :Int = 0
 
-    fun startPaging(keyword:String){
+    fun startPaging(keyword: String, itemCount: Int){
         this.keyword = keyword
+        this.itemCount = itemCount
         viewModelScope.launch(Dispatchers.IO){
             repository.getContentEpisodeByDatePaging(this@GemDetailViewModel.keyword).cachedIn(viewModelScope).collect{
                 _gemList.emit(it)

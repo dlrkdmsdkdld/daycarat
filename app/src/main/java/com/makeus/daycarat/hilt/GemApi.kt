@@ -39,7 +39,7 @@ interface GemApi {
     @GET("gem/count")
     suspend fun getTotalGemCount( ): ResponseBody<GemTotalCount>
 
-    @GET("gem/count")
+    @GET("gem/keyword")
     suspend fun getGemCount( ): ResponseBody<GemCount>
 
     @GET("gem/report/month-count")

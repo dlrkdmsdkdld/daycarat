@@ -1,15 +1,16 @@
 package com.makeus.daycarat.presentation.fragment.gem
 
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
+import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentEpisodeDetailTypeBinding
-import com.makeus.daycarat.presentation.fragment.episode.EditSoaraFragmentArgs
 import com.makeus.daycarat.presentation.recyclerview.paging.GemDetailAdatper
 import com.makeus.daycarat.presentation.recyclerview.paging.PagingLoadingAdapter
-import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeDetailTypeViewModel
 import com.makeus.daycarat.presentation.viewmodel.gem.GemDetailViewModel
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
@@ -28,10 +29,14 @@ class GemDetailFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
         ViewModelProvider(this).get(GemDetailViewModel::class.java)
     }
     override fun initView() {
-        pagingAdapter = GemDetailAdatper(args.keyword)
-        viewModel.startPaging(args.keyword)
-        binding.textTitle.text = args.keyword
+        viewModel.startPaging(args.keyword , args.itemCount)
+        pagingAdapter = GemDetailAdatper(viewModel.keyword)
+        binding.textTitle.text = viewModel.keyword
+        binding.textCount.text = viewModel.itemCount.toString()
 
+        pagingAdapter.onclick ={ id ->
+            findNavController().navigate(R.id.action_gemDetailFragment_to_gemContentFragment , bundleOf( "episode_id" to id ))
+        }
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
         pagingAdapter.addLoadStateListener { loadState ->
             if (loadState.source.refresh is LoadState.NotLoading  && loadState.append.endOfPaginationReached && pagingAdapter.itemCount < 1){

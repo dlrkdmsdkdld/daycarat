@@ -27,7 +27,7 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     val gemTotalCount = _gemTotalCount
 
     private val _gemTypeCount = MutableStateFlow<GemCount>(GemCount())
-    val gemTypeCount = _gemTypeCount.asSharedFlow()
+    val gemTypeCount = _gemTypeCount
 
     private val _gemMonthCount = MutableStateFlow<GemTotalCount>(GemTotalCount(0))
     val gemMonthCount = _gemMonthCount

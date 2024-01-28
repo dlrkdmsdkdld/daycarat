@@ -42,29 +42,29 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
     }
     fun initClickListener(){
         binding.fieldCommunication.setOnClickListener {
-            goDetailFragment("커뮤니케이션")
+            goDetailFragment("커뮤니케이션" , gemviewmodel.gemTypeCount.value.communication)
         }
         binding.fieldResolve.setOnClickListener {
-            goDetailFragment("문제 해결")
+            goDetailFragment("문제 해결", gemviewmodel.gemTypeCount.value.problemSolving)
         }
         binding.fieldCreative.setOnClickListener {
-            goDetailFragment("창의성")
+            goDetailFragment("창의성", gemviewmodel.gemTypeCount.value.creativity)
         }
         binding.fieldChallenge.setOnClickListener {
-            goDetailFragment("도전 정신")
+            goDetailFragment("도전 정신", gemviewmodel.gemTypeCount.value.challengeSpirit)
         }
         binding.fieldProfession.setOnClickListener {
-            goDetailFragment("전문성")
+            goDetailFragment("전문성", gemviewmodel.gemTypeCount.value.proficiency)
         }
         binding.fieldExcutive.setOnClickListener {
-            goDetailFragment("실행력")
+            goDetailFragment("실행력", gemviewmodel.gemTypeCount.value.execution)
         }
         binding.fieldNone.setOnClickListener {
-            goDetailFragment("미선택")
+            goDetailFragment("미선택", gemviewmodel.gemTypeCount.value.unset)
         }
     }
-    fun goDetailFragment(keyword:String){
-        findNavController().navigate(R.id.action_gemFragment_to_gemDetailFragment , bundleOf("keyword" to keyword))
+    fun goDetailFragment(keyword:String , itemCount : Int){
+        findNavController().navigate(R.id.action_gemFragment_to_gemDetailFragment , bundleOf("keyword" to keyword , "item_count" to itemCount ))
     }
 
     fun initCollector(){
@@ -89,10 +89,8 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
             gemviewmodel.gemTypeCount.collectLatest {
                 binding.textCommunication.text = it.communication.toString()
                 binding.textResolve.text = it.problemSolving.toString()
-
                 binding.textCreative.text = it.creativity.toString()
                 binding.textChallenge.text = it.challengeSpirit.toString()
-
                 binding.textProfession.text = it.proficiency.toString()
                 binding.textChallenge.text = it.execution.toString()
                 binding.textNone.text = it.unset.toString()
