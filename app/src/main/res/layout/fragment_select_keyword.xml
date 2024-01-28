@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fillViewport="true"
+    android:id="@+id/field_main"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="vertical"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="38dp"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:layout_marginStart="11dp"
+                    android:id="@+id/btn_back"
+                    android:layout_marginTop="13dp"
+                    android:padding="5dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:background="@color/transparent"
+                    android:src="@drawable/icon_arrow_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:text="에피소드 키워드 선택하기"
+                    android:textColor="@color/black"
+                    style="@style/sh6"
+                    android:layout_marginTop="19dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:id="@+id/field_communication"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_select_keyword"
+                    android:layout_width="0dp"
+                    android:layout_height="175dp">
+
+                    <TextView
+                        android:text="커뮤니케이션"
+                        android:textColor="@color/gray_scale_900"
+                        style="@style/sh5"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_marginTop="22dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bg_communication"
+                        android:layout_width="119.44dp"
+                        android:layout_height="96dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/field_resolve"
+                    android:background="@drawable/bg_select_keyword"
+                    android:layout_marginStart="11dp"
+                    android:layout_width="0dp"
+                    android:layout_height="175dp">
+
+                    <TextView
+                        android:text="문제 해결"
+                        android:textColor="@color/gray_scale_900"
+                        style="@style/sh5"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_marginTop="13dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bg_resolve"
+                        android:layout_width="108.52dp"
+                        android:layout_height="96dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:id="@+id/field_creative"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_select_keyword"
+                    android:layout_width="0dp"
+                    android:layout_height="175dp">
+
+                    <TextView
+                        android:text="창의성"
+                        android:textColor="@color/gray_scale_900"
+                        style="@style/sh5"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bg_creativity"
+                        android:layout_width="104.42dp"
+                        android:layout_height="104dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/field_challenge"
+                    android:background="@drawable/bg_select_keyword"
+                    android:layout_marginStart="11dp"
+                    android:layout_width="0dp"
+                    android:layout_height="175dp">
+
+                    <TextView
+                        android:text="도전 정신"
+                        android:textColor="@color/gray_scale_900"
+                        style="@style/sh5"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_marginTop="10dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bg_challenge"
+                        android:layout_width="108.52dp"
+                        android:layout_height="96dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:id="@+id/field_profession"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_select_keyword"
+                    android:layout_width="0dp"
+                    android:layout_height="175dp">
+
+                    <TextView
+                        android:text="전문성"
+                        android:textColor="@color/gray_scale_900"
+                        style="@style/sh5"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_marginTop="14dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bg_profession"
+                        android:layout_width="97.82dp"
+                        android:layout_height="97dp"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:id="@+id/field_excutive"
+                    android:background="@drawable/bg_select_keyword"
+                    android:layout_marginStart="11dp"
+                    android:layout_width="0dp"
+                    android:layout_height="175dp">
+
+                    <TextView
+                        android:text="실행력"
+                        android:textColor="@color/gray_scale_900"
+                        style="@style/sh5"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <ImageView
+                        android:layout_marginTop="14dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/bg_excutive"
+                        android:layout_width="72.94dp"
+                        android:layout_height="97dp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+        
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="선택한 키워드 저장하기"
+            android:layout_gravity="bottom"
+            android:id="@+id/btn_complete"
+            android:textColor="@color/selector_keyword_text"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:enabled="false"
+            style="@style/sh6"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_select_keyword"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>

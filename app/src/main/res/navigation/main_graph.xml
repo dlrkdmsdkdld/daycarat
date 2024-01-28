@@ -149,6 +149,23 @@
         <argument
             android:name="episode_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_gemContentFragment_to_gemKeywordFragment"
+            app:destination="@id/gemKeywordFragment" />
+
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_select_keyword"
+        android:id="@+id/gemKeywordFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.gem.GemKeywordFragment"
+        android:label="GemKeywordFragment" >
+        <argument
+            android:name="keyword"
+            app:argType="string" />
+
+        <argument
+            android:name="episode_id"
+            app:argType="integer" />
 
     </fragment>
 </navigation>

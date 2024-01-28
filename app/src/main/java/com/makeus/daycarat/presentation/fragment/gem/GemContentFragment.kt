@@ -1,11 +1,14 @@
 package com.makeus.daycarat.presentation.fragment.gem
 
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentGemContentBinding
 import com.makeus.daycarat.presentation.viewmodel.gem.GemContentViewModel
+import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.UiManager
@@ -63,7 +66,7 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
             }
         }
         setKeyword()
-
+        initListener()
 
     }
 
@@ -80,8 +83,14 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
         setGemImage(viewmodel.keyword , binding.imageGem)
         setGemDes(viewmodel.keyword , binding.textGemDes)
         binding.textGemTitle.text = viewmodel.keyword
-
-
+    }
+    fun initListener(){
+        binding.btnBack.onThrottleClick {
+            findNavController().popBackStack()
+        }
+        binding.btnKeyword.onThrottleClick {
+            findNavController().navigate(R.id.action_gemContentFragment_to_gemKeywordFragment , bundleOf( "episode_id" to viewmodel.episodeId , "keyword" to viewmodel.keyword ))
+        }
     }
 
 }
