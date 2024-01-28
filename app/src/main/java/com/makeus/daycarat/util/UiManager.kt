@@ -4,8 +4,11 @@ import android.content.res.Resources
 import android.text.Layout
 import android.util.TypedValue
 import android.view.LayoutInflater
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.makeus.daycarat.DayCaratApplication
+import com.makeus.daycarat.R
 import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.databinding.LayoutEpisodeDetailContentBinding
 
@@ -25,5 +28,28 @@ object UiManager {
         return inflating.root
 
     }
+
+    fun setGemImage(keyword:String, tagetImageView: ImageView){
+        when(keyword){
+            "커뮤니케이션" -> tagetImageView.setImageResource(R.drawable.bg_communication)
+            "문제 해결" ->tagetImageView.setImageResource(R.drawable.bg_resolve)
+            "창의성" ->tagetImageView.setImageResource(R.drawable.bg_creativity)
+            "도전 정신" ->tagetImageView.setImageResource(R.drawable.bg_challenge)
+            "전문성" ->tagetImageView.setImageResource(R.drawable.bg_profession)
+            "실행력" ->tagetImageView.setImageResource(R.drawable.bg_excutive)
+        }
+    }
+
+    fun setGemDes(keyword:String,targetTextView:TextView){
+        when(keyword){
+            "커뮤니케이션" -> targetTextView.text = "다른 사람들과 소통방식에 있어 어떤 강점을 발휘했는지 적어보세요"
+            "문제 해결" ->targetTextView.text = ""
+            "창의성" ->targetTextView.text = ""
+            "도전 정신" -> targetTextView.text = ""
+            "전문성" -> targetTextView.text = ""
+            "실행력" -> targetTextView.text = ""
+        }
+    }
+
 }
 

@@ -141,6 +141,11 @@
         tools:layout="@layout/fragment_gem_content"
         android:name="com.makeus.daycarat.presentation.fragment.gem.GemContentFragment"
         android:label="GemContentFragment" >
+
+        <argument
+            android:name="keyword"
+            app:argType="string" />
+
         <argument
             android:name="episode_id"
             app:argType="integer" />

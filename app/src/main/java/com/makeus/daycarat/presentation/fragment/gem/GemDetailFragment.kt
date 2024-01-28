@@ -35,7 +35,7 @@ class GemDetailFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
         binding.textCount.text = viewModel.itemCount.toString()
 
         pagingAdapter.onclick ={ id ->
-            findNavController().navigate(R.id.action_gemDetailFragment_to_gemContentFragment , bundleOf( "episode_id" to id ))
+            findNavController().navigate(R.id.action_gemDetailFragment_to_gemContentFragment , bundleOf( "episode_id" to id , "keyword" to viewModel.keyword ))
         }
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
         pagingAdapter.addLoadStateListener { loadState ->

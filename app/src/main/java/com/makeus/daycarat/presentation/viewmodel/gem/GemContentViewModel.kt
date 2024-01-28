@@ -46,9 +46,11 @@ class GemContentViewModel @Inject constructor(
     val episodeSoara: StateFlow<SoaraContent> = _episodeSoara
 
     var episodeId: Int = 0
+    var keyword: String = ""
 
-    fun inputEpsodeId(episodeId: Int) {
+    fun inputEpsodeId(episodeId: Int, keyword: String) {
         this.episodeId = episodeId
+        this.keyword = keyword
         getSoara(this.episodeId)
         getEpisode(this.episodeId)
     }
