@@ -55,5 +55,9 @@ interface GemApi {
     @GET("gem/keyword/{keyword}")
     suspend fun getGemKeywordList(@Path("keyword") keyword:String, @Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6 ): ResponseBody<List<GemDetailConetent>>
 
+    @GET("gem/recommend/{episodeId}")
+    suspend fun getAISoara(@Path("episodeId") episodeId: Int): ResponseBody<SoaraContent>
+
+
 
 }
