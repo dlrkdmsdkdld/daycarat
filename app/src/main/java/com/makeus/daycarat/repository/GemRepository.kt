@@ -59,6 +59,82 @@ class GemRepository @Inject constructor(private val apimodule: GemApi) {
         }
     }
 
+    suspend fun getGemTotalCount() = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getTotalGemCount()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun getGemTpyeCount() = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getGemCount()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun getGemMonthCount() = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getMonthGemCount()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun getMostKeyword() = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getMostKeyword()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun getMostActivity() = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getMostActivity()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+
 
 
 }

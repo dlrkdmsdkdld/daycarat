@@ -63,6 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     style="@style/b4"
+                    android:includeFontPadding="false"
                     android:layout_marginTop="1dp"
                     tools:text="미치광이"
                     android:id="@+id/text_grade"
@@ -191,6 +192,7 @@
                         android:layout_gravity="center"
                         android:textColor="@color/gray_scale_800"
                         tools:text="커뮤니케이션"
+                        android:id="@+id/text_keyword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -221,6 +223,7 @@
                         style="@style/sh4"
                         android:layout_marginTop="9dp"
                         android:layout_gravity="center"
+                        android:id="@+id/text_activity"
                         android:textColor="@color/main"
                         android:includeFontPadding="false"
                         tools:text="cmc"
@@ -257,6 +260,7 @@
                         android:textColor="@color/gray_scale_500"
                         android:includeFontPadding="false"
                         tools:text="12개"
+                        android:id="@+id/text_month_count"
                         android:gravity="center"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
@@ -272,6 +276,7 @@
                 style="@style/sh3"
                 android:id="@+id/text_gem_title"
                 android:text="나의 보석"
+                android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/field_report"
                 android:layout_width="wrap_content"
@@ -286,6 +291,7 @@
                 <LinearLayout
                     android:paddingStart="16dp"
                     android:paddingEnd="16dp"
+                    android:layout_marginTop="16dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -595,7 +601,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"/>
 
-     
+
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
