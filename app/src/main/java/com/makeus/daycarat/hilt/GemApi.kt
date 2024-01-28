@@ -10,6 +10,8 @@ import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.GemCount
 import com.makeus.daycarat.data.GemTotalCount
 import com.makeus.daycarat.data.SoaraContent
+import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.paging.GemDetailConetent
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -19,6 +21,7 @@ import retrofit2.http.Headers
 import retrofit2.http.PATCH
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface GemApi {
 
@@ -47,6 +50,10 @@ interface GemApi {
 
     @GET("gem/report/activity")
     suspend fun getMostActivity( ): ResponseBody<ActivityTag>
+
+
+    @GET("gem/keyword/{keyword}")
+    suspend fun getGemKeywordList(@Path("keyword") keyword:String, @Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6 ): ResponseBody<List<GemDetailConetent>>
 
 
 }

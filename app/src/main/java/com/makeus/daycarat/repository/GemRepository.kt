@@ -1,14 +1,22 @@
 package com.makeus.daycarat.repository
 
 import android.util.Log
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.makeus.daycarat.core.dto.Resource
 import com.makeus.daycarat.data.EpisodeId
 import com.makeus.daycarat.data.SoaraContent
+import com.makeus.daycarat.data.paging.EpisodeContentByDatePagingSource
+import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.paging.GemContentPagingSource
+import com.makeus.daycarat.data.paging.GemDetailConetent
 import com.makeus.daycarat.hilt.GemApi
 import com.makeus.daycarat.hilt.UserInfoApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.TimeUtil
 import com.makeus.daycarat.util.isSuccessful
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
@@ -132,6 +140,12 @@ class GemRepository @Inject constructor(private val apimodule: GemApi) {
             emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
             e.printStackTrace()
         }
+    }
+
+    suspend fun getContentEpisodeByDatePaging(keyword: String): Flow<PagingData<GemDetailConetent>> {
+        return Pager( config = PagingConfig(pageSize = 1) ,
+            pagingSourceFactory = { GemContentPagingSource(apimodule,
+                keyword = keyword) } ).flow
     }
 
 

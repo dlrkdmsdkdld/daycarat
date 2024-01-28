@@ -33,7 +33,7 @@ class LoadStateViewHolder(
 
         progressBar.isVisible = loadState is LoadState.Loading
 //        progressBar.isVisible = true
-        retry.isVisible = loadState is LoadState.Error
+//        retry.isVisible = loadState is LoadState.Error
 //        errorMsg.isVisible = loadState is LoadState.Error
     }
 }

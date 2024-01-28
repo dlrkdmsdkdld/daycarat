@@ -1,8 +1,10 @@
 package com.makeus.daycarat.presentation.fragment
 
 import android.util.Log
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
@@ -12,6 +14,7 @@ import com.makeus.daycarat.presentation.viewmodel.GemViewModel
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -23,6 +26,48 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
         ViewModelProvider(this).get(GemViewModel::class.java)
     }
     override fun initView() {
+        initCollector()
+        initClickListener()
+
+
+    }
+
+    override fun initStatusBar() {
+        binding.fieldMain.setPadding(
+            0,
+            requireActivity().statusBarHeight(),
+            0,
+            0
+        )
+    }
+    fun initClickListener(){
+        binding.fieldCommunication.setOnClickListener {
+            goDetailFragment("커뮤니케이션")
+        }
+        binding.fieldResolve.setOnClickListener {
+            goDetailFragment("문제 해결")
+        }
+        binding.fieldCreative.setOnClickListener {
+            goDetailFragment("창의성")
+        }
+        binding.fieldChallenge.setOnClickListener {
+            goDetailFragment("도전 정신")
+        }
+        binding.fieldProfession.setOnClickListener {
+            goDetailFragment("전문성")
+        }
+        binding.fieldExcutive.setOnClickListener {
+            goDetailFragment("실행력")
+        }
+        binding.fieldNone.setOnClickListener {
+            goDetailFragment("미선택")
+        }
+    }
+    fun goDetailFragment(keyword:String){
+        findNavController().navigate(R.id.action_gemFragment_to_gemDetailFragment , bundleOf("keyword" to keyword))
+    }
+
+    fun initCollector(){
         repeatOnStarted {
             mainViewModel.userData.collect {
                 binding.textNickname.text = it.nickname
@@ -69,13 +114,6 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
                 binding.textActivity.text = it.activityTag
             }
         }
-
-
-
-    }
-
-    override fun initStatusBar() {
-
     }
 
 }

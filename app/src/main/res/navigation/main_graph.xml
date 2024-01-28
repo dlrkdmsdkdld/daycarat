@@ -19,7 +19,11 @@
         android:id="@+id/gemFragment"
         android:name="com.makeus.daycarat.presentation.fragment.GemFragment"
         android:label="GemFragment"
-        tools:layout="@layout/fragment_gem" />
+        tools:layout="@layout/fragment_gem" >
+        <action
+            android:id="@+id/action_gemFragment_to_gemDetailFragment"
+            app:destination="@id/gemDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/episodeFragment"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeFragment"
@@ -114,6 +118,16 @@
             app:restoreState="true"
             app:popUpToInclusive="false"
             app:popUpTo="@id/episodeDetailTypeFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_episode_detail_type"
+        android:id="@+id/gemDetailFragment"
+        android:name="com.makeus.daycarat.presentation.fragment.gem.GemDetailFragment"
+        android:label="GemDetailFragment" >
+
+        <argument
+            android:name="keyword"
+            app:argType="string" />
     </fragment>
 </navigation>
 

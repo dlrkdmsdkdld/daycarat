@@ -300,6 +300,7 @@
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/bg_my_gem"
                         android:layout_width="0dp"
+                        android:id="@+id/field_communication"
                         android:layout_weight="1"
                         android:layout_height="128dp">
                         <TextView
@@ -341,6 +342,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:id="@+id/field_resolve"
                         android:background="@drawable/bg_my_gem"
                         android:layout_height="128dp">
                         <TextView
@@ -392,6 +394,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/bg_my_gem"
+                        android:id="@+id/field_creative"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="128dp">
@@ -433,6 +436,7 @@
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
+                        android:id="@+id/field_challenge"
                         android:layout_weight="1"
                         android:background="@drawable/bg_my_gem"
                         android:layout_height="128dp">
@@ -484,6 +488,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/bg_my_gem"
+                        android:id="@+id/field_profession"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="128dp">
@@ -526,6 +531,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="0dp"
                         android:layout_weight="1"
+                        android:id="@+id/field_excutive"
                         android:background="@drawable/bg_my_gem"
                         android:layout_height="128dp">
                         <TextView
@@ -576,6 +582,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_marginEnd="10dp"
                         android:background="@drawable/bg_my_gem"
+                        android:id="@+id/field_none"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_height="128dp">
