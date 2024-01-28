@@ -11,6 +11,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentEditEpisodeBinding
@@ -54,7 +55,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.fieldNewEdit.addView(inflateEditField())
 
         binding.btnBack.setOnClickListener {
-            (activity as MainActivity).navController.popBackStack()
+            findNavController().popBackStack()
         }
 
         binding.btnSave.onThrottleClick { // 중복클릭방지

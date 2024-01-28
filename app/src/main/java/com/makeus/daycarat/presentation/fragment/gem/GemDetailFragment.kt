@@ -30,6 +30,8 @@ class GemDetailFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
     override fun initView() {
         pagingAdapter = GemDetailAdatper(args.keyword)
         viewModel.startPaging(args.keyword)
+        binding.textTitle.text = args.keyword
+
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
         pagingAdapter.addLoadStateListener { loadState ->
             if (loadState.source.refresh is LoadState.NotLoading  && loadState.append.endOfPaginationReached && pagingAdapter.itemCount < 1){

@@ -88,13 +88,13 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
         repeatOnStarted {
             gemviewmodel.gemTypeCount.collectLatest {
                 binding.textCommunication.text = it.communication.toString()
-                binding.textResolve.text = it.conflictResolution.toString()
+                binding.textResolve.text = it.problemSolving.toString()
 
-                binding.textCreative.text = it.passion.toString()//맞는지모르겠
-                binding.textChallenge.text = it.diligence.toString()
+                binding.textCreative.text = it.creativity.toString()
+                binding.textChallenge.text = it.challengeSpirit.toString()
 
-                binding.textProfession.text = it.diligence.toString()
-                binding.textChallenge.text = it.diligence.toString()
+                binding.textProfession.text = it.proficiency.toString()
+                binding.textChallenge.text = it.execution.toString()
                 binding.textNone.text = it.unset.toString()
             }
         }

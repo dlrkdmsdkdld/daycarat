@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/icon_arrow_left"
+            android:background="@color/transparent"
+            android:layout_marginTop="27.5dp"
+            android:layout_marginStart="11dp"
+            android:padding="5dp"
+            android:id="@+id/btn_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_marginTop="21dp"
+            android:layout_marginStart="16dp"
+            tools:text ="팀플 회의"
+            style="@style/sh1"
+            android:id="@+id/text_title"
+            android:textColor="@color/gray_scale_900"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            app:layout_constraintTop_toTopOf="@id/text_title"
+            app:layout_constraintBottom_toBottomOf="@id/text_title"
+            app:layout_constraintStart_toEndOf="@id/text_title"
+            android:layout_width="wrap_content"
+            android:textColor="@color/gray_scale_700"
+            tools:text = "#전공수업"
+            style="@style/b4"
+            android:paddingEnd="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:paddingStart="8dp"
+            android:id="@+id/text_tag"
+            android:background="@drawable/rectangle_episode_detail_gray"
+            android:layout_marginStart="8dp"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/b3"
+            tools:text="2023년 12월 28일 목요일"
+            android:textColor="@color/gray_scale_500"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            android:id="@+id/text_date"
+            app:layout_constraintTop_toBottomOf="@id/text_title"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_marginTop="14dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintTop_toBottomOf="@id/text_date"
+            android:layout_width="match_parent"
+            android:background="@color/gray_scale_300"
+            android:layout_height="1dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            app:layout_constraintTop_toBottomOf="@id/line"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:background="@drawable/bg_no_keyword"
+                app:layout_constraintTop_toTopOf="parent"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="156dp">
+
+                <TextView
+                    style="@style/sh5"
+                    android:textColor="@color/main"
+                    android:layout_marginTop="32dp"
+                    android:layout_gravity="center"
+                    android:text="AI 추천 키워드 생성에 실패했어요"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:textColor="@color/gray_scale_700"
+                    style="@style/b5"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="내용을 더 구체적으로 적은 후 다시 시도하거나\n직접 키워드를 추가할 수 있어요"
+                    android:layout_marginTop="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+                <TextView
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    style="@style/b1"
+                    android:textColor="@color/main"
+                    android:drawableEnd="@drawable/icon_arrow_right_main"
+                    android:text="직접 키워드 선택하기"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

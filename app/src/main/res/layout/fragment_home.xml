@@ -176,12 +176,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:includeFontPadding="false"
                             android:text="@string/home_recently_episode_empty_title"
                             android:textColor="@color/gray_scale_900" />
 
                         <TextView
                             style="@style/b3"
                             android:layout_width="wrap_content"
+                            android:includeFontPadding="false"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
                             android:text="@string/home_recently_episode_empty_des"

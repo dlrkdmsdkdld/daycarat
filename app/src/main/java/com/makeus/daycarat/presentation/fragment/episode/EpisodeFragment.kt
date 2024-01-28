@@ -10,6 +10,7 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeActivityCounter
 import com.makeus.daycarat.databinding.FragmentEpisodeBinding
+import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagAdapter
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagViewType
 import com.makeus.daycarat.presentation.spinner.EpisodeCardSpinner
@@ -39,8 +40,20 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
 
         repeatOnStarted {
             viewModel.episodeCountList.collectLatest {
-                if (binding.chipActivity.isChecked) episodeAdapter.changeType(it , EpisodeTagViewType.Activity)
-                else episodeAdapter.changeType(it , EpisodeTagViewType.Date)
+                if (it.isEmpty()){
+                    binding.fieldNoEpi.visibility = View.VISIBLE
+                    binding.recyclerEpisode.visibility = View.GONE
+                    binding.textEmptyEpisode.setOnClickListener {
+                        (activity as MainActivity).binding.btnCenter.callOnClick()
+                    }
+                }else{
+                    binding.fieldNoEpi.visibility = View.GONE
+                    binding.recyclerEpisode.visibility = View.VISIBLE
+                    if (binding.chipActivity.isChecked) episodeAdapter.changeType(it , EpisodeTagViewType.Activity)
+                    else episodeAdapter.changeType(it , EpisodeTagViewType.Date)
+                }
+
+
             }
         }
         initChipGroup()

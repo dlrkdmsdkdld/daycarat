@@ -61,9 +61,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
             var option = navOptions {
                 launchSingleTop = true
                 restoreState = true
-                popUpTo(navController.graph.findStartDestination().id) {
-                    saveState = true
-                }
+//                popUpTo(navController.graph.findStartDestination().id) {
+//                    saveState = true
+//                }
             }
             navController.navigate(R.id.editEpisodeFragment, args = null, option, null)
         }
@@ -74,7 +74,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
         navController.addOnDestinationChangedListener { _: NavController?, destination: NavDestination, _: Bundle? ->
             when (destination.id) {
                 R.id.editEpisodeFragment, R.id.episodeDetailTypeFragment , R.id.episodeSeeContentFragment ,
-                R.id.soaraFragment ,R.id.editSoaraFragment , R.id.completeSoaraFragment-> {
+                R.id.soaraFragment ,R.id.editSoaraFragment , R.id.completeSoaraFragment ,R.id.gemDetailFragment-> {
                     binding.bottomNav.visibility = View.GONE
                 }
 
