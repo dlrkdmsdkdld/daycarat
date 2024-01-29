@@ -59,10 +59,12 @@ class GemKeywordFragment() : BaseFragment<FragmentSelectKeywordBinding>(
                     is AuthViewmodel.UiEvent.LoadingEvent -> {
                         (activity as MainActivity).loadingDialog.show()
                     }
-                    is AuthViewmodel.UiEvent.SuccessUpdateKeywordEvent ->{
+
+                    is AuthViewmodel.UiEvent.SuccessUpdateKeywordEvent -> {
                         (activity as MainActivity).loadingDialog.dismiss()
                         finishEvent(event.result)
                     }
+
                     else -> {
                         (activity as MainActivity).loadingDialog.dismiss()
                         finishEvent(null)
@@ -73,11 +75,21 @@ class GemKeywordFragment() : BaseFragment<FragmentSelectKeywordBinding>(
 
 
     }
-    fun finishEvent(data : EpisodeKeywordAndId?){
+
+    fun finishEvent(data: EpisodeKeywordAndId?) {
         data?.let {
-            findNavController().navigate(R.id.action_gemKeywordFragment_to_gemContentFragment , bundleOf( "keyword" to data.keyword ,  "episode_id" to data.episodeId ))
-        }?.run {
-            findNavController().navigate(R.id.action_gemKeywordFragment_to_gemContentFragment , bundleOf( "keyword" to viewModel.originalData.keyword ,  "episode_id" to  viewModel.originalData.episodeId ))
+            findNavController().navigate(
+                R.id.action_gemKeywordFragment_to_gemContentFragment,
+                bundleOf("keyword" to data.keyword, "episode_id" to data.episodeId)
+            )
+        } ?: kotlin.run { // 수정실패
+            findNavController().navigate(
+                R.id.action_gemKeywordFragment_to_gemContentFragment,
+                bundleOf(
+                    "keyword" to viewModel.originalData.keyword,
+                    "episode_id" to viewModel.originalData.episodeId
+                )
+            )
         }
 
     }

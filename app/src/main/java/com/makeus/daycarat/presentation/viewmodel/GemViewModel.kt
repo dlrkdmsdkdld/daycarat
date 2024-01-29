@@ -38,7 +38,7 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     private val _mostActivityTag = MutableStateFlow<ActivityTag>(ActivityTag(""))
     val mostActivityTag = _mostActivityTag
 
-    init {
+    fun initData(){
         getTypeGemCount()
         getTotalGemCount()
         getGemMonthCount()

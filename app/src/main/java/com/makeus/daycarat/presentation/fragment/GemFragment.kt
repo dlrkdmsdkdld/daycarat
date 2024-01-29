@@ -26,6 +26,7 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
         ViewModelProvider(this).get(GemViewModel::class.java)
     }
     override fun initView() {
+        gemviewmodel.initData()
         initCollector()
         initClickListener()
 
@@ -92,7 +93,7 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
                 binding.textCreative.text = it.creativity.toString()
                 binding.textChallenge.text = it.challengeSpirit.toString()
                 binding.textProfession.text = it.proficiency.toString()
-                binding.textChallenge.text = it.execution.toString()
+                binding.textExcutive.text = it.execution.toString()
                 binding.textNone.text = it.unset.toString()
             }
         }

@@ -168,6 +168,9 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_gemKeywordFragment_to_gemContentFragment"
+            app:launchSingleTop="true"
+            app:popUpToInclusive="false"
+            app:popUpTo="@id/gemContentFragment"
             app:destination="@id/gemContentFragment" />
 
     </fragment>

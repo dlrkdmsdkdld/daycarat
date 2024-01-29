@@ -15,6 +15,7 @@ import com.makeus.daycarat.presentation.viewmodel.gem.GemDetailViewModel
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 
 @AndroidEntryPoint
@@ -55,6 +56,21 @@ class GemDetailFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
                 pagingAdapter.submitData(it)
             }
         }
+
+        repeatOnStarted {
+            viewModel.gemTypeCount.collectLatest {
+                when(viewModel.keyword){
+                    "커뮤니케이션" -> binding.textCount.text = it.communication.toString()
+                    "문제 해결" ->binding.textCount.text = it.problemSolving.toString()
+                    "창의성" ->binding.textCount.text = it.creativity.toString()
+                    "도전 정신" ->binding.textCount.text = it.challengeSpirit.toString()
+                    "전문성" ->binding.textCount.text = it.proficiency.toString()
+                    "실행력" ->binding.textCount.text = it.execution.toString()
+                    "미선택" ->binding.textCount.text = it.unset.toString()
+                }
+            }
+        }
+
 
     }
 

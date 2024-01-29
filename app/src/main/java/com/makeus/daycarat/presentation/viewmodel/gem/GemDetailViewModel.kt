@@ -4,13 +4,16 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.makeus.daycarat.data.GemCount
 import com.makeus.daycarat.data.paging.GemDetailConetent
 import com.makeus.daycarat.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -30,6 +33,19 @@ class GemDetailViewModel @Inject constructor(private val repository: GemReposito
         viewModelScope.launch(Dispatchers.IO){
             repository.getContentEpisodeByDatePaging(this@GemDetailViewModel.keyword).cachedIn(viewModelScope).collect{
                 _gemList.emit(it)
+            }
+        }
+        getTypeGemCount()
+    }
+
+    private val _gemTypeCount = MutableStateFlow<GemCount>(GemCount())
+    val gemTypeCount = _gemTypeCount
+
+    fun getTypeGemCount(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getGemTpyeCount().collectLatest { result ->
+                result.data?.let { _gemTypeCount.emit(it) }
+
             }
         }
     }
