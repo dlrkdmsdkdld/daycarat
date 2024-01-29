@@ -28,6 +28,8 @@ class GemDetailFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
     private val viewModel by lazy {
         ViewModelProvider(this).get(GemDetailViewModel::class.java)
     }
+
+
     override fun initView() {
         viewModel.startPaging(args.keyword , args.itemCount)
         pagingAdapter = GemDetailAdatper(viewModel.keyword)
