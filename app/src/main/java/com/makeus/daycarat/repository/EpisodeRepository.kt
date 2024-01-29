@@ -6,6 +6,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.makeus.daycarat.core.dto.Resource
+import com.makeus.daycarat.data.EpisodeKeywordAndId
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.paging.EpisodeContentByDatePagingSource
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
@@ -113,6 +114,20 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         emit(Resource.loading())
         try {
             val response = apimodule.getEpisode(episodeId)
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+    suspend fun updatekeyword(data: EpisodeKeywordAndId) = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.updateEpisodeKeyword(data)
             if (isSuccessful(response.statusCode)) {
                 emit(Resource.success(response.result))
             }else{

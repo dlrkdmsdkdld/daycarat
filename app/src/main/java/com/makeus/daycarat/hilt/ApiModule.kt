@@ -19,16 +19,19 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import org.json.JSONArray
 import org.json.JSONObject
+import javax.inject.Qualifier
 
 @InstallIn(SingletonComponent::class)
 @Module
 object ApiModule {
 
-//    @Singleton
-//    @Provides
-//    fun provideAPIService(auth:RetrofitInterface): RetrofitInterface{
-//        return RetrofitInterface.create()
-//    }
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class NoAuth // 로그인할때 , 토큰필요없는 부분
+
+    @Qualifier
+    @Retention(AnnotationRetention.BINARY)
+    annotation class Auth //로그인시 ,토큰 필요한부분
 
     @Provides
     @Singleton // have a singleton...
@@ -56,19 +59,12 @@ object ApiModule {
             //기본 파라미터 인터셉터 설정
             val baseParameterInterceptor : Interceptor = (object  : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
-                    var token = SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")
                     Log.d(Constant.TAG,"RetrofitClient - Interceptor called ")
                     var originalRequest = chain.request().newBuilder()
                         .build()
 
                     val finalRequest = originalRequest.newBuilder()
                         .method(originalRequest.method,originalRequest.body)
-
-                    if (token.isNotEmpty()){
-
-                        finalRequest.addHeader("Authorization","Bearer $token")
-                    }
-
                     val response = chain.proceed(finalRequest.build())
 
 
@@ -109,44 +105,41 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideService(okHttpClient: OkHttpClient): RetrofitInterface =
+    @NoAuth   //This will differentiate retrofit object
+    fun retrofitNoAuth(
+        client: OkHttpClient): Retrofit =
         Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
-            .client(okHttpClient)
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(RetrofitInterface::class.java)
-    @Provides
-    @Singleton
-    fun provideUserInfoApi(okHttpClient: OkHttpClient , tokenIntercptor:Interceptor): UserInfoApi =
-        Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
-//            .client(okHttpClient.newBuilder().addInterceptor(tokenIntercptor).build())
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(UserInfoApi::class.java)
+
 
     @Provides
     @Singleton
-    fun provideEpisodeService(okHttpClient: OkHttpClient , tokenIntercptor:Interceptor): EpisodeApi =
+    @Auth   //This will differentiate retrofit object
+    fun retrofitAuth(client: OkHttpClient, tokenIntercptor:Interceptor, ): Retrofit =
         Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
-//            .client(okHttpClient.newBuilder().addInterceptor(tokenIntercptor).build())
-            .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client.newBuilder().addInterceptor(tokenIntercptor).build())
+            .baseUrl(Constant.BASE_URL)
             .build()
-            .create(EpisodeApi::class.java)
 
     @Provides
     @Singleton
-    fun provideGemService(okHttpClient: OkHttpClient , tokenIntercptor:Interceptor): GemApi =
-        Retrofit.Builder()
-            .baseUrl(Constant.BASE_URL)
-//            .client(okHttpClient.newBuilder().addInterceptor(tokenIntercptor).build())
-            .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(GemApi::class.java)
+    fun provideService(@NoAuth retrofit: Retrofit): RetrofitInterface = retrofit.create(RetrofitInterface::class.java)
+
+    @Provides
+    @Singleton
+    fun provideUserInfoApi(@Auth retrofit: Retrofit): UserInfoApi = retrofit.create(UserInfoApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideEpisodeService(@Auth retrofit: Retrofit): EpisodeApi = retrofit.create(EpisodeApi::class.java)
+    @Provides
+    @Singleton
+    fun provideGemService(@Auth retrofit: Retrofit): GemApi = retrofit.create(GemApi::class.java)
+
+
 
 }

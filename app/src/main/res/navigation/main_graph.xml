@@ -166,6 +166,9 @@
         <argument
             android:name="episode_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_gemKeywordFragment_to_gemContentFragment"
+            app:destination="@id/gemContentFragment" />
 
     </fragment>
 </navigation>

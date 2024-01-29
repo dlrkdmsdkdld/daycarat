@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
+import com.makeus.daycarat.data.EpisodeKeywordAndId
 import com.makeus.daycarat.data.UserData
 import com.makeus.daycarat.repository.AuthRepository
 import com.makeus.daycarat.util.Constant
@@ -59,6 +60,9 @@ class AuthViewmodel @Inject constructor(private val repository: AuthRepository) 
         class NewUserEvent(): UiEvent()
         class FailEvent(val message:String? =""): UiEvent()
         class SuccessEvent(): UiEvent()
+
+        class SuccessUpdateKeywordEvent(val result : EpisodeKeywordAndId): UiEvent()
+
     }
 
 
