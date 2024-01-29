@@ -60,6 +60,7 @@ class AuthViewmodel @Inject constructor(private val repository: AuthRepository) 
         class NewUserEvent(): UiEvent()
         class FailEvent(val message:String? =""): UiEvent()
         class SuccessEvent(): UiEvent()
+        class CopyEvent(val copyData:String? =""): UiEvent()
 
         class SuccessUpdateKeywordEvent(val result : EpisodeKeywordAndId): UiEvent()
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeFullContent
+import com.makeus.daycarat.data.GemSoaraAIContent
 import com.makeus.daycarat.data.SoaraContent
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.repository.EpisodeRepository
@@ -45,6 +46,9 @@ class GemContentViewModel @Inject constructor(
     private val _episodeSoara = MutableStateFlow<SoaraContent>(SoaraContent(null, null))
     val episodeSoara: StateFlow<SoaraContent> = _episodeSoara
 
+    private val _AISoara = MutableStateFlow<GemSoaraAIContent>(GemSoaraAIContent())
+    val AISoara: StateFlow<GemSoaraAIContent> = _AISoara
+
     var episodeId: Int = 0
     var keyword: String = ""
 
@@ -53,6 +57,7 @@ class GemContentViewModel @Inject constructor(
         this.keyword = keyword
         getSoara(this.episodeId)
         getEpisode(this.episodeId)
+        getAiSoara()
     }
 
 
@@ -78,12 +83,48 @@ class GemContentViewModel @Inject constructor(
         }
     }
 
-//    private fun sendKeywordEvent(event: Status) {
-//        viewModelScope.launch {
-//            if (event.)
-//            _flowEvent.emit(event)
-//        }
-//    }
+    fun getAiSoara() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getAISoara(episodeId).collectLatest { data ->
+                when (data.status) {
+                    Status.SUCCESS -> {
+                        data.data?.let { it1 -> _AISoara.emit(it1) }
+                        sendAIEvent(AuthViewmodel.UiEvent.SuccessEvent())
+                    }
+
+                    Status.ERROR -> {
+                        sendAIEvent(AuthViewmodel.UiEvent.FailEvent(data.message))
+                    }
+
+                    else -> {}
+                }
+            }
+        }
+    }
+
+    fun getCopyString() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.getCopyString(episodeId).collectLatest { data ->
+                when (data.status) {
+                    Status.SUCCESS -> {
+                        _flowCopyEvent.emit(AuthViewmodel.UiEvent.CopyEvent(data.data?.content))
+                    }
+                    else ->{}
+                }
+
+            }
+        }
+
+    }
+
+    private fun sendAIEvent(event: AuthViewmodel.UiEvent) {
+        viewModelScope.launch {
+            _flowAIKeywordEvent.emit(event)
+        }
+    }
+
+    private val _flowCopyEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
+    val flowCopyEvent = _flowCopyEvent.asSharedFlow()
 
 
 }

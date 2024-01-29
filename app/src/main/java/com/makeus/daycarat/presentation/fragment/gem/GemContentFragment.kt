@@ -1,5 +1,10 @@
 package com.makeus.daycarat.presentation.fragment.gem
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Context.CLIPBOARD_SERVICE
+import android.view.View
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -7,6 +12,7 @@ import androidx.navigation.fragment.navArgs
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentGemContentBinding
+import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.gem.GemContentViewModel
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
@@ -16,6 +22,7 @@ import com.makeus.daycarat.util.UiManager.setGemDes
 import com.makeus.daycarat.util.UiManager.setGemImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+
 
 @AndroidEntryPoint
 class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
@@ -28,7 +35,7 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
     }
 
     override fun initView() {
-        viewmodel.inputEpsodeId(args.episodeId , args.keyword)
+        viewmodel.inputEpsodeId(args.episodeId, args.keyword)
 
         repeatOnStarted {
             viewmodel.episodeSoara.collectLatest {
@@ -61,10 +68,55 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
 
 
         repeatOnStarted {
-            viewmodel.flowAIKeywordEvent.collectLatest {
+            viewmodel.flowAIKeywordEvent.collectLatest { event ->
+                binding.fieldAiSentence.visibility = View.VISIBLE
+                when (event) {
+                    is AuthViewmodel.UiEvent.FailEvent -> {
+                        if (event.message?.equals("404") == true) {
+                            binding.fieldYesSentence.visibility = View.GONE
+                            binding.fieldNoSentence.visibility = View.GONE
+                            binding.fieldWorkSentence.visibility = View.VISIBLE
+                        } else if (event.message?.equals("500") == true) {
+                            binding.fieldYesSentence.visibility = View.GONE
+                            binding.fieldNoSentence.visibility = View.VISIBLE
+                            binding.fieldWorkSentence.visibility = View.GONE
+                        }
+                    }
+
+                    is AuthViewmodel.UiEvent.SuccessEvent -> {
+                        binding.fieldYesSentence.visibility = View.VISIBLE
+                        binding.fieldNoSentence.visibility = View.GONE
+                        binding.fieldWorkSentence.visibility = View.GONE
+                    }
+
+                    else -> {
+
+                    }
+                }
 
             }
         }
+        repeatOnStarted {
+            viewmodel.AISoara.collectLatest {
+                binding.textAi1.text = it.generatedContent1
+                binding.textAi2.text = it.generatedContent2
+                binding.textAi3.text = it.generatedContent3
+            }
+        }
+
+        repeatOnStarted {
+            viewmodel.flowCopyEvent.collectLatest {
+                when(it){
+                    is AuthViewmodel.UiEvent.CopyEvent ->{
+//                        Toast.makeText(requireContext(), "복사되었습니다" , Toast.LENGTH_SHORT).show() // 알아서 토스트메시지뜸
+                        val clipboard: ClipboardManager = requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
+                        val clip = ClipData.newPlainText("label", it.copyData)
+                        clipboard.setPrimaryClip(clip)
+                    }else ->{}
+                }
+            }
+        }
+
         setKeyword()
         initListener()
 
@@ -79,17 +131,25 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
         )
     }
 
-    fun setKeyword(){
-        setGemImage(viewmodel.keyword , binding.imageGem)
-        setGemDes(viewmodel.keyword , binding.textGemDes)
+    fun setKeyword() {
+        setGemImage(viewmodel.keyword, binding.imageGem)
+        setGemDes(viewmodel.keyword, binding.textGemDes)
         binding.textGemTitle.text = viewmodel.keyword
     }
-    fun initListener(){
+
+    fun initListener() {
         binding.btnBack.onThrottleClick {
             findNavController().popBackStack()
         }
         binding.btnKeyword.onThrottleClick {
-            findNavController().navigate(R.id.action_gemContentFragment_to_gemKeywordFragment , bundleOf( "episode_id" to viewmodel.episodeId , "keyword" to viewmodel.keyword ))
+            findNavController().navigate(
+                R.id.action_gemContentFragment_to_gemKeywordFragment,
+                bundleOf("episode_id" to viewmodel.episodeId, "keyword" to viewmodel.keyword)
+            )
+        }
+        binding.btnCopy.onThrottleClick {
+            Toast.makeText(requireContext(), "복사시작" , Toast.LENGTH_SHORT).show()
+            viewmodel.getCopyString()
         }
     }
 

@@ -27,6 +27,10 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
 
     override fun initView() {
         Log.d(Constant.TAG ,"HomeFragment")
+        viewModel.apply {
+            updateUserInfo()
+            getRecentEpisode()
+        }
         repeatOnStarted {
             viewModel.episodeCount.collectLatest {
                 binding.textCountEpisode.text = it.toString()
@@ -53,14 +57,7 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
         )
     }
 
-    override fun onResume() {
-        super.onResume()
-        Log.d("GHLEE" , "onResume")
-        viewModel.apply {
-            updateUserInfo()
-            getRecentEpisode()
-        }
-    }
+
 
     fun observeRecentEpisode(){
         repeatOnStarted {

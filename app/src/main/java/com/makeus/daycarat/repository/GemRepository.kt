@@ -148,6 +148,41 @@ class GemRepository @Inject constructor(private val apimodule: GemApi) {
                 keyword = keyword) } ).flow
     }
 
+    suspend fun getAISoara(episodeId: Int) = flow {
+        emit(Resource.loading())
+        val response = apimodule.getAISoara(episodeId)
+        if (isSuccessful(response.statusCode)) {
+            emit(Resource.success(response.result))
+        }else if(response.statusCode == 404){ // 키워드생성중
+            emit(Resource.error("${response.statusCode}"))
+        }else if(response.statusCode == 500){// 키워드 생성실패
+            emit(Resource.error("${response.statusCode}"))
+        }
+        else{
+            emit(Resource.error(response.message))
+        }
+        try {
+
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun getCopyString(episodeId: Int) = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getCopyString(episodeId)
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
 
 
 

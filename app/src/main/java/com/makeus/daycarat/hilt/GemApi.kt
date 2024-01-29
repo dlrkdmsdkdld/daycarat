@@ -3,11 +3,13 @@ package com.makeus.daycarat.hilt
 import com.google.gson.JsonElement
 import com.makeus.daycarat.core.dto.ResponseBody
 import com.makeus.daycarat.data.ActivityTag
+import com.makeus.daycarat.data.Content
 import com.makeus.daycarat.data.EpisodeFullContent
 import com.makeus.daycarat.data.EpisodeId
 import com.makeus.daycarat.data.EpisodeKeyword
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.GemCount
+import com.makeus.daycarat.data.GemSoaraAIContent
 import com.makeus.daycarat.data.GemTotalCount
 import com.makeus.daycarat.data.SoaraContent
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
@@ -56,7 +58,10 @@ interface GemApi {
     suspend fun getGemKeywordList(@Path("keyword") keyword:String, @Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6 ): ResponseBody<List<GemDetailConetent>>
 
     @GET("gem/recommend/{episodeId}")
-    suspend fun getAISoara(@Path("episodeId") episodeId: Int): ResponseBody<SoaraContent>
+    suspend fun getAISoara(@Path("episodeId") episodeId: Int): ResponseBody<GemSoaraAIContent>
+
+    @GET("gem/clipboard/{episodeId}")
+    suspend fun getCopyString(@Path("episodeId") episodeId: Int): ResponseBody<Content>
 
 
 

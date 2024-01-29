@@ -3,6 +3,7 @@ package com.makeus.daycarat.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -44,7 +45,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
     }
 
     override fun initView() {
-        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
             true // 스테이터스 바 아이콘 검은색
         //네비게이션들을 담는 호스트
         val navHostFragment =
