@@ -46,7 +46,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
 
     override fun initView() {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
-            true // 스테이터스 바 아이콘 검은색
+        WindowInsetsControllerCompat(window, window.decorView).isAppearanceLightStatusBars =  true // 스테이터스 바 아이콘 검은색
         //네비게이션들을 담는 호스트
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.myNavHost) as NavHostFragment

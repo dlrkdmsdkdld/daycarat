@@ -332,6 +332,7 @@
             android:layout_marginStart="16dp"
             android:minHeight="192dp"
             android:visibility="gone"
+            tools:visibility="visible"
             android:id="@+id/field_ai_sentence"
             android:background="@drawable/bg_gem_ai"
             app:layout_constraintTop_toBottomOf="@id/field_soara_top"
@@ -415,7 +416,7 @@
                 android:layout_height="wrap_content">
                 <TextView
                     style="@style/sh5"
-                    android:layout_marginStart="24dp"
+                    android:layout_marginStart="20dp"
                     android:textColor="@color/main"
                     android:layout_gravity="start"
                     android:text="AI 추천 문장"
@@ -423,9 +424,9 @@
                     android:layout_height="wrap_content"/>
 
                 <LinearLayout
-                    android:paddingEnd="20dp"
+                    android:paddingEnd="23dp"
                     android:layout_marginTop="5dp"
-                    android:paddingStart="20dp"
+                    android:paddingStart="23dp"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

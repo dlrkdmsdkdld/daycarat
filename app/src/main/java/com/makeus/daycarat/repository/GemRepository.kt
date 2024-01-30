@@ -153,10 +153,10 @@ class GemRepository @Inject constructor(private val apimodule: GemApi) {
         val response = apimodule.getAISoara(episodeId)
         if (isSuccessful(response.statusCode)) {
             emit(Resource.success(response.result))
-        }else if(response.statusCode == 404){ // 키워드생성중
-            emit(Resource.error("${response.statusCode}"))
-        }else if(response.statusCode == 500){// 키워드 생성실패
-            emit(Resource.error("${response.statusCode}"))
+        }else if(response.statusCode == 201){ // 키워드생성중
+            emit(Resource.working(response.statusCode))
+        }else if(response.statusCode == 202){// 키워드 생성실패
+            emit(Resource.serverFail("${response.statusCode}"))
         }
         else{
             emit(Resource.error(response.message))

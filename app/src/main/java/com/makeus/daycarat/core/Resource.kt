@@ -12,6 +12,13 @@ data class Resource<out T>(
             return Resource(Status.SUCCESS, data, null)
         }
 
+        fun <T> working(data: T?): Resource<T> {
+            return Resource(Status.WORKING, data , null)
+        }
+        fun <T> serverFail(data: T?): Resource<T> {
+            return Resource(Status.SERVER_FAIL, data , null)
+        }
+
         fun <T> error(message: String, data: T? = null): Resource<T> {
             return Resource(Status.ERROR, data, message)
         }
@@ -24,6 +31,8 @@ data class Resource<out T>(
 
 enum class Status {
     SUCCESS,
+    WORKING,
+    SERVER_FAIL,
     ERROR,
     LOADING
 }

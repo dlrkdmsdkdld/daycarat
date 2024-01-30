@@ -71,22 +71,32 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
             viewmodel.flowAIKeywordEvent.collectLatest { event ->
                 binding.fieldAiSentence.visibility = View.VISIBLE
                 when (event) {
-                    is AuthViewmodel.UiEvent.FailEvent -> {
-                        if (event.message?.equals("404") == true) {
-                            binding.fieldYesSentence.visibility = View.GONE
-                            binding.fieldNoSentence.visibility = View.GONE
-                            binding.fieldWorkSentence.visibility = View.VISIBLE
-                        } else if (event.message?.equals("500") == true) {
-                            binding.fieldYesSentence.visibility = View.GONE
-                            binding.fieldNoSentence.visibility = View.VISIBLE
-                            binding.fieldWorkSentence.visibility = View.GONE
-                        }
-                    }
+                    is AuthViewmodel.UiEvent.ServerFailEvent -> {
+                        binding.fieldYesSentence.visibility = View.GONE
+                        binding.fieldNoSentence.visibility = View.VISIBLE
+                        binding.fieldWorkSentence.visibility = View.GONE
 
+                        binding.fieldYesKeyword.visibility = View.GONE
+                        binding.fieldNoKeyword.visibility = View.VISIBLE
+                        binding.fieldWorkKeyword.visibility = View.GONE
+                    }
+                    is AuthViewmodel.UiEvent.WorkingEvent -> {
+                        binding.fieldYesSentence.visibility = View.GONE
+                        binding.fieldNoSentence.visibility = View.GONE
+                        binding.fieldWorkSentence.visibility = View.VISIBLE
+
+                        binding.fieldYesKeyword.visibility = View.GONE
+                        binding.fieldNoKeyword.visibility = View.GONE
+                        binding.fieldWorkKeyword.visibility = View.VISIBLE
+                    }
                     is AuthViewmodel.UiEvent.SuccessEvent -> {
                         binding.fieldYesSentence.visibility = View.VISIBLE
                         binding.fieldNoSentence.visibility = View.GONE
                         binding.fieldWorkSentence.visibility = View.GONE
+
+                        binding.fieldYesKeyword.visibility = View.VISIBLE
+                        binding.fieldNoKeyword.visibility = View.GONE
+                        binding.fieldWorkKeyword.visibility = View.GONE
                     }
 
                     else -> {

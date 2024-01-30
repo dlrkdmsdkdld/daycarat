@@ -88,8 +88,17 @@ class GemContentViewModel @Inject constructor(
             repository.getAISoara(episodeId).collectLatest { data ->
                 when (data.status) {
                     Status.SUCCESS -> {
-                        data.data?.let { it1 -> _AISoara.emit(it1) }
+                        data.data?.let { it1 -> _AISoara.emit(it1 as GemSoaraAIContent) }
                         sendAIEvent(AuthViewmodel.UiEvent.SuccessEvent())
+                    }
+
+                    Status.WORKING -> {
+                        sendAIEvent(AuthViewmodel.UiEvent.WorkingEvent())
+                    }
+
+                    Status.SERVER_FAIL -> {
+                        sendAIEvent(AuthViewmodel.UiEvent.ServerFailEvent())
+
                     }
 
                     Status.ERROR -> {
@@ -109,7 +118,8 @@ class GemContentViewModel @Inject constructor(
                     Status.SUCCESS -> {
                         _flowCopyEvent.emit(AuthViewmodel.UiEvent.CopyEvent(data.data?.content))
                     }
-                    else ->{}
+
+                    else -> {}
                 }
 
             }

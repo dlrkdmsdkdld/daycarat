@@ -172,6 +172,9 @@ dependencies {
     implementation("androidx.paging:paging-runtime:$paging_version")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
 
+    //스켈레톤 ui
+    implementation("com.facebook.shimmer:shimmer:0.5.0")
+
 }
 kapt {
     correctErrorTypes = true
