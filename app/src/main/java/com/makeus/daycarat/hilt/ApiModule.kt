@@ -141,6 +141,10 @@ object ApiModule {
     @Singleton
     fun provideGemService(@Auth retrofit: Retrofit): GemApi = retrofit.create(GemApi::class.java)
 
+    @Provides
+    @Singleton
+    fun provideFCMService(@Auth retrofit: Retrofit): FcmApi = retrofit.create(FcmApi::class.java)
+
 
 
 }

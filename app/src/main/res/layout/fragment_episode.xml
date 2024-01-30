@@ -191,110 +191,111 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/field_shimmer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--            <com.facebook.shimmer.ShimmerFrameLayout-->
+<!--                android:id="@+id/field_shimmer"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent">-->
+<!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:layout_height="match_parent">-->
 
-                    <TextView
-                        android:background="@color/cardview_shadow_start_color"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginTop="80dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_width="200dp"
-                        android:id="@+id/shimmer1"
-                        android:layout_height="70dp"/>
-
-
-                    <TextView
-                        android:background="@color/cardview_shadow_start_color"
-                        app:layout_constraintTop_toBottomOf="@id/shimmer1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        android:layout_marginTop="20dp"
-                        android:id="@+id/shimmer2"
-                        android:layout_marginStart="16dp"
-                        android:layout_width="250dp"
-                        android:layout_height="40dp"/>
-
-                    <LinearLayout
-                        app:layout_constraintTop_toBottomOf="@id/shimmer2"
-                        android:id="@+id/shimmer3"
-                        android:layout_marginTop="105dp"
-                        android:orientation="horizontal"
-                        android:paddingTop="16dp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:background="@color/cardview_shadow_start_color"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"/>
-
-                        <TextView
-                            android:background="@color/cardview_shadow_start_color"
-                            android:layout_weight="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        app:layout_constraintTop_toBottomOf="@id/shimmer3"
-                        android:id="@+id/shimmer4"
-                        android:orientation="horizontal"
-                        android:paddingTop="16dp"
-                        android:paddingStart="16dp"
-                        android:paddingEnd="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:background="@color/cardview_shadow_start_color"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"/>
-
-                        <TextView
-                            android:background="@color/cardview_shadow_start_color"
-                            android:layout_weight="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        app:layout_constraintTop_toBottomOf="@id/shimmer4"
-                        android:id="@+id/shimmer5"
-                        android:orientation="horizontal"
-                        android:padding="16dp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:background="@color/cardview_shadow_start_color"
-                            android:layout_weight="1"
-                            android:layout_marginEnd="10dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"/>
-
-                        <TextView
-                            android:background="@color/cardview_shadow_start_color"
-                            android:layout_weight="1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="90dp"/>
-                    </LinearLayout>
+<!--                    <TextView-->
+<!--                        android:background="@color/cardview_shadow_start_color"-->
+<!--                        app:layout_constraintTop_toTopOf="parent"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        android:layout_marginTop="80dp"-->
+<!--                        android:layout_marginStart="16dp"-->
+<!--                        android:layout_width="200dp"-->
+<!--                        android:id="@+id/shimmer1"-->
+<!--                        android:layout_height="70dp"/>-->
 
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+<!--                    <TextView-->
+<!--                        android:background="@color/cardview_shadow_start_color"-->
+<!--                        app:layout_constraintTop_toBottomOf="@id/shimmer1"-->
+<!--                        app:layout_constraintStart_toStartOf="parent"-->
+<!--                        android:layout_marginTop="20dp"-->
+<!--                        android:id="@+id/shimmer2"-->
+<!--                        android:layout_marginStart="16dp"-->
+<!--                        android:layout_width="250dp"-->
+<!--                        android:layout_height="40dp"/>-->
 
-            </com.facebook.shimmer.ShimmerFrameLayout>
+<!--                    <LinearLayout-->
+<!--                        app:layout_constraintTop_toBottomOf="@id/shimmer2"-->
+<!--                        android:id="@+id/shimmer3"-->
+<!--                        android:layout_marginTop="105dp"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingTop="16dp"-->
+<!--                        android:paddingStart="16dp"-->
+<!--                        android:paddingEnd="16dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <TextView-->
+<!--                            android:background="@color/cardview_shadow_start_color"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_marginEnd="10dp"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="90dp"/>-->
+
+<!--                        <TextView-->
+<!--                            android:background="@color/cardview_shadow_start_color"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="90dp"/>-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        app:layout_constraintTop_toBottomOf="@id/shimmer3"-->
+<!--                        android:id="@+id/shimmer4"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:paddingTop="16dp"-->
+<!--                        android:paddingStart="16dp"-->
+<!--                        android:paddingEnd="16dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <TextView-->
+<!--                            android:background="@color/cardview_shadow_start_color"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_marginEnd="10dp"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="90dp"/>-->
+
+<!--                        <TextView-->
+<!--                            android:background="@color/cardview_shadow_start_color"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="90dp"/>-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        app:layout_constraintTop_toBottomOf="@id/shimmer4"-->
+<!--                        android:id="@+id/shimmer5"-->
+<!--                        android:orientation="horizontal"-->
+<!--                        android:padding="16dp"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <TextView-->
+<!--                            android:background="@color/cardview_shadow_start_color"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_marginEnd="10dp"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="90dp"/>-->
+
+<!--                        <TextView-->
+<!--                            android:background="@color/cardview_shadow_start_color"-->
+<!--                            android:layout_weight="1"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="90dp"/>-->
+<!--                    </LinearLayout>-->
+
+
+<!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--            </com.facebook.shimmer.ShimmerFrameLayout>-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

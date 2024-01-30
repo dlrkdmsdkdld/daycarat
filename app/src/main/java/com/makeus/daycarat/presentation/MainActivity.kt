@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.WindowManager
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -22,6 +23,8 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupActionBarWithNavController
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
@@ -29,6 +32,7 @@ import com.kakao.sdk.user.UserApiClient
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityMainBinding
+import com.makeus.daycarat.presentation.viewmodel.FcmViewModel
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.util.Constant.TAG
@@ -42,6 +46,10 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
     lateinit var navController: NavController
     private val mainViewModel by lazy {
         ViewModelProvider(this).get(MainViewmodel::class.java)
+    }
+
+    private val fcmViewmodel by lazy {
+        ViewModelProvider(this).get(FcmViewModel::class.java)
     }
 
     override fun initView() {
@@ -69,6 +77,20 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
             navController.navigate(R.id.editEpisodeFragment, args = null, option, null)
         }
         destinationListener()
+
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.w(TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+            val token = task.result
+            uploadFcmToken(token)
+        })
+
+    }
+
+    fun uploadFcmToken(token:String){
+        fcmViewmodel.updateFCMToken(token)
     }
 
     fun destinationListener() {

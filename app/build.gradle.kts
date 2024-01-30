@@ -12,7 +12,7 @@ plugins {
     id("com.google.dagger.hilt.android")
     id("androidx.navigation.safeargs.kotlin")
     id("kotlin-parcelize")
-
+    id("com.google.gms.google-services")
 
     // Add the Crashlytics Gradle plugin
     id("com.google.firebase.crashlytics")

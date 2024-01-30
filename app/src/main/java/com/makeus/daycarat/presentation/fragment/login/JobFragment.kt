@@ -32,7 +32,7 @@ class JobFragment : BaseFragment<FragmentJoinJobBinding>(
 
     override fun onResume() {
         super.onResume()
-        if(viewModel.userData.value.jobTitle.isNotEmpty()){
+        if(viewModel.userData.value.jobTitle?.isNotEmpty() == true){
             buttonList.forEach {
                 if(it.text.equals(viewModel.userData.value.jobTitle)){
                     (activity as JoinActivity).enableNextBtn(true)
