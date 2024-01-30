@@ -42,6 +42,7 @@ android {
         }
 
         buildConfigField("String","BASE_URL", getApiKey("BASE_URL"))
+        buildConfigField("String","KAKAO_API_KEY", getApiKey("KAKAO_API_KEY"))
 
 
     }
@@ -190,6 +191,7 @@ dependencies {
     // When using the BoM, you don't specify versions in Firebase library dependencies
     implementation("com.google.firebase:firebase-crashlytics")
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-messaging")
 
     val paging_version = "3.1.1"
     implementation("androidx.paging:paging-runtime:$paging_version")
@@ -197,6 +199,10 @@ dependencies {
 
     //스켈레톤 ui
     implementation("com.facebook.shimmer:shimmer:0.5.0")
+
+    //ted permission
+    implementation("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
+
 
 }
 kapt {
