@@ -1,4 +1,8 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+import java.util.Properties
+import java.io.FileInputStream
+import java.lang.System.load
 
 
 plugins {
@@ -14,6 +18,12 @@ plugins {
     id("com.google.firebase.crashlytics")
 
 }
+
+// 1. Properties 객체 생성 방식
+val properties = Properties().apply {
+    load(FileInputStream(rootProject.file("local.properties")))
+}
+
 android {
 
     namespace = "com.makeus.daycarat"
@@ -30,11 +40,20 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+
+        buildConfigField("String","BASE_URL", getApiKey("BASE_URL"))
+
+
     }
 
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+            manifestPlaceholders["KAKAO_API_KEY"] = properties["KAKAO_API_KEY"] as String
+        }
         release {
             isMinifyEnabled = false
+            manifestPlaceholders["KAKAO_API_KEY"] = properties["KAKAO_API_KEY"] as String
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -51,6 +70,7 @@ android {
     buildFeatures {
         viewBinding = true
         dataBinding = true
+        buildConfig = true
     }
 
 
@@ -70,6 +90,9 @@ android {
         }
     }
 
+}
+fun getApiKey(propertyKey: String): String {
+    return gradleLocalProperties(rootDir).getProperty(propertyKey)
 }
 
 dependencies {

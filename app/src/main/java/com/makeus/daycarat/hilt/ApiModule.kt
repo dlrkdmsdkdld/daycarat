@@ -1,6 +1,7 @@
 package com.makeus.daycarat.hilt
 
 import android.util.Log
+import com.makeus.daycarat.BuildConfig
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.isJsonArray
 import com.makeus.daycarat.util.Extensions.isJsonObject
@@ -111,7 +112,7 @@ object ApiModule {
         Retrofit.Builder()
             .client(client)
             .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .build()
 
 
@@ -122,7 +123,7 @@ object ApiModule {
         Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
             .client(client.newBuilder().addInterceptor(tokenIntercptor).build())
-            .baseUrl(Constant.BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL)
             .build()
 
     @Provides
