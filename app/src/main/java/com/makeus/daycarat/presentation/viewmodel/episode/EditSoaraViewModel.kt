@@ -9,6 +9,7 @@ import com.makeus.daycarat.data.SoaraContent
 import com.makeus.daycarat.data.setContent
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -28,7 +29,7 @@ class EditSoaraViewModel @Inject constructor(private val repository: GemReposito
     private val _episodeTemp = MutableStateFlow<EpisodeTempData>(EpisodeTempData())
     val episodeTemp: StateFlow<EpisodeTempData> = _episodeTemp
 
-    private val _flowEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
+    private val _flowEvent = MutableSharedFlow<UiEvent>()
     val flowEvent = _flowEvent.asSharedFlow()
 
 
@@ -63,15 +64,15 @@ class EditSoaraViewModel @Inject constructor(private val repository: GemReposito
             repository.setSoaraContent(data).collect { data ->
                 when (data.status) {
                     Status.LOADING -> {
-                        sendEvent(AuthViewmodel.UiEvent.LoadingEvent())
+                        sendEvent(UiEvent.LoadingEvent())
                     }
 
                     Status.SUCCESS -> {
-                        sendEvent(AuthViewmodel.UiEvent.SuccessEvent())
+                        sendEvent(UiEvent.SuccessEvent())
                     }
 
                     else -> {
-                        sendEvent(AuthViewmodel.UiEvent.FailEvent())
+                        sendEvent(UiEvent.FailEvent())
                     }
                 }
             }
@@ -87,7 +88,7 @@ class EditSoaraViewModel @Inject constructor(private val repository: GemReposito
 
     }
 
-    private fun sendEvent(event: AuthViewmodel.UiEvent) {
+    private fun sendEvent(event: UiEvent) {
         viewModelScope.launch {
             _flowEvent.emit(event)
         }

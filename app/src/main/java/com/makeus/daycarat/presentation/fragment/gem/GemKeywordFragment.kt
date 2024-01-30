@@ -19,6 +19,7 @@ import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import javax.inject.Inject
@@ -56,11 +57,11 @@ class GemKeywordFragment() : BaseFragment<FragmentSelectKeywordBinding>(
         repeatOnStarted {
             viewModel.flowEvent.collectLatest { event ->
                 when (event) {
-                    is AuthViewmodel.UiEvent.LoadingEvent -> {
+                    is UiEvent.LoadingEvent -> {
                         (activity as MainActivity).loadingDialog.show()
                     }
 
-                    is AuthViewmodel.UiEvent.SuccessUpdateKeywordEvent -> {
+                    is UiEvent.SuccessUpdateKeywordEvent -> {
                         (activity as MainActivity).loadingDialog.dismiss()
                         finishEvent(event.result)
                     }

@@ -9,6 +9,7 @@ import com.makeus.daycarat.data.UserData
 import com.makeus.daycarat.repository.AuthRepository
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.SharedPreferenceManager
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -52,22 +53,6 @@ class AuthViewmodel @Inject constructor(private val repository: AuthRepository) 
         viewModelScope.launch {
             _flowEvent.emit(event)
         }
-    }
-    sealed class UiEvent {
-
-        class LoadingEvent(): UiEvent()
-        class AlreadyUserEvent(): UiEvent()
-        class NewUserEvent(): UiEvent()
-        class FailEvent(val message:String? =""): UiEvent()
-        class SuccessEvent(): UiEvent()
-
-        class WorkingEvent(): UiEvent()
-        class ServerFailEvent(): UiEvent()
-
-        class CopyEvent(val copyData:String? =""): UiEvent()
-
-        class SuccessUpdateKeywordEvent(val result : EpisodeKeywordAndId): UiEvent()
-
     }
 
 

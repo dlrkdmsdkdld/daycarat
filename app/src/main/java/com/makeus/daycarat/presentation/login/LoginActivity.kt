@@ -27,6 +27,7 @@ import com.makeus.daycarat.util.Extensions.setStatusBarOrigin
 import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -86,9 +87,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
             repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.flowEvent.collect { event ->
                     when(event){
-                        is AuthViewmodel.UiEvent.LoadingEvent ->{
+                        is UiEvent.LoadingEvent ->{
                             loadingDialog.show()
-                        } is AuthViewmodel.UiEvent.AlreadyUserEvent ->{
+                        } is UiEvent.AlreadyUserEvent ->{
                             loadingDialog.dismiss()
                             Intent(this@LoginActivity,MainActivity::class.java).apply {
                                 finishAffinity()
@@ -98,7 +99,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
 //                                startActivity(this)
 //                                finishAffinity()
 //                            }
-                        } is AuthViewmodel.UiEvent.NewUserEvent ->{
+                        } is UiEvent.NewUserEvent ->{
                             loadingDialog.dismiss()
                             Intent(this@LoginActivity,IntroduceActivity::class.java).apply {
                                 finishAffinity()

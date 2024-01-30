@@ -20,6 +20,7 @@ import com.makeus.daycarat.presentation.viewmodel.episode.SoaraViewmodel
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -71,7 +72,7 @@ class EditSoaraFragment() : BaseFragment<FragmentEditSoaraBinding>(
         repeatOnStarted {
             viewModel.flowEvent.collect { event ->
                 when (event) {
-                    is AuthViewmodel.UiEvent.LoadingEvent -> {
+                    is UiEvent.LoadingEvent -> {
                         (activity as MainActivity).loadingDialog.show()
                     }
 

@@ -10,6 +10,7 @@ import com.makeus.daycarat.data.SoaraContent
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -27,7 +28,7 @@ class GemContentViewModel @Inject constructor(
 ) :
     ViewModel() {
 
-    private val _flowAIKeywordEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
+    private val _flowAIKeywordEvent = MutableSharedFlow<UiEvent>()
     val flowAIKeywordEvent = _flowAIKeywordEvent.asSharedFlow()
 
 
@@ -89,20 +90,20 @@ class GemContentViewModel @Inject constructor(
                 when (data.status) {
                     Status.SUCCESS -> {
                         data.data?.let { it1 -> _AISoara.emit(it1 as GemSoaraAIContent) }
-                        sendAIEvent(AuthViewmodel.UiEvent.SuccessEvent())
+                        sendAIEvent(UiEvent.SuccessEvent())
                     }
 
                     Status.WORKING -> {
-                        sendAIEvent(AuthViewmodel.UiEvent.WorkingEvent())
+                        sendAIEvent(UiEvent.WorkingEvent())
                     }
 
                     Status.SERVER_FAIL -> {
-                        sendAIEvent(AuthViewmodel.UiEvent.ServerFailEvent())
+                        sendAIEvent(UiEvent.ServerFailEvent())
 
                     }
 
                     Status.ERROR -> {
-                        sendAIEvent(AuthViewmodel.UiEvent.FailEvent(data.message))
+                        sendAIEvent(UiEvent.FailEvent(data.message))
                     }
 
                     else -> {}
@@ -116,7 +117,7 @@ class GemContentViewModel @Inject constructor(
             repository.getCopyString(episodeId).collectLatest { data ->
                 when (data.status) {
                     Status.SUCCESS -> {
-                        _flowCopyEvent.emit(AuthViewmodel.UiEvent.CopyEvent(data.data?.content))
+                        _flowCopyEvent.emit(UiEvent.CopyEvent(data.data?.content))
                     }
 
                     else -> {}
@@ -127,13 +128,13 @@ class GemContentViewModel @Inject constructor(
 
     }
 
-    private fun sendAIEvent(event: AuthViewmodel.UiEvent) {
+    private fun sendAIEvent(event: UiEvent) {
         viewModelScope.launch {
             _flowAIKeywordEvent.emit(event)
         }
     }
 
-    private val _flowCopyEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
+    private val _flowCopyEvent = MutableSharedFlow<UiEvent>()
     val flowCopyEvent = _flowCopyEvent.asSharedFlow()
 
 

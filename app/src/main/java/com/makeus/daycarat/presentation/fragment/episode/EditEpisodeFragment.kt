@@ -29,6 +29,7 @@ import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeWithWeekDay
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -81,7 +82,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         repeatOnStarted {
             viewModel.flowEvent.collect { event ->
                 when (event) {
-                    is AuthViewmodel.UiEvent.LoadingEvent -> {
+                    is UiEvent.LoadingEvent -> {
                         (activity as MainActivity).loadingDialog.show()
                     }
 

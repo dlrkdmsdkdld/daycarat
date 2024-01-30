@@ -14,6 +14,7 @@ import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.parseIntToMonth
 import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -28,7 +29,7 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
     ViewModel() {
 
 
-    private val _flowEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
+    private val _flowEvent = MutableSharedFlow<UiEvent>()
     val flowEvent = _flowEvent.asSharedFlow()
 
     private val _episode = MutableStateFlow<EpisodeRegister>(EpisodeRegister())
@@ -99,13 +100,13 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
                 .collect { data ->
                     when (data.status) {
                         Status.LOADING -> {
-                            sendEvent(AuthViewmodel.UiEvent.LoadingEvent())
+                            sendEvent(UiEvent.LoadingEvent())
                         }
                         Status.SUCCESS -> {
-                            sendEvent(AuthViewmodel.UiEvent.SuccessEvent())
+                            sendEvent(UiEvent.SuccessEvent())
                         }
                         else -> {
-                            sendEvent(AuthViewmodel.UiEvent.FailEvent())
+                            sendEvent(UiEvent.FailEvent())
                         }
                     }
 
@@ -132,7 +133,7 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
         }
     }
 
-    private fun sendEvent(event: AuthViewmodel.UiEvent) {
+    private fun sendEvent(event: UiEvent) {
         viewModelScope.launch {
             _flowEvent.emit(event)
         }

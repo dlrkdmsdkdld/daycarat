@@ -10,6 +10,7 @@ import com.makeus.daycarat.data.SoaraContent
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.util.UiEvent
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
@@ -48,14 +49,15 @@ class GemKeywordViewModel @AssistedInject constructor(
     }
 
 
-    private val _flowEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
+    private val _flowEvent = MutableSharedFlow<UiEvent>()
     val flowEvent = _flowEvent.asSharedFlow()
 
 
-    private fun sendEvent(event: AuthViewmodel.UiEvent) {
+    private fun sendEvent(event: UiEvent) {
         viewModelScope.launch {
             _flowEvent.emit(event)
         }
+        
     }
 
     private val _userSelectKeyword = MutableStateFlow<EpisodeKeywordAndId>(initData)
@@ -79,15 +81,15 @@ class GemKeywordViewModel @AssistedInject constructor(
             episdoeRepository.updatekeyword(_userSelectKeyword.value).collectLatest { data ->
                 when (data.status) {
                     Status.LOADING -> {
-                        sendEvent(AuthViewmodel.UiEvent.LoadingEvent())
+                        sendEvent(UiEvent.LoadingEvent())
                     }
 
                     Status.SUCCESS -> {
-                        sendEvent(AuthViewmodel.UiEvent.SuccessUpdateKeywordEvent(_userSelectKeyword.value))
+                        sendEvent(UiEvent.SuccessUpdateKeywordEvent(_userSelectKeyword.value))
                     }
 
                     else -> {
-                        sendEvent(AuthViewmodel.UiEvent.FailEvent())
+                        sendEvent(UiEvent.FailEvent())
                     }
                 }
             }

@@ -24,6 +24,7 @@ import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.navigationHeight
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -95,15 +96,15 @@ class JoinActivity : BaseActivity<ActivityJoinBinding>({ ActivityJoinBinding.inf
             var dialog = LoadingDialog(this@JoinActivity)
             viewModel.flowEvent.collect { event ->
                 when (event) {
-                    is AuthViewmodel.UiEvent.LoadingEvent -> {
+                    is UiEvent.LoadingEvent -> {
                         dialog.show()
                     }
 
-                    is AuthViewmodel.UiEvent.SuccessEvent -> {
+                    is UiEvent.SuccessEvent -> {
                         dialog.dismiss()
                         mPager.currentItem += 1
                     }
-                    is AuthViewmodel.UiEvent.FailEvent ->{
+                    is UiEvent.FailEvent ->{
                         Toast.makeText(this@JoinActivity , "${event.message}!",Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                     }

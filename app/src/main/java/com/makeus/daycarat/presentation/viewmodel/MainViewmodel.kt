@@ -7,6 +7,7 @@ import com.makeus.daycarat.data.AllUserData
 import com.makeus.daycarat.data.UserData
 import com.makeus.daycarat.repository.AuthRepository
 import com.makeus.daycarat.repository.UserInfoRepository
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,7 +22,7 @@ class MainViewmodel @Inject constructor(private val repository: UserInfoReposito
     private val _userData = MutableStateFlow<AllUserData>(AllUserData())
     val userData: StateFlow<AllUserData> = _userData
 
-    private val _flowEvent = MutableSharedFlow<AuthViewmodel.UiEvent>()
+    private val _flowEvent = MutableSharedFlow<UiEvent>()
     val flowEvent = _flowEvent.asSharedFlow()
 
     init {
@@ -45,7 +46,7 @@ class MainViewmodel @Inject constructor(private val repository: UserInfoReposito
             }
         }
     }
-    private fun sendEvent(event: AuthViewmodel.UiEvent) {
+    private fun sendEvent(event: UiEvent) {
         viewModelScope.launch {
             _flowEvent.emit(event)
         }

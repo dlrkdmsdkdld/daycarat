@@ -17,6 +17,7 @@ import com.makeus.daycarat.presentation.viewmodel.gem.GemContentViewModel
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.UiEvent
 import com.makeus.daycarat.util.UiManager
 import com.makeus.daycarat.util.UiManager.setGemDes
 import com.makeus.daycarat.util.UiManager.setGemImage
@@ -71,7 +72,7 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
             viewmodel.flowAIKeywordEvent.collectLatest { event ->
                 binding.fieldAiSentence.visibility = View.VISIBLE
                 when (event) {
-                    is AuthViewmodel.UiEvent.ServerFailEvent -> {
+                    is UiEvent.ServerFailEvent -> {
                         binding.fieldYesSentence.visibility = View.GONE
                         binding.fieldNoSentence.visibility = View.VISIBLE
                         binding.fieldWorkSentence.visibility = View.GONE
@@ -80,7 +81,7 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
                         binding.fieldNoKeyword.visibility = View.VISIBLE
                         binding.fieldWorkKeyword.visibility = View.GONE
                     }
-                    is AuthViewmodel.UiEvent.WorkingEvent -> {
+                    is UiEvent.WorkingEvent -> {
                         binding.fieldYesSentence.visibility = View.GONE
                         binding.fieldNoSentence.visibility = View.GONE
                         binding.fieldWorkSentence.visibility = View.VISIBLE
@@ -89,7 +90,7 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
                         binding.fieldNoKeyword.visibility = View.GONE
                         binding.fieldWorkKeyword.visibility = View.VISIBLE
                     }
-                    is AuthViewmodel.UiEvent.SuccessEvent -> {
+                    is UiEvent.SuccessEvent -> {
                         binding.fieldYesSentence.visibility = View.VISIBLE
                         binding.fieldNoSentence.visibility = View.GONE
                         binding.fieldWorkSentence.visibility = View.GONE
@@ -117,7 +118,7 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
         repeatOnStarted {
             viewmodel.flowCopyEvent.collectLatest {
                 when(it){
-                    is AuthViewmodel.UiEvent.CopyEvent ->{
+                    is UiEvent.CopyEvent ->{
 //                        Toast.makeText(requireContext(), "복사되었습니다" , Toast.LENGTH_SHORT).show() // 알아서 토스트메시지뜸
                         val clipboard: ClipboardManager = requireActivity().getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
                         val clip = ClipData.newPlainText("label", it.copyData)
