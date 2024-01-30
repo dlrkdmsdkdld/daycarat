@@ -3,11 +3,14 @@ package com.makeus.daycarat.presentation.viewmodel
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.makeus.daycarat.base.BaseViewmodel
+import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.ActivityTag
 import com.makeus.daycarat.data.EpisodeKeyword
 import com.makeus.daycarat.data.GemCount
 import com.makeus.daycarat.data.GemTotalCount
 import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -21,7 +24,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class GemViewModel @Inject constructor(private val repository: GemRepository) :
-    ViewModel() {
+    BaseViewmodel() {
 
     private val _gemTotalCount = MutableStateFlow<GemTotalCount>(GemTotalCount(0))
     val gemTotalCount = _gemTotalCount
@@ -38,16 +41,26 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     private val _mostActivityTag = MutableStateFlow<ActivityTag>(ActivityTag(""))
     val mostActivityTag = _mostActivityTag
 
+    init {
+        flowTotalIndex = 5
+    }
+
     fun initData(){
+        sendEvent(UiEvent.LoadingEvent())
         getTypeGemCount()
         getTotalGemCount()
         getGemMonthCount()
         getMostActivity()
         getMostKeyword()
     }
+
+
+
+
     fun getTotalGemCount(){
         viewModelScope.launch(Dispatchers.IO){
             repository.getGemTotalCount().collectLatest { result ->
+                if (result.status != Status.LOADING) finishNowFlow()
                 result.data?.let { _gemTotalCount.emit(it) }
 
             }
@@ -56,6 +69,7 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     fun getTypeGemCount(){
         viewModelScope.launch(Dispatchers.IO){
             repository.getGemTpyeCount().collectLatest { result ->
+                if (result.status != Status.LOADING) finishNowFlow()
                 result.data?.let { _gemTypeCount.emit(it) }
 
             }
@@ -64,6 +78,7 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     fun getGemMonthCount(){
         viewModelScope.launch(Dispatchers.IO){
             repository.getGemMonthCount().collectLatest { result ->
+                if (result.status != Status.LOADING) finishNowFlow()
                 result.data?.let { _gemMonthCount.emit(it) }
 
             }
@@ -72,6 +87,7 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     fun getMostKeyword(){
         viewModelScope.launch(Dispatchers.IO){
             repository.getMostKeyword().collectLatest { result ->
+                if (result.status != Status.LOADING) finishNowFlow()
                 result.data?.let { _mostKeyword.emit(it) }
 
             }
@@ -81,6 +97,7 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     fun getMostActivity(){
         viewModelScope.launch(Dispatchers.IO){
             repository.getMostActivity().collectLatest { result ->
+                if (result.status != Status.LOADING) finishNowFlow()
                 result.data?.let { _mostActivityTag.emit(it) }
 
             }

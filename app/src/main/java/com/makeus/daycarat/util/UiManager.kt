@@ -2,6 +2,9 @@ package com.makeus.daycarat.util
 
 import android.content.res.Resources
 import android.text.Layout
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.ImageView
@@ -18,6 +21,12 @@ object UiManager {
         val r: Resources = DayCaratApplication.mAppContext!!.getResources()
         return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp.toFloat(), r.displayMetrics)
             .toInt()
+    }
+
+    fun setSpan(color:Int ,startPoint:Int , endPoint:Int , ment:String ): SpannableString {
+        var span = SpannableString(ment)
+        span.setSpan( ForegroundColorSpan(color) , startPoint , endPoint , Spanned.SPAN_EXCLUSIVE_EXCLUSIVE )
+        return span
     }
 
 

@@ -8,52 +8,58 @@
         android:layout_width="match_parent"
         android:background="@color/main_50"
         android:layout_height="match_parent">
-        <LinearLayout
-            android:orientation="vertical"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/field_top">
+            <ImageView
+                android:layout_marginTop="92.5dp"
                 app:layout_constraintTop_toTopOf="parent"
-                android:id="@+id/field_top">
+                app:layout_constraintEnd_toEndOf="parent"
+                android:src="@drawable/bg_episode_circle_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
 
-                <TextView
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginStart="16dp"
-                    android:textColor="@color/gray_scale_900"
-                    android:layout_marginTop="68.5dp"
-                    style="@style/h5"
-                    android:text="@string/episode_top_title"
-                    android:layout_width="wrap_content"
-                    android:id="@+id/text_total_count"
-                    android:layout_height="wrap_content"/>
 
-                <TextView
-                    android:text="@string/episode_top_des"
-                    android:textColor="@color/gray_scale_600"
-                    android:layout_marginTop="12dp"
-                    style="@style/b3"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    android:layout_marginBottom="50dp"
-                    android:layout_marginStart="16dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toBottomOf="@id/text_total_count"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:textColor="@color/gray_scale_900"
+                android:layout_marginTop="68.5dp"
+                style="@style/h5"
+                android:text="@string/episode_top_title"
+                android:layout_width="wrap_content"
+                android:id="@+id/text_total_count"
+                android:layout_height="wrap_content"/>
 
+            <TextView
+                android:text="@string/episode_top_des"
+                android:textColor="@color/gray_scale_600"
+                android:layout_marginTop="12dp"
+                style="@style/b3"
+                app:layout_constraintVertical_bias="0"
+                android:layout_marginStart="16dp"
+                android:id="@+id/text_bottom"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/text_total_count"/>
 
             <LinearLayout
+                app:layout_constraintTop_toBottomOf="@id/text_bottom"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:paddingBottom="20dp"
                 android:layout_weight="1"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/field_top"
                 android:background="@drawable/bg_home_white_field">
+
+                <!--                app:layout_constraintTop_toBottomOf="@id/field_top"-->
+
 
                 <com.google.android.material.chip.ChipGroup
                     app:layout_constraintTop_toTopOf="parent"
@@ -176,7 +182,8 @@
             </LinearLayout>
 
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 

@@ -8,6 +8,7 @@ import com.makeus.daycarat.data.EpisodeKeywordAndId
 import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.MonthEpisodeCount
+import com.makeus.daycarat.data.EpisodeCount
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
 import kotlinx.coroutines.delay
 import retrofit2.http.Body
@@ -46,6 +47,9 @@ interface EpisodeApi {
 
     @PATCH("episode/keyword")
     suspend fun updateEpisodeKeyword(@Body data: EpisodeKeywordAndId): ResponseBody<Boolean>
+
+    @GET("episode/count/all")
+    suspend fun getTotalEpisodeCount(): ResponseBody<EpisodeCount>
 
 }
 

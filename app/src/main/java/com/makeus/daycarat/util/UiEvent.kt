@@ -18,4 +18,6 @@ sealed class UiEvent {
 
     class SuccessUpdateKeywordEvent(val result : EpisodeKeywordAndId): UiEvent()
 
+    class FinishLoading(): UiEvent()
+
 }

@@ -1,5 +1,9 @@
 package com.makeus.daycarat.presentation.fragment.episode
 
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.Spanned
+import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.AdapterView
 import androidx.core.os.bundleOf
@@ -17,8 +21,10 @@ import com.makeus.daycarat.presentation.spinner.EpisodeCardSpinner
 import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeViewmodel
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.UiManager.setSpan
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+
 
 @AndroidEntryPoint
 class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
@@ -32,6 +38,14 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
 
     override fun initView() {
         binding.recyclerEpisode.adapter = episodeAdapter
+        viewModel.getTotalGemCount()
+        if (binding.chipActivity.isChecked){
+            viewModel.getActivityTagOderByCount()
+            binding.spinnerYear.visibility = View.GONE
+        }else{
+            binding.spinnerYear.visibility = View.VISIBLE
+            viewModel.getActivityTagOderByDate()
+        }
         episodeAdapter.onClick = {
             var tmpBundle = if(it.activityTagName == null ) bundleOf("typeItem" to it , "year" to viewModel.selectYear) else bundleOf("typeItem" to it , "year" to 0)
             findNavController().navigate(R.id.action_episodeFragment_to_episodeDetailTypeFragment , tmpBundle )
@@ -56,6 +70,13 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
 
             }
         }
+
+        repeatOnStarted {
+            viewModel.episodeTotalCount.collectLatest {
+                binding.textTotalCount.text = setSpan(resources.getColor(R.color.main , null ) , 0 , it.episodeCount.toString().length , resources.getString(R.string.episode_top_title , it.episodeCount) )
+            }
+        }
+
         initChipGroup()
         initSpinner()
 
@@ -89,16 +110,7 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        if (binding.chipActivity.isChecked){
-            viewModel.getActivityTagOderByCount()
-            binding.spinnerYear.visibility = View.GONE
-        }else{
-            binding.spinnerYear.visibility = View.VISIBLE
-            viewModel.getActivityTagOderByDate()
-        }
-    }
+
 
     override fun initStatusBar() {
         binding.fieldMain.setPadding(

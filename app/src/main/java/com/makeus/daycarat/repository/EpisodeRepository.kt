@@ -138,6 +138,19 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
             e.printStackTrace()
         }
     }
-
+    suspend fun getTotalEpisodeCount() = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.getTotalEpisodeCount()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
 
 }

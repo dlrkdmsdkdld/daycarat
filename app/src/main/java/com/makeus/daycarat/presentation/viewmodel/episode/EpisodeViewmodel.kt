@@ -5,11 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeActivityCounter
+import com.makeus.daycarat.data.EpisodeCount
 import com.makeus.daycarat.repository.EpisodeRepository
+import com.makeus.daycarat.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -51,6 +54,19 @@ class EpisodeViewmodel @Inject constructor(private val repository: EpisodeReposi
                     }
                 }
 
+
+            }
+        }
+    }
+
+    private val _episodeTotalCount = MutableStateFlow<EpisodeCount>(EpisodeCount(0))
+    val episodeTotalCount = _episodeTotalCount
+
+    fun getTotalGemCount(){
+        viewModelScope.launch(Dispatchers.IO){
+            repository.getTotalEpisodeCount().collectLatest { result ->
+//                if (result.status != Status.LOADING) finishNowFlow()
+                result.data?.let { _episodeTotalCount.emit(it) }
 
             }
         }
