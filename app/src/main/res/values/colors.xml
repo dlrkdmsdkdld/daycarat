@@ -32,6 +32,11 @@
     <color name="gray_scale_1000">#202124</color>
 
     <color name="sub_blue_50">#ECF4FF</color>
+    <color name="sub_chanllenge_50">#FFF1DE</color>
+    <color name="sub_resolve_50">#FFEEF9</color>
+    <color name="sub_profession_50">#FFFCDC</color>
+    <color name="sub_creative_50">#EAFFF8</color>
+    <color name="sub_red_50">#FFEBED</color>
 
 
 </resources>

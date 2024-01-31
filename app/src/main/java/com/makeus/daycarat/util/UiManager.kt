@@ -9,6 +9,7 @@ import android.util.TypedValue
 import android.view.LayoutInflater
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.makeus.daycarat.DayCaratApplication
 import com.makeus.daycarat.R
@@ -52,13 +53,25 @@ object UiManager {
     fun setGemDes(keyword:String,targetTextView:TextView){
         when(keyword){
             "커뮤니케이션" -> targetTextView.text = "다른 사람들과 소통방식에 있어 어떤 강점을 발휘했는지 적어보세요"
-            "문제 해결" ->targetTextView.text = ""
-            "창의성" ->targetTextView.text = ""
-            "도전 정신" -> targetTextView.text = ""
-            "전문성" -> targetTextView.text = ""
-            "실행력" -> targetTextView.text = ""
+            "문제 해결" ->targetTextView.text = "다른 사람들과 소통방식에 있어 어떤 강점을 발휘했는지 적어보세요"
+            "창의성" ->targetTextView.text = "다른 사람들과 소통방식에 있어 어떤 강점을 발휘했는지 적어보세요"
+            "도전 정신" -> targetTextView.text = "다른 사람들과 소통방식에 있어 어떤 강점을 발휘했는지 적어보세요"
+            "전문성" -> targetTextView.text = "다른 사람들과 소통방식에 있어 어떤 강점을 발휘했는지 적어보세요"
+            "실행력" -> targetTextView.text = "다른 사람들과 소통방식에 있어 어떤 강점을 발휘했는지 적어보세요"
         }
     }
+
+    fun setGemCardBgColor(keyword:String, cardview: CardView){
+        when(keyword){
+            "커뮤니케이션" -> cardview.setCardBackgroundColor(cardview.context.getColor(R.color.sub_blue_50 ))
+            "문제 해결" ->cardview.setCardBackgroundColor(cardview.context.getColor(R.color.sub_resolve_50 ))
+            "창의성" ->cardview.setCardBackgroundColor(cardview.context.getColor(R.color.sub_creative_50 ))
+            "도전 정신" ->cardview.setCardBackgroundColor(cardview.context.getColor(R.color.sub_chanllenge_50 ))
+            "전문성" ->cardview.setCardBackgroundColor(cardview.context.getColor(R.color.sub_profession_50 ))
+            "실행력" ->cardview.setCardBackgroundColor(cardview.context.getColor(R.color.sub_red_50 ))
+        }
+    }
+
 
 }
 

@@ -145,6 +145,8 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
     fun setKeyword() {
         setGemImage(viewmodel.keyword, binding.imageGem)
         setGemDes(viewmodel.keyword, binding.textGemDes)
+
+        binding.cardGem
         binding.textGemTitle.text = viewmodel.keyword
     }
 
