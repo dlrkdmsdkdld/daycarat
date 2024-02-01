@@ -11,6 +11,7 @@ import com.makeus.daycarat.databinding.FragmentEpisodeDetailTypeBinding
 import com.makeus.daycarat.presentation.recyclerview.paging.EpisodeDetailAdatper
 import com.makeus.daycarat.presentation.recyclerview.paging.PagingLoadingAdapter
 import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeDetailTypeViewModel
+import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
@@ -50,6 +51,14 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
         pagingAdapter.onclick = { id ->
             findNavController().navigate(R.id.action_episodeDetailTypeFragment_to_episodeSeeContentFragment , bundleOf("episodeId" to id )  )
+        }
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("key")?.observe(viewLifecycleOwner) {result ->
+            if (result.equals(Constant.EPISODE_REMOVE_SECCESS)) {
+                binding.textCount.text = viewModel.removeEpisodeEvent().toString()
+            }else{
+
+            }
         }
 
 

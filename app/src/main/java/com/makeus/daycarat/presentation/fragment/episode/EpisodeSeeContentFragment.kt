@@ -16,6 +16,7 @@ import com.makeus.daycarat.databinding.FragmentEpisodeSeeContentBinding
 import com.makeus.daycarat.databinding.LayoutEpisodeDetailContentBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeSeeViewModel
+import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
@@ -85,16 +86,25 @@ class EpisodeSeeContentFragment() : BaseFragment<FragmentEpisodeSeeContentBindin
                     is UiEvent.LoadingEvent -> {
                         (activity as MainActivity).loadingDialog.show()
                     }
-
+                    is UiEvent.SuccessEvent -> {
+                        popupNavigate(Constant.EPISODE_REMOVE_SECCESS)
+                    }
                     else -> {
-                        (activity as MainActivity).loadingDialog.dismiss()
-                        findNavController().popBackStack()
+                        popupNavigate(Constant.EPISODE_REMOVE_FAIL)
+
                     }
 
                 }
             }
         }
 
+    }
+    fun popupNavigate(result:String){
+        (activity as MainActivity).loadingDialog.dismiss()
+        findNavController().apply {
+            previousBackStackEntry?.savedStateHandle?.set("key", result)
+            popBackStack()
+        }
     }
 
     override fun onResume() {

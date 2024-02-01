@@ -18,4 +18,7 @@ object Constant {
 
     const val NO_SOARA = "UNFINALIZED"
 
+    const val EPISODE_REMOVE_SECCESS = "EPISODE_REMOVE_SECCESS"
+    const val EPISODE_REMOVE_FAIL = "EPISODE_REMOVE_FAIL"
+
 }

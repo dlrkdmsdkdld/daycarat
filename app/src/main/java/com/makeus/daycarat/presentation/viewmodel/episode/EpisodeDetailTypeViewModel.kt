@@ -37,6 +37,13 @@ class EpisodeDetailTypeViewModel @Inject constructor(private val repository: Epi
         }
     }
 
+    fun removeEpisodeEvent(): Int? {
+        typeItem?.quantity?.let {
+            typeItem?.quantity = typeItem?.quantity?.minus(1)!!
+        }
+        return typeItem?.quantity
+    }
+
 
     fun getPagingEpisodeContentOrderByDate(year:Int , month:Int){
         viewModelScope.launch(Dispatchers.IO){
