@@ -8,6 +8,7 @@ import androidx.paging.cachedIn
 import com.makeus.daycarat.core.dto.Resource
 import com.makeus.daycarat.data.EpisodeKeywordAndId
 import com.makeus.daycarat.data.EpisodeRegister
+import com.makeus.daycarat.data.EpisodeRegisterWithId
 import com.makeus.daycarat.data.paging.EpisodeContentByDatePagingSource
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
 import com.makeus.daycarat.hilt.EpisodeApi
@@ -142,6 +143,36 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         emit(Resource.loading())
         try {
             val response = apimodule.getTotalEpisodeCount()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun deleteEpisode(episodeId: Int) = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.deleteEpisode(episodeId)
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun updateEpisode(data: EpisodeRegisterWithId) = flow {
+        emit(Resource.loading())
+        try {
+            val response = apimodule.updateEpisode(data)
             if (isSuccessful(response.statusCode)) {
                 emit(Resource.success(response.result))
             }else{

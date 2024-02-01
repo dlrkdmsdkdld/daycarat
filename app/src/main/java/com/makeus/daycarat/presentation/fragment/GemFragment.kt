@@ -15,6 +15,7 @@ import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.UiManager.setGemImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -105,6 +106,7 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
         }
         repeatOnStarted {
             gemviewmodel.mostKeyword.collectLatest {
+                setGemImage(it.episodeKeyword , binding.imgMostGem)
                 binding.textKeyword.text = it.episodeKeyword
             }
         }

@@ -19,6 +19,7 @@ import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.UiEvent
 import com.makeus.daycarat.util.UiManager
+import com.makeus.daycarat.util.UiManager.setGemCardBgColor
 import com.makeus.daycarat.util.UiManager.setGemDes
 import com.makeus.daycarat.util.UiManager.setGemImage
 import dagger.hilt.android.AndroidEntryPoint
@@ -145,8 +146,8 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
     fun setKeyword() {
         setGemImage(viewmodel.keyword, binding.imageGem)
         setGemDes(viewmodel.keyword, binding.textGemDes)
+        setGemCardBgColor(viewmodel.keyword,binding.cardGem)
 
-        binding.cardGem
         binding.textGemTitle.text = viewmodel.keyword
     }
 

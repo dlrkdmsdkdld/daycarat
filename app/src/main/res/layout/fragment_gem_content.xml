@@ -187,8 +187,7 @@
                     <ImageView
                         android:layout_gravity="center"
                         android:id="@+id/image_gem"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/bg_challenge"
+                        android:src="@drawable/bg_excutive"
                         android:layout_width="84.6dp"
                         android:layout_height="68dp"/>
 

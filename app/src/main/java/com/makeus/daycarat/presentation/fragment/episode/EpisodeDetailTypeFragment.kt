@@ -43,7 +43,7 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
         collectEpisodeContent()
 
 
-        binding.textCount.text = viewModel.typeItem?.quantity.toString()
+        binding.textCount.text = viewModel.typeItem?.quantity.toString() //TODO 서버에서 개수 가져와야함
         binding.btnBack.onThrottleClick {
             findNavController().popBackStack()
         }

@@ -9,9 +9,12 @@ import com.makeus.daycarat.data.EpisodeRecent
 import com.makeus.daycarat.data.EpisodeRegister
 import com.makeus.daycarat.data.MonthEpisodeCount
 import com.makeus.daycarat.data.EpisodeCount
+import com.makeus.daycarat.data.EpisodeId
+import com.makeus.daycarat.data.EpisodeRegisterWithId
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
 import kotlinx.coroutines.delay
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.PATCH
 import retrofit2.http.POST
@@ -43,13 +46,19 @@ interface EpisodeApi {
     suspend fun getEpisodeOderByCount(@Path("activityTagName") activityTagName:String, @Query("cursorId") cursorId: Int? = null, @Query("pageSize") pageSize: Int = 6): ResponseBody<List<EpisodeDetailContent>>
 
     @GET("episode/{episodeId}")
-    suspend fun getEpisode(@Path("episodeId") year:Int): ResponseBody<EpisodeFullContent>
+    suspend fun getEpisode(@Path("episodeId") episodeId:Int): ResponseBody<EpisodeFullContent>
 
     @PATCH("episode/keyword")
     suspend fun updateEpisodeKeyword(@Body data: EpisodeKeywordAndId): ResponseBody<Boolean>
 
     @GET("episode/count/all")
     suspend fun getTotalEpisodeCount(): ResponseBody<EpisodeCount>
+
+    @DELETE("episode/delete/{episodeId}")
+    suspend fun deleteEpisode(@Path("episodeId") episodeId: Int): ResponseBody<Boolean>
+
+    @PATCH("episode/update")
+    suspend fun updateEpisode(@Body data: EpisodeRegisterWithId): ResponseBody<Boolean>
 
 }
 

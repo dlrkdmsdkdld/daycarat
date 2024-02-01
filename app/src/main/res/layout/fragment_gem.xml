@@ -10,6 +10,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:paddingBottom="30dp"
             android:layout_height="wrap_content">
 
             <TextView
@@ -184,10 +185,11 @@
                         android:textColor="@color/gray_scale_800" />
 
                     <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="40dp"
+                        android:layout_height="32dp"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
+                        android:id="@+id/img_most_gem"
                         android:src="@drawable/gem_diamond_small" />
 
                     <TextView

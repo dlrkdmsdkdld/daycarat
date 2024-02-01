@@ -3,10 +3,12 @@ package com.makeus.daycarat.presentation.viewmodel.episode
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.makeus.daycarat.base.BaseViewmodel
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeFullContent
 import com.makeus.daycarat.repository.EpisodeRepository
+import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -18,15 +20,22 @@ import javax.inject.Inject
 
 @HiltViewModel
 class EpisodeSeeViewModel @Inject constructor(private val repository: EpisodeRepository) :
-    ViewModel() {
+    BaseViewmodel() {
 
 
-    private val _episodeConetent = MutableStateFlow<EpisodeFullContent>(EpisodeFullContent(0,"","","","", listOf<EpisodeContent>()))
+    private val _episodeConetent = MutableStateFlow<EpisodeFullContent>(
+        EpisodeFullContent(
+            0,
+            "",
+            "",
+            "",
+            "",
+            listOf<EpisodeContent>()
+        )
+    )
     val episodeConetent: SharedFlow<EpisodeFullContent> = _episodeConetent
 
 
-    private val _episodeId = MutableStateFlow<Int>(0)
-    val episodeId: StateFlow<Int> = _episodeId
 
     fun getEpisode(id: Int) {
         viewModelScope.launch(Dispatchers.IO) {
@@ -37,8 +46,28 @@ class EpisodeSeeViewModel @Inject constructor(private val repository: EpisodeRep
             }
         }
     }
+
     fun getEpisodeContent(): EpisodeFullContent {
         return _episodeConetent.value
+    }
+
+    fun deleteEpisode() {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteEpisode(_episodeConetent.value.episodeId).collect { data ->
+                when (data.status) {
+                    Status.LOADING -> {
+                        sendEvent(UiEvent.LoadingEvent())
+                    }
+                    Status.SUCCESS -> {
+                        sendEvent(UiEvent.SuccessEvent())
+                    }
+
+                    else -> {
+                        sendEvent(UiEvent.FailEvent())
+                    }
+                }
+            }
+        }
     }
 
 

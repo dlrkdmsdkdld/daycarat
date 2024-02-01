@@ -12,6 +12,7 @@ import com.makeus.daycarat.databinding.FragmentEpisodeDetailTypeBinding
 import com.makeus.daycarat.presentation.recyclerview.paging.GemDetailAdatper
 import com.makeus.daycarat.presentation.recyclerview.paging.PagingLoadingAdapter
 import com.makeus.daycarat.presentation.viewmodel.gem.GemDetailViewModel
+import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,6 +56,10 @@ class GemDetailFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
             viewModel.gemList.collect{
                 pagingAdapter.submitData(it)
             }
+        }
+
+        binding.btnBack.onThrottleClick {
+            findNavController().popBackStack()
         }
 
         repeatOnStarted {
