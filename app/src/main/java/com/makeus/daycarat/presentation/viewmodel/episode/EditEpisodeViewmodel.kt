@@ -64,6 +64,12 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
 
     }
 
+    fun updateDay(date : String){
+        viewModelScope.launch(Dispatchers.IO){
+            _episodeDay.emit("${date}")
+        }
+    }
+
     fun updateDay(year:Int, month:Int,day:Int) {
         viewModelScope.launch(Dispatchers.IO){
             var parseMonth = month.parseIntToMonth()

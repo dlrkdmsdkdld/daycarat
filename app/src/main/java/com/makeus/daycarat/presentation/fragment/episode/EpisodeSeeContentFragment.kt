@@ -67,6 +67,11 @@ class EpisodeSeeContentFragment() : BaseFragment<FragmentEpisodeSeeContentBindin
             popupMenu.menuInflater.inflate(R.menu.episode_setting_menu, popupMenu.menu)
             popupMenu.setOnMenuItemClickListener(OnMenuItemClickListener { menuItem: MenuItem ->
                 if (menuItem.itemId == R.id.option_edit) {
+                    EditEpisodeFragmentDirections
+                    var action = EpisodeSeeContentFragmentDirections.actionEpisodeSeeContentFragmentToEditEpisodeFragment(viewModel.episodeConetent.value)
+                    findNavController().navigate(action)
+//                    findNavController().navigate(R.id.action_episodeSeeContentFragment_to_editEpisodeFragment ,
+//                        bundleOf( "episodeContent" to viewModel.episodeConetent.value ))
                 } else if (menuItem.itemId == R.id.option_remove) {
                     viewModel.deleteEpisode()
                 }

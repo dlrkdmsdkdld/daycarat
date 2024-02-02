@@ -1,5 +1,7 @@
 package com.makeus.daycarat.presentation.fragment.episode
 
+import android.os.Build
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
@@ -12,8 +14,10 @@ import android.widget.Toast
 import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.data.EpisodeFullContent
 import com.makeus.daycarat.databinding.FragmentEditEpisodeBinding
 import com.makeus.daycarat.databinding.LayoutEditEdpisodeBinding
 import com.makeus.daycarat.presentation.MainActivity
@@ -28,6 +32,7 @@ import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
+import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeForEdit
 import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeWithWeekDay
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
@@ -51,9 +56,10 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
     override fun initView() {
 
 
+
         arrayData = resources.getStringArray(R.array.episode_header_datas)
         binding.textDay.text = parseTimeToEpisode()
-        binding.fieldNewEdit.addView(inflateEditField())
+        initEditTag()
 
         binding.btnBack.setOnClickListener {
             findNavController().popBackStack()
@@ -75,7 +81,6 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
         repeatOnStarted {
             viewModel.episodeDay.collect { day ->
-                Log.d("GHLEE", "day $day")
                 binding.textDay.text = "$day (${parseTimeToEpisodeWithWeekDay(day)})"
             }
         }
@@ -106,7 +111,36 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.fieldAll.setOnClickListener {
             hideKeyboard()
         }
-        initEditTag()
+
+
+        var data = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arguments?.getParcelable("episodeContent" , EpisodeFullContent::class.java)
+        } else {
+            arguments?.getParcelable<EpisodeFullContent>("episodeContent" )
+        }
+        data?.let {
+            editSetting(it)
+        }?: kotlin.run {
+            binding.fieldNewEdit.addView(inflateEditField())
+        } // 신규등록인경우에만 디폴트로있음
+
+    }
+
+    private fun editSetting(editData: EpisodeFullContent) {
+//        viewModel.
+        binding.editTitle.setText(editData.title)
+        binding.editTag.setText(editData.activityTagName)
+        viewModel.updateDay(parseTimeToEpisodeForEdit(editData.selectedDate))
+        editData.episodeContents.forEachIndexed { index, episodeContent ->
+            var arrayIndex = arrayData.indexOf(episodeContent.episodeContentType)
+            viewModel.changeEpidoseContentType(arrayIndex, arrayData.getOrNull(arrayIndex))
+            viewModel.userSelectSpinner(arrayIndex)
+            viewModel.userSelectSaveLastSpinner(index, arrayIndex)
+            binding.fieldNewEdit.addView(inflateEditField(arrayIndex))
+            viewModel.changeEpidoseContentText(index , episodeContent.content)
+            editArray.getOrNull(index)?.setText(episodeContent.content)
+        }
+
     }
 
 
@@ -119,6 +153,9 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
 
     }
+
+
+
 
     override fun initStatusBar() {
         binding.fieldMain.setPadding(
@@ -144,13 +181,13 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.btnSave.isEnabled = isEnable
     }
 
-    fun inflateEditField(): View {
+    fun inflateEditField( selection:Int = 1000): View {
         var editBining = LayoutEditEdpisodeBinding.inflate(layoutInflater)
         var pos = viewModel.plusEditCount()
 
         var mAdapter = EpisodeSpinner(requireContext(), arrayData.toList(), 1000, viewModel)
         editBining.spinnerCategory.adapter = mAdapter
-        editBining.spinnerCategory.setSelection(1000)
+        editBining.spinnerCategory.setSelection(selection)
 
         editBining.spinnerCategory.doOnNextLayout {
             editBining.spinnerCategory.onItemSelectedListener = object : OnItemSelectedListener {

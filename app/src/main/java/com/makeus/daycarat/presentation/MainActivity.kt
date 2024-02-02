@@ -25,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -113,7 +114,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
 //                    saveState = true
 //                }
             }
-            navController.navigate(R.id.editEpisodeFragment, args = null, option, null)
+            navController.navigate(R.id.action_global_editEpisodeFragment, args = bundleOf( "episodeContent" to null ), option, null)
         }
 
     }

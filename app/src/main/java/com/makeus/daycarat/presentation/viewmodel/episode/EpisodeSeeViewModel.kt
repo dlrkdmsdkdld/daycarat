@@ -33,7 +33,7 @@ class EpisodeSeeViewModel @Inject constructor(private val repository: EpisodeRep
             listOf<EpisodeContent>()
         )
     )
-    val episodeConetent: SharedFlow<EpisodeFullContent> = _episodeConetent
+    val episodeConetent: StateFlow<EpisodeFullContent> = _episodeConetent
 
 
 

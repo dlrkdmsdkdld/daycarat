@@ -14,12 +14,15 @@
         android:id="@+id/editEpisodeFragment"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EditEpisodeFragment"
         android:label="EditEpisodeFragment"
-        tools:layout="@layout/fragment_edit_episode" />
+        tools:layout="@layout/fragment_edit_episode">
+
+
+    </fragment>
     <fragment
         android:id="@+id/gemFragment"
         android:name="com.makeus.daycarat.presentation.fragment.GemFragment"
         android:label="GemFragment"
-        tools:layout="@layout/fragment_gem" >
+        tools:layout="@layout/fragment_gem">
         <action
             android:id="@+id/action_gemFragment_to_gemDetailFragment"
             app:destination="@id/gemDetailFragment" />
@@ -68,6 +71,13 @@
         <action
             android:id="@+id/action_episodeSeeContentFragment_to_soaraFragment"
             app:destination="@id/soaraFragment" />
+        <action
+            android:id="@+id/action_episodeSeeContentFragment_to_editEpisodeFragment"
+            app:destination="@id/editEpisodeFragment" >
+            <argument
+                android:name="episodeContent"
+                app:argType="com.makeus.daycarat.data.EpisodeFullContent" />
+        </action>
 
     </fragment>
     <fragment
@@ -90,9 +100,9 @@
     </fragment>
     <fragment
         android:id="@+id/editSoaraFragment"
-        tools:layout="@layout/fragment_edit_soara"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EditSoaraFragment"
-        android:label="EditSoaraFragment">
+        android:label="EditSoaraFragment"
+        tools:layout="@layout/fragment_edit_soara">
         <argument
             android:name="episode_id"
             app:argType="integer" />
@@ -115,15 +125,15 @@
             android:id="@+id/action_completeSoaraFragment_to_episodeDetailTypeFragment"
             app:destination="@id/episodeDetailTypeFragment"
             app:launchSingleTop="true"
-            app:restoreState="true"
+            app:popUpTo="@id/episodeDetailTypeFragment"
             app:popUpToInclusive="false"
-            app:popUpTo="@id/episodeDetailTypeFragment" />
+            app:restoreState="true" />
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_episode_detail_type"
         android:id="@+id/gemDetailFragment"
         android:name="com.makeus.daycarat.presentation.fragment.gem.GemDetailFragment"
-        android:label="GemDetailFragment" >
+        android:label="GemDetailFragment"
+        tools:layout="@layout/fragment_episode_detail_type">
 
         <argument
             android:name="keyword"
@@ -138,9 +148,9 @@
     </fragment>
     <fragment
         android:id="@+id/gemContentFragment"
-        tools:layout="@layout/fragment_gem_content"
         android:name="com.makeus.daycarat.presentation.fragment.gem.GemContentFragment"
-        android:label="GemContentFragment" >
+        android:label="GemContentFragment"
+        tools:layout="@layout/fragment_gem_content">
 
         <argument
             android:name="keyword"
@@ -155,10 +165,10 @@
 
     </fragment>
     <fragment
-        tools:layout="@layout/fragment_select_keyword"
         android:id="@+id/gemKeywordFragment"
         android:name="com.makeus.daycarat.presentation.fragment.gem.GemKeywordFragment"
-        android:label="GemKeywordFragment" >
+        android:label="GemKeywordFragment"
+        tools:layout="@layout/fragment_select_keyword">
         <argument
             android:name="keyword"
             app:argType="string" />
@@ -168,12 +178,15 @@
             app:argType="integer" />
         <action
             android:id="@+id/action_gemKeywordFragment_to_gemContentFragment"
+            app:destination="@id/gemContentFragment"
             app:launchSingleTop="true"
-            app:popUpToInclusive="false"
             app:popUpTo="@id/gemContentFragment"
-            app:destination="@id/gemContentFragment" />
+            app:popUpToInclusive="false" />
 
     </fragment>
+    <action
+        android:id="@+id/action_global_editEpisodeFragment"
+        app:destination="@id/editEpisodeFragment" />
 </navigation>
 
 

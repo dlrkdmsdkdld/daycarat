@@ -31,6 +31,13 @@ object TimeUtil {
         return "$parseYear"
     }
 
+    fun parseTimeToEpisodeForEdit(date:String):String{ //ex 2024년 01월 30일 화요일
+        val dateFormatKorea = SimpleDateFormat("yyyy년 MM월 dd일 EEEE", Locale.KOREA)
+        val dateFormat= SimpleDateFormat("yyyy-MM-dd", Locale("En", "KR"))
+        return "${dateFormatKorea.parse(date).run { dateFormat.format(this) }}"
+    }
+
+
     fun parseTimeToEpisodeWithWeekDay(date:String): String {
         val dateFormat= SimpleDateFormat("yyyy-MM-dd", Locale("En", "KR"))
         var calendar = Calendar.getInstance().apply {
