@@ -56,7 +56,6 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
     override fun initView() {
 
 
-
         arrayData = resources.getStringArray(R.array.episode_header_datas)
         binding.textDay.text = parseTimeToEpisode()
         initEditTag()
@@ -66,7 +65,11 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         }
 
         binding.btnSave.onThrottleClick { // 중복클릭방지
-            viewModel.registerEpisode(
+//            viewModel.registerEpisode(
+//                binding.editTitle.text.toString(),
+//                binding.editTag.text.toString()
+//            )
+            viewModel.clickSaveBtn(
                 binding.editTitle.text.toString(),
                 binding.editTag.text.toString()
             )
@@ -103,9 +106,14 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.btnCalendar.setOnClickListener {
             var bottomDialog = EpisodeCalendarFragment()
             bottomDialog.onclick = {
-                viewModel.updateDay(it.year , it.month , it.day)
+                viewModel.updateDay(it.year, it.month, it.day)
             }
-            activity?.supportFragmentManager?.let { it1 -> bottomDialog.show(it1, "BottomCalendarDialog") }
+            activity?.supportFragmentManager?.let { it1 ->
+                bottomDialog.show(
+                    it1,
+                    "BottomCalendarDialog"
+                )
+            }
         }
 
         binding.fieldAll.setOnClickListener {
@@ -114,13 +122,13 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
 
         var data = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            arguments?.getParcelable("episodeContent" , EpisodeFullContent::class.java)
+            arguments?.getParcelable("episodeContent", EpisodeFullContent::class.java)
         } else {
-            arguments?.getParcelable<EpisodeFullContent>("episodeContent" )
+            arguments?.getParcelable<EpisodeFullContent>("episodeContent")
         }
         data?.let {
             editSetting(it)
-        }?: kotlin.run {
+        } ?: kotlin.run {
             binding.fieldNewEdit.addView(inflateEditField())
         } // 신규등록인경우에만 디폴트로있음
 
@@ -131,15 +139,17 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.editTitle.setText(editData.title)
         binding.editTag.setText(editData.activityTagName)
         viewModel.updateDay(parseTimeToEpisodeForEdit(editData.selectedDate))
+        viewModel.setEditMode(editData.episodeId)
         editData.episodeContents.forEachIndexed { index, episodeContent ->
             var arrayIndex = arrayData.indexOf(episodeContent.episodeContentType)
-            viewModel.changeEpidoseContentType(arrayIndex, arrayData.getOrNull(arrayIndex))
+            binding.fieldNewEdit.addView(inflateEditField(arrayIndex))
             viewModel.userSelectSpinner(arrayIndex)
             viewModel.userSelectSaveLastSpinner(index, arrayIndex)
-            binding.fieldNewEdit.addView(inflateEditField(arrayIndex))
-            viewModel.changeEpidoseContentText(index , episodeContent.content)
+            viewModel.changeEpidoseContentType(arrayIndex, arrayData.getOrNull(arrayIndex))
+            viewModel.changeEpidoseContentText(index, episodeContent.content)
             editArray.getOrNull(index)?.setText(episodeContent.content)
         }
+        chcekSaveBtn()
 
     }
 
@@ -155,8 +165,6 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
     }
 
 
-
-
     override fun initStatusBar() {
         binding.fieldMain.setPadding(
             0,
@@ -165,13 +173,16 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
             0
         )
     }
+
     private fun hideKeyboard() {
         activity?.HideKeyBoard()
     }
+
     fun chcekSaveBtn() {
         var isEnable = true
         if (binding.editTag.text.isNullOrEmpty()) isEnable = false
         viewModel.episodeContent.value.forEachIndexed { index, episodeContent ->
+            Log.d("GHLEE" , "episodeContent ${episodeContent.content} episodeContentType ${episodeContent.episodeContentType}")
             if (episodeContent.content.isEmpty() || episodeContent.episodeContentType.isEmpty()) {
                 isEnable = false
                 return@forEachIndexed
@@ -181,7 +192,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.btnSave.isEnabled = isEnable
     }
 
-    fun inflateEditField( selection:Int = 1000): View {
+    fun inflateEditField(selection: Int = 1000): View {
         var editBining = LayoutEditEdpisodeBinding.inflate(layoutInflater)
         var pos = viewModel.plusEditCount()
 
@@ -229,14 +240,14 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
     }
 
-    fun initEditTag(){
+    fun initEditTag() {
         searchAdapter.onclick = { selectText ->
             hideKeyboard()
             binding.editTag.setText(selectText)
             binding.editTag.clearFocus()
         }
         binding.recyclerSearch.adapter = searchAdapter
-        binding.editTag.addTextChangedListener(object :TextWatcher{
+        binding.editTag.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
 
@@ -251,8 +262,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         binding.editTag.setOnFocusChangeListener { view, b ->
             if (b) {
                 binding.fieldSearch.visibility = View.VISIBLE
-            }
-            else binding.fieldSearch.visibility = View.GONE
+            } else binding.fieldSearch.visibility = View.GONE
 
         }
     }

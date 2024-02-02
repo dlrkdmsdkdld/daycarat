@@ -8,6 +8,7 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.EpisodeContent
 import com.makeus.daycarat.data.EpisodeRegister
+import com.makeus.daycarat.data.EpisodeRegisterWithId
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
@@ -21,6 +22,7 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -44,6 +46,8 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
 
     private val _episodeDay = MutableStateFlow<String>(parseTimeToEpisode())
     val episodeDay: StateFlow<String> = _episodeDay
+
+    private var episodeId:Int? = null
 
     var epiosdeContentTypeListIs = mutableListOf<Boolean>() // 유저가 선택한 데이터가 남아있는 변수
     var epiosdeContentTypeListPos = mutableListOf<Int>()// 유저가 선택한 데이터의 pos가 남아있는 변수 -몇번째스피너인지
@@ -97,6 +101,38 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
         return _editCount.value
     }
 
+    fun clickSaveBtn(title: String, activityTag: String){
+        episodeId?.let{
+            updateEpisode(title , activityTag)
+        }?: kotlin.run {
+            registerEpisode(title , activityTag)
+        }
+    }
+
+    fun updateEpisode(title: String, activityTag: String){
+        viewModelScope.launch(Dispatchers.IO){
+            var parseTitle = if (title.isEmpty()) "제목없음" else title
+            repository.updateEpisode(EpisodeRegisterWithId(episodeId = this@EditEpisodeViewmodel.episodeId!!,
+                title = parseTitle, selectedDate = _episodeDay.value,
+                activityTag = activityTag, episodeContents = _episodeContent.value ))
+                .collect { data ->
+                    when (data.status) {
+                        Status.LOADING -> {
+                            sendEvent(UiEvent.LoadingEvent())
+                        }
+                        Status.SUCCESS -> {
+                            sendEvent(UiEvent.SuccessEvent())
+                        }
+                        else -> {
+                            sendEvent(UiEvent.FailEvent())
+                        }
+                    }
+
+                }
+
+        }
+    }
+
     fun registerEpisode(title: String, activityTag: String) {
         viewModelScope.launch(Dispatchers.IO) {
             var parseTitle = if (title.isEmpty()) "제목없음" else title
@@ -143,5 +179,9 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
         viewModelScope.launch {
             _flowEvent.emit(event)
         }
+    }
+
+    fun setEditMode(episodeId:Int){
+        this.episodeId = episodeId
     }
 }
