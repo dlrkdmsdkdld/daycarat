@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.makeus.daycarat.presentation.fragment.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_episodeSeeContentFragment"
+            app:destination="@id/episodeSeeContentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/editEpisodeFragment"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EditEpisodeFragment"

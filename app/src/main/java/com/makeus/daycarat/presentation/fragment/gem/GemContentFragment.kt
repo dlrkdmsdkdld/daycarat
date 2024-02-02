@@ -155,16 +155,22 @@ class GemContentFragment() : BaseFragment<FragmentGemContentBinding>(
         binding.btnBack.onThrottleClick {
             findNavController().popBackStack()
         }
+        binding.btnKeywordFail.onThrottleClick {
+            clickKeyword()
+        }
         binding.btnKeyword.onThrottleClick {
-            findNavController().navigate(
-                R.id.action_gemContentFragment_to_gemKeywordFragment,
-                bundleOf("episode_id" to viewmodel.episodeId, "keyword" to viewmodel.keyword)
-            )
+            clickKeyword()
         }
         binding.btnCopy.onThrottleClick {
             Toast.makeText(requireContext(), "복사시작" , Toast.LENGTH_SHORT).show()
             viewmodel.getCopyString()
         }
+    }
+    fun clickKeyword(){
+        findNavController().navigate(
+            R.id.action_gemContentFragment_to_gemKeywordFragment,
+            bundleOf("episode_id" to viewmodel.episodeId, "keyword" to viewmodel.keyword)
+        )
     }
 
 }

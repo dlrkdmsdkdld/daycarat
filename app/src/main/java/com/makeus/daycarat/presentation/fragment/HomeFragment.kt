@@ -2,8 +2,10 @@ package com.makeus.daycarat.presentation.fragment
 
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.data.EpisodeRecent
@@ -79,24 +81,28 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
                             0 -> {
                                 binding.textRecentTitle1.text = episodeRecent.title
                                 binding.textRecentDes1.text = episodeRecent.time
-                                binding.btnRecent1.setOnClickListener {
-                                    episodeRecent.id
+                                binding.root.setOnClickListener {
+                                    findNavController().navigate(R.id.action_homeFragment_to_episodeSeeContentFragment ,
+                                        bundleOf( "episodeId" to episodeRecent.id ) )
+
                                 }
                             }
                             1 -> {
                                 binding.fieldRecent2.visibility = View.VISIBLE
                                 binding.textRecentTitle2.text = episodeRecent.title
                                 binding.textRecentDes2.text = episodeRecent.time
-                                binding.btnRecent2.setOnClickListener {
-                                    episodeRecent.id
+                                binding.root.setOnClickListener {
+                                    findNavController().navigate(R.id.action_homeFragment_to_episodeSeeContentFragment ,
+                                        bundleOf( "episodeId" to episodeRecent.id ) )
                                 }
                             }
                             2 -> {
                                 binding.fieldRecent3.visibility = View.VISIBLE
                                 binding.textRecentTitle3.text = episodeRecent.title
                                 binding.textRecentDes3.text = episodeRecent.time
-                                binding.btnRecent3.setOnClickListener {
-                                    episodeRecent.id
+                                binding.root.setOnClickListener {
+                                    findNavController().navigate(R.id.action_homeFragment_to_episodeSeeContentFragment ,
+                                        bundleOf( "episodeId" to episodeRecent.id ) )
                                 }
                             }
 
