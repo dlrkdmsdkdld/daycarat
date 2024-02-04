@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <layer-list>
+            <item  android:gravity="center" android:width="36dp" android:height="36dp" >
+                <shape
+                    android:tint="@color/main"
+                    android:shape="oval"/>
+            </item>
+
+            <item android:gravity="center" android:height="22dp" android:width="22dp">
+                <vector
+                    android:width="22dp"
+                    android:height="22dp"
+                    android:viewportWidth="22"
+                    android:viewportHeight="22">
+                    <path
+                        android:pathData="M16.5,1.723C15.741,1.723 15.013,2.024 14.477,2.561L3.018,14.019C2.901,14.137 2.818,14.284 2.777,14.445L1.861,18.111C1.783,18.424 1.874,18.754 2.102,18.982C2.329,19.21 2.66,19.301 2.972,19.223L6.639,18.306C6.8,18.266 6.947,18.183 7.065,18.065L18.523,6.607C18.789,6.341 19,6.026 19.143,5.679C19.287,5.332 19.361,4.96 19.361,4.584C19.361,4.208 19.287,3.836 19.143,3.489C19,3.142 18.789,2.826 18.523,2.561C18.257,2.295 17.942,2.084 17.595,1.94C17.248,1.797 16.876,1.723 16.5,1.723ZM15.773,3.857C15.966,3.664 16.227,3.556 16.5,3.556C16.635,3.556 16.769,3.583 16.893,3.634C17.018,3.686 17.131,3.762 17.227,3.857C17.322,3.953 17.398,4.066 17.45,4.191C17.501,4.315 17.528,4.449 17.528,4.584C17.528,4.719 17.501,4.853 17.45,4.977C17.398,5.102 17.322,5.215 17.227,5.311L5.948,16.59L4.01,17.074L4.494,15.136L15.773,3.857Z"
+                        android:fillColor="#80F5F1FF"
+                        android:fillType="evenOdd"/>
+                    <path
+                        android:pathData="M11,17.417C10.494,17.417 10.083,17.828 10.083,18.334C10.083,18.84 10.494,19.25 11,19.25H19.25C19.756,19.25 20.167,18.84 20.167,18.334C20.167,17.828 19.756,17.417 19.25,17.417H11Z"
+                        android:fillColor="#80F5F1FF"/>
+                </vector>
+
+            </item>
+
+        </layer-list>
+    </item>
+
+
+    <item >
+        <layer-list>
+            <item  android:gravity="center" android:width="36dp" android:height="36dp" >
+                <shape
+                    android:tint="@color/main"
+                    android:shape="oval"/>
+            </item>
+
+            <item android:gravity="center" android:height="22dp" android:width="22dp">
+                <vector
+                    android:width="22dp"
+                    android:height="22dp"
+                    android:viewportWidth="22"
+                    android:viewportHeight="22">
+                    <path
+                        android:pathData="M16.5,1.723C15.741,1.723 15.013,2.024 14.477,2.561L3.018,14.019C2.901,14.137 2.818,14.284 2.777,14.445L1.861,18.111C1.783,18.424 1.874,18.754 2.102,18.982C2.329,19.21 2.66,19.301 2.972,19.223L6.639,18.306C6.8,18.266 6.947,18.183 7.065,18.065L18.523,6.607C18.789,6.341 19,6.026 19.143,5.679C19.287,5.332 19.361,4.96 19.361,4.584C19.361,4.208 19.287,3.836 19.143,3.489C19,3.142 18.789,2.826 18.523,2.561C18.257,2.295 17.942,2.084 17.595,1.94C17.248,1.797 16.876,1.723 16.5,1.723ZM15.773,3.857C15.966,3.664 16.227,3.556 16.5,3.556C16.635,3.556 16.769,3.583 16.893,3.634C17.018,3.686 17.131,3.762 17.227,3.857C17.322,3.953 17.398,4.066 17.45,4.191C17.501,4.315 17.528,4.449 17.528,4.584C17.528,4.719 17.501,4.853 17.45,4.977C17.398,5.102 17.322,5.215 17.227,5.311L5.948,16.59L4.01,17.074L4.494,15.136L15.773,3.857Z"
+                        android:fillColor="#F5F1FF"
+                        android:fillType="evenOdd"/>
+                    <path
+                        android:pathData="M11,17.417C10.494,17.417 10.083,17.828 10.083,18.334C10.083,18.84 10.494,19.25 11,19.25H19.25C19.756,19.25 20.167,18.84 20.167,18.334C20.167,17.828 19.756,17.417 19.25,17.417H11Z"
+                        android:fillColor="#F5F1FF"/>
+                </vector>
+
+            </item>
+
+        </layer-list>
+    </item>
+
+</selector>
+
+<!--    <?xml version="1.0" encoding="utf-8"?>-->
+<!--<layer-list xmlns:android="http://schemas.android.com/apk/res/android">-->
+<!--<item android:gravity="center">-->
+<!--    <rotate-->
+<!--        android:drawable="@drawable/bg_loading_outer"-->
+<!--        android:pivotX="50%"-->
+<!--        android:pivotY="50%"-->
+<!--        android:fromDegrees="0"-->
+<!--        android:toDegrees="360" />-->
+<!--</item>-->
+<!--<item-->
+<!--    android:drawable="@drawable/episode_diamond"-->
+<!--    android:gravity="center" />-->
+<!--</layer-list>-->
