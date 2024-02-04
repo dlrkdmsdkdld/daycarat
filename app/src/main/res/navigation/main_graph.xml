@@ -48,7 +48,9 @@
         android:id="@+id/userInfoFragment"
         android:name="com.makeus.daycarat.presentation.fragment.UserInfoFragment"
         android:label="UserInfoFragment"
-        tools:layout="@layout/fragment_user_info" />
+        tools:layout="@layout/fragment_user_info" >
+
+    </fragment>
     <fragment
         android:id="@+id/episodeDetailTypeFragment"
         android:name="com.makeus.daycarat.presentation.fragment.episode.EpisodeDetailTypeFragment"
@@ -191,6 +193,7 @@
     <action
         android:id="@+id/action_global_editEpisodeFragment"
         app:destination="@id/editEpisodeFragment" />
+
 </navigation>
 
 

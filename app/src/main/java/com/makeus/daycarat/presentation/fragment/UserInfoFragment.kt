@@ -12,7 +12,10 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentGemBinding
 import com.makeus.daycarat.databinding.FragmentUserInfoBinding
+import com.makeus.daycarat.presentation.bottomSheet.EpisodeCalendarFragment
+import com.makeus.daycarat.presentation.fragment.info.GalleryFragment
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
+import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.PermissionManager.requestReadStorageAndCameraPreviewPermission
@@ -22,8 +25,6 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
     FragmentUserInfoBinding::inflate
 ) {
     private val mainViewModel: MainViewmodel by activityViewModels()
-    val REQUEST_PERMISSION_READ_STORAGE_AND_CAMERA = 3
-
     override fun initView() {
 
         repeatOnStarted {
@@ -40,28 +41,31 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
             }
         }
 
-        binding.btnEdit.setOnClickListener {
+        binding.btnEdit.onThrottleClick {
             requestReadStorageAndCameraPreviewPermission{b: Boolean ->
                 Log.d("GHLEEPR" , "camera 권한 $b")
+                if (b){
+                    var bottomDialog = GalleryFragment()
+                    bottomDialog.onclick = {
+                        Glide.with(this@UserInfoFragment).load(it.uri).into(binding.imgProfile)
+
+                    }
+                    activity?.supportFragmentManager?.let { it1 ->
+                        bottomDialog.show(
+                            it1,
+                            "GalleryFragment"
+                        )
+                    }
+                }
+
             }
 
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                if (checkSelfPermission(requireContext() , Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-//                    requireActivity().contentResolver.refresh(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, null, null)
-//                }
-//            }
+
         }
 
 
     }
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-    }
 
     override fun initStatusBar() {
         binding.fieldMain.setPadding(
