@@ -1,18 +1,56 @@
 package com.makeus.daycarat.util
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
-import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
-import android.provider.Settings
-import androidx.core.app.ActivityCompat
+import android.util.Log
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.normal.TedPermission
 
 object PermissionManager {
+
+    private fun Context.isPermissionGranted(permission: String) =
+        ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED
+
+    internal fun Fragment.requestReadStorageAndCameraPreviewPermission( onResult:( (Boolean) -> Unit )) {
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return
+        val readMediaPermission = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Manifest.permission.READ_EXTERNAL_STORAGE else Manifest.permission.READ_MEDIA_IMAGES
+        if (requireContext().isPermissionGranted(readMediaPermission) && requireContext().isPermissionGranted(Manifest.permission.CAMERA)) {
+            onResult.invoke(true)
+        }
+
+        TedPermission.create().setPermissions("android.permission.CAMERA").setPermissionListener(object  : PermissionListener{
+            override fun onPermissionGranted() {
+                Log.d("GHLEEPR" , "camera 권한 get")
+                readMediaPermission(readMediaPermission , onResult)
+            }
+
+            override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                onResult.invoke(false)
+            }
+
+        }).check()
+
+    }
+    fun readMediaPermission(readMediaPermission: String, onResult: (Boolean) -> Unit){
+        TedPermission.create().setPermissions(readMediaPermission).setPermissionListener(object  : PermissionListener{
+            override fun onPermissionGranted() {
+                Log.d("GHLEEPR" , "READ_EXTERNAL_STORAGE 권한 get")
+                onResult.invoke(true)
+            }
+
+            override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+                Log.d("GHLEEPR" , "READ_EXTERNAL_STORAGE 권한 Denied")
+                onResult.invoke(false)
+            }
+
+        }).check()
+    }
+
 
     fun checkNotiPermission(context:Context): Boolean {
         if (Build.VERSION.SDK_INT >= 33) { //os 13부터 알림권한 필요
