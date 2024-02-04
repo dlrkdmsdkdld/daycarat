@@ -177,6 +177,7 @@
 
                     <TextView
                         style="@style/b4"
+                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
@@ -222,6 +223,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:text="가장 보석이\n많은 활동"
                         android:textColor="@color/gray_scale_800" />
@@ -258,6 +260,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
+                        android:textStyle="bold"
                         android:gravity="center"
                         android:text="이번달 보석"
                         android:textColor="@color/gray_scale_800" />

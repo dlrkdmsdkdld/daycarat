@@ -30,7 +30,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
                     android:background="@color/transparent"
-                    android:src="@drawable/icon_arrow_left"
+                    android:src="@drawable/selector_icon_arrow"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

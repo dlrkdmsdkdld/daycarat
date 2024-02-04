@@ -15,7 +15,7 @@
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/icon_arrow_left"
+            android:src="@drawable/selector_icon_arrow"
             android:background="@color/transparent"
             android:layout_marginTop="27.5dp"
             android:layout_marginStart="11dp"

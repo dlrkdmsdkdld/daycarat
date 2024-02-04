@@ -81,7 +81,7 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
                             0 -> {
                                 binding.textRecentTitle1.text = episodeRecent.title
                                 binding.textRecentDes1.text = episodeRecent.time
-                                binding.root.setOnClickListener {
+                                binding.fieldRecent1.setOnClickListener {
                                     findNavController().navigate(R.id.action_homeFragment_to_episodeSeeContentFragment ,
                                         bundleOf( "episodeId" to episodeRecent.id ) )
 
@@ -91,7 +91,7 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
                                 binding.fieldRecent2.visibility = View.VISIBLE
                                 binding.textRecentTitle2.text = episodeRecent.title
                                 binding.textRecentDes2.text = episodeRecent.time
-                                binding.root.setOnClickListener {
+                                binding.fieldRecent2.setOnClickListener {
                                     findNavController().navigate(R.id.action_homeFragment_to_episodeSeeContentFragment ,
                                         bundleOf( "episodeId" to episodeRecent.id ) )
                                 }
@@ -100,7 +100,7 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
                                 binding.fieldRecent3.visibility = View.VISIBLE
                                 binding.textRecentTitle3.text = episodeRecent.title
                                 binding.textRecentDes3.text = episodeRecent.time
-                                binding.root.setOnClickListener {
+                                binding.fieldRecent3.setOnClickListener {
                                     findNavController().navigate(R.id.action_homeFragment_to_episodeSeeContentFragment ,
                                         bundleOf( "episodeId" to episodeRecent.id ) )
                                 }
