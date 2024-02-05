@@ -48,13 +48,14 @@ class GalleryRepository @Inject constructor(
         val galleryImageList = mutableListOf<GalleryImage>()
         var selection: String? = null
         var selectionArgs: Array<String>? = null
-        if (currentLocation != null) {
+
+        if (!currentLocation.isNullOrBlank()) {
             selection = "${MediaStore.Images.Media.DATA} LIKE ?"
 //                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) "${MediaStore.MediaColumns.RELATIVE_PATH} LIKE ?" else "${MediaStore.Images.Media.DATA} LIKE ?"
             selectionArgs = arrayOf("%$currentLocation%")
         }
         val limit = loadSize
-        val offset = (page - 1) * loadSize
+        val offset = (page - 1) * loadSize // offset은 시작 위치를 지정해줌
         val query = getQuery(offset, limit, selection, selectionArgs)
         query?.use { cursor ->
             while (cursor.moveToNext()) {
@@ -77,6 +78,7 @@ class GalleryRepository @Inject constructor(
                 )
                 galleryImageList.add(image)
             }
+            cursor.close()
         }
         return galleryImageList
     }
