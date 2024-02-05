@@ -202,6 +202,7 @@ dependencies {
 
     //ted permission
     implementation("io.github.ParkSangGwon:tedpermission-normal:3.3.0")
+//    implementation ("id.zelory:compressor:3.0.1")
 
 
 }

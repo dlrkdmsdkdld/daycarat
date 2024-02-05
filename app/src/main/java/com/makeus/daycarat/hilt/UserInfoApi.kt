@@ -9,6 +9,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.GET
 import retrofit2.http.Multipart
@@ -28,6 +29,10 @@ interface UserInfoApi {
     @Multipart
     @POST("user/profile")
     suspend fun updateUserImage(@Part multipartFile: MultipartBody.Part): ResponseBody<Boolean>
+
+
+    @DELETE("user/delete")
+    suspend fun resignUser(): ResponseBody<Boolean>
 }
 
 //@Multipart

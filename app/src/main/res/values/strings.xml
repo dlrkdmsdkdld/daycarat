@@ -125,12 +125,12 @@
     <string name="soara_content1">어떤 상황 또는 어떤 문제였나요?</string>
     <string name="soara_des1">해당 에피소드의 상황을 구체적으로 적어주세요</string>
     <string name="soara_content2">당시 무엇을 성취하는 것이 목표였나요?</string>
-    <string name="soara_des2"></string>
+    <string name="soara_des2">당시 상황이나 문제를 해결하기 위해 세운 목표를 구체적으로 적어주세요</string>
     <string name="soara_content3">목표를 위해 구체적으로 어떤 행동을 하였나요?</string>
-    <string name="soara_des3"></string>
+    <string name="soara_des3">목표를 달성하기 위해 노력한 부분들을 자세히 적어주세요</string>
     <string name="soara_content4">그로 인해 어떤 결과가 발생했나요?</string>
-    <string name="soara_des4"></string>
+    <string name="soara_des4">앞서 노력한 행동들로 인해 나타난 결과를 구체적으로 작성해주세요</string>
     <string name="soara_content5">그 결과가 내게 미친 영향은 무엇인가요?</string>
-    <string name="soara_des5"></string>
+    <string name="soara_des5">해당 에피소드를 통해 얻게 된 역량(성과)이나 느꼈던 점을 구체적으로 적어주세요</string>
     <!--    <string name="home_ai_des"></string>-->
 </resources>

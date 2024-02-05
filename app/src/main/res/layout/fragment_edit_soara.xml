@@ -52,8 +52,11 @@
         android:layout_marginStart="16dp"
         android:text="해당 에피소드의 상황을 구체적으로 적어주세요"
         app:layout_constraintStart_toStartOf="parent"
+        android:gravity="start"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_title"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <EditText

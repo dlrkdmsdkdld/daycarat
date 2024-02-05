@@ -1,5 +1,6 @@
 package com.makeus.daycarat.presentation.fragment
 
+import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
@@ -10,12 +11,15 @@ import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentUserInfoBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.fragment.info.GalleryFragment
+import com.makeus.daycarat.presentation.login.LoginActivity
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
+import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import com.makeus.daycarat.util.PermissionManager.requestReadStorageAndCameraPreviewPermission
+import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType
@@ -80,6 +84,18 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
                 }
 
             }
+        }
+
+        binding.btnLogout.onThrottleClick {
+            SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
+            (activity)?.finishAffinity()
+            Intent(activity , LoginActivity::class.java).apply {
+                startActivity(this)
+            }
+        }
+
+        binding.btnResign.onThrottleClick {  //회원 탈퇴
+
         }
 
 
