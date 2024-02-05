@@ -105,8 +105,9 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
 
     }
     fun changeCheckImage(view:ImageView , alreadyDone:Boolean , fieldView:View){
-        if (alreadyDone) view.setColorFilter(Color.parseColor("#7241FF"))
-        else view.clearColorFilter()
+
+        if (alreadyDone) view.setImageResource(R.drawable.icon_check)
+        else view.setImageResource(R.drawable.icon_arrow_right)
         fieldView.isSelected = alreadyDone
     }
     fun initNavigateSoara(view:View , num : Int , content:String){

@@ -2,7 +2,6 @@ package com.makeus.daycarat.presentation.fragment
 
 import android.content.Intent
 import android.util.Log
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
@@ -10,7 +9,7 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentUserInfoBinding
 import com.makeus.daycarat.presentation.MainActivity
-import com.makeus.daycarat.presentation.fragment.info.GalleryFragment
+import com.makeus.daycarat.presentation.bottomSheet.GalleryFragment
 import com.makeus.daycarat.presentation.login.LoginActivity
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
@@ -22,12 +21,6 @@ import com.makeus.daycarat.util.PermissionManager.requestReadStorageAndCameraPre
 import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import java.io.File
 
 @AndroidEntryPoint
 class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(

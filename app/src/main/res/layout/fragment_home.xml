@@ -135,13 +135,13 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
-                                android:src="@drawable/bg_main_episode" />
+                                android:src="@drawable/bg_ai_self_introduce" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
-                                android:src="@drawable/bg_ai_self_introduce" />
+                                android:src="@drawable/bg_main_soara" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
@@ -373,17 +373,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="45dp"
-                        android:background="@drawable/bg_banner_home"
+                        android:orientation="vertical"
+                        android:background="@drawable/bg_banner_home_1"
                         app:layout_constraintTop_toBottomOf="@id/field_yes_epi">
 
-                        <TextView
-                            style="@style/sh2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="27dp"
-                            android:layout_marginTop="22dp"
-                            android:text="@string/home_banner_des"
-                            android:textColor="@color/white" />
+<!--                        <TextView-->
+<!--                            style="@style/sh2"-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginStart="27dp"-->
+<!--                            android:layout_marginTop="22dp"-->
+<!--                            android:text="@string/home_banner_des"-->
+<!--                            android:textColor="@color/white" />-->
 
                     </LinearLayout>
 
