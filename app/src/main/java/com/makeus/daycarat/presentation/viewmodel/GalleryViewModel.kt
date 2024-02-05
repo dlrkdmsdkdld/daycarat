@@ -1,5 +1,6 @@
 package com.makeus.daycarat.presentation.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewModelScope
@@ -40,11 +41,13 @@ class GalleryViewModel @Inject constructor(private val repository: GalleryReposi
 
     init {
         getGalleryPagingImages()
-    }
+        getDirectory()
 
+    }
 
     fun getGalleryPagingImages(){
         viewModelScope.launch(Dispatchers.IO) {
+            _customGalleryPhotoList.value = PagingData.empty()
             Pager(
                 config = PagingConfig(
                     pageSize = PAGING_SIZE,
@@ -56,18 +59,27 @@ class GalleryViewModel @Inject constructor(private val repository: GalleryReposi
                         currnetLocation = currentDirectory.value,
                     )
                 },
-            ).flow.cachedIn(viewModelScope).collectLatest {
+            )
+            .flow.cachedIn(viewModelScope).collectLatest {
                 _customGalleryPhotoList.value = it
             }
         }
     }
+
+    fun setCurrentDirectory(index: Int) {
+         _directoryList.value.getOrNull(index)?.let {
+             _currentDirectory.value = it
+             getGalleryPagingImages()
+         }
+    }
+
 
     fun setCurrentDirectory(location: String) {
         _currentDirectory.value = location
     }
 
     fun getDirectory() {
-        _directoryList.value  = repository.getFolderList()
+        _directoryList.value  =  repository.getFolderList()
     }
 
 

@@ -6,6 +6,7 @@ import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import androidx.core.os.bundleOf
 import com.makeus.daycarat.data.paging.GalleryImage
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -49,9 +50,8 @@ class GalleryRepository @Inject constructor(
         var selection: String? = null
         var selectionArgs: Array<String>? = null
 
-        if (!currentLocation.isNullOrBlank()) {
+        if (!currentLocation.isNullOrBlank() && !currentLocation.equals("전체")) {
             selection = "${MediaStore.Images.Media.DATA} LIKE ?"
-//                if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) "${MediaStore.MediaColumns.RELATIVE_PATH} LIKE ?" else "${MediaStore.Images.Media.DATA} LIKE ?"
             selectionArgs = arrayOf("%$currentLocation%")
         }
         val limit = loadSize
@@ -110,6 +110,7 @@ class GalleryRepository @Inject constructor(
 
     fun getFolderList(): ArrayList<String> {
         val folderList = ArrayList<String>()
+        folderList.add(0 , "전체")
         val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
         val projection = arrayOf(
             MediaStore.Images.Media.DATA,
