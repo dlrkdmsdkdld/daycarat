@@ -60,7 +60,7 @@ class GalleryFragment() : BottomSheetDialogFragment(){
                 binding.header.adapter = GalleryFolderSpinnerdeSpinner(requireContext(), it)
             }
         }
-        binding.header.adapter
+
         binding.header.onItemSelectedListener = object: AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?,

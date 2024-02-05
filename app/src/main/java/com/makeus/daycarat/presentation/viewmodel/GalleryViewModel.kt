@@ -47,7 +47,6 @@ class GalleryViewModel @Inject constructor(private val repository: GalleryReposi
 
     fun getGalleryPagingImages(){
         viewModelScope.launch(Dispatchers.IO) {
-            _customGalleryPhotoList.value = PagingData.empty()
             Pager(
                 config = PagingConfig(
                     pageSize = PAGING_SIZE,
@@ -69,6 +68,7 @@ class GalleryViewModel @Inject constructor(private val repository: GalleryReposi
     fun setCurrentDirectory(index: Int) {
          _directoryList.value.getOrNull(index)?.let {
              _currentDirectory.value = it
+             _customGalleryPhotoList.value = PagingData.empty()
              getGalleryPagingImages()
          }
     }
