@@ -19,22 +19,23 @@ object PermissionManager {
     internal fun Fragment.requestReadStorageAndCameraPreviewPermission( onResult:( (Boolean) -> Unit )) {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) return
         val readMediaPermission = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) Manifest.permission.READ_EXTERNAL_STORAGE else Manifest.permission.READ_MEDIA_IMAGES
-        if (requireContext().isPermissionGranted(readMediaPermission) && requireContext().isPermissionGranted(Manifest.permission.CAMERA)) {
+        if (requireContext().isPermissionGranted(readMediaPermission)) {
             onResult.invoke(true)
             return
         }
+//        TedPermission.create().setPermissions("android.permission.CAMERA").setPermissionListener(object  : PermissionListener{
+//            override fun onPermissionGranted() {
+//                Log.d("GHLEEPR" , "camera 권한 get")
+//            }
+//
+//            override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
+//                onResult.invoke(false)
+//            }
+//
+//        }).check()
 
-        TedPermission.create().setPermissions("android.permission.CAMERA").setPermissionListener(object  : PermissionListener{
-            override fun onPermissionGranted() {
-                Log.d("GHLEEPR" , "camera 권한 get")
-                readMediaPermission(readMediaPermission , onResult)
-            }
+        readMediaPermission(readMediaPermission , onResult)
 
-            override fun onPermissionDenied(deniedPermissions: MutableList<String>?) {
-                onResult.invoke(false)
-            }
-
-        }).check()
 
     }
     fun readMediaPermission(readMediaPermission: String, onResult: (Boolean) -> Unit){
