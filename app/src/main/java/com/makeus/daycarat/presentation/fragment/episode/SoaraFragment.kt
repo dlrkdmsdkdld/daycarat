@@ -117,8 +117,9 @@ class SoaraFragment() : BaseFragment<FragmentSoaraBinding>(
         }
     }
     fun cheackCompleteSoara(){
-
-        binding.nextBtn.isEnabled = viewModel.episodeConetent.value.episodeState.equals(Constant.NO_SOARA) && binding.fieldContent1.isSelected && binding.fieldContent2.isSelected && binding.fieldContent3.isSelected && binding.fieldContent4.isSelected && binding.fieldContent5.isSelected
+        binding.nextBtn.isEnabled = viewModel.episodeConetent.value.episodeState.equals(Constant.NO_SOARA) && binding.fieldContent1.isSelected &&
+                binding.fieldContent2.isSelected && binding.fieldContent3.isSelected && binding.fieldContent4.isSelected && binding.fieldContent5.isSelected
+//        binding.nextBtn.isEnabled =  binding.fieldContent1.isSelected && binding.fieldContent2.isSelected && binding.fieldContent3.isSelected && binding.fieldContent4.isSelected && binding.fieldContent5.isSelected
     }
 
 }

@@ -1,7 +1,9 @@
 package com.makeus.daycarat.presentation.fragment
 
 import android.util.Log
+import android.view.View
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -101,7 +103,18 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
 
         repeatOnStarted {
             gemviewmodel.gemMonthCount.collectLatest {
-                binding.textMonthCount.text = it.gemCount.toString()
+                if (it.gemCount == 0){
+                    binding.fieldEmptyGem.visibility = View.VISIBLE
+                    binding.fieldMonthGem.visibility = View.GONE
+                    binding.fieldBestGem.visibility = View.GONE
+                    binding.fieldActivityGem.visibility = View.GONE
+                }else {
+                    binding.fieldEmptyGem.visibility = View.GONE
+                    binding.fieldMonthGem.visibility = View.VISIBLE
+                    binding.fieldBestGem.visibility = View.VISIBLE
+                    binding.fieldActivityGem.visibility = View.VISIBLE
+                    binding.textMonthCount.text = it.gemCount.toString()
+                }
             }
         }
         repeatOnStarted {
