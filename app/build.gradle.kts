@@ -33,8 +33,8 @@ android {
         applicationId = "com.makeus.daycarat"
         minSdk = 24
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = 10
+        versionName = "0.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -47,18 +47,30 @@ android {
 
     }
 
+    signingConfigs {
+        create("release") {
+            keyAlias = "key0"
+            keyPassword = "a1s2d3f4"
+            storePassword = "a1s2d3f4"
+            storeFile = file("../key_store/Untitled")
+        }
+    }
+
     buildTypes {
         debug {
             isMinifyEnabled = false
             manifestPlaceholders["KAKAO_API_KEY"] = properties["KAKAO_API_KEY"] as String
         }
         release {
+            manifestPlaceholders += mapOf()
             isMinifyEnabled = false
             manifestPlaceholders["KAKAO_API_KEY"] = properties["KAKAO_API_KEY"] as String
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
+//            signingConfig = signingConfigs.getByName("debug")
         }
     }
 //    compileOptions {
