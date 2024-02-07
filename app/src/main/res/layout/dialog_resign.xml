@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/transparent"
+
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:background="@drawable/bg_dialog"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="24dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:text="정말 탈퇴하시겠습니까?"
+            android:layout_marginTop="37dp"
+            style="@style/sh4"
+            android:textColor="@color/gray_scale_900"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_marginTop="109dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:text="취소하기"
+                android:id="@+id/btn_cancel"
+                android:layout_weight="1"
+                android:layout_marginEnd="11dp"
+                style="@style/sh6"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:textColor="@color/main"
+                android:layout_marginBottom="2dp"
+                android:background="@drawable/btn_episode_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:text="탈퇴하기"
+                android:id="@+id/btn_resign"
+                android:layout_weight="1"
+                style="@style/sh6"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                android:textColor="@color/main"
+                android:background="@drawable/btn_select_resgin"
+                android:layout_width="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_height="wrap_content"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:text="로그아웃"
+                android:id="@+id/btn_logout"
+                android:layout_weight="1"
+                android:layout_marginBottom="2dp"
+                android:elevation="0dp"
+                android:stateListAnimator="@null"
+                style="@style/sh6"
+                android:textColor="@color/white"
+                android:background="@drawable/btn_select_keyword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

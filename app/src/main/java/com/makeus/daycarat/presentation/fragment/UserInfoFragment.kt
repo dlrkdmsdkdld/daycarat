@@ -10,6 +10,7 @@ import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentUserInfoBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.bottomSheet.GalleryFragment
+import com.makeus.daycarat.presentation.dialog.ResignDialog
 import com.makeus.daycarat.presentation.login.LoginActivity
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
@@ -80,15 +81,31 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
         }
 
         binding.btnLogout.onThrottleClick {
-            SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
-            (activity)?.finishAffinity()
-            Intent(activity , LoginActivity::class.java).apply {
-                startActivity(this)
+            ResignDialog(requireContext(),true).also { resignDialog: ResignDialog ->
+                resignDialog.onclick = {
+                    SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
+                    (activity)?.finishAffinity()
+                    Intent(activity , LoginActivity::class.java).apply {
+                        startActivity(this)
+                    }
+                }
+                resignDialog.show()
             }
+
         }
 
         binding.btnResign.onThrottleClick {  //회원 탈퇴
-
+            ResignDialog(requireContext(),false).also { resignDialog: ResignDialog ->
+                resignDialog.onclick = {
+                    SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
+                    (activity)?.finishAffinity()
+                    Intent(activity , LoginActivity::class.java).apply {
+                        startActivity(this)
+                    }
+                    //TODO 탈퇴
+                }
+                resignDialog.show()
+            }
         }
 
 
