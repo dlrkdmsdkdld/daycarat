@@ -33,8 +33,8 @@ android {
         applicationId = "com.makeus.daycarat"
         minSdk = 24
         targetSdk = 33
-        versionCode = 10
-        versionName = "0.1.0"
+        versionCode = 11
+        versionName = "0.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -62,7 +62,6 @@ android {
             manifestPlaceholders["KAKAO_API_KEY"] = properties["KAKAO_API_KEY"] as String
         }
         release {
-            manifestPlaceholders += mapOf()
             isMinifyEnabled = false
             manifestPlaceholders["KAKAO_API_KEY"] = properties["KAKAO_API_KEY"] as String
             proguardFiles(

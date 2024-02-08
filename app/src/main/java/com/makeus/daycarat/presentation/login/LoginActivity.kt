@@ -59,6 +59,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
 
 
         binding.btnKakao.setOnClickListener {
+//            UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
             // 카카오톡이 설치되어 있으면 카카오톡으로 로그인, 아니면 카카오계정으로 로그인
             if (UserApiClient.instance.isKakaoTalkLoginAvailable(this)) {
                 UserApiClient.instance.loginWithKakaoTalk(this) { token, error ->
@@ -95,10 +96,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>({ ActivityLoginBinding.
                                 finishAffinity()
                                 startActivity(this)
                             }
-//                            Intent(this@LoginActivity,IntroduceActivity::class.java).apply {
-//                                startActivity(this)
-//                                finishAffinity()
-//                            }
                         } is UiEvent.NewUserEvent ->{
                             loadingDialog.dismiss()
                             Intent(this@LoginActivity,IntroduceActivity::class.java).apply {
