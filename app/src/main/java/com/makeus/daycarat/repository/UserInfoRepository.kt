@@ -61,5 +61,21 @@ class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoA
             e.printStackTrace()
         }
     }
+    suspend fun deleteUserData() = flow{
+        emit(Resource.loading())
+        try {
+            val response = userInfoApi.resignUser()
+            if (isSuccessful(response.statusCode)) {
+                emit(Resource.success(response.result))
+            }else{
+                emit(Resource.error(response.message))
+//                emit(Resource.error(response.statusCode.toString()))
+            }
+        }catch (e:Exception){
+            emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
+            e.printStackTrace()
+        }
+    }
+
 
 }

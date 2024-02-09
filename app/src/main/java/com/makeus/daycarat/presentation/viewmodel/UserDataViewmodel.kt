@@ -11,8 +11,10 @@ import com.makeus.daycarat.repository.UserInfoRepository
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -63,34 +65,42 @@ class UserDataViewmodel @Inject constructor(private val repository: UserInfoRepo
                         sendEvent(UiEvent.SuccessEvent())
                     }
                     else -> {
-
                         sendEvent(UiEvent.FailEvent(result.message))
-
                     }
                 }
             }
         }
 
     }
-//    val bitmap : Bitmap = mbinding?.profileEditImage.drawable.toBitmap()
-//    val bitmapRequestBody = bitmap?.let {  BitmapRequestBody(it)}
-//    val bitmapMultipartBody: MultipartBody.Part = MultipartBody.Part.createFormData("file", "file.jpeg", bitmapRequestBody)
-//    Log.d(TAG,"correctionImage -> $correctionImage")
-//    val editTobe=mbinding?.profileEditTobeText.text.toString()
-//    val editname=mbinding?.profileEditNicknameText.text.toString()
-//    if (correctionImage){
-//        val result = EditProfile(isImgEdited = "T" ,nickname = editname, beMyMessage = editTobe )
-//        InformationRetrofitManager.instance.editProfile(file = bitmapMultipartBody,result){responseStatus, i ->
-//            startMainActivity()
-//            Log.d(TAG, "statuscode - > $i ")
-//        }
-//    }else{
-//        val result = EditProfile(isImgEdited = "F" ,nickname = editname, beMyMessage = editTobe )
-//        InformationRetrofitManager.instance.editProfile(file = null,result){responseStatus, i ->
-//            startMainActivity()
-//        }
-//
-//    }
+
+    fun deleteUserInfo(){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.deleteUserData().collect{result ->
+                when(result.status) {
+                    Status.LOADING -> {
+                        sendEvent(UiEvent.LoadingEvent())
+                    }
+                    Status.SUCCESS -> {
+                        deleteSendEvent(UiEvent.SuccessEvent())
+                    }
+                    else -> {
+                        sendEvent(UiEvent.FailEvent(result.message))
+
+                    }
+                }
+
+            }
+        }
+    }
+
+    private val _resignFlowEvent = MutableSharedFlow<UiEvent>()
+    val resignFlowEvent = _resignFlowEvent.asSharedFlow()
+
+    fun deleteSendEvent(event: UiEvent) {
+        viewModelScope.launch {
+            _resignFlowEvent.emit(event)
+        }
+    }
 
 
 

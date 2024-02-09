@@ -10,5 +10,6 @@ data class AllUserData (
     var strength: String = "",
     var pushAllow: Boolean = true,
     var email: String ="",
-    var profileImage: String =""
+    var profileImage: String ="",
+    var userClass: String =""
     )

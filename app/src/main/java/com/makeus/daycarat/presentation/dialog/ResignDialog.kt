@@ -33,8 +33,10 @@ class ResignDialog(context: Context ,var isLogout:Boolean) : Dialog(context) {
 
         if (isLogout){
             binding.btnResign.visibility = View.GONE
+            binding.textTitle.text = "로그아웃 하시겠습니까?"
         }else{
             binding.btnLogout.visibility = View.GONE
+            binding.textTitle.text = "정말 탈퇴하시겠습니까?"
         }
 
         binding.btnResign.onThrottleClick {

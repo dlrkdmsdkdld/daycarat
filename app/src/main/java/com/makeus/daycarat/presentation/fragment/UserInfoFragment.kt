@@ -22,6 +22,7 @@ import com.makeus.daycarat.util.PermissionManager.requestReadStorageAndCameraPre
 import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collectLatest
 
 @AndroidEntryPoint
 class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
@@ -97,14 +98,25 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
         binding.btnResign.onThrottleClick {  //회원 탈퇴
             ResignDialog(requireContext(),false).also { resignDialog: ResignDialog ->
                 resignDialog.onclick = {
-                    SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
-                    (activity)?.finishAffinity()
-                    Intent(activity , LoginActivity::class.java).apply {
-                        startActivity(this)
-                    }
-                    //TODO 탈퇴
+                    userInfoViewModel.deleteUserInfo()
                 }
                 resignDialog.show()
+            }
+        }
+
+        repeatOnStarted {
+            userInfoViewModel.resignFlowEvent.collectLatest { result ->
+                when(result){
+                    is UiEvent.SuccessEvent ->{
+                        (activity as MainActivity).loadingDialog.dismiss()
+                        SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
+                        (activity)?.finishAffinity()
+                        Intent(activity , LoginActivity::class.java).apply {
+                            startActivity(this)
+                        }
+                    }else -> {}
+                }
+
             }
         }
 

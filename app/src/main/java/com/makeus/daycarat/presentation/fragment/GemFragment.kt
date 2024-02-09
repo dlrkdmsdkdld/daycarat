@@ -75,7 +75,8 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
         repeatOnStarted {
             mainViewModel.userData.collect {
                 binding.textNickname.text = it.nickname
-                binding.textAdvantage.text = it.strength
+                binding.textGrade.text = it.strength
+                binding.textAdvantage.text =it.userClass
                 Glide.with(this@GemFragment)
                     .load(it.profileImage)
                     .error(R.drawable.bg_home)
