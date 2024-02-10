@@ -59,36 +59,30 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
 
         observeRecentEpisode()
 
-        binding.fieldNews1.setOnClickListener {
-            Intent(Intent.ACTION_VIEW , Uri.parse("https://youtu.be/eGv5EAMF8OQ?si=t-1eEeFw4EKHxXEo")).apply {
-                startActivity(this)
-            }
+        binding.fieldNews1.onThrottleClick {
+            IntentActionView("https://youtu.be/eGv5EAMF8OQ?si=t-1eEeFw4EKHxXEo")
         }
 
         binding.fieldNews2.onThrottleClick {
-            Intent(Intent.ACTION_VIEW , Uri.parse("https://www.youtube.com/watch?v=8ue2Yi_Zkp0")).apply {
-                startActivity(this)
-            }
+            IntentActionView("https://www.youtube.com/watch?v=8ue2Yi_Zkp0")
         }
 
         binding.fieldNews3.onThrottleClick {
-            Intent(Intent.ACTION_VIEW , Uri.parse("https://brunch.co.kr/@designpopceo/16")).apply {
-                startActivity(this)
-            }
+            IntentActionView("https://brunch.co.kr/@designpopceo/16")
         }
         binding.fieldNews4.onThrottleClick {
-            Intent(Intent.ACTION_VIEW , Uri.parse("https://brunch.co.kr/@seazers/76")).apply {
-                startActivity(this)
-            }
+            IntentActionView("https://brunch.co.kr/@seazers/76")
         }
-
 
         setImagThubnail(binding.imgNews1 , "https://youtu.be/eGv5EAMF8OQ?si=t-1eEeFw4EKHxXEo")
         setImagThubnail(binding.imgNews2 , "https://www.youtube.com/watch?v=8ue2Yi_Zkp0")
-        setImagThubnail(binding.imgNews2 , R.drawable.bg_news3)
-        setImagThubnail(binding.imgNews2 , R.drawable.img_news4)
-
-
+        setImagThubnail(binding.imgNews3 , R.drawable.bg_news3)
+        setImagThubnail(binding.imgNews4 , R.drawable.img_news4)
+    }
+    fun IntentActionView(url:String){
+        Intent(Intent.ACTION_VIEW , Uri.parse(url)).apply {
+            startActivity(this)
+        }
     }
 
     override fun initStatusBar() {
