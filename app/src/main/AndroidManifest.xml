@@ -40,7 +40,9 @@
 
         </activity>
 
-        <activity android:name=".presentation.login.LoginActivity"/>
+        <activity android:name=".presentation.login.LoginActivity"
+            android:exported="true">
+        </activity>
         <activity android:name=".presentation.login.AgreementActivity"/>
         <activity android:name=".presentation.login.IntroduceActivity" android:theme="@style/Theme.DaycaratMeterial" />
         <activity android:name=".presentation.login.JoinActivity"
@@ -53,6 +55,22 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data android:host="oauth"
+                    android:scheme="kakaode909f10bb5f9eea10806f013137db09" />
+<!--                android:scheme="kakao${KAKAO_API_KEY}" />-->
+            </intent-filter>
+        </activity>
+
 
     </application>
 

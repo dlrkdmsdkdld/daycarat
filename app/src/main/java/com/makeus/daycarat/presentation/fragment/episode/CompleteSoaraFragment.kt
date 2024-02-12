@@ -24,8 +24,9 @@ class CompleteSoaraFragment() : BaseFragment<FragmentCompleteSoaraBinding>(
 
     override fun initView() {
         binding.nextBtn.onThrottleClick {
-            findNavController().popBackStack(R.id.episodeDetailTypeFragment , false)
-//            findNavController().navigate(R.id.action_completeSoaraFragment_to_episodeDetailTypeFragment)
+            var result = findNavController().popBackStack(R.id.episodeDetailTypeFragment , false)
+            if (!result) findNavController().navigate(R.id.action_completeSoaraFragment_to_homeFragment)
+        //            findNavController().navigate(R.id.action_completeSoaraFragment_to_episodeDetailTypeFragment)
         }
         val args:CompleteSoaraFragmentArgs by navArgs()
         viewModel.register(args.episodeId)

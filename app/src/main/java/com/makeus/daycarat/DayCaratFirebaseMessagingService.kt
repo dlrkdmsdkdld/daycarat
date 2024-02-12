@@ -40,7 +40,7 @@ class DayCaratFirebaseMessagingService : FirebaseMessagingService() {
             }
             val pendingIntent = PendingIntent.getActivity(this@DayCaratFirebaseMessagingService, 0, intent, PendingIntent.FLAG_IMMUTABLE)
             val builder = NotificationCompat.Builder(this@DayCaratFirebaseMessagingService, NotificationDaycaratManager.channelId)
-                .setSmallIcon(android.R.drawable.ic_dialog_info)
+                .setSmallIcon(R.drawable.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setContentIntent(pendingIntent)
