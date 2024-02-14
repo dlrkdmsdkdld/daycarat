@@ -124,7 +124,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>({ ActivityMainBinding.inf
             when (destination.id) {
                 R.id.editEpisodeFragment, R.id.episodeDetailTypeFragment , R.id.episodeSeeContentFragment ,
                 R.id.soaraFragment ,R.id.editSoaraFragment , R.id.completeSoaraFragment ,R.id.gemDetailFragment
-                , R.id.gemContentFragment  , R.id.gemKeywordFragment-> {
+                , R.id.gemContentFragment  , R.id.gemKeywordFragment , R.id.loginFragment , R.id.joinFragment , R.id.introduceFragment-> {
                     binding.bottomNav.visibility = View.GONE
                 }
 

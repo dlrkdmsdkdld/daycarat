@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/homeFragment"
@@ -199,6 +199,43 @@
     <action
         android:id="@+id/action_global_editEpisodeFragment"
         app:destination="@id/editEpisodeFragment" />
+    <fragment
+        tools:layout="@layout/activity_introduce"
+        android:id="@+id/introduceFragment"
+        android:name="com.makeus.daycarat.presentation.login.IntroduceFragment"
+        android:label="IntroduceFragment" >
+        <action
+            android:id="@+id/action_introduceFragment2_to_joinFragment"
+            app:destination="@id/joinFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/activity_login"
+        android:id="@+id/loginFragment"
+        android:name="com.makeus.daycarat.presentation.login.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_introduceFragment2"
+            app:destination="@id/introduceFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/activity_join"
+        android:id="@+id/joinFragment"
+        android:name="com.makeus.daycarat.presentation.login.JoinFragment"
+        android:label="JoinFragment" >
+        <action
+            android:id="@+id/action_joinFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/introduceFragment" />
+    </fragment>
+
 
 </navigation>
 

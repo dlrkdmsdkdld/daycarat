@@ -26,6 +26,10 @@ abstract class BaseActivity<B: ViewBinding>(
         this.loadingDialog = LoadingDialog(binding.root.context)
         initView()
 
+        setEnableFalseBottomState()
+
+    }
+    fun setEnableFalseBottomState(){
         if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
             setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
         }
@@ -36,7 +40,6 @@ abstract class BaseActivity<B: ViewBinding>(
             setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, false)
             window.statusBarColor = Color.TRANSPARENT
         }
-
     }
     private fun setWindowFlag(bits: Int, on: Boolean) {
         val win = window
