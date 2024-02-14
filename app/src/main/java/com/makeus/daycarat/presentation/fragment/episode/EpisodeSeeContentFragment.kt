@@ -70,8 +70,6 @@ class EpisodeSeeContentFragment() : BaseFragment<FragmentEpisodeSeeContentBindin
                     EditEpisodeFragmentDirections
                     var action = EpisodeSeeContentFragmentDirections.actionEpisodeSeeContentFragmentToEditEpisodeFragment(viewModel.episodeConetent.value)
                     findNavController().navigate(action)
-//                    findNavController().navigate(R.id.action_episodeSeeContentFragment_to_editEpisodeFragment ,
-//                        bundleOf( "episodeContent" to viewModel.episodeConetent.value ))
                 } else if (menuItem.itemId == R.id.option_remove) {
                     viewModel.deleteEpisode()
                 }

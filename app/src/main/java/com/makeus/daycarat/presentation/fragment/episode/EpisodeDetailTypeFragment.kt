@@ -36,7 +36,6 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
 
         if (viewModel.typeItem?.activityTagName == null  ){
             binding.textTitle.text = "${viewModel.year}년도 ${viewModel.typeItem?.month}월"
-//            viewModel.getPagingEpisodeContentOrderByDate(arg.year , typeItem.month)
         }else{
             binding.textTitle.text = viewModel.typeItem?.activityTagName
 //            viewModel.getPagingEpisodeContentOrderByCount(typeItem.activityTagName!!)
