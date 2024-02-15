@@ -8,6 +8,7 @@ import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinJobBinding
 import com.makeus.daycarat.databinding.ItemJoinJobBinding
 import com.makeus.daycarat.presentation.login.JoinActivity
+import com.makeus.daycarat.presentation.login.JoinFragment
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.UiManager
 
@@ -35,7 +36,7 @@ class JobFragment : BaseFragment<FragmentJoinJobBinding>(
         if(viewModel.userData.value.jobTitle?.isNotEmpty() == true){
             buttonList.forEach {
                 if(it.text.equals(viewModel.userData.value.jobTitle)){
-                    (activity as JoinActivity).enableNextBtn(true)
+                    (parentFragment as JoinFragment).enableNextBtn(true)
                     it.isSelected = true
                 }else{
                     it.isSelected = false
@@ -49,7 +50,7 @@ class JobFragment : BaseFragment<FragmentJoinJobBinding>(
         btn.rootView.apply {
             text = title
             setOnClickListener {
-                (activity as JoinActivity).enableNextBtn(true)
+                (parentFragment as JoinFragment).enableNextBtn(true)
                 viewModel.userData.value.jobTitle = title
                 checkAllBtn(title)
             }

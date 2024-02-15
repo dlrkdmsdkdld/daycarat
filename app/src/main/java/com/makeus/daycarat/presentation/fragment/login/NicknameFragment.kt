@@ -6,6 +6,7 @@ import androidx.fragment.app.activityViewModels
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
 import com.makeus.daycarat.presentation.login.JoinActivity
+import com.makeus.daycarat.presentation.login.JoinFragment
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Extensions.HideKeyBoard
 
@@ -23,7 +24,7 @@ class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
             override fun afterTextChanged(p0: Editable?) {
                 viewModel.userData.value.nickname = p0.toString()
                 binding.textCount.text = "${p0?.length?:0}/10"
-                (activity as JoinActivity).enableNextBtn(p0.toString().isNotEmpty())
+                (parentFragment as JoinFragment).enableNextBtn(p0.toString().isNotEmpty())
             }
 
         })
@@ -38,7 +39,7 @@ class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
 
     override fun onResume() {
         super.onResume()
-        (activity as JoinActivity).enableNextBtn(binding.edit.text.isNotEmpty())
+        (parentFragment as JoinFragment).enableNextBtn(binding.edit.text.isNotEmpty())
     }
 
 

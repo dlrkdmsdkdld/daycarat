@@ -4,6 +4,8 @@ import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
 import com.makeus.daycarat.databinding.FragmentWellcomeBinding
@@ -17,10 +19,11 @@ class WellcomeFragment() : BaseFragment<FragmentWellcomeBinding>(
 
     override fun initView() {
         binding.nextBtn.setOnClickListener {
-            Intent(activity,MainActivity::class.java).apply {
-                activity?.finishAffinity()
-                startActivity(this)
-            }
+            findNavController().navigate(R.id.action_joinFragment_to_homeFragment)
+//            Intent(activity,MainActivity::class.java).apply {
+//                activity?.finishAffinity()
+//                startActivity(this)
+//            }
         }
 
     }

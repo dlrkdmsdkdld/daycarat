@@ -2,13 +2,14 @@ package com.makeus.daycarat.presentation.fragment.login
 
 import android.content.Intent
 import android.view.View
+import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
 import com.makeus.daycarat.presentation.login.JoinActivity
 
 
-class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(FragmentIntroduce1Binding::inflate) {
+class SubIntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(FragmentIntroduce1Binding::inflate) {
 
     override fun initView() {
         when(type){
@@ -35,9 +36,10 @@ class IntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(
             }
         }
         binding.nextBtn.setOnClickListener {
-            Intent(activity, JoinActivity::class.java).apply {
-                startActivity(this)
-            }
+            findNavController().navigate(R.id.action_introduceFragment2_to_joinFragment)
+//            Intent(activity, JoinActivity::class.java).apply {
+//                startActivity(this)
+//            }
         }
     }
 
