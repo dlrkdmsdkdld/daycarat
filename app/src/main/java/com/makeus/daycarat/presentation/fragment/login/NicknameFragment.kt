@@ -12,7 +12,7 @@ import com.makeus.daycarat.util.Extensions.HideKeyBoard
 
 class NicknameFragment() : BaseFragment<FragmentJoinNicknameBinding>(
     FragmentJoinNicknameBinding::inflate) {
-    private val viewModel by activityViewModels<UserDataViewmodel>()
+    val viewModel by lazy { (parentFragment as JoinFragment).provideSharedViewModel() }
 
 
     override fun initView() {

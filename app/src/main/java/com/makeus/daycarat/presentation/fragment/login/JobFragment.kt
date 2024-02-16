@@ -15,7 +15,8 @@ import com.makeus.daycarat.util.UiManager
 
 class JobFragment : BaseFragment<FragmentJoinJobBinding>(
     FragmentJoinJobBinding::inflate) {
-    private val viewModel by activityViewModels<UserDataViewmodel>()
+
+    val viewModel by lazy { (parentFragment as JoinFragment).provideSharedViewModel() }
 
     var buttonList = ArrayList<AppCompatButton>()
     override fun initView() {

@@ -17,7 +17,7 @@ class AdvantageFragment() : BaseFragment<FragmentJoinAdvantageBinding>(
     FragmentJoinAdvantageBinding::inflate
 ) {
 
-    private val viewModel by activityViewModels<UserDataViewmodel>()
+    val viewModel by lazy { (parentFragment as JoinFragment).provideSharedViewModel() }
 
     override fun initView() {
         var array = resources.getStringArray(R.array.advantage_datas)

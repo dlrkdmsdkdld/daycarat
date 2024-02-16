@@ -38,6 +38,10 @@ class JoinFragment() : BaseFragment<ActivityJoinBinding>(
         ViewModelProvider(this).get(UserDataViewmodel::class.java)
     }
 
+    fun provideSharedViewModel(): UserDataViewmodel {
+        return viewModel
+    }
+
     private val NUM_PAGES = 4
 
     override fun initView() {
