@@ -30,7 +30,7 @@ abstract class BaseActivity<B: ViewBinding>(
 
     }
     fun setEnableFalseBottomState(){
-        if (Build.VERSION.SDK_INT >= 19 && Build.VERSION.SDK_INT < 21) {
+        if (Build.VERSION.SDK_INT in 19..20) {
             setWindowFlag(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS, true)
         }
         if (Build.VERSION.SDK_INT >= 19) {

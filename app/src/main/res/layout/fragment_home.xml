@@ -135,19 +135,22 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
+                                android:id="@+id/btn_ai"
                                 android:src="@drawable/bg_ai_self_introduce" />
 
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:id="@+id/btn_gem"
                                 android:layout_marginStart="16dp"
                                 android:src="@drawable/bg_main_soara" />
 
                             <ImageView
+                                android:id="@+id/btn_job"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="16dp"
-                                android:src="@drawable/bg_main_episode" />
+                                android:src="@drawable/bg_main_job" />
                         </LinearLayout>
 
 

@@ -75,6 +75,18 @@ class HomeFragment() : BaseFragment<FragmentHomeBinding>(
             IntentActionView("https://brunch.co.kr/@seazers/76")
         }
 
+
+        binding.btnAi.onThrottleClick {
+            IntentActionView("https://daycarat.notion.site/AI-b8e3f747a0444816bc8b858a736202ca?pvs=4")
+        }
+        binding.btnGem.onThrottleClick {
+            IntentActionView("https://daycarat.notion.site/aa1d6e7d00fe4ee9acd41039adc9946a?pvs=4")
+        }
+        binding.btnJob.onThrottleClick {
+//            IntentActionView("https://daycarat.notion.site/AI-b8e3f747a0444816bc8b858a736202ca?pvs=4")
+        }
+
+
         setImagThubnail(binding.imgNews1 , "https://youtu.be/eGv5EAMF8OQ?si=t-1eEeFw4EKHxXEo")
         setImagThubnail(binding.imgNews2 , "https://www.youtube.com/watch?v=8ue2Yi_Zkp0")
         setImagThubnail(binding.imgNews3 , R.drawable.bg_news3)
