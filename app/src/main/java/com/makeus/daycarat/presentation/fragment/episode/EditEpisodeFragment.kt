@@ -65,10 +65,6 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         }
 
         binding.btnSave.onThrottleClick { // 중복클릭방지
-//            viewModel.registerEpisode(
-//                binding.editTitle.text.toString(),
-//                binding.editTag.text.toString()
-//            )
             viewModel.clickSaveBtn(
                 binding.editTitle.text.toString(),
                 binding.editTag.text.toString()

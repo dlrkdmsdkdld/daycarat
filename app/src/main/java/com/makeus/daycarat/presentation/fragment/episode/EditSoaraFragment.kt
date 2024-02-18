@@ -79,7 +79,6 @@ class EditSoaraFragment() : BaseFragment<FragmentEditSoaraBinding>(
                     else -> {
                         (activity as MainActivity).loadingDialog.dismiss()
                         findNavController().popBackStack()
-//                        findNavController().navigate(R.id.action_editSoaraFragment_to_soaraFragment)
                     }
                 }
             }
