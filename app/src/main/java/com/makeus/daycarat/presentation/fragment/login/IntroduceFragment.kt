@@ -6,7 +6,6 @@ import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
-import com.makeus.daycarat.presentation.login.JoinActivity
 
 
 class SubIntroduceFragment(val type:Int) : BaseFragment<FragmentIntroduce1Binding>(FragmentIntroduce1Binding::inflate) {

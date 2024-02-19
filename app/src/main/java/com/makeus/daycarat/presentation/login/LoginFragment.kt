@@ -10,7 +10,7 @@ import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
-import com.makeus.daycarat.databinding.ActivityLoginBinding
+import com.makeus.daycarat.databinding.FragmentLoginBinding
 import com.makeus.daycarat.databinding.FragmentWellcomeBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
@@ -20,12 +20,13 @@ import com.makeus.daycarat.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.util.Extensions.setStatusBarOrigin
 import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
 import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment() : BaseFragment<ActivityLoginBinding>(
-    ActivityLoginBinding::inflate) {
+class LoginFragment() : BaseFragment<FragmentLoginBinding>(
+    FragmentLoginBinding::inflate) {
 
     private val viewModel by lazy {
         ViewModelProvider(this).get(AuthViewmodel::class.java)
@@ -34,6 +35,12 @@ class LoginFragment() : BaseFragment<ActivityLoginBinding>(
 
     override fun initView() {
         requireActivity().setStatusBarTransparent()
+
+        //자동 로그인
+        if (!SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN , "").isEmpty()){
+            findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+        }
+
         setKakaoModule()
         
         repeatOnStarted {
@@ -43,8 +50,8 @@ class LoginFragment() : BaseFragment<ActivityLoginBinding>(
                         (activity as MainActivity).loadingDialog.show()
                     } is UiEvent.AlreadyUserEvent ->{
                     (activity as MainActivity).loadingDialog.dismiss()
-//                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                    findNavController().navigate(R.id.action_loginFragment_to_introduceFragment2)
+                    findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+//                    findNavController().navigate(R.id.action_loginFragment_to_introduceFragment2)
 
                 } is UiEvent.NewUserEvent ->{
                     findNavController().navigate(R.id.action_loginFragment_to_introduceFragment2)

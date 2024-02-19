@@ -13,8 +13,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
-import com.makeus.daycarat.databinding.ActivityJoinBinding
-import com.makeus.daycarat.databinding.ActivityLoginBinding
+import com.makeus.daycarat.databinding.FragmentJoinBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.dialog.LoadingDialog
 import com.makeus.daycarat.presentation.fragment.WellcomeFragment
@@ -30,8 +29,8 @@ import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class JoinFragment() : BaseFragment<ActivityJoinBinding>(
-    ActivityJoinBinding::inflate
+class JoinFragment() : BaseFragment<FragmentJoinBinding>(
+    FragmentJoinBinding::inflate
 ) {
     private lateinit var mPager: ViewPager2
     private val viewModel by lazy {

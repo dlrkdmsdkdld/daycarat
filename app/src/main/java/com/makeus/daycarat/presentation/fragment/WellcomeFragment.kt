@@ -10,7 +10,6 @@ import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
 import com.makeus.daycarat.databinding.FragmentWellcomeBinding
 import com.makeus.daycarat.presentation.MainActivity
-import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 
 

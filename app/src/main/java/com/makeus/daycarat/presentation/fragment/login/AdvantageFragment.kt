@@ -6,7 +6,6 @@ import com.google.android.material.chip.Chip
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinAdvantageBinding
-import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.login.JoinFragment
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Constant
@@ -34,7 +33,7 @@ class AdvantageFragment() : BaseFragment<FragmentJoinAdvantageBinding>(
                     }
                 }
             } else {
-                (activity as JoinActivity).enableNextBtn(false)
+                (parentFragment as JoinFragment).enableNextBtn(true)
             }
 
 

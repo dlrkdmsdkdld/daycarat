@@ -7,7 +7,6 @@ import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinJobBinding
 import com.makeus.daycarat.databinding.ItemJoinJobBinding
-import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.login.JoinFragment
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.UiManager

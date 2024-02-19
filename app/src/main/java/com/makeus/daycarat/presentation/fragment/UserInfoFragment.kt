@@ -4,6 +4,7 @@ import android.content.Intent
 import android.util.Log
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.makeus.daycarat.R
 import com.makeus.daycarat.base.BaseFragment
@@ -11,7 +12,6 @@ import com.makeus.daycarat.databinding.FragmentUserInfoBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.bottomSheet.GalleryFragment
 import com.makeus.daycarat.presentation.dialog.ResignDialog
-import com.makeus.daycarat.presentation.login.LoginActivity
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Constant
@@ -85,10 +85,11 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
             ResignDialog(requireContext(),true).also { resignDialog: ResignDialog ->
                 resignDialog.onclick = {
                     SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
-                    (activity)?.finishAffinity()
-                    Intent(activity , LoginActivity::class.java).apply {
-                        startActivity(this)
-                    }
+//                    (activity)?.finishAffinity()
+                    findNavController().navigate(R.id.action_userInfoFragment_to_loginFragment)
+//                    Intent(activity , LoginActivity::class.java).apply {
+//                        startActivity(this)
+//                    }
                 }
                 resignDialog.show()
             }
@@ -110,10 +111,12 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
                     is UiEvent.SuccessEvent ->{
                         (activity as MainActivity).loadingDialog.dismiss()
                         SharedPreferenceManager.getInstance().setString(Constant.USER_ACCESS_TOKEN,"")
-                        (activity)?.finishAffinity()
-                        Intent(activity , LoginActivity::class.java).apply {
-                            startActivity(this)
-                        }
+                        findNavController().navigate(R.id.action_userInfoFragment_to_loginFragment)
+
+//                        (activity)?.finishAffinity()
+//                        Intent(activity , LoginActivity::class.java).apply {
+//                            startActivity(this)
+//                        }
                     }else -> {}
                 }
 

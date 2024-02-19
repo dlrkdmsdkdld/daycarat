@@ -5,16 +5,15 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.makeus.daycarat.base.BaseFragment
-import com.makeus.daycarat.databinding.ActivityIntroduceBinding
-import com.makeus.daycarat.databinding.ActivityJoinBinding
+import com.makeus.daycarat.databinding.FragmentIntroduceBinding
 import com.makeus.daycarat.presentation.fragment.login.SubIntroduceFragment
 import com.makeus.daycarat.util.Extensions.navigationHeight
 import com.makeus.daycarat.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class IntroduceFragment() : BaseFragment<ActivityIntroduceBinding>(
-    ActivityIntroduceBinding::inflate
+class IntroduceFragment() : BaseFragment<FragmentIntroduceBinding>(
+    FragmentIntroduceBinding::inflate
 ) {
 
     private lateinit var mPager: ViewPager2

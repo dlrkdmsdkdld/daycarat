@@ -5,7 +5,6 @@ import android.text.TextWatcher
 import androidx.fragment.app.activityViewModels
 import com.makeus.daycarat.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
-import com.makeus.daycarat.presentation.login.JoinActivity
 import com.makeus.daycarat.presentation.login.JoinFragment
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
 import com.makeus.daycarat.util.Extensions.HideKeyBoard
