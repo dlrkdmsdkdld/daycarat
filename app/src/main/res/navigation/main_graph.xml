@@ -50,6 +50,11 @@
         android:label="UserInfoFragment"
         tools:layout="@layout/fragment_user_info" >
 
+        <action
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/main_graph"
+            android:id="@+id/action_userInfoFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/episodeDetailTypeFragment"
@@ -200,7 +205,7 @@
         android:id="@+id/action_global_editEpisodeFragment"
         app:destination="@id/editEpisodeFragment" />
     <fragment
-        tools:layout="@layout/activity_introduce"
+        tools:layout="@layout/fragment_introduce"
         android:id="@+id/introduceFragment"
         android:name="com.makeus.daycarat.presentation.login.IntroduceFragment"
         android:label="IntroduceFragment" >
@@ -209,7 +214,7 @@
             app:destination="@id/joinFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/activity_login"
+        tools:layout="@layout/fragment_login"
         android:id="@+id/loginFragment"
         android:name="com.makeus.daycarat.presentation.login.LoginFragment"
         android:label="LoginFragment" >
@@ -225,7 +230,7 @@
             app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
-        tools:layout="@layout/activity_join"
+        tools:layout="@layout/fragment_join"
         android:id="@+id/joinFragment"
         android:name="com.makeus.daycarat.presentation.login.JoinFragment"
         android:label="JoinFragment" >
