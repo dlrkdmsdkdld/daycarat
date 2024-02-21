@@ -177,12 +177,12 @@
 
                     <TextView
                         style="@style/b4"
-                        android:textStyle="bold"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:text="가장 많은 보석"
+                        android:fontFamily="@font/pretendard_semibold"
                         android:textColor="@color/gray_scale_800" />
 
                     <ImageView
@@ -191,7 +191,7 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
                         android:id="@+id/img_most_gem"
-                        android:src="@drawable/gem_diamond_small" />
+                        android:src="@drawable/bg_communication" />
 
                     <TextView
                         android:id="@+id/text_keyword"
@@ -223,7 +223,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/pretendard_semibold"
                         android:gravity="center"
                         android:text="가장 보석이\n많은 활동"
                         android:textColor="@color/gray_scale_800" />
@@ -260,7 +260,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
-                        android:textStyle="bold"
+                        android:fontFamily="@font/pretendard_semibold"
                         android:gravity="center"
                         android:text="이번달 보석"
                         android:textColor="@color/gray_scale_800" />
@@ -304,6 +304,7 @@
                     android:layout_marginStart="14dp"
                     android:layout_marginTop="11dp"
                     android:layout_marginEnd="14dp"
+                    tools:visibility="gone"
                     android:background="@drawable/rectangle_gem_small"
                     android:orientation="vertical"
                     app:layout_constraintEnd_toStartOf="@id/field_activity_gem"
