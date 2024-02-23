@@ -12,7 +12,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_gravity="center"
-        android:src="@drawable/indicator_selected"
+        android:src="@drawable/bg_wellcome"
         android:layout_width="136dp"
         android:layout_height="136dp"/>
 

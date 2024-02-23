@@ -121,7 +121,11 @@ class GemFragment() : BaseFragment<FragmentGemBinding>(
         repeatOnStarted {
             gemviewmodel.mostKeyword.collectLatest {
                 setGemImage(it.episodeKeyword , binding.imgMostGem)
-                binding.textKeyword.text = it.episodeKeyword
+                if (it.episodeKeyword.equals("보석 없음")){
+                    binding.textKeyword.text = "미선택"
+                }else{
+                    binding.textKeyword.text = it.episodeKeyword
+                }
             }
         }
         repeatOnStarted {
