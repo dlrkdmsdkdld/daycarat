@@ -33,8 +33,8 @@ android {
         applicationId = "com.makeus.daycarat"
         minSdk = 24
         targetSdk = 33
-        versionCode = 11
-        versionName = "0.1.1"
+        versionCode = 16
+        versionName = "0.1.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
