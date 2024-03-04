@@ -1,6 +1,6 @@
 # daycarat
 💎데이캐럿 DayCarat-효율적인 취업 준비를 위한 커리어 에피소드 기록 서비스
-![image1](./image/login.png)
+![image1](./image/image.png)
 
 💎 프로젝트 소개
 14th makeus CMC 스패커 팀 
