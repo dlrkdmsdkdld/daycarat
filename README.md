@@ -23,15 +23,15 @@ SOARA 방식을 통해 자세히 에피소드를 작성하면 AI가 취업 준�
 Play Store https://play.google.com/store/apps/details?id=com.makeus.daycarat
 App Store https://apps.apple.com/kr/app/%EB%8D%B0%EC%9D%B4%EC%BA%90%EB%9F%BF/id6476876242
 
-🩻Build with
-JetPack(recyclerview,navigation,viewmodel,viewbinding)
-네트워크 : retrofit2 , okHttp3
-아키텍쳐 패턴 : MVVM , SAA
-비동기 처리 : coroutines , kotlin flow
-의존성 주입 : hilt
-언어 : kotlin
-디자인 : figma
-thrid Party 라이브러리 : tedpermission , firebase(crashlytics , FCM) , huanghaibin-dev / CalendarView(china opensource) 
+🩻Build with  
+JetPack(recyclerview,navigation,viewmodel,viewbinding)  
+네트워크 : retrofit2 , okHttp3  
+아키텍쳐 패턴 : MVVM , SAA  
+비동기 처리 : coroutines , kotlin flow  
+의존성 주입 : hilt  
+언어 : kotlin  
+디자인 : figma  
+thrid Party 라이브러리 : tedpermission , firebase(crashlytics , FCM) , huanghaibin-dev / CalendarView(china opensource)  
 
 ❤️‍🔥개발기간
 2024.01.02 ~ 2024.02.24
