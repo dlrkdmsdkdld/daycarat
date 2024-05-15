@@ -3,11 +3,10 @@ package com.makeus.daycarat.presentation.viewmodel.gem
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
-import com.makeus.daycarat.data.EpisodeContent
-import com.makeus.daycarat.data.EpisodeFullContent
-import com.makeus.daycarat.data.GemSoaraAIContent
-import com.makeus.daycarat.data.SoaraContent
-import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
+import com.makeus.daycarat.data.data.EpisodeContent
+import com.makeus.daycarat.data.data.EpisodeFullContent
+import com.makeus.daycarat.data.data.GemSoaraAIContent
+import com.makeus.daycarat.data.data.SoaraContent
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.repository.GemRepository
 import com.makeus.daycarat.util.UiEvent

@@ -1,21 +1,15 @@
 package com.makeus.daycarat.presentation.viewmodel
 
-import android.util.Log
-import androidx.compose.runtime.mutableStateOf
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.makeus.daycarat.base.BaseViewmodel
-import com.makeus.daycarat.data.GemTotalCount
-import com.makeus.daycarat.data.UserData
 import com.makeus.daycarat.data.paging.GalleryImage
 import com.makeus.daycarat.data.paging.GalleryPagingSource
 import com.makeus.daycarat.data.paging.GalleryPagingSource.Companion.PAGING_SIZE
 import com.makeus.daycarat.repository.GalleryRepository
-import com.makeus.daycarat.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

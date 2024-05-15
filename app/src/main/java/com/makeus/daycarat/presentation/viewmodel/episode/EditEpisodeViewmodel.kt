@@ -6,10 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.DayCaratApplication
 import com.makeus.daycarat.R
 import com.makeus.daycarat.core.dto.Status
-import com.makeus.daycarat.data.EpisodeContent
-import com.makeus.daycarat.data.EpisodeRegister
-import com.makeus.daycarat.data.EpisodeRegisterWithId
-import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
+import com.makeus.daycarat.data.data.EpisodeContent
+import com.makeus.daycarat.data.data.EpisodeRegister
+import com.makeus.daycarat.data.data.EpisodeRegisterWithId
 import com.makeus.daycarat.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.parseIntToMonth
@@ -22,7 +21,6 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asSharedFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -112,9 +110,11 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
     fun updateEpisode(title: String, activityTag: String){
         viewModelScope.launch(Dispatchers.IO){
             var parseTitle = if (title.isEmpty()) "제목없음" else title
-            repository.updateEpisode(EpisodeRegisterWithId(episodeId = this@EditEpisodeViewmodel.episodeId!!,
+            repository.updateEpisode(
+                EpisodeRegisterWithId(episodeId = this@EditEpisodeViewmodel.episodeId!!,
                 title = parseTitle, selectedDate = _episodeDay.value,
-                activityTag = activityTag, episodeContents = _episodeContent.value ))
+                activityTag = activityTag, episodeContents = _episodeContent.value )
+            )
                 .collect { data ->
                     when (data.status) {
                         Status.LOADING -> {
@@ -138,7 +138,8 @@ class EditEpisodeViewmodel @Inject constructor(private val repository: EpisodeRe
             var parseTitle = if (title.isEmpty()) "제목없음" else title
             if (activityTag.isNotEmpty()) SharedPreferenceManager.getInstance().saveEpisodeActivityTag(activityTag)
             repository.addEpisode(
-                EpisodeRegister(title = parseTitle, date = _episodeDay.value, activityTag = activityTag, episodeContents = _episodeContent.value))
+                EpisodeRegister(title = parseTitle, date = _episodeDay.value, activityTag = activityTag, episodeContents = _episodeContent.value)
+            )
                 .collect { data ->
                     when (data.status) {
                         Status.LOADING -> {

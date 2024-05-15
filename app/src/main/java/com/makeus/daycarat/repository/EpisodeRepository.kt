@@ -1,24 +1,20 @@
 package com.makeus.daycarat.repository
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
 import com.makeus.daycarat.core.dto.Resource
-import com.makeus.daycarat.data.EpisodeKeywordAndId
-import com.makeus.daycarat.data.EpisodeRegister
-import com.makeus.daycarat.data.EpisodeRegisterWithId
+import com.makeus.daycarat.data.data.EpisodeKeywordAndId
+import com.makeus.daycarat.data.data.EpisodeRegister
+import com.makeus.daycarat.data.data.EpisodeRegisterWithId
 import com.makeus.daycarat.data.paging.EpisodeContentByDatePagingSource
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
 import com.makeus.daycarat.hilt.EpisodeApi
-import com.makeus.daycarat.hilt.RetrofitInterface
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.TimeUtil.parseTimeToYear
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import java.util.Calendar
 import javax.inject.Inject
 
 class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {

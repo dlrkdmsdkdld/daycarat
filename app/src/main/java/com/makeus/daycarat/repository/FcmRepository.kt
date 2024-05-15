@@ -2,11 +2,9 @@ package com.makeus.daycarat.repository
 
 import android.util.Log
 import com.makeus.daycarat.core.dto.Resource
-import com.makeus.daycarat.data.UserData
-import com.makeus.daycarat.hilt.RetrofitInterface
+import com.makeus.daycarat.data.data.UserData
 import com.makeus.daycarat.hilt.FcmApi
 import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.SharedPreferenceManager
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

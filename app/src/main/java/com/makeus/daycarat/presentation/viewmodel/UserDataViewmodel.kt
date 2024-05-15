@@ -1,11 +1,10 @@
 package com.makeus.daycarat.presentation.viewmodel
 
-import android.graphics.Bitmap
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.base.BaseViewmodel
 import com.makeus.daycarat.core.dto.Status
-import com.makeus.daycarat.data.UserData
+import com.makeus.daycarat.data.data.UserData
 import com.makeus.daycarat.data.paging.GalleryImage
 import com.makeus.daycarat.repository.UserInfoRepository
 import com.makeus.daycarat.util.UiEvent

@@ -1,18 +1,15 @@
 package com.makeus.daycarat.hilt
 
 import com.makeus.daycarat.core.dto.ResponseBody
-import com.makeus.daycarat.data.AllUserData
-import com.makeus.daycarat.data.EpisodeActivityCounter
-import com.makeus.daycarat.data.EpisodeFullContent
-import com.makeus.daycarat.data.EpisodeKeywordAndId
-import com.makeus.daycarat.data.EpisodeRecent
-import com.makeus.daycarat.data.EpisodeRegister
-import com.makeus.daycarat.data.MonthEpisodeCount
-import com.makeus.daycarat.data.EpisodeCount
-import com.makeus.daycarat.data.EpisodeId
-import com.makeus.daycarat.data.EpisodeRegisterWithId
+import com.makeus.daycarat.data.data.EpisodeActivityCounter
+import com.makeus.daycarat.data.data.EpisodeFullContent
+import com.makeus.daycarat.data.data.EpisodeKeywordAndId
+import com.makeus.daycarat.data.data.EpisodeRecent
+import com.makeus.daycarat.data.data.EpisodeRegister
+import com.makeus.daycarat.data.data.MonthEpisodeCount
+import com.makeus.daycarat.data.data.EpisodeCount
+import com.makeus.daycarat.data.data.EpisodeRegisterWithId
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
-import kotlinx.coroutines.delay
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET

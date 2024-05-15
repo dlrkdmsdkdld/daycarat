@@ -1,8 +1,7 @@
 package com.makeus.daycarat.repository
 
 import com.makeus.daycarat.core.dto.Resource
-import com.makeus.daycarat.data.UserData
-import com.makeus.daycarat.hilt.RetrofitInterface
+import com.makeus.daycarat.data.data.UserData
 import com.makeus.daycarat.hilt.UserInfoApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.isSuccessful

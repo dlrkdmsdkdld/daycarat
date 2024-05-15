@@ -1,6 +1,6 @@
 package com.makeus.daycarat.util
 
-import com.makeus.daycarat.data.EpisodeKeywordAndId
+import com.makeus.daycarat.data.data.EpisodeKeywordAndId
 
 
 sealed class UiEvent {

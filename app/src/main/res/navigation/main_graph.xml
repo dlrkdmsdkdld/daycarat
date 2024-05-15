@@ -63,7 +63,7 @@
         tools:layout="@layout/fragment_episode_detail_type">
         <argument
             android:name="typeItem"
-            app:argType="com.makeus.daycarat.data.EpisodeActivityCounter" />
+            app:argType="com.makeus.daycarat.data.data.EpisodeActivityCounter" />
         <argument
             android:name="year"
             app:argType="integer" />
@@ -87,7 +87,7 @@
             app:destination="@id/editEpisodeFragment" >
             <argument
                 android:name="episodeContent"
-                app:argType="com.makeus.daycarat.data.EpisodeFullContent" />
+                app:argType="com.makeus.daycarat.data.data.EpisodeFullContent" />
         </action>
 
     </fragment>
@@ -98,7 +98,7 @@
         tools:layout="@layout/fragment_soara">
         <argument
             android:name="episodeContent"
-            app:argType="com.makeus.daycarat.data.EpisodeFullContent" />
+            app:argType="com.makeus.daycarat.data.data.EpisodeFullContent" />
         <action
             android:id="@+id/action_soaraFragment_to_editSoaraFragment"
             app:destination="@id/editSoaraFragment" />

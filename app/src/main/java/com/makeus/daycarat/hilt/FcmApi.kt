@@ -1,7 +1,7 @@
 package com.makeus.daycarat.hilt
 
 import com.makeus.daycarat.core.dto.ResponseBody
-import com.makeus.daycarat.data.UserData
+import com.makeus.daycarat.data.data.UserData
 import retrofit2.http.Body
 import retrofit2.http.PATCH
 

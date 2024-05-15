@@ -1,7 +1,6 @@
 package com.makeus.daycarat.util
 
 import android.content.res.Resources
-import android.text.Layout
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.ForegroundColorSpan
@@ -13,7 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.makeus.daycarat.DayCaratApplication
 import com.makeus.daycarat.R
-import com.makeus.daycarat.data.EpisodeContent
+import com.makeus.daycarat.data.data.EpisodeContent
 import com.makeus.daycarat.databinding.LayoutEpisodeDetailContentBinding
 
 object UiManager {
@@ -31,7 +30,7 @@ object UiManager {
     }
 
 
-    fun inflateDetailContent(data: EpisodeContent , layoutInflater:LayoutInflater): ConstraintLayout {
+    fun inflateDetailContent(data: EpisodeContent, layoutInflater:LayoutInflater): ConstraintLayout {
         var inflating = LayoutEpisodeDetailContentBinding.inflate(layoutInflater)
         inflating.textTitle.text = data.episodeContentType
         inflating.textDes.text = data.content

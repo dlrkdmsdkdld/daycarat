@@ -4,10 +4,9 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
-import com.makeus.daycarat.data.EpisodeActivityCounter
-import com.makeus.daycarat.data.EpisodeCount
+import com.makeus.daycarat.data.data.EpisodeActivityCounter
+import com.makeus.daycarat.data.data.EpisodeCount
 import com.makeus.daycarat.repository.EpisodeRepository
-import com.makeus.daycarat.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

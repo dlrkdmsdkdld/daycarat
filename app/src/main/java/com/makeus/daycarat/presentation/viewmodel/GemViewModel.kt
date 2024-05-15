@@ -1,22 +1,17 @@
 package com.makeus.daycarat.presentation.viewmodel
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.base.BaseViewmodel
 import com.makeus.daycarat.core.dto.Status
-import com.makeus.daycarat.data.ActivityTag
-import com.makeus.daycarat.data.EpisodeKeyword
-import com.makeus.daycarat.data.GemCount
-import com.makeus.daycarat.data.GemTotalCount
+import com.makeus.daycarat.data.data.ActivityTag
+import com.makeus.daycarat.data.data.EpisodeKeyword
+import com.makeus.daycarat.data.data.GemCount
+import com.makeus.daycarat.data.data.GemTotalCount
 import com.makeus.daycarat.repository.GemRepository
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject

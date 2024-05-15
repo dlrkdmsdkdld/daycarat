@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.makeus.daycarat.data.GemCount
+import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.paging.GemDetailConetent
 import com.makeus.daycarat.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

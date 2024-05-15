@@ -3,9 +3,7 @@ package com.makeus.daycarat.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
-import com.makeus.daycarat.data.AllUserData
-import com.makeus.daycarat.data.UserData
-import com.makeus.daycarat.repository.AuthRepository
+import com.makeus.daycarat.data.data.AllUserData
 import com.makeus.daycarat.repository.UserInfoRepository
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
