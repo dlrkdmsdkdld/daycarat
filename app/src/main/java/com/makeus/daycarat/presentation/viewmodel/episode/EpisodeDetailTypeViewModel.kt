@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.makeus.daycarat.data.data.EpisodeActivityCounter
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
-import com.makeus.daycarat.repository.EpisodeRepository
+import com.makeus.daycarat.domain.repository.EpisodeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -43,7 +43,7 @@ class EpisodeDetailTypeViewModel @Inject constructor(private val repository: Epi
 
     fun getPagingEpisodeContentOrderByDate(year:Int , month:Int){
         viewModelScope.launch(Dispatchers.IO){
-            repository.getContentEpisodeByDatePaging(month = month, year = year ).cachedIn(viewModelScope).collect{
+            repository.getContentEpisodePaging(month = month, year = year ).cachedIn(viewModelScope).collect{
                 _episodeContentList.emit(it)
             }
         }
@@ -51,7 +51,7 @@ class EpisodeDetailTypeViewModel @Inject constructor(private val repository: Epi
 
     fun getPagingEpisodeContentOrderByCount(activityTag:String){
         viewModelScope.launch(Dispatchers.IO){
-            repository.getContentEpisodeByCountPaging(activityTag).cachedIn(viewModelScope).collect{
+            repository.getContentEpisodePaging(activityTag).cachedIn(viewModelScope).collect{
                 _episodeContentList.emit(it)
             }
         }
