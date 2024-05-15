@@ -9,7 +9,7 @@ import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.EpisodeContent
 import com.makeus.daycarat.data.data.EpisodeRegister
 import com.makeus.daycarat.data.data.EpisodeRegisterWithId
-import com.makeus.daycarat.repository.EpisodeRepository
+import com.makeus.daycarat.domain.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.parseIntToMonth
 import com.makeus.daycarat.util.SharedPreferenceManager

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.EpisodeKeywordAndId
-import com.makeus.daycarat.repository.EpisodeRepository
+import com.makeus.daycarat.domain.repository.EpisodeRepository
 import com.makeus.daycarat.util.UiEvent
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory

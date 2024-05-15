@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.EpisodeRecent
-import com.makeus.daycarat.repository.EpisodeRepository
+import com.makeus.daycarat.domain.repository.EpisodeRepository
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.TimeUtil.parseTimeToMonth
 import com.makeus.daycarat.util.UiEvent

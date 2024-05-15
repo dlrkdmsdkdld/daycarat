@@ -1,7 +1,9 @@
 package com.makeus.daycarat.presentation.di
 
 import com.makeus.daycarat.data.repository.AuthRepositoryImpl
+import com.makeus.daycarat.data.repository.EpisodeRepositoryImpl
 import com.makeus.daycarat.domain.repository.AuthRepository
+import com.makeus.daycarat.domain.repository.EpisodeRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -13,4 +15,9 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun bindAuthRepository(authRepositoryImpl: AuthRepositoryImpl) : AuthRepository
+
+    @Binds
+    abstract fun bindEpisodeRepository(episodeRepositoryImpl: EpisodeRepositoryImpl) : EpisodeRepository
+
+
 }

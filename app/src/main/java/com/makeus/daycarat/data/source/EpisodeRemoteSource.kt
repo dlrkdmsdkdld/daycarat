@@ -1,28 +1,34 @@
-package com.makeus.daycarat.repository
+package com.makeus.daycarat.data.source
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.makeus.daycarat.core.dto.Resource
+import com.makeus.daycarat.data.data.EpisodeActivityCounter
+import com.makeus.daycarat.data.data.EpisodeCount
+import com.makeus.daycarat.data.data.EpisodeFullContent
 import com.makeus.daycarat.data.data.EpisodeKeywordAndId
+import com.makeus.daycarat.data.data.EpisodeRecent
 import com.makeus.daycarat.data.data.EpisodeRegister
 import com.makeus.daycarat.data.data.EpisodeRegisterWithId
+import com.makeus.daycarat.data.data.MonthEpisodeCount
 import com.makeus.daycarat.data.paging.EpisodeContentByDatePagingSource
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.domain.source.EpisodeSource
 import com.makeus.daycarat.hilt.EpisodeApi
 import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.TimeUtil.parseTimeToYear
+import com.makeus.daycarat.util.TimeUtil
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
-class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
+class EpisodeRemoteSource @Inject constructor(private val apimodule: EpisodeApi): EpisodeSource {
 
-    suspend fun getUserMontlyEpisodeCount() = flow {
+    override suspend fun getUserMontlyEpisodeCount(): Flow<Resource<List<MonthEpisodeCount>>> = flow {
         emit(Resource.loading())
         try {
-            val response = apimodule.getUserMothEpisodeCount(parseTimeToYear())
+            val response = apimodule.getUserMothEpisodeCount(TimeUtil.parseTimeToYear())
             if (isSuccessful(response.statusCode)) {
                 emit(Resource.success(response.result))
             }else{
@@ -34,7 +40,7 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         }
     }
 
-    suspend fun addEpisode(data: EpisodeRegister) = flow {
+    override suspend fun addEpisode(data: EpisodeRegister): Flow<Resource<Boolean>>  = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.addEpisode(data)
@@ -49,7 +55,7 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         }
     }
 
-    suspend fun getRecentEpisode() = flow {
+    override suspend fun getRecentEpisode(): Flow<Resource<List<EpisodeRecent>>> = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.getRecentThreeEpisode()
@@ -64,9 +70,7 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         }
     }
 
-
-
-    suspend fun getActivityTagOderByCount() = flow {
+    override suspend fun getActivityTagOder(): Flow<Resource<List<EpisodeActivityCounter>>> = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.getActivityTagCountOderByCount()
@@ -82,7 +86,7 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         }
     }
 
-    suspend fun getActivityTagOderByDate(year:Int ) = flow {
+    override suspend fun getActivityTagOder(year: Int): Flow<Resource<List<EpisodeActivityCounter>>>  = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.getActivityTagCountOderByDate(year)
@@ -97,17 +101,21 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
             e.printStackTrace()
         }
     }
-
-    suspend fun getContentEpisodeByDatePaging(month :Int , year: Int): Flow<PagingData<EpisodeDetailContent>> {
-         return Pager( config = PagingConfig(pageSize = 1) ,
-             pagingSourceFactory = {EpisodeContentByDatePagingSource(apimodule, year = year , month = month , activityTag = null)} ).flow
+    override suspend fun getContentEpisodePaging(
+        month: Int,
+        year: Int
+    ): Flow<PagingData<EpisodeDetailContent>>  {
+        return Pager( config = PagingConfig(pageSize = 1) ,
+            pagingSourceFactory = { EpisodeContentByDatePagingSource(apimodule, year = year , month = month , activityTag = null) } ).flow
     }
-    suspend fun getContentEpisodeByCountPaging(activityTag:String): Flow<PagingData<EpisodeDetailContent>> {
+
+    override suspend fun getContentEpisodePaging(activityTag: String): Flow<PagingData<EpisodeDetailContent>>
+    {
         return Pager( config = PagingConfig(pageSize = 1) ,
             pagingSourceFactory = {EpisodeContentByDatePagingSource(apimodule, year = 0 , month = 0 , activityTag = activityTag)} ).flow
     }
 
-    suspend fun getEpisode(episodeId:Int ) = flow {
+    override suspend fun getEpisode(episodeId: Int): Flow<Resource<EpisodeFullContent>> = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.getEpisode(episodeId)
@@ -121,7 +129,8 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
             e.printStackTrace()
         }
     }
-    suspend fun updatekeyword(data: EpisodeKeywordAndId) = flow {
+
+    override suspend fun updatekeyword(data: EpisodeKeywordAndId): Flow<Resource<Boolean>> = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.updateEpisodeKeyword(data)
@@ -135,7 +144,7 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
             e.printStackTrace()
         }
     }
-    suspend fun getTotalEpisodeCount() = flow {
+    override suspend fun getTotalEpisodeCount(): Flow<Resource<EpisodeCount>> = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.getTotalEpisodeCount()
@@ -150,7 +159,7 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         }
     }
 
-    suspend fun deleteEpisode(episodeId: Int) = flow {
+    override suspend fun deleteEpisode(episodeId: Int): Flow<Resource<Boolean>> = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.deleteEpisode(episodeId)
@@ -165,7 +174,8 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
         }
     }
 
-    suspend fun updateEpisode(data: EpisodeRegisterWithId) = flow {
+
+    override suspend fun updateEpisode(data: EpisodeRegisterWithId): Flow<Resource<Boolean>> = flow {
         emit(Resource.loading())
         try {
             val response = apimodule.updateEpisode(data)
@@ -179,5 +189,4 @@ class EpisodeRepository @Inject constructor(private val apimodule: EpisodeApi) {
             e.printStackTrace()
         }
     }
-
 }

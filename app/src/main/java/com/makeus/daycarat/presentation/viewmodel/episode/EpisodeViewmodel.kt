@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.EpisodeActivityCounter
 import com.makeus.daycarat.data.data.EpisodeCount
-import com.makeus.daycarat.repository.EpisodeRepository
+import com.makeus.daycarat.domain.repository.EpisodeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -26,7 +26,7 @@ class EpisodeViewmodel @Inject constructor(private val repository: EpisodeReposi
 
     fun getActivityTagOderByCount(){
         viewModelScope.launch(Dispatchers.IO){
-            repository.getActivityTagOderByCount().collect{ result ->
+            repository.getActivityTagOder().collect{ result ->
                 if (result.status == Status.SUCCESS){
                     result.data?.let {
                         _episodeCountList.emit(it)
@@ -42,7 +42,7 @@ class EpisodeViewmodel @Inject constructor(private val repository: EpisodeReposi
     }
     fun getActivityTagOderByDate(year:Int = 2024){
         viewModelScope.launch(Dispatchers.IO){
-            repository.getActivityTagOderByDate(year).collect{ result ->
+            repository.getActivityTagOder(year).collect{ result ->
                 if (result.status == Status.SUCCESS){
                     result.data?.let {
                         selectYear = year
