@@ -1,21 +1,24 @@
-package com.makeus.daycarat.repository
+package com.makeus.daycarat.data.source
 
 import com.makeus.daycarat.core.dto.Resource
+import com.makeus.daycarat.data.data.AllUserData
 import com.makeus.daycarat.data.data.UserData
+import com.makeus.daycarat.domain.source.EpisodeSource
+import com.makeus.daycarat.domain.source.UserSource
+import com.makeus.daycarat.hilt.EpisodeApi
 import com.makeus.daycarat.hilt.UserInfoApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.isSuccessful
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.MultipartBody
 import javax.inject.Inject
 
-class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoApi) {
-
-
-    suspend fun updateUserData(userData: UserData) = flow{
+class UserRemoteSource @Inject constructor(private val apimodule: UserInfoApi): UserSource {
+    override suspend fun updateUserData(userData: UserData): Flow<Resource<Boolean>> = flow{
         emit(Resource.loading())
         try {
-            val response = userInfoApi.updateUserInfo(userData)
+            val response = apimodule.updateUserInfo(userData)
             if (isSuccessful(response.statusCode)) {
                 emit(Resource.success(response.result))
             }else{
@@ -28,10 +31,10 @@ class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoA
         }
     }
 
-    suspend fun getUserData() = flow{
+    override suspend fun getUserData(): Flow<Resource<AllUserData>> = flow{
         emit(Resource.loading())
         try {
-            val response = userInfoApi.getUserInfo()
+            val response = apimodule.getUserInfo()
             if (isSuccessful(response.statusCode)) {
                 emit(Resource.success(response.result))
             }else{
@@ -42,11 +45,12 @@ class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoA
             emit(Resource.error(e.localizedMessage ?: Constant.ERROR_UNKNOWN))
             e.printStackTrace()
         }
+
     }
 
-    suspend fun updateProfileImage(multipartFile: MultipartBody.Part) = flow{
+    override suspend fun updateProfileImage(multipartFile: MultipartBody.Part) = flow{
         emit(Resource.loading())
-        val response = userInfoApi.updateUserImage(multipartFile)
+        val response = apimodule.updateUserImage(multipartFile)
         if (isSuccessful(response.statusCode)) {
             emit(Resource.success(response.result))
         }else{
@@ -60,10 +64,11 @@ class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoA
             e.printStackTrace()
         }
     }
-    suspend fun deleteUserData() = flow{
+
+    override suspend fun deleteUserData(): Flow<Resource<Boolean>> = flow{
         emit(Resource.loading())
         try {
-            val response = userInfoApi.resignUser()
+            val response = apimodule.resignUser()
             if (isSuccessful(response.statusCode)) {
                 emit(Resource.success(response.result))
             }else{
@@ -75,6 +80,4 @@ class UserInfoRepository  @Inject constructor(private val userInfoApi: UserInfoA
             e.printStackTrace()
         }
     }
-
-
 }
