@@ -2,7 +2,7 @@ package com.makeus.daycarat.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.base.BaseViewmodel
-import com.makeus.daycarat.repository.FcmRepository
+import com.makeus.daycarat.domain.repository.FcmRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
