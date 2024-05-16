@@ -7,8 +7,8 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.makeus.daycarat.domain.repository.FcmRepository
 import com.makeus.daycarat.presentation.MainActivity
-import com.makeus.daycarat.repository.FcmRepository
 import com.makeus.daycarat.util.Constant.TAG
 import com.makeus.daycarat.util.NotificationDaycaratManager
 import com.makeus.daycarat.util.NotificationDaycaratManager.createFCMNotiChannel
