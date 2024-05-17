@@ -2,7 +2,7 @@ package com.makeus.daycarat.presentation.viewmodel.episode
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.domain.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest

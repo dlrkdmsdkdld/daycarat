@@ -6,7 +6,7 @@ import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.paging.GemDetailConetent
-import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.domain.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -43,7 +43,7 @@ class GemDetailViewModel @Inject constructor(private val repository: GemReposito
 
     fun getTypeGemCount(){
         viewModelScope.launch(Dispatchers.IO){
-            repository.getGemTpyeCount().collectLatest { result ->
+            repository.getGemTypeCount().collectLatest { result ->
                 result.data?.let { _gemTypeCount.emit(it) }
 
             }

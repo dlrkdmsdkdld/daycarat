@@ -1,10 +1,12 @@
-package com.makeus.daycarat.hilt
+package com.makeus.daycarat.presentation.di
 
-import android.util.Log
 import com.makeus.daycarat.BuildConfig
+import com.makeus.daycarat.hilt.EpisodeApi
+import com.makeus.daycarat.hilt.FcmApi
+import com.makeus.daycarat.hilt.GemApi
+import com.makeus.daycarat.hilt.RetrofitInterface
+import com.makeus.daycarat.hilt.UserInfoApi
 import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.Extensions.isJsonArray
-import com.makeus.daycarat.util.Extensions.isJsonObject
 import com.makeus.daycarat.util.SharedPreferenceManager
 import dagger.Module
 import dagger.Provides
@@ -14,17 +16,13 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 import okhttp3.Interceptor
-import okhttp3.Response
-import org.json.JSONArray
-import org.json.JSONObject
 import javax.inject.Qualifier
 
 @InstallIn(SingletonComponent::class)
 @Module
-object ApiModule {
+class ApiModule {
 
     @Qualifier
     @Retention(AnnotationRetention.BINARY)
@@ -118,7 +116,8 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideService(@NoAuth retrofit: Retrofit): RetrofitInterface = retrofit.create(RetrofitInterface::class.java)
+    fun provideService(@NoAuth retrofit: Retrofit): RetrofitInterface = retrofit.create(
+        RetrofitInterface::class.java)
 
     @Provides
     @Singleton

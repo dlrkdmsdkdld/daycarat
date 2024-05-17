@@ -7,7 +7,7 @@ import com.makeus.daycarat.data.data.ActivityTag
 import com.makeus.daycarat.data.data.EpisodeKeyword
 import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.data.GemTotalCount
-import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.domain.repository.GemRepository
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -63,7 +63,7 @@ class GemViewModel @Inject constructor(private val repository: GemRepository) :
     }
     fun getTypeGemCount(){
         viewModelScope.launch(Dispatchers.IO){
-            repository.getGemTpyeCount().collectLatest { result ->
+            repository.getGemTypeCount().collectLatest { result ->
                 if (result.status != Status.LOADING) finishNowFlow()
                 result.data?.let { _gemTypeCount.emit(it) }
 

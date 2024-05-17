@@ -1,8 +1,10 @@
 package com.makeus.daycarat.presentation.di
 
 import com.makeus.daycarat.data.source.EpisodeRemoteSource
+import com.makeus.daycarat.data.source.GemRemoteSource
 import com.makeus.daycarat.data.source.UserRemoteSource
 import com.makeus.daycarat.domain.source.EpisodeSource
+import com.makeus.daycarat.domain.source.GemSource
 import com.makeus.daycarat.domain.source.UserSource
 import dagger.Binds
 import dagger.Module
@@ -18,5 +20,8 @@ abstract class SourceModule {
 
     @Binds
     abstract fun bindUserRemoteSource(userRemoteSource: UserRemoteSource) : UserSource
+
+    @Binds
+    abstract fun bindGemRemoteSource(gemRemoteSource: GemRemoteSource) : GemSource
 }
 

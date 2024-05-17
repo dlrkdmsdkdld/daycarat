@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.SoaraContent
 import com.makeus.daycarat.data.data.setContent
-import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.domain.repository.GemRepository
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

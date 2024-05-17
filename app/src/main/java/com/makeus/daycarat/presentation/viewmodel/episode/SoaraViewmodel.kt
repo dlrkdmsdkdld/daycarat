@@ -7,7 +7,7 @@ import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.EpisodeContent
 import com.makeus.daycarat.data.data.EpisodeFullContent
 import com.makeus.daycarat.data.data.SoaraContent
-import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.domain.repository.GemRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

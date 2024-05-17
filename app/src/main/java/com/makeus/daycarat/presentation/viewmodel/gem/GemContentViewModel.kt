@@ -8,7 +8,7 @@ import com.makeus.daycarat.data.data.EpisodeFullContent
 import com.makeus.daycarat.data.data.GemSoaraAIContent
 import com.makeus.daycarat.data.data.SoaraContent
 import com.makeus.daycarat.domain.repository.EpisodeRepository
-import com.makeus.daycarat.repository.GemRepository
+import com.makeus.daycarat.domain.repository.GemRepository
 import com.makeus.daycarat.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
