@@ -1,4 +1,4 @@
-package com.makeus.daycarat.hilt
+package com.makeus.daycarat.data.service
 
 import com.makeus.daycarat.core.dto.ResponseBody
 import com.makeus.daycarat.data.data.ActivityTag

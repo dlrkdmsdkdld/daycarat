@@ -2,12 +2,11 @@ package com.makeus.daycarat.data.paging
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.makeus.daycarat.hilt.EpisodeApi
-import com.makeus.daycarat.hilt.GemApi
+import com.makeus.daycarat.data.service.GemApi
 
 
 class GemContentPagingSource(private val retrofitInterface: GemApi,
-                                       val keyword:String):
+                             val keyword:String):
     PagingSource<Int, GemDetailConetent>() {
 
     override fun getRefreshKey(state: PagingState<Int, GemDetailConetent>): Int? {

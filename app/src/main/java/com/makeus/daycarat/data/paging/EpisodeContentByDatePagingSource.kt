@@ -1,13 +1,11 @@
 package com.makeus.daycarat.data.paging
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.makeus.daycarat.hilt.EpisodeApi
-import kotlinx.coroutines.delay
+import com.makeus.daycarat.data.service.EpisodeApi
 
 
-class EpisodeContentByDatePagingSource(private val retrofitInterface: EpisodeApi , val month:Int , val year:Int , val activityTag:String?):
+class EpisodeContentByDatePagingSource(private val retrofitInterface: EpisodeApi, val month:Int, val year:Int, val activityTag:String?):
     PagingSource<Int, EpisodeDetailContent>() { //페이징에 대한 클래스 페이징이란 사용자가 화면을 내릴 때 마다 적절하게 화면을 보여주기위한 기술
     override fun getRefreshKey(state: PagingState<Int, EpisodeDetailContent>): Int? {
         return state.anchorPosition?.let { anchorPosition ->

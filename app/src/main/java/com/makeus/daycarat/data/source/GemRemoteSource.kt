@@ -1,6 +1,5 @@
 package com.makeus.daycarat.data.source
 
-import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -14,10 +13,8 @@ import com.makeus.daycarat.data.data.GemTotalCount
 import com.makeus.daycarat.data.data.SoaraContent
 import com.makeus.daycarat.data.paging.GemContentPagingSource
 import com.makeus.daycarat.data.paging.GemDetailConetent
-import com.makeus.daycarat.domain.source.EpisodeSource
 import com.makeus.daycarat.domain.source.GemSource
-import com.makeus.daycarat.hilt.EpisodeApi
-import com.makeus.daycarat.hilt.GemApi
+import com.makeus.daycarat.data.service.GemApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.Flow

@@ -15,7 +15,7 @@ import com.makeus.daycarat.data.data.MonthEpisodeCount
 import com.makeus.daycarat.data.paging.EpisodeContentByDatePagingSource
 import com.makeus.daycarat.data.paging.EpisodeDetailContent
 import com.makeus.daycarat.domain.source.EpisodeSource
-import com.makeus.daycarat.hilt.EpisodeApi
+import com.makeus.daycarat.data.service.EpisodeApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.TimeUtil
 import com.makeus.daycarat.util.isSuccessful

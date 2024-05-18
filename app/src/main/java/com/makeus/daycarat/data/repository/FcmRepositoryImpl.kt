@@ -3,10 +3,8 @@ package com.makeus.daycarat.data.repository
 import android.util.Log
 import com.makeus.daycarat.core.dto.Resource
 import com.makeus.daycarat.data.data.UserData
-import com.makeus.daycarat.domain.repository.EpisodeRepository
 import com.makeus.daycarat.domain.repository.FcmRepository
-import com.makeus.daycarat.domain.source.EpisodeSource
-import com.makeus.daycarat.hilt.FcmApi
+import com.makeus.daycarat.data.service.FcmApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.Flow

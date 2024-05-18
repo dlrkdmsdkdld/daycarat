@@ -3,10 +3,8 @@ package com.makeus.daycarat.data.source
 import com.makeus.daycarat.core.dto.Resource
 import com.makeus.daycarat.data.data.AllUserData
 import com.makeus.daycarat.data.data.UserData
-import com.makeus.daycarat.domain.source.EpisodeSource
 import com.makeus.daycarat.domain.source.UserSource
-import com.makeus.daycarat.hilt.EpisodeApi
-import com.makeus.daycarat.hilt.UserInfoApi
+import com.makeus.daycarat.data.service.UserInfoApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.isSuccessful
 import kotlinx.coroutines.flow.Flow

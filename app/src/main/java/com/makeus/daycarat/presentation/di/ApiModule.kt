@@ -1,11 +1,11 @@
 package com.makeus.daycarat.presentation.di
 
 import com.makeus.daycarat.BuildConfig
-import com.makeus.daycarat.hilt.EpisodeApi
-import com.makeus.daycarat.hilt.FcmApi
-import com.makeus.daycarat.hilt.GemApi
-import com.makeus.daycarat.hilt.RetrofitInterface
-import com.makeus.daycarat.hilt.UserInfoApi
+import com.makeus.daycarat.data.service.EpisodeApi
+import com.makeus.daycarat.data.service.FcmApi
+import com.makeus.daycarat.data.service.GemApi
+import com.makeus.daycarat.data.service.LoginApi
+import com.makeus.daycarat.data.service.UserInfoApi
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.SharedPreferenceManager
 import dagger.Module
@@ -116,8 +116,8 @@ class ApiModule {
 
     @Provides
     @Singleton
-    fun provideService(@NoAuth retrofit: Retrofit): RetrofitInterface = retrofit.create(
-        RetrofitInterface::class.java)
+    fun provideService(@NoAuth retrofit: Retrofit): LoginApi = retrofit.create(
+        LoginApi::class.java)
 
     @Provides
     @Singleton
