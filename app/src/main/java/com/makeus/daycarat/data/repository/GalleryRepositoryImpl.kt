@@ -1,20 +1,22 @@
-package com.makeus.daycarat.repository
+package com.makeus.daycarat.data.repository
 
-import android.os.Build
 import android.content.ContentResolver
 import android.content.ContentUris
 import android.content.Context
+import android.database.Cursor
 import android.net.Uri
+import android.os.Build
 import android.provider.MediaStore
 import androidx.core.os.bundleOf
 import com.makeus.daycarat.data.data.GalleryImage
+import com.makeus.daycarat.domain.repository.GalleryRepository
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
 
-class GalleryRepository @Inject constructor(
+class GalleryRepositoryImpl @Inject constructor(
     @ApplicationContext private val context: Context,
-)  {
+) : GalleryRepository {
 
     private val uriExternal: Uri by lazy {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
@@ -40,10 +42,12 @@ class GalleryRepository @Inject constructor(
         context.contentResolver
     }
 
-    fun getAllPhotos(
+
+
+    override fun getAllPhotos(
         page: Int,
         loadSize: Int,
-        currentLocation: String?,
+        currentLocation: String?
     ): MutableList<GalleryImage> {
         val galleryImageList = mutableListOf<GalleryImage>()
         var selection: String? = null
@@ -82,12 +86,12 @@ class GalleryRepository @Inject constructor(
         return galleryImageList
     }
 
-    private fun getQuery(
+    override fun getQuery(
         offset: Int,
         limit: Int,
         selection: String?,
-        selectionArgs: Array<String>?,
-    ) = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
+        selectionArgs: Array<String>?
+    ): Cursor? = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.Q) {
         val bundle = bundleOf(
             ContentResolver.QUERY_ARG_OFFSET to offset,
             ContentResolver.QUERY_ARG_LIMIT to limit,
@@ -107,7 +111,7 @@ class GalleryRepository @Inject constructor(
         )
     }
 
-    fun getFolderList(): ArrayList<String> {
+    override fun getFolderList(): ArrayList<String> {
         val folderList = ArrayList<String>()
         folderList.add(0 , "전체")
         val uri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI
@@ -126,6 +130,5 @@ class GalleryRepository @Inject constructor(
             }
             cursor.close()
         }
-        return folderList
-    }
+        return folderList    }
 }

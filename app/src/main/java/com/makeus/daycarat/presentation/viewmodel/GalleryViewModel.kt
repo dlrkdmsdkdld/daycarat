@@ -9,7 +9,7 @@ import com.makeus.daycarat.base.BaseViewmodel
 import com.makeus.daycarat.data.data.GalleryImage
 import com.makeus.daycarat.data.source.GalleryPagingSource
 import com.makeus.daycarat.data.source.GalleryPagingSource.Companion.PAGING_SIZE
-import com.makeus.daycarat.repository.GalleryRepository
+import com.makeus.daycarat.domain.repository.GalleryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

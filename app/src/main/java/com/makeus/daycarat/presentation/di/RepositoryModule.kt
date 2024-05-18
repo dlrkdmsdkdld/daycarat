@@ -3,11 +3,13 @@ package com.makeus.daycarat.presentation.di
 import com.makeus.daycarat.data.repository.AuthRepositoryImpl
 import com.makeus.daycarat.data.repository.EpisodeRepositoryImpl
 import com.makeus.daycarat.data.repository.FcmRepositoryImpl
+import com.makeus.daycarat.data.repository.GalleryRepositoryImpl
 import com.makeus.daycarat.data.repository.GemRepositoryImpl
 import com.makeus.daycarat.data.repository.UserInfoRepositoryImpl
 import com.makeus.daycarat.domain.repository.AuthRepository
 import com.makeus.daycarat.domain.repository.EpisodeRepository
 import com.makeus.daycarat.domain.repository.FcmRepository
+import com.makeus.daycarat.domain.repository.GalleryRepository
 import com.makeus.daycarat.domain.repository.GemRepository
 import com.makeus.daycarat.domain.repository.UserInfoRepository
 import dagger.Binds
@@ -36,6 +38,8 @@ abstract class RepositoryModule {
     abstract fun bindGemRepositoryImpl(gemRepositoryImpl: GemRepositoryImpl) : GemRepository
 
 
+    @Binds
+    abstract fun bindGalleryRepositoryImpl(galleryRepositoryImpl: GalleryRepositoryImpl) : GalleryRepository
 
 
 

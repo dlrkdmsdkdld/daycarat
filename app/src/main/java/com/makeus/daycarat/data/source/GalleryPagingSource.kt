@@ -3,7 +3,7 @@ package com.makeus.daycarat.data.source
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.makeus.daycarat.data.data.GalleryImage
-import com.makeus.daycarat.repository.GalleryRepository
+import com.makeus.daycarat.domain.repository.GalleryRepository
 
 class GalleryPagingSource(
     private val imageRepository: GalleryRepository,
