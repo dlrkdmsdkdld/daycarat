@@ -8,10 +8,8 @@ import com.makeus.daycarat.data.data.EpisodeKeyword
 import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.data.GemTotalCount
 import com.makeus.daycarat.data.data.SoaraContent
-import com.makeus.daycarat.data.paging.GemDetailConetent
-import com.makeus.daycarat.domain.repository.EpisodeRepository
+import com.makeus.daycarat.data.data.GemDetailConetent
 import com.makeus.daycarat.domain.repository.GemRepository
-import com.makeus.daycarat.domain.source.EpisodeSource
 import com.makeus.daycarat.domain.source.GemSource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject

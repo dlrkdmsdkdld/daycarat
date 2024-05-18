@@ -6,9 +6,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.makeus.daycarat.base.BaseViewmodel
-import com.makeus.daycarat.data.paging.GalleryImage
-import com.makeus.daycarat.data.paging.GalleryPagingSource
-import com.makeus.daycarat.data.paging.GalleryPagingSource.Companion.PAGING_SIZE
+import com.makeus.daycarat.data.data.GalleryImage
+import com.makeus.daycarat.data.source.GalleryPagingSource
+import com.makeus.daycarat.data.source.GalleryPagingSource.Companion.PAGING_SIZE
 import com.makeus.daycarat.repository.GalleryRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

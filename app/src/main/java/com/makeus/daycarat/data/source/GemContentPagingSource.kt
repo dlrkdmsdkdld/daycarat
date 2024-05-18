@@ -1,7 +1,8 @@
-package com.makeus.daycarat.data.paging
+package com.makeus.daycarat.data.source
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.makeus.daycarat.data.data.GemDetailConetent
 import com.makeus.daycarat.data.service.GemApi
 
 

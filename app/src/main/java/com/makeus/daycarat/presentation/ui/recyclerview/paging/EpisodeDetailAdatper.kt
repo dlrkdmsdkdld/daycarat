@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.data.EpisodeDetailContent
 import com.makeus.daycarat.databinding.ItemEpisodeDetailBinding
 import com.makeus.daycarat.util.Constant
 import com.makeus.daycarat.util.Extensions.onThrottleClick

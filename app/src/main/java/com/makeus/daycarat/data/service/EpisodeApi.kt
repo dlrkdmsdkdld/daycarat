@@ -9,7 +9,7 @@ import com.makeus.daycarat.data.data.EpisodeRegister
 import com.makeus.daycarat.data.data.MonthEpisodeCount
 import com.makeus.daycarat.data.data.EpisodeCount
 import com.makeus.daycarat.data.data.EpisodeRegisterWithId
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.data.EpisodeDetailContent
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET

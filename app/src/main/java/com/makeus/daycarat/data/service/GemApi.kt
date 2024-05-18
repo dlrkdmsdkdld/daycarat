@@ -9,7 +9,7 @@ import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.data.GemSoaraAIContent
 import com.makeus.daycarat.data.data.GemTotalCount
 import com.makeus.daycarat.data.data.SoaraContent
-import com.makeus.daycarat.data.paging.GemDetailConetent
+import com.makeus.daycarat.data.data.GemDetailConetent
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PATCH

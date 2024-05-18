@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.makeus.daycarat.data.data.EpisodeActivityCounter
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.data.EpisodeDetailContent
 import com.makeus.daycarat.domain.repository.EpisodeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers

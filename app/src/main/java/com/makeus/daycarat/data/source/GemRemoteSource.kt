@@ -11,8 +11,7 @@ import com.makeus.daycarat.data.data.EpisodeKeyword
 import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.data.GemTotalCount
 import com.makeus.daycarat.data.data.SoaraContent
-import com.makeus.daycarat.data.paging.GemContentPagingSource
-import com.makeus.daycarat.data.paging.GemDetailConetent
+import com.makeus.daycarat.data.data.GemDetailConetent
 import com.makeus.daycarat.domain.source.GemSource
 import com.makeus.daycarat.data.service.GemApi
 import com.makeus.daycarat.util.Constant

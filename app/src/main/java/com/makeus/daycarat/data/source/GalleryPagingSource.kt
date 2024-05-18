@@ -1,8 +1,8 @@
-package com.makeus.daycarat.data.paging
+package com.makeus.daycarat.data.source
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.makeus.daycarat.data.data.GalleryImage
 import com.makeus.daycarat.repository.GalleryRepository
 
 class GalleryPagingSource(

@@ -2,7 +2,6 @@ package com.makeus.daycarat.domain.repository
 
 import androidx.paging.PagingData
 import com.makeus.daycarat.core.dto.Resource
-import com.makeus.daycarat.core.dto.ResponseBody
 import com.makeus.daycarat.data.data.EpisodeActivityCounter
 import com.makeus.daycarat.data.data.EpisodeCount
 import com.makeus.daycarat.data.data.EpisodeFullContent
@@ -11,7 +10,7 @@ import com.makeus.daycarat.data.data.EpisodeRecent
 import com.makeus.daycarat.data.data.EpisodeRegister
 import com.makeus.daycarat.data.data.EpisodeRegisterWithId
 import com.makeus.daycarat.data.data.MonthEpisodeCount
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.data.EpisodeDetailContent
 import kotlinx.coroutines.flow.Flow
 
 interface EpisodeRepository {

@@ -6,9 +6,8 @@ import android.content.ContentUris
 import android.content.Context
 import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import androidx.core.os.bundleOf
-import com.makeus.daycarat.data.paging.GalleryImage
+import com.makeus.daycarat.data.data.GalleryImage
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject

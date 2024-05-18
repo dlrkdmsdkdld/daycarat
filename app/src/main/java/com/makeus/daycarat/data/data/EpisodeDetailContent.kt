@@ -1,4 +1,4 @@
-package com.makeus.daycarat.data.paging
+package com.makeus.daycarat.data.data
 
 data class EpisodeDetailContent(
     var id :Int,

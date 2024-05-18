@@ -8,7 +8,7 @@ import com.makeus.daycarat.data.data.EpisodeKeyword
 import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.data.GemTotalCount
 import com.makeus.daycarat.data.data.SoaraContent
-import com.makeus.daycarat.data.paging.GemDetailConetent
+import com.makeus.daycarat.data.data.GemDetailConetent
 import kotlinx.coroutines.flow.Flow
 
 interface GemRepository {

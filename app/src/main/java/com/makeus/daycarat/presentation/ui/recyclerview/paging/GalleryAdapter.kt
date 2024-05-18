@@ -1,15 +1,12 @@
 package com.makeus.daycarat.presentation.recyclerview.paging
 
-import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
-import com.makeus.daycarat.data.paging.GalleryImage
-import com.makeus.daycarat.databinding.ItemEpisodeDetailBinding
+import com.makeus.daycarat.data.data.GalleryImage
 import com.makeus.daycarat.databinding.ItemGalleryBinding
 import com.makeus.daycarat.util.Extensions.onThrottleClick
 

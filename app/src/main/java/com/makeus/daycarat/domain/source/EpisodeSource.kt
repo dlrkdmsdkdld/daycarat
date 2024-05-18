@@ -10,7 +10,7 @@ import com.makeus.daycarat.data.data.EpisodeRecent
 import com.makeus.daycarat.data.data.EpisodeRegister
 import com.makeus.daycarat.data.data.EpisodeRegisterWithId
 import com.makeus.daycarat.data.data.MonthEpisodeCount
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.data.EpisodeDetailContent
 import kotlinx.coroutines.flow.Flow
 
 interface EpisodeSource {

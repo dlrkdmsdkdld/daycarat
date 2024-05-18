@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.makeus.daycarat.data.paging.GalleryImage
+import com.makeus.daycarat.data.data.GalleryImage
 import com.makeus.daycarat.databinding.FragmentGalleryBinding
 import com.makeus.daycarat.presentation.recyclerview.paging.GalleryAdapter
 import com.makeus.daycarat.presentation.spinner.GalleryFolderSpinnerdeSpinner

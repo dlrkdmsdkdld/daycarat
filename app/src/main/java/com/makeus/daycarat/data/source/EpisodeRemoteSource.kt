@@ -12,8 +12,7 @@ import com.makeus.daycarat.data.data.EpisodeRecent
 import com.makeus.daycarat.data.data.EpisodeRegister
 import com.makeus.daycarat.data.data.EpisodeRegisterWithId
 import com.makeus.daycarat.data.data.MonthEpisodeCount
-import com.makeus.daycarat.data.paging.EpisodeContentByDatePagingSource
-import com.makeus.daycarat.data.paging.EpisodeDetailContent
+import com.makeus.daycarat.data.data.EpisodeDetailContent
 import com.makeus.daycarat.domain.source.EpisodeSource
 import com.makeus.daycarat.data.service.EpisodeApi
 import com.makeus.daycarat.util.Constant
@@ -106,13 +105,14 @@ class EpisodeRemoteSource @Inject constructor(private val apimodule: EpisodeApi)
         year: Int
     ): Flow<PagingData<EpisodeDetailContent>>  {
         return Pager( config = PagingConfig(pageSize = 1) ,
-            pagingSourceFactory = { EpisodeContentByDatePagingSource(apimodule, year = year , month = month , activityTag = null) } ).flow
+            pagingSourceFactory = { EpisodeContentByDatePagingSource(apimodule, year = year ,
+                month = month , activityTag = null) } ).flow
     }
 
     override suspend fun getContentEpisodePaging(activityTag: String): Flow<PagingData<EpisodeDetailContent>>
     {
         return Pager( config = PagingConfig(pageSize = 1) ,
-            pagingSourceFactory = {EpisodeContentByDatePagingSource(apimodule, year = 0 , month = 0 , activityTag = activityTag)} ).flow
+            pagingSourceFactory = { EpisodeContentByDatePagingSource(apimodule, year = 0 , month = 0 , activityTag = activityTag) } ).flow
     }
 
     override suspend fun getEpisode(episodeId: Int): Flow<Resource<EpisodeFullContent>> = flow {
