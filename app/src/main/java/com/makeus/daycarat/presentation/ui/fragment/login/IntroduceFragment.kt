@@ -4,7 +4,7 @@ import android.content.Intent
 import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentIntroduce1Binding
 
 

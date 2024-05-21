@@ -4,11 +4,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentIntroduceBinding
 import com.makeus.daycarat.presentation.fragment.login.SubIntroduceFragment
-import com.makeus.daycarat.util.Extensions.navigationHeight
-import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.Extensions.navigationHeight
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

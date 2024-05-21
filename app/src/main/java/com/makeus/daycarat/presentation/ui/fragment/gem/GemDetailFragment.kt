@@ -7,14 +7,14 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentEpisodeDetailTypeBinding
 import com.makeus.daycarat.presentation.recyclerview.paging.GemDetailAdatper
 import com.makeus.daycarat.presentation.recyclerview.paging.PagingLoadingAdapter
 import com.makeus.daycarat.presentation.viewmodel.gem.GemDetailViewModel
-import com.makeus.daycarat.util.Extensions.onThrottleClick
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

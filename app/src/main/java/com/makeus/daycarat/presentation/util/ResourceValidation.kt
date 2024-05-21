@@ -1,7 +1,7 @@
-package com.makeus.daycarat.util
+package com.makeus.daycarat.presentation.util
 
 import com.makeus.daycarat.core.dto.Resource
-import com.makeus.daycarat.util.Constant.ERROR_UNKNOWN
+import com.makeus.daycarat.presentation.util.Constant.ERROR_UNKNOWN
 import retrofit2.Call
 
 fun <T> isLoading(resource: Resource<T>) = resource == Resource.loading(null)

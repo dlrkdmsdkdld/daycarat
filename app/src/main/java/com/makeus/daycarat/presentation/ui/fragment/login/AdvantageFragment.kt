@@ -4,12 +4,12 @@ import android.util.Log
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.chip.Chip
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinAdvantageBinding
 import com.makeus.daycarat.presentation.login.JoinFragment
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.UiManager
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.UiManager
 
 
 class AdvantageFragment() : BaseFragment<FragmentJoinAdvantageBinding>(

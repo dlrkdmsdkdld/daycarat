@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.dialog.LoadingDialog
@@ -21,11 +21,11 @@ import com.makeus.daycarat.presentation.fragment.login.AdvantageFragment
 import com.makeus.daycarat.presentation.fragment.login.JobFragment
 import com.makeus.daycarat.presentation.fragment.login.NicknameFragment
 import com.makeus.daycarat.presentation.viewmodel.UserDataViewmodel
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.Extensions.navigationHeight
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.UiEvent
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.Extensions.navigationHeight
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

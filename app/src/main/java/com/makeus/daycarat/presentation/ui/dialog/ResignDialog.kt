@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import com.makeus.daycarat.R
 import com.makeus.daycarat.databinding.DialogResignBinding
-import com.makeus.daycarat.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
 
 class ResignDialog(context: Context ,var isLogout:Boolean) : Dialog(context) {
 

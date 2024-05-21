@@ -6,9 +6,9 @@ import androidx.lifecycle.viewModelScope
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.EpisodeRecent
 import com.makeus.daycarat.domain.repository.EpisodeRepository
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.TimeUtil.parseTimeToMonth
-import com.makeus.daycarat.util.UiEvent
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.TimeUtil.parseTimeToMonth
+import com.makeus.daycarat.presentation.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow

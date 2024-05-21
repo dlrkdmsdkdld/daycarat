@@ -15,9 +15,9 @@ import com.makeus.daycarat.data.data.MonthEpisodeCount
 import com.makeus.daycarat.data.data.EpisodeDetailContent
 import com.makeus.daycarat.domain.source.EpisodeSource
 import com.makeus.daycarat.data.service.EpisodeApi
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.TimeUtil
-import com.makeus.daycarat.util.isSuccessful
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.TimeUtil
+import com.makeus.daycarat.presentation.util.isSuccessful
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

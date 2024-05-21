@@ -1,4 +1,4 @@
-package com.makeus.daycarat.util
+package com.makeus.daycarat.presentation.util
 
 import android.app.Activity
 import android.content.Context

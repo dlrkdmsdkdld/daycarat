@@ -9,7 +9,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.navigation.navOptions
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentEditSoaraBinding
 import com.makeus.daycarat.databinding.FragmentGemBinding
 import com.makeus.daycarat.databinding.FragmentSoaraBinding
@@ -17,10 +17,10 @@ import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.episode.EditSoaraViewModel
 import com.makeus.daycarat.presentation.viewmodel.episode.SoaraViewmodel
-import com.makeus.daycarat.util.Extensions.onThrottleClick
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.UiEvent
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

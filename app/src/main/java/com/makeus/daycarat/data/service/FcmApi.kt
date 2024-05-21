@@ -1,6 +1,6 @@
 package com.makeus.daycarat.data.service
 
-import com.makeus.daycarat.core.dto.ResponseBody
+import com.makeus.daycarat.presentation.util.ResponseBody
 import com.makeus.daycarat.data.data.UserData
 import com.makeus.daycarat.data.data.announcement
 import retrofit2.http.Body

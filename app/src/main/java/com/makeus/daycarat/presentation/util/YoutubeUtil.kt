@@ -1,4 +1,4 @@
-package com.makeus.daycarat.util
+package com.makeus.daycarat.presentation.util
 
 import android.widget.ImageView
 import com.bumptech.glide.Glide
@@ -33,13 +33,15 @@ object YoutubeUtil {
 
     fun setImagThubnail(view:ImageView , url:String){
         Glide.with(view.context).load(getThumbnail(url)).transform(
-            CenterCrop(), GranularRoundedCorners(UiManager.getPixel(16).toFloat(), UiManager.getPixel(16).toFloat(), 0f, 0f)
+            CenterCrop(), GranularRoundedCorners(
+                UiManager.getPixel(16).toFloat(), UiManager.getPixel(16).toFloat(), 0f, 0f)
         ).into(view)
     }
 
     fun setImagThubnail(view:ImageView , drawableId:Int){
         Glide.with(view.context).load(drawableId).transform(
-            CenterCrop(), GranularRoundedCorners(UiManager.getPixel(16).toFloat(), UiManager.getPixel(16).toFloat(), 0f, 0f)
+            CenterCrop(), GranularRoundedCorners(
+                UiManager.getPixel(16).toFloat(), UiManager.getPixel(16).toFloat(), 0f, 0f)
         ).into(view)
     }
 

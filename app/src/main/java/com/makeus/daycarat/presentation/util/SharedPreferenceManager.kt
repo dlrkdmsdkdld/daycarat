@@ -1,13 +1,10 @@
-package com.makeus.daycarat.util
+package com.makeus.daycarat.presentation.util
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.preference.PreferenceManager
-import android.text.format.DateUtils
 import android.util.Log
-import com.makeus.daycarat.DayCaratApplication
+import com.makeus.daycarat.presentation.DayCaratApplication
 import org.json.JSONArray
-import java.util.Calendar
 
 
 class SharedPreferenceManager(context: Context) {

@@ -5,8 +5,8 @@ import com.makeus.daycarat.data.data.AllUserData
 import com.makeus.daycarat.data.data.UserData
 import com.makeus.daycarat.domain.source.UserSource
 import com.makeus.daycarat.data.service.UserInfoApi
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.isSuccessful
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.isSuccessful
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import okhttp3.MultipartBody

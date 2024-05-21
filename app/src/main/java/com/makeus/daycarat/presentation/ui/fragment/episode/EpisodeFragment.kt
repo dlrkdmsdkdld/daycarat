@@ -7,7 +7,7 @@ import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.data.data.EpisodeActivityCounter
 import com.makeus.daycarat.databinding.FragmentEpisodeBinding
 import com.makeus.daycarat.presentation.MainActivity
@@ -15,9 +15,9 @@ import com.makeus.daycarat.presentation.recyclerview.EpisodeTagAdapter
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagViewType
 import com.makeus.daycarat.presentation.spinner.EpisodeCardSpinner
 import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeViewmodel
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.UiManager.setSpan
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.UiManager.setSpan
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

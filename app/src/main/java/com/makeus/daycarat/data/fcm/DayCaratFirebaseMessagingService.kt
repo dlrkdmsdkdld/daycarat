@@ -1,4 +1,4 @@
-package com.makeus.daycarat
+package com.makeus.daycarat.data.fcm
 
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -7,11 +7,12 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.makeus.daycarat.R
 import com.makeus.daycarat.domain.repository.FcmRepository
 import com.makeus.daycarat.presentation.MainActivity
-import com.makeus.daycarat.util.Constant.TAG
-import com.makeus.daycarat.util.NotificationDaycaratManager
-import com.makeus.daycarat.util.NotificationDaycaratManager.createFCMNotiChannel
+import com.makeus.daycarat.presentation.util.Constant.TAG
+import com.makeus.daycarat.presentation.util.NotificationDaycaratManager
+import com.makeus.daycarat.presentation.util.NotificationDaycaratManager.createFCMNotiChannel
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

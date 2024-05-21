@@ -1,4 +1,4 @@
-package com.makeus.daycarat.base
+package com.makeus.daycarat.presentation.util.base
 
 import android.graphics.Color
 import android.os.Build

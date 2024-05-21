@@ -1,4 +1,4 @@
-package com.makeus.daycarat.util
+package com.makeus.daycarat.presentation.util
 
 import android.app.Notification
 import android.app.NotificationChannel

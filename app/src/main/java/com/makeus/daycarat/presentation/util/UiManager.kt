@@ -1,4 +1,4 @@
-package com.makeus.daycarat.util
+package com.makeus.daycarat.presentation.util
 
 import android.content.res.Resources
 import android.text.SpannableString
@@ -10,7 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
-import com.makeus.daycarat.DayCaratApplication
+import com.makeus.daycarat.presentation.DayCaratApplication
 import com.makeus.daycarat.R
 import com.makeus.daycarat.data.data.EpisodeContent
 import com.makeus.daycarat.databinding.LayoutEpisodeDetailContentBinding

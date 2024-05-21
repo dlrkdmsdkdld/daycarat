@@ -12,7 +12,7 @@ import com.makeus.daycarat.databinding.FragmentGalleryBinding
 import com.makeus.daycarat.presentation.recyclerview.paging.GalleryAdapter
 import com.makeus.daycarat.presentation.spinner.GalleryFolderSpinnerdeSpinner
 import com.makeus.daycarat.presentation.viewmodel.GalleryViewModel
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

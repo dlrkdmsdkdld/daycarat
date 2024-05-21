@@ -5,8 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.makeus.daycarat.R
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.SharedPreferenceManager
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.SharedPreferenceManager
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

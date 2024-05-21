@@ -10,18 +10,18 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentGemContentBinding
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
 import com.makeus.daycarat.presentation.viewmodel.gem.GemContentViewModel
-import com.makeus.daycarat.util.Extensions.onThrottleClick
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.UiEvent
-import com.makeus.daycarat.util.UiManager
-import com.makeus.daycarat.util.UiManager.setGemCardBgColor
-import com.makeus.daycarat.util.UiManager.setGemDes
-import com.makeus.daycarat.util.UiManager.setGemImage
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.UiEvent
+import com.makeus.daycarat.presentation.util.UiManager
+import com.makeus.daycarat.presentation.util.UiManager.setGemCardBgColor
+import com.makeus.daycarat.presentation.util.UiManager.setGemDes
+import com.makeus.daycarat.presentation.util.UiManager.setGemImage
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

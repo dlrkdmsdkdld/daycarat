@@ -8,8 +8,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.makeus.daycarat.data.data.EpisodeDetailContent
 import com.makeus.daycarat.databinding.ItemEpisodeDetailBinding
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
 
 class EpisodeDetailAdatper() :
     PagingDataAdapter<EpisodeDetailContent, RecyclerView.ViewHolder>(object :

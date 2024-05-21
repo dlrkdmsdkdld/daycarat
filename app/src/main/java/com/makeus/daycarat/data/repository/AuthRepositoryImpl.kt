@@ -4,9 +4,9 @@ import android.util.Log
 import com.makeus.daycarat.core.dto.Resource
 import com.makeus.daycarat.domain.repository.AuthRepository
 import com.makeus.daycarat.data.service.LoginApi
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.SharedPreferenceManager
-import com.makeus.daycarat.util.isSuccessful
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.SharedPreferenceManager
+import com.makeus.daycarat.presentation.util.isSuccessful
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

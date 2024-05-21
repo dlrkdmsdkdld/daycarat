@@ -1,6 +1,5 @@
-package com.makeus.daycarat.core.dto
+package com.makeus.daycarat.presentation.util
 
-import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class ResponseBody<T: Any?>(

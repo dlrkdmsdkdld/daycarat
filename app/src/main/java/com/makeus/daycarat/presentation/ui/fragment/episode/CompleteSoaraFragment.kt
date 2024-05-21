@@ -5,13 +5,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.gson.Gson
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentCompleteSoaraBinding
 import com.makeus.daycarat.databinding.FragmentEditSoaraBinding
 import com.makeus.daycarat.presentation.viewmodel.episode.CompleteSoaraViewmodel
 import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeDetailTypeViewModel
-import com.makeus.daycarat.util.Extensions.onThrottleClick
-import com.makeus.daycarat.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

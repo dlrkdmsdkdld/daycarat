@@ -1,6 +1,6 @@
 package com.makeus.daycarat.data.service
 
-import com.makeus.daycarat.core.dto.ResponseBody
+import com.makeus.daycarat.presentation.util.ResponseBody
 import com.makeus.daycarat.data.data.ActivityTag
 import com.makeus.daycarat.data.data.Content
 import com.makeus.daycarat.data.data.EpisodeId

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.makeus.daycarat.data.data.GemDetailConetent
 import com.makeus.daycarat.databinding.ItemEpisodeDetailBinding
-import com.makeus.daycarat.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
 
 class GemDetailAdatper(val keyword: String) :
     PagingDataAdapter<GemDetailConetent, RecyclerView.ViewHolder>(object :

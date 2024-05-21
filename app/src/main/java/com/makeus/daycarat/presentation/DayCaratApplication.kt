@@ -1,10 +1,10 @@
-package com.makeus.daycarat
+package com.makeus.daycarat.presentation
 
 import android.app.Application
 import android.content.Context
 import com.google.firebase.FirebaseApp
-import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.kakao.sdk.common.KakaoSdk
+import com.makeus.daycarat.BuildConfig
 import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp

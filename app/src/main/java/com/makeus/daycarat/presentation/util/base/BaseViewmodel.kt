@@ -1,9 +1,9 @@
-package com.makeus.daycarat.base
+package com.makeus.daycarat.presentation.util.base
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.makeus.daycarat.util.UiEvent
+import com.makeus.daycarat.presentation.util.UiEvent
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.launch

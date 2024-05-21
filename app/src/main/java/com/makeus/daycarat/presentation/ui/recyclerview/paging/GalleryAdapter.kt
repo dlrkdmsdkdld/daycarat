@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.makeus.daycarat.data.data.GalleryImage
 import com.makeus.daycarat.databinding.ItemGalleryBinding
-import com.makeus.daycarat.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
 
 class GalleryAdapter( var onclick :( (GalleryImage) -> Unit ))  :
     PagingDataAdapter<GalleryImage, RecyclerView.ViewHolder>(object :

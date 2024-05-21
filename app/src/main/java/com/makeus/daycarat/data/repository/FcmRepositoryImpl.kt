@@ -5,8 +5,8 @@ import com.makeus.daycarat.core.dto.Resource
 import com.makeus.daycarat.data.data.UserData
 import com.makeus.daycarat.domain.repository.FcmRepository
 import com.makeus.daycarat.data.service.FcmApi
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.isSuccessful
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.isSuccessful
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

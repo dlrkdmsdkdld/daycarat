@@ -6,8 +6,8 @@ import com.makeus.daycarat.data.service.FcmApi
 import com.makeus.daycarat.data.service.GemApi
 import com.makeus.daycarat.data.service.LoginApi
 import com.makeus.daycarat.data.service.UserInfoApi
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.SharedPreferenceManager
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.SharedPreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -87,7 +87,9 @@ class ApiModule {
     fun provideTokenInterceptor(): Interceptor = Interceptor { chain -> //데이터가 서버로 부터 왔다갔다하는걸 관장하는 변수
         with(chain) {
             val newRequest = request().newBuilder()
-            newRequest.addHeader("Authorization","Bearer ${SharedPreferenceManager.getInstance().getString(Constant.USER_ACCESS_TOKEN,"")}")
+            newRequest.addHeader("Authorization","Bearer ${
+                SharedPreferenceManager.getInstance().getString(
+                    Constant.USER_ACCESS_TOKEN,"")}")
             proceed(newRequest.build())
         }
     }

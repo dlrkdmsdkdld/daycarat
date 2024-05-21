@@ -8,16 +8,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.data.data.SoaraContent
 import com.makeus.daycarat.databinding.FragmentSoaraBinding
 import com.makeus.daycarat.presentation.viewmodel.episode.SoaraViewmodel
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.Extensions.onThrottleClick
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.SharedPreferenceManager
-import com.makeus.daycarat.util.UiManager.inflateDetailContent
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.SharedPreferenceManager
+import com.makeus.daycarat.presentation.util.UiManager.inflateDetailContent
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 

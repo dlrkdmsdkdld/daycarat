@@ -44,17 +44,17 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseActivity
+import com.makeus.daycarat.presentation.util.base.BaseActivity
 import com.makeus.daycarat.databinding.ActivityMainBinding
 import com.makeus.daycarat.presentation.viewmodel.FcmViewModel
 import com.makeus.daycarat.presentation.viewmodel.HomeViewModel
 import com.makeus.daycarat.presentation.viewmodel.MainViewmodel
-import com.makeus.daycarat.util.Constant.TAG
-import com.makeus.daycarat.util.Extensions.navigationHeight
-import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.PermissionManager.checkNotiPermission
-import com.makeus.daycarat.util.PermissionManager.requestNotiPermission
+import com.makeus.daycarat.presentation.util.Constant.TAG
+import com.makeus.daycarat.presentation.util.Extensions.navigationHeight
+import com.makeus.daycarat.presentation.util.Extensions.setStatusBarTransparent
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.PermissionManager.checkNotiPermission
+import com.makeus.daycarat.presentation.util.PermissionManager.requestNotiPermission
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

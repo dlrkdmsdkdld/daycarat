@@ -1,14 +1,14 @@
 package com.makeus.daycarat.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
-import com.makeus.daycarat.base.BaseViewmodel
+import com.makeus.daycarat.presentation.util.base.BaseViewmodel
 import com.makeus.daycarat.core.dto.Status
 import com.makeus.daycarat.data.data.ActivityTag
 import com.makeus.daycarat.data.data.EpisodeKeyword
 import com.makeus.daycarat.data.data.GemCount
 import com.makeus.daycarat.data.data.GemTotalCount
 import com.makeus.daycarat.domain.repository.GemRepository
-import com.makeus.daycarat.util.UiEvent
+import com.makeus.daycarat.presentation.util.UiEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow

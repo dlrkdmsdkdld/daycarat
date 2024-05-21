@@ -6,7 +6,7 @@ import android.text.TextWatcher
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentJoinNicknameBinding
 import com.makeus.daycarat.databinding.FragmentWellcomeBinding
 import com.makeus.daycarat.presentation.MainActivity

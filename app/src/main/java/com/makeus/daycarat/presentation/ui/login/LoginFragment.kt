@@ -9,19 +9,19 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.user.UserApiClient
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentLoginBinding
 import com.makeus.daycarat.databinding.FragmentWellcomeBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.viewmodel.AuthViewmodel
-import com.makeus.daycarat.util.Constant
-import com.makeus.daycarat.util.Extensions.navigationHeight
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.setStatusBarOrigin
-import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.SharedPreferenceManager
-import com.makeus.daycarat.util.UiEvent
+import com.makeus.daycarat.presentation.util.Constant
+import com.makeus.daycarat.presentation.util.Extensions.navigationHeight
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.setStatusBarOrigin
+import com.makeus.daycarat.presentation.util.Extensions.setStatusBarTransparent
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.SharedPreferenceManager
+import com.makeus.daycarat.presentation.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

@@ -13,7 +13,7 @@ import kotlin.properties.Delegates
 import com.haibin.calendarview.Calendar
 import com.haibin.calendarview.MonthView
 import com.makeus.daycarat.R
-import com.makeus.daycarat.util.UiManager
+import com.makeus.daycarat.presentation.util.UiManager
 
 
 class CustomMonthCalendar(context: Context) : MonthView(context) {

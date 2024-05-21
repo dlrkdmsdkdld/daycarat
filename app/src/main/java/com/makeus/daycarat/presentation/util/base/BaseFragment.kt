@@ -1,4 +1,4 @@
-package com.makeus.daycarat.base
+package com.makeus.daycarat.presentation.util.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewbinding.ViewBinding
 import com.makeus.daycarat.databinding.ActivityMainBinding
 import com.makeus.daycarat.presentation.dialog.LoadingDialog
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.setStatusBarTransparent
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.setStatusBarTransparent
 import kotlinx.coroutines.CoroutineScope
 
 typealias Inflate<T> = (LayoutInflater, ViewGroup?, Boolean) -> T

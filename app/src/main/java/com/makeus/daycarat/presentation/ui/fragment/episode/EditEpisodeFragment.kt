@@ -14,7 +14,7 @@ import androidx.core.view.doOnNextLayout
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.makeus.daycarat.R
-import com.makeus.daycarat.base.BaseFragment
+import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.data.data.EpisodeFullContent
 import com.makeus.daycarat.databinding.FragmentEditEpisodeBinding
 import com.makeus.daycarat.databinding.LayoutEditEdpisodeBinding
@@ -23,15 +23,15 @@ import com.makeus.daycarat.presentation.bottomSheet.EpisodeCalendarFragment
 import com.makeus.daycarat.presentation.recyclerview.SearchTagAdapter
 import com.makeus.daycarat.presentation.spinner.EpisodeSpinner
 import com.makeus.daycarat.presentation.viewmodel.episode.EditEpisodeViewmodel
-import com.makeus.daycarat.util.Extensions.HideKeyBoard
-import com.makeus.daycarat.util.Extensions.onThrottleClick
-import com.makeus.daycarat.util.Extensions.repeatOnStarted
-import com.makeus.daycarat.util.Extensions.statusBarHeight
-import com.makeus.daycarat.util.SharedPreferenceManager
-import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisode
-import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeForEdit
-import com.makeus.daycarat.util.TimeUtil.parseTimeToEpisodeWithWeekDay
-import com.makeus.daycarat.util.UiEvent
+import com.makeus.daycarat.presentation.util.Extensions.HideKeyBoard
+import com.makeus.daycarat.presentation.util.Extensions.onThrottleClick
+import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
+import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
+import com.makeus.daycarat.presentation.util.SharedPreferenceManager
+import com.makeus.daycarat.presentation.util.TimeUtil.parseTimeToEpisode
+import com.makeus.daycarat.presentation.util.TimeUtil.parseTimeToEpisodeForEdit
+import com.makeus.daycarat.presentation.util.TimeUtil.parseTimeToEpisodeWithWeekDay
+import com.makeus.daycarat.presentation.util.UiEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 

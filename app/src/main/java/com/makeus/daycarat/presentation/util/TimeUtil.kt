@@ -1,7 +1,7 @@
-package com.makeus.daycarat.util
+package com.makeus.daycarat.presentation.util
 
 import android.util.Log
-import com.makeus.daycarat.util.Constant.TAG
+import com.makeus.daycarat.presentation.util.Constant.TAG
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

@@ -5,13 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import com.makeus.daycarat.DayCaratApplication
 import com.makeus.daycarat.R
-import com.makeus.daycarat.databinding.ItemSpinnerEpisodeBinding
-import com.makeus.daycarat.databinding.ItemSpinnerEpisodeDropdownBinding
 import com.makeus.daycarat.databinding.ItemSpinnerGalleryBinding
 import com.makeus.daycarat.databinding.ItemSpinnerGalleryDropdownBinding
-import com.makeus.daycarat.presentation.viewmodel.episode.EditEpisodeViewmodel
 
 
 class GalleryFolderSpinnerdeSpinner(context: Context, var list: List<String>) :
