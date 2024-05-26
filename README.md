@@ -26,7 +26,7 @@ App Store https://apps.apple.com/kr/app/%EB%8D%B0%EC%9D%B4%EC%BA%90%EB%9F%BF/id6
 # 🩻Build with  
 JetPack(recyclerview,navigation,viewmodel,viewbinding)  
 네트워크 : retrofit2 , okHttp3  
-아키텍쳐 패턴 : MVVM , SAA  
+아키텍쳐 패턴 : MVVM , SAA, Clean Architecture
 비동기 처리 : coroutines , kotlin flow  
 의존성 주입 : hilt  
 언어 : kotlin  
