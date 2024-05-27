@@ -4,53 +4,52 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.makeus.daycarat.data.data.EpisodeActivityCounter
 import com.makeus.daycarat.databinding.ItemSpinnerEpisodeDropdownBinding
 import com.makeus.daycarat.databinding.LayoutSearchItemBinding
 
-class SearchTagAdapter(val list: ArrayList<String>?): RecyclerView.Adapter<RecyclerView.ViewHolder>()  , Filterable {
-    var onclick:((String)->Unit)? = null
+class SearchTagAdapter(var list:List<String>? , var onclick:((String)->Unit)): RecyclerView.Adapter<RecyclerView.ViewHolder>()  , Filterable {
 
-    private var parselist: ArrayList<String>? = list
+    val differCallback = object : DiffUtil.ItemCallback<String>() {
+        override fun areItemsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem === newItem
+        }
+
+        override fun areContentsTheSame(oldItem: String, newItem: String): Boolean {
+            return oldItem == newItem
+        }
+    }
+    val asyncListDiffer = AsyncListDiffer(this,differCallback)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         val binding = LayoutSearchItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding , onclick)
+        return SearchTagViewHolder(binding , onclick)
     }
 
     override fun getItemCount(): Int {
-        return parselist?.size!!
+        return asyncListDiffer.currentList.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        parselist?.getOrNull(position)?.let { (holder as ViewHolder).bind(it) }
+        asyncListDiffer.currentList?.getOrNull(position)?.let { (holder as SearchTagViewHolder).bind(it) }
     }
 
-
-    inner class ViewHolder(val binding: LayoutSearchItemBinding,val onclick:((String)->Unit)?) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(text:String){
-            binding.textSubmit.text = text
-            binding.root.setOnClickListener {
-                onclick?.invoke(text)
-            }
-        }
-
-    }
 
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence): FilterResults {
                 val charString = constraint.toString()
-                parselist = if (charString.isEmpty()) {
+                var parselist = if (charString.isEmpty()) {
                     list
                 } else {
                     val filteredList = ArrayList<String>()
-                    if (list != null) {
-                        for (name in list) {
-                            if(name.toLowerCase().contains(charString.toLowerCase())) {
-                                filteredList.add(name);
-                            }
+                    list?.forEach {
+                        if(it.toLowerCase().contains(charString.toLowerCase())){
+                            filteredList.add(it);
                         }
                     }
                     filteredList
@@ -61,9 +60,16 @@ class SearchTagAdapter(val list: ArrayList<String>?): RecyclerView.Adapter<Recyc
             }
 
             override fun publishResults(constraint: CharSequence, results: FilterResults) {
-                parselist  = results.values as ArrayList<String>
-                notifyDataSetChanged()
+                asyncListDiffer.submitList(results.values as List<String>)
             }
+        }
+    }
+}
+class SearchTagViewHolder(val binding: LayoutSearchItemBinding,val onclick:((String)->Unit)?) : RecyclerView.ViewHolder(binding.root) {
+    fun bind(text:String){
+        binding.textSubmit.text = text
+        binding.root.setOnClickListener {
+            onclick?.invoke(text)
         }
     }
 
