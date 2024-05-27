@@ -12,8 +12,8 @@ import com.makeus.daycarat.data.data.EpisodeActivityCounter
 import com.makeus.daycarat.databinding.FragmentEpisodeBinding
 import com.makeus.daycarat.presentation.MainActivity
 import com.makeus.daycarat.presentation.recyclerview.EpisodeTagAdapter
-import com.makeus.daycarat.presentation.recyclerview.EpisodeTagViewType
 import com.makeus.daycarat.presentation.spinner.EpisodeCardSpinner
+import com.makeus.daycarat.presentation.util.EpisodeTagViewType
 import com.makeus.daycarat.presentation.viewmodel.episode.EpisodeViewmodel
 import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
 import com.makeus.daycarat.presentation.util.Extensions.statusBarHeight
@@ -29,7 +29,14 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
         ViewModelProvider(this).get(EpisodeViewmodel::class.java)
     }
     private val episodeAdapter by lazy {
-        EpisodeTagAdapter(listOf<EpisodeActivityCounter>() , EpisodeTagViewType.Activity)
+        EpisodeTagAdapter( EpisodeTagViewType.Activity ,::clickEpisodeItem)
+    }
+
+    fun clickEpisodeItem(data: EpisodeActivityCounter){
+        var tmpBundle = if(data.activityTagName == null ) bundleOf("typeItem" to data
+            , "year" to viewModel.selectYear) else bundleOf("typeItem" to data , "year" to 0)
+        findNavController().navigate(R.id.action_episodeFragment_to_episodeDetailTypeFragment , tmpBundle )
+
     }
 
     override fun initView() {
@@ -42,11 +49,6 @@ class EpisodeFragment() : BaseFragment<FragmentEpisodeBinding>(
             binding.spinnerYear.visibility = View.VISIBLE
             viewModel.getActivityTagOderByDate()
         }
-        episodeAdapter.onClick = {
-            var tmpBundle = if(it.activityTagName == null ) bundleOf("typeItem" to it , "year" to viewModel.selectYear) else bundleOf("typeItem" to it , "year" to 0)
-            findNavController().navigate(R.id.action_episodeFragment_to_episodeDetailTypeFragment , tmpBundle )
-        }
-
 
         repeatOnStarted {
             viewModel.episodeCountList.collectLatest {
