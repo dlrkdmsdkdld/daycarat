@@ -43,7 +43,7 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
         ViewModelProvider(this).get(EditEpisodeViewmodel::class.java)
     }
     private val searchAdapter by lazy {
-        SearchTagAdapter(SharedPreferenceManager.getInstance().getEpisodeActivityTags())
+        SearchTagAdapter(SharedPreferenceManager.getInstance().getEpisodeActivityTags() ,::clickSearchRecyclerView)
     }
 
     var spinnerArray = ArrayList<Spinner>()
@@ -233,12 +233,13 @@ class EditEpisodeFragment() : BaseFragment<FragmentEditEpisodeBinding>(
 
     }
 
+    fun clickSearchRecyclerView(data:String){
+        hideKeyboard()
+        binding.editTag.setText(data)
+        binding.editTag.clearFocus()
+    }
+
     fun initEditTag() {
-        searchAdapter.onclick = { selectText ->
-            hideKeyboard()
-            binding.editTag.setText(selectText)
-            binding.editTag.clearFocus()
-        }
         binding.recyclerSearch.adapter = searchAdapter
         binding.editTag.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {

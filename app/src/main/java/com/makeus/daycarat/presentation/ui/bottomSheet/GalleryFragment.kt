@@ -16,15 +16,16 @@ import com.makeus.daycarat.presentation.util.Extensions.repeatOnStarted
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class GalleryFragment() : BottomSheetDialogFragment(){
+class GalleryFragment(var onclick :( (GalleryImage) -> Unit)) : BottomSheetDialogFragment(){
     val binding by lazy { FragmentGalleryBinding.inflate(layoutInflater) }
 
     private val viewModel by lazy {
         ViewModelProvider(this).get(GalleryViewModel::class.java)
     }
 
-    private lateinit var pagingAdapter:GalleryAdapter
-    var onclick :( (GalleryImage) -> Unit)? = null
+    private val pagingAdapter by lazy {
+        GalleryAdapter(::clickGalleryItem)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,12 +35,13 @@ class GalleryFragment() : BottomSheetDialogFragment(){
 
         return binding.root
     }
+
+    fun clickGalleryItem(data : GalleryImage){
+        dismissAllowingStateLoss()
+        onclick?.invoke(data)
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        pagingAdapter = GalleryAdapter{
-            dismissAllowingStateLoss()
-            onclick?.invoke(it)
-        }
         binding.recycler.adapter = pagingAdapter
         repeatOnStarted {
             viewModel.customGalleryPhotoList.collect{ pagingData ->

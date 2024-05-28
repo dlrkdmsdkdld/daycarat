@@ -49,7 +49,6 @@ class EpisodeTagAdapter(var viewType : EpisodeTagViewType ,
     fun changeType(newlist:List<EpisodeActivityCounter>, changeType : EpisodeTagViewType){
         viewType = changeType
         asyncListDiffer.submitList(newlist)
-        notifyDataSetChanged()
     }
 }
 class EpisodeTagViewHolder(val binding: ItemEpisodeCardBinding) : RecyclerView.ViewHolder(binding.root) {

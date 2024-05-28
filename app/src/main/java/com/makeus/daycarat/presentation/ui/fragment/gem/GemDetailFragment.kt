@@ -32,15 +32,16 @@ class GemDetailFragment() : BaseFragment<FragmentEpisodeDetailTypeBinding>(
     }
 
 
+    fun clickGemItem(id:Int){
+        findNavController().navigate(R.id.action_gemDetailFragment_to_gemContentFragment , bundleOf( "episode_id" to id , "keyword" to viewModel.keyword ))
+
+    }
     override fun initView() {
         viewModel.startPaging(args.keyword , args.itemCount)
-        pagingAdapter = GemDetailAdatper(viewModel.keyword)
+        pagingAdapter = GemDetailAdatper(viewModel.keyword ,::clickGemItem)
         binding.textTitle.text = viewModel.keyword
         binding.textCount.text = viewModel.itemCount.toString()
 
-        pagingAdapter.onclick ={ id ->
-            findNavController().navigate(R.id.action_gemDetailFragment_to_gemContentFragment , bundleOf( "episode_id" to id , "keyword" to viewModel.keyword ))
-        }
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
         pagingAdapter.addLoadStateListener { loadState ->
             if (loadState.source.refresh is LoadState.NotLoading  && loadState.append.endOfPaginationReached && pagingAdapter.itemCount < 1){

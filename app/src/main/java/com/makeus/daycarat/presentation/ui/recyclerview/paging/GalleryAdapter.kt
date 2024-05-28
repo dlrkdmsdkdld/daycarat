@@ -25,11 +25,17 @@ class GalleryAdapter( var onclick :( (GalleryImage) -> Unit ))  :
     }) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val item = getItem(position)
-        item?.let { (holder as ViewHoler).bind(it) }
+        item?.let { galleryImage ->
+            (holder as GalleryViewHoler).bind(galleryImage)
+            (holder as GalleryViewHoler).binding.itemImage.onThrottleClick {
+                onclick.invoke(galleryImage)
+
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ViewHoler(
+        return GalleryViewHoler(
             ItemGalleryBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
@@ -37,18 +43,14 @@ class GalleryAdapter( var onclick :( (GalleryImage) -> Unit ))  :
             )
         )
     }
+}
 
-    inner class ViewHoler(val binding:ItemGalleryBinding) :  RecyclerView.ViewHolder(binding.root) {
+class GalleryViewHoler(val binding:ItemGalleryBinding) :  RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data : GalleryImage){
-            binding.itemImage.onThrottleClick {
-                onclick.invoke(data)
-            }
-            Glide.with(binding.itemImage.context)
-                .load(data.uri)
-                .into(binding.itemImage)
-        }
-
+    fun bind(data : GalleryImage){
+        Glide.with(binding.itemImage.context)
+            .load(data.uri)
+            .into(binding.itemImage)
     }
 
 }

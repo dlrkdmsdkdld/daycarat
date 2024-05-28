@@ -22,7 +22,7 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
     FragmentEpisodeDetailTypeBinding::inflate) {
 
     private val pagingAdapter by lazy {
-        EpisodeDetailAdatper()
+        EpisodeDetailAdatper(::clickDeatailItem)
     }
 
     private val viewModel by lazy {
@@ -48,9 +48,7 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
             findNavController().popBackStack()
         }
         binding.recyclerContent.adapter = pagingAdapter.withLoadStateFooter(PagingLoadingAdapter{pagingAdapter.retry()})
-        pagingAdapter.onclick = { id ->
-            findNavController().navigate(R.id.action_episodeDetailTypeFragment_to_episodeSeeContentFragment , bundleOf("episodeId" to id )  )
-        }
+
 
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String>("key")?.observe(viewLifecycleOwner) {result ->
             if (result.equals(Constant.EPISODE_REMOVE_SECCESS)) {
@@ -60,6 +58,12 @@ class EpisodeDetailTypeFragment() : BaseFragment<FragmentEpisodeDetailTypeBindin
             }
         }
 
+
+    }
+
+    fun clickDeatailItem(id:Int){
+        findNavController().navigate(R.id.action_episodeDetailTypeFragment_to_episodeSeeContentFragment
+            , bundleOf("episodeId" to id )  )
 
     }
 

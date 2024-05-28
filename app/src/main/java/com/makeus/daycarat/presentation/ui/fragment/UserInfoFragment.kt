@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.makeus.daycarat.R
+import com.makeus.daycarat.data.data.GalleryImage
 import com.makeus.daycarat.presentation.util.base.BaseFragment
 import com.makeus.daycarat.databinding.FragmentUserInfoBinding
 import com.makeus.daycarat.presentation.MainActivity
@@ -52,11 +53,7 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
             requestReadStorageAndCameraPreviewPermission{b: Boolean ->
                 Log.d("GHLEEPR" , "camera 권한 $b")
                 if (b){
-                    var bottomDialog = GalleryFragment()
-                    bottomDialog.onclick = {
-                        Glide.with(this@UserInfoFragment).load(it.uri).into(binding.imgProfile)
-                        userInfoViewModel.updateUserProfile(it)
-                    }
+                    var bottomDialog = GalleryFragment(::updateGalleryPhoto)
                     activity?.supportFragmentManager?.let { it1 ->
                         bottomDialog.show(it1, "GalleryFragment")
                     }
@@ -134,6 +131,11 @@ class UserInfoFragment() : BaseFragment<FragmentUserInfoBinding>(
             0,
             0
         )
+    }
+
+    fun updateGalleryPhoto(data : GalleryImage){
+        Glide.with(this@UserInfoFragment).load(data.uri).into(binding.imgProfile)
+        userInfoViewModel.updateUserProfile(data)
     }
 
 }
